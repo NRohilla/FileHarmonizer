@@ -10,3 +10,15 @@ D:\Client Projects\Joe Simmons\Project\Harmonizer.File\Harmonizer.Data\obj\Debug
 D:\Client Projects\Joe Simmons\Project\Harmonizer.File\Harmonizer.Data\bin\Debug\netstandard2.0\Harmonizer.Core.dll
 D:\Client Projects\Joe Simmons\Project\Harmonizer.File\Harmonizer.Data\bin\Debug\netstandard2.0\Harmonizer.Core.pdb
 D:\Client Projects\Joe Simmons\Project\Harmonizer.File\Harmonizer.Data\obj\Debug\netstandard2.0\Harmonizer.Data.csproj.CopyComplete
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Data\bin\Debug\netstandard2.0\Harmonizer.Data.deps.json
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Data\bin\Debug\netstandard2.0\Harmonizer.Data.dll
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Data\bin\Debug\netstandard2.0\Harmonizer.Data.pdb
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Data\bin\Debug\netstandard2.0\Harmonizer.Core.dll
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Data\bin\Debug\netstandard2.0\Harmonizer.Core.pdb
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Data\obj\Debug\netstandard2.0\Harmonizer.Data.csprojResolveAssemblyReference.cache
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Data\obj\Debug\netstandard2.0\Harmonizer.Data.csproj.CoreCompileInputs.cache
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Data\obj\Debug\netstandard2.0\Harmonizer.Data.AssemblyInfoInputs.cache
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Data\obj\Debug\netstandard2.0\Harmonizer.Data.AssemblyInfo.cs
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Data\obj\Debug\netstandard2.0\Harmonizer.Data.csproj.CopyComplete
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Data\obj\Debug\netstandard2.0\Harmonizer.Data.dll
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Data\obj\Debug\netstandard2.0\Harmonizer.Data.pdb
