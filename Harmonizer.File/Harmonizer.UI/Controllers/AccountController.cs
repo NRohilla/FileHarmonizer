@@ -9,7 +9,7 @@ namespace Harmonizer.UI.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Account
+        // GET: Account this is a test commit
         public ActionResult Index()
         {
             return View();
