@@ -1,0 +1,622 @@
+﻿@model Harmonizer.UI.Models.RegisterUser
+@{
+    ViewBag.Title = "SignUp";
+}
+
+
+<div class="form-horizontal">
+    <h4>Login Information</h4>
+    <hr />
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2 ">
+                @Html.Label("User ID", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.User.UserID, new { @class = "form-control", @ID = "txtUserID" })
+            </div>
+            <div class="col-md-2 ">
+                @Html.Label("Email ID", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.User.EmailID, new { @class = "form-control", @ID = "txtEmailID" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2 ">
+                @Html.Label("Password", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.User.Password, new { @class = "form-control", @ID = "txtPassword", @type = "Password" })
+            </div>
+            <div class="col-md-2 ">
+                @Html.Label("Confirm Password", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.User.ConfirmPassword, new { @class = "form-control", @ID = "txtConfirmPassword", @type = "Password" })
+            </div>
+        </div>
+    </div>
+    <hr />
+    <h4>Personal Information</h4>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-1 ">
+                @Html.Label("Title", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-1">
+                <select class="form-control" id="txtTitle" name="txtTitle" style="padding:0;">
+                    <option value="Mr.">Mr.</option>
+                    <option value="Miss.">Miss.</option>
+                </select>
+                @Html.HiddenFor(mode => mode.PersonalInfo.Title)
+            </div>
+            <div class="col-md-1 ">
+                @Html.Label("First Name", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(model => model.PersonalInfo.FirstName, new { @class = "form-control", @ID = "txtFirstName" })
+            </div>
+            <div class="col-md-1 ">
+                @Html.Label("Last Name", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+
+            <div class="col-md-2">
+                @Html.TextBoxFor(model => model.PersonalInfo.LastName, new { @class = "form-control", @ID = "txtLastName" })
+            </div>
+            <div class="col-md-2 ">
+                @Html.Label("Middle Name", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(model => model.PersonalInfo.MiddleName, new { @class = "form-control", @ID = "txtMiddleName" })
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2 ">
+                @Html.Label("Name 2", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.PersonalInfo.Name2, new { @class = "form-control", @ID = "txtName2" })
+            </div>
+
+            <div class="col-md-2 ">
+                @Html.Label("Last Name 2", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.PersonalInfo.LastName2, new { @class = "form-control", @ID = "txtLastName2" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2 ">
+                @Html.Label("AKA", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.PersonalInfo.AKA, new { @class = "form-control", @ID = "txtAKA" })
+            </div>
+
+            <div class="col-md-2 ">
+                @Html.Label("Gender", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-4">
+                <select class="form-control" id="txtGender" name="txtGender" style="padding:0;">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                @Html.HiddenFor(mode => mode.PersonalInfo.Gender)
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2 ">
+                @Html.Label("Profession", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.PersonalInfo.Profession, new { @class = "form-control", @ID = "txtProfession" })
+            </div>
+
+            <div class="col-md-2 ">
+                @Html.Label("Language", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.PersonalInfo.Language, new { @class = "form-control", @ID = "txtLanguage" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2 ">
+                @Html.Label("Country", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.PersonalInfo.Country, new { @class = "form-control", @ID = "txtCountry" })
+            </div>
+
+            <div class="col-md-2 ">
+                @Html.Label("Phone", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.PersonalInfo.Phone, new { @class = "form-control", @ID = "txtPhone" })
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<h4>Address Information</h4>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-2 ">
+            @Html.Label("Company Name", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.CompName, new { @class = "form-control", @ID = "txtCompName" })
+        </div>
+
+        <div class="col-md-2 ">
+            @Html.Label("Company Name 2", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.CompName2, new { @class = "form-control", @ID = "txtCompName2" })
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-2 ">
+            @Html.Label("Department", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.Department, new { @class = "form-control", @ID = "txtDepartment" })
+        </div>
+        <div class="col-md-2 ">
+            @Html.Label("Address 1", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.Address1, new { @class = "form-control", @ID = "txtAddress1" })
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-2 ">
+            @Html.Label("Address 2", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.Address2, new { @class = "form-control", @ID = "txtAddress2" })
+        </div>
+
+        <div class="col-md-2 ">
+            @Html.Label("P.O. Box", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.POBox, new { @class = "form-control", @ID = "txtPOBox" })
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-2 ">
+            @Html.Label("City", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.City, new { @class = "form-control", @ID = "txtCity" })
+        </div>
+
+        <div class="col-md-2 ">
+            @Html.Label("State", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.State, new { @class = "form-control", @ID = "txtState" })
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-2 ">
+            @Html.Label("Zip", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.Zip, new { @class = "form-control", @ID = "txtZip" })
+        </div>
+
+        <div class="col-md-2 ">
+            @Html.Label("Country", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.Country, new { @class = "form-control", @ID = "txtAddressCountry" })
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-2 ">
+            @Html.Label("Language", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.Language, new { @class = "form-control", @ID = "txtAddressLanguage" })
+        </div>
+
+        <div class="col-md-2 ">
+            @Html.Label("Phone", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.Phone, new { @class = "form-control", @ID = "txtAddressPhone" })
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-2 ">
+            @Html.Label("Work Phone", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.WorkPhone, new { @class = "form-control", @ID = "txtWorkPhone" })
+        </div>
+
+        <div class="col-md-2 ">
+            @Html.Label("Mobile Phone", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.MobilePhone, new { @class = "form-control", @ID = "txtMobilePhone" })
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-2 ">
+            @Html.Label("FAX", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.Fax, new { @class = "form-control", @ID = "txtFax" })
+        </div>
+
+        <div class="col-md-2 ">
+            @Html.Label("Timezone", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.TimeZone, new { @class = "form-control", @ID = "txtTimezone" })
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-2 ">
+            @Html.Label("Location", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.Location, new { @class = "form-control", @ID = "txtLocation" })
+        </div>
+
+        <div class="col-md-2 ">
+            @Html.Label("District Postal Code", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.AddInfo.DistrictPostalCode, new { @class = "form-control", @ID = "txtDistrictPostalCode" })
+        </div>
+    </div>
+</div>
+<div class="form-group">
+
+    <div class="text-center">
+        <input type="button" id="btnsave" name="Create" class="btn btn-info" value="Create" />
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        SetGender();
+
+        $('#txtTitle').change(function (e) {
+            SetGender();
+        });
+
+        $('#txtGender').change(function (e) {
+            setTitle();
+        });
+
+        $('#btnsave').click(function () {
+
+            if (ValidateUserData() ==true) {
+                // Initalize data object
+                var User = {};
+                var PersonalInformation = {};
+                var AddressIinformation = {};
+                // fill data to object
+                User.UserID = $('#txtUserID').val().trim();
+                User.EmailID = $('#txtEmailID').val().trim();
+                User.Password = $('#txtPassword').val().trim();
+                User.ConfirmPassword = $('#txtConfirmPassword').val().trim();
+
+                PersonalInformation.Title = $('#txtTitle').children("option:selected").val().trim();
+                if (PersonalInformation.Title !='')
+                    $('#PersonalInfo_Title').val($('#txtTitle').children("option:selected").val().trim());
+
+                PersonalInformation.MiddleName = $('#txtMiddleName').val().trim();
+                PersonalInformation.FirstName = $('#txtFirstName').val().trim();
+                PersonalInformation.LastName = $('#txtLastName').val().trim();
+                PersonalInformation.Name2 = $('#txtName2').val().trim();
+                PersonalInformation.LastName2 = $('#txtLastName2').val().trim();
+                PersonalInformation.AKA = $('#txtAKA').val().trim();
+                PersonalInformation.Gender = $('#txtGender').children("option:selected").val().trim();
+
+                if (PersonalInformation.Gender != '')
+                    $('#PersonalInfo_Gender').val($('#txtGender').children("option:selected").val().trim());
+
+
+
+                PersonalInformation.Profession = $('#txtProfession').val().trim();
+                PersonalInformation.Language = $('#txtLanguage').val().trim();
+                PersonalInformation.Country = $('#txtCountry').val().trim();
+                PersonalInformation.Phone = $('#txtPhone').val().trim();
+
+
+                AddressIinformation.CompName = $('#txtCompName').val().trim();
+                AddressIinformation.CompName2 = $('#txtCompName2').val().trim();
+                AddressIinformation.Department = $('#txtDepartment').val().trim();
+                AddressIinformation.Address1 = $('#txtAddress1').val().trim();
+                AddressIinformation.Address2 = $('#txtAddress2').val().trim();
+                AddressIinformation.POBox = $('#txtPOBox').val().trim();
+                AddressIinformation.City = $('#txtCity').val().trim();
+                AddressIinformation.State = $('#txtState').val().trim();
+                AddressIinformation.Zip = $('#txtZip').val().trim();
+                AddressIinformation.Country = $('#txtAddressCountry').val().trim();
+                AddressIinformation.Language = $('#txtAddressLanguage').val().trim();
+                AddressIinformation.Phone = $('#txtAddressPhone').val().trim();
+                AddressIinformation.WorkPhone = $('#txtWorkPhone').val().trim();
+                AddressIinformation.MobilePhone = $('#txtMobilePhone').val().trim();
+                AddressIinformation.Fax = $('#txtFax').val().trim();
+                AddressIinformation.Timezone = $('#txtTimezone').val().trim();
+                AddressIinformation.Location = $('#txtLocation').val().trim();
+                AddressIinformation.DistrictPostalCode = $('#txtDistrictPostalCode').val().trim();
+
+
+                var registerUserData = {
+                    "User": User,
+                    "PersonalInfo": PersonalInformation,
+                    "AddInfo": AddressIinformation
+                };
+              // call ajax
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("RegisterUser", "Account")',
+                    data: '{registerUserData: ' + JSON.stringify(registerUserData) + '}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        alert(response.responseText);
+                        //redirect to login form with ID prefilled
+
+                        //redirecturl = window.location.origin ? window.location.origin + '/' : window.location.protocol + '/' + window.location.host + '/';
+                        //window.location.href = redirecturl + "Account/SignIn?UserId=" + User.UserID;
+
+                        //clear form element
+                        clear_form_elements();
+
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+
+
+            } else {
+                //return false;
+                alert("Please fill correct data!");
+                return false;
+            }
+        });
+    });
+
+
+    function ValidateUserData() {
+        IsValide = false;
+        var vtxtUserID = 0, vtxtEmailID = 0, vtxtPassword = 0, vtxtConfirmPassword = 0, vtxtTitle = 0,
+            vtxtFirstName = 0, vtxtLastName = 0, vtxtMiddleName = 0, vtxtName2 = 0, vtxtLastName2 = 0,
+            vtxtAKA = 0, vtxtGender = 0, vtxtProfession = 0, vtxtLanguage = 0, vtxtCountry = 0,
+
+            vtxtCompName = 0, vtxtCompName2 = 0, vtxtDepartment = 0, vtxtAddress1 = 0, vtxtAddress2 = 0,
+            vtxtPOBox = 0, vtxtCity = 0, vtxtState = 0, vtxtZip = 0, vtxtAddressCountry = 0, vtxtAddressLanguage = 0,
+            vtxtPhone = 0, vtxtWorkPhone = 0, vtxtMobilePhone = 0, vtxtFax = 0, vtxtTimezone = 0, vtxtLocation = 0, vtxtDistrictPostalCode = 0;
+
+        debugger;
+        if ($('#txtUserID').val() == "") {
+            vtxtUserID = -1;
+            $('#txtUserID').addClass("validateClass");
+        }
+        else {
+            $('#txtUserID').removeClass("validateClass");
+        }
+        // Email
+        if ($('#txtEmailID').val() == "") {
+            vtxtEmailID = -1;
+            $('#txtEmailID').addClass("validateClass");
+        }
+        else {
+            $('#txtEmailID').removeClass("validateClass");
+        }
+
+        // pass
+        if ($('#txtPassword').val() == "") {
+            vtxtPassword = -1;
+            $('#txtPassword').addClass("validateClass");
+        }
+        else {
+            $('#txtPassword').removeClass("validateClass");
+        }
+        // Confirm
+        if ($('#txtConfirmPassword').val() == "") {
+            vtxtConfirmPassword = -1;
+            $('#txtConfirmPassword').addClass("validateClass");
+        }
+        else {
+            $('#txtConfirmPassword').removeClass("validateClass");
+        }
+
+        if ($('#txtTitle').children("option:selected").val() == "") {
+            vtxtTitle = -1;
+            $('#txtTitle').addClass("validateClass");
+        }
+        else {
+            $('#txtTitle').removeClass("validateClass");
+        }
+
+        // first name
+        if ($('#txtFirstName').val() == "") {
+            vtxtFirstName = -1;
+            $('#txtFirstName').addClass("validateClass");
+        }
+        else {
+            $('#txtFirstName').removeClass("validateClass");
+        }
+
+        // Gender
+        if ($('#txtGender').children("option:selected").val() == "") {
+            vtxtGender = -1;
+            $('#txtGender').addClass("validateClass");
+        }
+        else {
+            $('#txtGender').removeClass("validateClass");
+        }
+
+        // Profession
+        if ($('#txtProfession').val() == "") {
+            vtxtProfession = -1;
+            $('#txtProfession').addClass("validateClass");
+        }
+        else {
+            $('#txtProfession').removeClass("validateClass");
+        }
+
+        // Country
+        if ($('#txtCountry').val() == "") {
+            vtxtCountry = -1;
+            $('#txtCountry').addClass("validateClass");
+        }
+        else {
+            $('#txtCountry').removeClass("validateClass");
+        }
+
+        //Company
+        if ($('#txtCompName').val() == "") {
+            vtxtCompName = -1;
+            $('#txtCompName').addClass("validateClass");
+        }
+        else {
+            $('#txtCompName').removeClass("validateClass");
+        }
+        // Department
+        if ($('#txtDepartment').val() == "") {
+            vtxtDepartment = -1;
+            $('#txtDepartment').addClass("validateClass");
+        }
+        else {
+            $('#txtDepartment').removeClass("validateClass");
+        }
+        // Adddress
+        if ($('#txtAddress1').val() == "") {
+            vtxtAddress1 = -1;
+            $('#txtAddress1').addClass("validateClass");
+        }
+        else {
+            $('#txtAddress1').removeClass("validateClass");
+        }
+
+        // City
+        if ($('#txtCity').val() == "") {
+            vtxtCity = -1;
+            $('#txtCity').addClass("validateClass");
+        }
+        else {
+            $('#txtCity').removeClass("validateClass");
+        }
+        // Mobile
+        if ($('#txtMobilePhone').val() == "") {
+            vtxtMobilePhone = -1;
+            $('#txtMobilePhone').addClass("validateClass");
+        }
+        else {
+            $('#txtMobilePhone').removeClass("validateClass");
+        }
+        // Location
+        if ($('#txtLocation').val() == "") {
+            vtxtLocation = -1;
+            $('#txtLocation').addClass("validateClass");
+        }
+        else {
+            $('#txtLocation').removeClass("validateClass");
+        }
+        // work phond
+        if ($('#txtWorkPhone').val() == "") {
+            vtxtWorkPhone = -1;
+            $('#txtWorkPhone').addClass("validateClass");
+        }
+        else {
+            $('#txtWorkPhone').removeClass("validateClass");
+        }
+
+        if (vtxtUserID == 0 && vtxtEmailID == 0 && vtxtPassword == 0 && vtxtConfirmPassword == 0 && vtxtTitle == 0 &&
+            vtxtFirstName == 0 && vtxtLastName == 0 && vtxtMiddleName == 0 && vtxtName2 == 0 && vtxtLastName2 == 0 &&
+            vtxtAKA == 0 && vtxtGender == 0 && vtxtProfession == 0 && vtxtLanguage == 0 && vtxtCountry == 0 &&
+            vtxtCompName == 0 && vtxtCompName2 == 0 && vtxtDepartment == 0 && vtxtAddress1 == 0 && vtxtAddress2 == 0 &&
+            vtxtPOBox == 0 && vtxtCity == 0 && vtxtState == 0 && vtxtZip == 0 && vtxtAddressCountry == 0 && vtxtAddressLanguage == 0 &&
+            vtxtPhone == 0 && vtxtWorkPhone == 0 && vtxtMobilePhone == 0 && vtxtFax == 0 && vtxtTimezone == 0 && vtxtLocation == 0 &&
+            vtxtDistrictPostalCode == 0) {
+
+            IsValide = true;
+        }
+
+        return IsValide;
+
+    }
+
+
+    function txtValidation(txtBoxName) {
+    }
+
+    function SetGender() {
+        if ($('#txtTitle').children("option:selected").val() == 'Mr.') {
+            $('#txtGender').val('Male');
+        }
+        if ($('#txtTitle').children("option:selected").val() == 'Miss.') {
+            $('#txtGender').val('Female');
+        }
+        $('#PersonalInfo_Title').val($('#txtTitle').children("option:selected").val().trim());
+        $('#PersonalInfo_Gender').val($('#txtGender').children("option:selected").val().trim());
+    }
+
+    function setTitle() {
+        if ($('#txtGender').children("option:selected").val() == 'Male') {
+            $('#txtTitle').val('Mr.');
+        }
+        if ($('#txtGender').children("option:selected").val() == 'Female') {
+            $('#txtTitle').val('Miss.');
+        }
+        $('#PersonalInfo_Title').val($('#txtTitle').children("option:selected").val().trim());
+        $('#PersonalInfo_Gender').val($('#txtGender').children("option:selected").val().trim());
+    }
+
+    function clear_form_elements() {
+        $('input').each(function (e, index) {
+            switch (this.type) {
+                case 'text':
+                    $(this).val('');
+            }
+        });
+    }
+</script>

@@ -26,6 +26,7 @@ namespace Harmonizer.Core.Model
         public string TimeZone { get; set; }
         public string Location { get; set; }
         public string DistrictPostalCode { get; set; }
+        public string CountryKey { get; set; }
 
     }
 }
