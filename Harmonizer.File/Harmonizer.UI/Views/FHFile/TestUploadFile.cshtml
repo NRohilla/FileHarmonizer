@@ -1,0 +1,140 @@
+﻿
+@{
+    string File = "http://fileharmonizer.com:80/Source/1002/binod_01252019_081450_Preview_2009-02-21-GT_Deliverables_Book_v12.docx"; //ViewBag.FilePath;
+    ViewBag.Title = "Test Upload File";
+}
+
+<h2>Test Upload File</h2>
+
+<br />
+    Request.UserHostAddress: @Request.ServerVariables["Request.UserHostAddress"]
+    <br />
+    Your X_FORWARDED_FOR: @Request.ServerVariables["X_FORWARDED_FOR"]
+    <br />
+    REMOTE_ADDR: @Request.ServerVariables["REMOTE_ADDR"];
+    <br />
+    HTTP_X_FORWARDED_FOR: @Request.ServerVariables["HTTP_X_FORWARDED_FOR"]
+    <br />
+    System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName()).AddressList.GetValue(1).ToString(): @System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName()).AddressList.GetValue(1).ToString()
+    <br />
+    @{
+        string strHostName = System.Net.Dns.GetHostName();
+        IPHostEntry ipEntry = System.Net.Dns.GetHostEntry(strHostName);
+        IPAddress[] addr = ipEntry.AddressList;
+        string ip = addr[1].ToString();
+    }
+
+    Ip from Array: @ip
+    <br />
+    @{
+
+        IPHostEntry Host = default(IPHostEntry);
+        string Hostname = null;
+        Hostname = System.Environment.MachineName;
+        Host = Dns.GetHostEntry(Hostname);
+        foreach (IPAddress IP in Host.AddressList)
+        {
+            @*if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    <br /> Convert.ToString(IP);
+                }*@
+            <br /> Convert.ToString(IP);
+        }
+
+
+    }
+    <br />
+    <div>
+        MACAddress:- @ViewBag.MACAddress
+        <br />
+        IPHost:- @ViewBag.IPHost
+        <br />
+        IP:-@ViewBag.IP
+        <br />
+        UniCastAddrss:-@ViewBag.UniCastAddrss
+    </div>
+    @*<input type="file" name="file" id="testfile" directory onchange="OnchangeCall()">*@
+    @*<iframe id="iframe" name="iframe" class="modal-lg" width="100%" height="700px" src="http://docs.google.com/viewer?url=@File&embedded=true"></iframe>*@
+    @*<iframe src="https://fileharmonizer-my.sharepoint.com/personal/support_fileharmonizer_onmicrosoft_com/_layouts/15/Doc.aspx?sourcedoc={f64a6231-9646-433b-b2cf-fbbc9e86df99}&amp;action=embedview&amp;wdStartOn=1" width="476px" height="288px" frameborder="0">
+            This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by
+            <a target="_blank" href="https://office.com/webapps">Office Online</a>.
+        </iframe>*@
+
+    @*<input type="button" value="test" name="Test" id="testAlert" />
+        <button onclick="alertGlow('vinod')">Click me</button>
+        <div class="glow-alert" style="display: none;"></div>*@
+    @*<iframe id="iframe" name="iframe" class="modal-lg" width="100%" height="700px" src="https://docs.google.com/viewer?url=https://fileharmonizer.com:443/Source/1002/binod_02182019_034934_Preview_2009_02_21_GT_Deliverables_Book_v12.docx&amp;embedded=true">
+
+            <p>File size to long<a href="https://fileharmonizer.com:443/Source/1002/binod_02182019_034934_Preview_2009_02_21_GT_Deliverables_Book_v12.docx" target="_blank" title="Click here">Click here</a> to download</p>
+        </iframe>*@
+
+    <style>
+        .glow-alert {
+            position: fixed;
+            top: 120px;
+            left: 40%;
+            margin: 0 auto;
+            font-size: 1.2em;
+            padding: 1em 1.3em;
+            z-index: 2000;
+            font-weight: bold;
+            color: #3a87ad;
+            background-color: #bce8f1;
+            border: solid 2px #88C0CC;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('#testAlert').click(function () {
+                //setInterval(function () { alert('this is my test close after 1 second'); }, 1000);
+                //var al = window.open('', 'test');
+                //window.setTimeout(function () { al.close() }, 3000);
+                //alertGlow('vinod');
+                // setTimeout(function () { alert('ddgg') }, 3000);
+                //alert('ddgg').delay(200).fadeIn().delay(3000).fadeOut()
+            });
+
+
+
+            $('#testfile').click(function () {
+
+            });
+            $('#testfile').change(function () {
+                var filename = document.getElementById("testfile").files[0];
+                alert('call 2' + filename.name);
+            });
+        });
+
+        function OnchangeCall() {
+            var filename = document.getElementById("testfile").files[0];
+            alert('call 1' + filename.name);
+        }
+
+        function alertGlow(msg) {
+            $(".glow-alert").html(msg);
+            $(".glow-alert").delay(200).fadeIn().delay(4000).fadeOut();
+        };
+    </script>
+
+    @*<p style="text-align:center">This window will close automatically within <span id="counter">10</span> second(s).</p>
+        <script type="text/javascript">
+
+
+
+            function countdown() {
+
+                var i = document.getElementById('counter');
+
+                i.innerHTML = parseInt(i.innerHTML) - 1;
+
+                if (parseInt(i.innerHTML) <= 0) {
+
+                    window.close();
+
+                }
+
+            }
+
+            setInterval(function () { countdown(); }, 1000);
+
+        </script>*@

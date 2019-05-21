@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Harmonizer.Core.Model.Repository>
+@{
+    ViewBag.Title = "File Harmonizer - Repository";
+}
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <h4>Repository</h4>
+        <hr />
+        <div class="box">
+            <div class="row">
+                <div class="col-md-6" id="loadPartialRepository">
+                    @Html.Action("_PartialRepository", "FHFile",new { lstTemplateRepository= Model })
+                </div>
+                <div class="col-md-6">
+                    <div class="row" id="loadTemplate">
+                        @Html.Action("_CreateTemplate", "FHFile")
+                    </div>
+                    <div class="row" id="loadPartialTemplateData">
+                        @Html.Action("_CreateHarmonizer", "FHFile", new { lstTemplateRepository = Model })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+<script>
+    $(document).ready(function () {
+        $('#TemplateSectore').change(function () {
+            var TemplateID = $('#TemplateSectore').val();
+            // Ajax call Get data for patialview
+            // GetRepositoryDataByTemplateID/ FHFile
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetRepositoryDataByTemplateID", "FHFile")',
+                data: JSON.stringify({ TemplateID: TemplateID }),
+                dataType: "json",  
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    //alert(data);
+                    $('#loadPartialRepository').load('@Url.Action("_PartialRepository", "FHFile")' + '?lstTemplateRepository=' + data);
+                },
+                error: function () {
+                    alert("Error occured!!")
+                }
+            });  
+        });
+
+    });
+</script>          
+

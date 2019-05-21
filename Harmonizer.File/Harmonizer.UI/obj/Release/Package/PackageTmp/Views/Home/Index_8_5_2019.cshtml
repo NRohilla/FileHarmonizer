@@ -1,0 +1,143 @@
+﻿@{
+    ViewBag.Title = "File Harmonizer - Home";
+}
+<div class="banner w-100 table-active float-left py-1">
+
+    @*<img src="~/images/FH_Home_26991991_M.jpg" alt="banner" class="w-100 border" />*@
+    <img src="~/images/banner2.jpg" alt="banner" />
+
+</div>
+<div class="w-100 float-left my-1">
+
+    <div class="container">
+        <div class="trail_strip clearfix">
+            <div class="trail_section">
+                <div class="trail_item clearfix">
+                    <img src="~/images/lock.png" />
+                    <a href='@Url.Action("SignIn","Account")' class="btn strip_btn">Sign In</a>
+                </div>
+            </div>
+            <div class="trail_section_small" style="text-align:center;"><img src="~/images/divider.png" /></div>
+            <div class="trail_section">
+                <div class="trail_item2">
+                    <img src="~/images/trail.png" />
+                    <a href='@Url.Action("StartMyFreeMonth","User",new { token = Request.QueryString["token"] })' class="btn strip_btn">Start Free Trail</a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="video_player">
+            <video controls="controls" style="max-width:100%;" id="myVideo" poster="~/images/video-thumb.jpg">
+                <source src="~/images/File-Harmonizer_v006_04-05-2019.mp4" type="video/mp4" />
+            </video>
+            <div class="shadows">
+                <img src="~/images/shadow.png" alt="shadow" />
+            </div>
+        </div>
+        <div class="">
+
+            <div class="row mt-4 mb-5">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="about_img">
+                        <img src="~/images/about_us.jpg" alt="about" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="c_heading n_spec">
+                        WELCOME TO <span>FILE HARMONIZER</span>
+                    </div>
+                    <p>
+                        File Harmonizer is a company of Vintage Integrated Services. Fundamentally, File Harmonizer is a technical solution for:
+                    </p>
+                    <div class="c_bulit">
+                        <ul>
+                            <li>Simplifying work processes</li>
+                            <li>Minimizing rework</li>
+                            <li>Decreasing overall required time to deliver deliverables</li>
+                            <li>Accomplishing tasks ranging from the simple to complex -- quickly and efficiently</li>
+                            <li>Reusing objects to boost the efficiency of creating new documents or solutions</li>
+                        </ul>
+
+                    </div>
+                    <p>
+                        With over thirteen years of experience in adapting and blending File Harmonizer tools within various phases of leading industry methodologies from blue print to deployment of small to large scale systems, we realize that when using a global approach tomanage and reuse objects (i.e. build scripts,code, component documents, designs, functional specifications, global templates, installation scripts,plans, requirements,technical specifications, test cases, user manuals, etc.) a reduction in cost could be realized. Especially, when considering each object as a "document", File Harmonizer providesan adaptable structure which allows our tools to perform the appropriate processing required to maximize the reuse of documents.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mt-4 mb-5">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="c_heading">
+                        Object <span>Reuse</span>
+                    </div>
+                    <p>
+                        Process for reducing duplication; the objective is not to blindly create
+                        new objects from scratch unnecessarily, instead reuse an existing object
+                        to create a new object.
+                    </p>
+
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="c_heading">
+                        Approaches of <span>Object Reuse</span>
+                    </div>
+                    <p>
+                        1. As Is - requires no changes be made to the Object(s)<br />
+                        2. Transformed - requires making changes to the Object(s) or its content
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mt-4 mb-5">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="c_heading">
+                        Object Reuse <span>Benefits</span>
+                    </div>
+                    <p>
+                        Reusing Objects is an efficient and smart alternative to creating objects from scratch manually from idea to print. Creating objects from persisting objects boost creation efficiency by more than 20%; the efficiency percent increases as the amount of reusable content increases.
+                    </p>
+
+                    <p>
+                        File Harmonizer complements document management tools in that it creates templates, aligns content into reusable forms, in addition to: capturing changes, storing results, archiving content and retrieving content upon request.For many organizations, the process of managing documents is extremely time-consuming. This tool is an ideal helper in that it allows documents to be modified and managed from a common tool; additionally, it createsarchive records for historical retention. File Harmonizer can be used to organize documents into easy-to-find electronic reports, archives, files etc., which can be quickly retrieved; thereby, making the documents more valuable and helpful immediately.
+                    </p>
+
+                    <p>
+                        File Harmonizer offer easy to use tools for individuals and corporations to increase productivity faster and maximize reusability of documents. We are experts in the following areas: ERP Technical Project Management, SAP ABAP, and software design and development i.e. .Net, C#, C++, unity-3d.
+                    </p>
+
+                    <p>
+                        File Harmonizer has a team of dedicated specialists in different areas of technology ranging from software conception to delivery. Senior managers to help withproject management and deployment of small to large complex implementations.
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="row mt-4 mb-5">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="c_heading_c">
+                        How it <span>Works</span>
+                    </div>
+                    <div style="text-align:center;">
+                        <img src="~/images/how-it-works.jpg" alt="how it works" />
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>
+</div>
+
+<script>
+    $("#myVideo").on("ended", function () {
+        //TO DO: Your code goes here...
+        //alert("Video Finished");
+        $("#myVideo").load();
+    });
+
+</script>

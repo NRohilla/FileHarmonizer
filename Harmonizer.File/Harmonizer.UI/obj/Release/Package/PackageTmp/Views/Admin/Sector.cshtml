@@ -1,0 +1,462 @@
+﻿
+@{
+    ViewBag.Title = "File Harmonizer - Sector";
+  
+}
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div class="blink_heading">
+            <h4>Sector</h4>
+            <blink>
+                <span style="color:red;font-size:18px;" id="messageData" class="blink ml-4">
+                </span>
+            </blink>
+        </div>
+        <hr />
+        <div class="bg-white p-3 border">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        <input type="hidden" id="hdnSecId" />
+                        @Html.Label("Sector Id", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="SectorId" class="form-control" id="txtSecId" />
+                    </div>
+                    <div class="col-md-2 ">
+                        @Html.Label("Sector Code", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" name="Sector Code" class="form-control" id="txtSecCode" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("Description", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="Description" class="form-control" id="txtDescription" />
+                    </div>
+
+                    <div class="col-md-2 ">
+                        @Html.Label("FH Sector Code", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" name="FH Sector Code" class="form-control" id="txtFHSecCode" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-left col-md-7">
+                    
+                </div>
+                <div class="text-right col-md-5">
+                    <input type="button" id="btnsave" name="Create" class="btn btn-info" value="Create" />
+                    <input type="button" id="btncancle" name="Cancle" class="btn btn-info" value="Cancle" />
+                </div>
+            </div>
+        </div>
+        <div class="my-2">
+            <h4 class="fll_wdth_xs">
+                <span class="fll_wdth_xs">
+                    Sector List
+                </span>
+                <span class="float-right mr-2 fll_wdth_xs ml-xs-2">
+                    <input type="button" class="btn-danger btn" value="Mass Delete" id="btnMassDeleteSector" />
+                    @*<input type="button" class="btn-success btn" value="Mass Upload" id="btnMassUploadSector" />*@
+                    <label for="fileupload" class="btn-success btn">Mass Upload</label>
+                </span>
+            </h4>
+            <hr class="hidden-divider" />
+
+            <div class="bg-white  border fll_wdth_xs">
+                    <div class="table-responsive scrollable-table" style="max-height:500px;">
+                        <table id="tblSector" class="table table-bordered table-sm table-striped search-replace-table w-100 mb-0">
+                            <thead>
+                                <tr>
+                                    <th>S No.</th>
+                                    <th>Sector Id</th>
+                                    <th>Sector Code</th>
+                                    <th>Description</th>
+                                    <th>FH Sector Code</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+
+                        </table>
+                    </div>
+                
+            </div>
+        </div>
+
+    </div>
+   
+
+</div>
+<input type="file" id="fileupload" name="fileupload" class="hidden" style="visibility: hidden;" />
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var formData = new FormData();
+        Getsectordata();
+
+
+        $('#btnMassDeleteSector').click(function (e) {
+            if (confirm('Mass delete all record from system and it will impect on operation, Are you want to delete?') == true) {
+
+                //alert('Delete mass data');
+                  $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteMassData", "Admin")',
+                    data: '{"op":"sector"}',
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                        //alert(msg);
+                        //window.location.reload(true);
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            window.location.reload(true);
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        //alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+            }
+
+        });
+
+        $('#btnMassUploadSector').click(function (e) {
+            if (confirm('Are you want to upload mass data?') == true) {
+                $('#fileupload').click();
+            }
+        });
+
+          $('#fileupload').change(function (e) {
+
+            formData.append("FileUpload", document.getElementById("fileupload").files[0])
+            $("#wait").css("display", "block");
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("MassUploadDataSector", "Admin")',
+                    data: formData,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    enctype: 'multipart/form-data',
+                    success: function (msg) {
+                        debugger;
+                        $("#wait").css("display", "none");
+                        formData = new FormData();
+                        //alert(msg);
+                        //window.location.reload(true);
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            window.location.reload(true);
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        $("#wait").css("display", "none");
+                        formData = new FormData();
+                        //alert("error");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+        });
+
+    });
+
+    $('#btnsave').click(function () {
+        if (ValidateUserData() == true) {
+            var Sector = {};
+            Sector.SECID = $('#txtSecId').val();
+            Sector.SECCode = $('#txtSecCode').val();
+            Sector.Description = $('#txtDescription').val();
+            Sector.TAGSEC = $('#txtFHSecCode').val();
+
+            if ($('#btnsave').val() == "Create") {
+                Sector.ActionId = 0; // Action Id 0 for insert.
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddSectorDetails", "Admin")',
+                    data: JSON.stringify(Sector),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                     //alert(msg);
+                        clear_form_elements();
+                        Getsectordata();
+
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+
+                    },
+                    error: function (error) {
+                        //alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+            }
+            else {
+                Sector.SECID = $('#txtSecId').val();
+                Sector.ActionId = 1; // Action Id 0 for insert.
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateSectorDetails", "Admin")',
+                    data: JSON.stringify(Sector),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                        Getsectordata();
+                        //alert(msg);
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        //alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+            }
+            Country = null;
+            ClearForm();
+        }
+        else {
+            //alert("Please fill correct data!");
+            $('#messageData').text("Please fill correct data!");
+            $('#messageData').css('color', 'red');
+            setTimeout(function () {
+                $('#messageData').text('');
+            }, 2000);
+            return false;
+        }
+    })
+
+    function clear_form_elements() {
+        $('input').each(function (e, index) {
+            switch (this.type) {
+                case 'text':
+                    $(this).val('');
+                    break;
+                case 'textarea':
+                    $(this).val('');
+                    break;
+
+            }
+        });
+    }
+
+    function Getsectordata()
+    {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/GetSectorList",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                $('#tblSector tbody').empty();
+                var sno = 1;
+                $.each(response, function (i, e) {
+                    bindData(sno, response[i].SECID, response[i].SECCode, response[i].Description, response[i].TAGSEC);
+                    sno++;
+                });
+                clear_form_elements();
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+    function bindData(Id, SecId, SecCode, Desc, TAGSEC) {
+        var tBody = document.getElementById("tblSector").getElementsByTagName("TBODY")[0];
+
+        row = tBody.insertRow(-1);
+
+        var cell = row.insertCell(-1);
+        cell.innerHTML = Id;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = SecId;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = SecCode;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = Desc;
+
+        var cell = row.insertCell(-1);
+        cell.innerHTML = TAGSEC //$.trim(TAGSEC);
+
+        cell = row.insertCell(-1);
+        var btnRemove = document.createElement("INPUT");
+        btnRemove.type = "button";
+        btnRemove.value = "Delete";
+        btnRemove.className = "btn-info";
+        btnRemove.setAttribute("onclick", "Remove(this);");
+        cell.appendChild(btnRemove);
+
+
+        var btnEdit = document.createElement("INPUT");
+        btnEdit.type = "button";
+        btnEdit.value = "Edit";
+        btnEdit.className = "btn-info";
+        btnEdit.style = "margin-left:10px";
+        btnEdit.setAttribute("onclick", "Edit(this);");
+        cell.appendChild(btnEdit);
+
+    }
+
+    function Remove(button) {
+        var r = confirm("They will effect on operation. Are you sure you want to delete?");
+        if (r == false) {
+            return;
+        } 
+        var row = button.parentNode.parentNode;
+        var Sector = {};
+        Sector.ActionId = -1;
+        Sector.SECID = row.getElementsByTagName("TD")[1].innerHTML;
+        $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteSector", "Admin")',
+            data: JSON.stringify(Sector),
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (msg) {
+                    Getsectordata();
+                    //alert(msg);
+                    $('#messageData').text(msg);
+                    $('#messageData').css('color', 'green');
+                    setTimeout(function () {
+                        $('#messageData').text('');
+                    }, 2000);
+                },
+                error: function (error) {
+                    //alert("Error! Please try again.");
+                    $('#messageData').text("Error! Please try again.");
+                    $('#messageData').css('color', 'red');
+                    setTimeout(function () {
+                        $('#messageData').text('');
+                    }, 2000);
+                }
+            });
+    }
+
+    function Edit(button) {
+        var row = button.parentNode.parentNode;
+        debugger;
+        $('#hdnSecId').val(row.getElementsByTagName("TD")[0].innerHTML);
+        $('#txtSecId').val(row.getElementsByTagName("TD")[1].innerHTML);
+        $('#txtSecCode').val(row.getElementsByTagName("TD")[2].innerHTML);
+        $('#txtDescription').val(row.getElementsByTagName("TD")[3].innerHTML);
+        $('#txtFHSecCode').val(row.getElementsByTagName("TD")[4].innerHTML);
+        $('#btnsave').val("Update");
+        $('#txtSecId').attr("disabled", "disabled");
+        $(window).scrollTop(0);
+    }
+
+    $('#btncancle').click(function () {
+        ClearForm();
+    })
+
+    function ClearForm() {
+        $('#txtSecId').val("");
+        $('#txtSecCode').val("");
+        $('#txtDescription').val("");
+        $('#txtFHSecCode').val("");
+        $('#btnsave').val("Create");
+        $('#txtSecId').removeClass("validateClass");
+        $('#txtSecCode').removeClass("validateClass");
+        $('#txtDescription').removeClass("validateClass");
+        $('#txtFHSecCode').removeClass("validateClass");
+        $('#txtSecId').removeAttr("disabled");
+    }
+
+    function ValidateUserData() {
+        IsValide = false;
+        var vtxtSecId = 0, vtxtSecCode = 0, vtxtDescription = 0, vtxtFHSecCode = 0;
+
+        if ($('#txtSecId').val() == "") {
+            vtxtSecId = -1;
+            $('#txtSecId').addClass("validateClass");
+        }
+        else {
+            //alert($('#Industry :selected').text());
+            //alert($('#Industry').val());
+            vtxtSecId = 0;
+            $('#txtSecId').removeClass("validateClass");
+        }
+
+        if ($('#txtSecCode').val() == "") {
+            vtxtSecCode = -1;
+            $('#txtSecCode').addClass("validateClass");
+        }
+        else {
+
+            vtxtSecCode = 0;
+            $('#txtSecCode').removeClass("validateClass");
+        }
+
+        if ($('#txtDescription').val() == "") {
+            vtxtDescription = -1;
+            $('#txtDescription').addClass("validateClass");
+        }
+        else {
+            $('#txtDescription').removeClass("validateClass");
+        }
+
+        if ($('#txtFHSecCode').val() == "") {
+            vtxtFHSecCode = -1;
+            $('#txtFHSecCode').addClass("validateClass");
+        }
+        else {
+            $('#txtFHSecCode').removeClass("validateClass");
+        }
+
+        if (vtxtSecId == 0 && vtxtSecCode == 0 && vtxtDescription == 0 && vtxtFHSecCode == 0) {
+            IsValide = true;
+        }
+
+        return IsValide;
+    }
+
+</script>
+
+
+

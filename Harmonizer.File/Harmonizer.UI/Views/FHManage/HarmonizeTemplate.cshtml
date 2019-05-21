@@ -1,0 +1,294 @@
+﻿
+@{
+    ViewBag.Title = "Harmonize Template";
+}
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Harmonize Template</h4></div>
+            <hr />
+            <div class="bg-white p-3 border w-100 float-left">
+                <div class="row mb-2">
+                    <div class="col-md-12">
+                        <div class="w-100 float-left">
+                            <div class="float-left mr-2"><label> Source Folder:</label></div>
+                            <div class="float-left col-md-5"><label class="form-control">@Session["BPID"]\Target</label></div>
+                            <div class="float-left col-md-1">
+                                <input type="button" value="..." name="..." class="btn btn-info disabled" id="btnSelectTarerFolder" />
+                            </div>
+                        </div>
+                        <div class="w-100 float-left">
+                            <div class="float-left mr-2"><label>Output Folder:</label></div>
+                            <div class="float-left col-md-5">
+                                <input class="form-control" type="text" value="C:\User\Downloads" />
+                            </div>
+                            <div class="float-left col-md-1">
+                                <input type="button" value="..." name="..." class="btn btn-info" id="btnSelectSourceFolder" />
+                            </div>
+                            <input type="file" value="..." class="d-none" id="openFolder" />
+                        </div>
+                    </div>
+                </div>
+
+                <div id="divHarmonizeTemplateDetails">
+                    @Html.Action("_ManageHarmonizeTemplate", "FHManage")
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- The Modal -->
+<input type="button" id="btnShowData" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModal" />
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Template Details</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modelbodydata">
+
+            </div>
+            @*<div class="modal-footer">
+                    <input type="button" value="Print" id="print" />
+                </div>*@
+        </div>
+    </div>
+
+</div>
+<div id="wait" style="display:none;width:100%;height:100%;position:fixed;top:0px;left:0px;bottom:0px;right:0px;padding:20%;z-index: 99999;background-color:rgba(0,0,0,0.3);text-align:center;">
+    <img src='~/images/sa.gif' width="150" height="150" /><br>Loading..
+</div>
+
+
+<script>
+    //function downloadFile(filePath) {
+    //    var link = document.createElement('a');
+    //    link.href = filePath;
+    //    link.download = filePath.substr(filePath.lastIndexOf('/') + 1);
+    //    link.click();
+    //}
+    //function print(doc) {
+    //    //var objFra = document.createElement('iframe');   // CREATE AN IFRAME.
+    //    //objFra.style.visibility = "hidden";    // HIDE THE FRAME.
+    //    //objFra.src = doc;                      // SET SOURCE.
+    //    //document.body.appendChild(objFra);  // APPEND THE FRAME TO THE PAGE.
+    //    var objFra = document.getElementById("xcc");
+    //    $('viewer-pdf-toolbar').print().click();
+    //    //objFra.src = doc;
+    //    objFra.contentWindow.focus();       // SET FOCUS.
+    //    objFra.contentWindow.print();      // PRINT IT.
+    //}
+    $(document).ready(function () {
+        $('.edit').hide();
+        $(document).on('click','#btnPrintHTemplate',function (e) {
+            //alert('i am clicked for print template on printer');
+            var FileIDPaths = new Array();
+            $("#HrmonizeTemplateManageDetails input[type='checkbox']:checked").each(
+                function () {
+                    var tr = $(this).parents('tr:first');
+                    var FileID = tr.find('#hiddenHarmonizedTempalteID').val();
+                    FileIDPaths.push(FileID);
+                }
+            );
+            if (FileIDPaths.length == 0) {
+                alert('Please select template.');
+                return;
+            }
+            else {
+                if (FileIDPaths.length > 0) {
+                    var interval = 1000;
+                    $.each(FileIDPaths, function (i, e) {
+                        var doc = FileIDPaths[i];
+                        var FileID = "0";
+                        // ajax call to find filter data.
+                        $("#wait").show();
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("ViewPrintFile", "FHFile")',
+                            data: '{FileID:"' + FileID + '",HTFileID:"' + doc + '" }',
+                            dataType: "json",
+                            contentType: 'application/json; charset=utf-8',
+                            async: false,
+                            success: function (data) {
+                                $("#wait").hide();
+                                if (data == "") {
+                                    alert("Please download this file and print it.");
+                                }
+                                else {
+                                    var w = window.open(data, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=700,height=700");
+                                    if (window.focus) {
+                                        w.focus();
+                                        w.print();
+                                    }
+                                }
+                            },
+                            error: function (error) {
+                                $("#wait").hide();
+                                alert("Error! Please try again.");
+                            }
+                        });
+                    });
+                }
+            }
+        });
+
+        $(document).on('click','#btnDownloadHTemplate',function () {
+            //alert('i am clicked for downlaod Template');
+            var FileIDPaths = new Array();
+            $("#HrmonizeTemplateManageDetails input[type='checkbox']:checked").each(
+                function () {
+                    var tr = $(this).parents('tr:first');
+                    var TargetFilePath = tr.find('#hiddenHarmonizedTempalteFileName').val();
+                    //alert(FileID);
+                    FileIDPaths.push(TargetFilePath);
+                }
+            );
+            if (FileIDPaths.length == 0) {
+                alert('Please select template.');
+                return;
+            }
+            else {
+
+                //Start Download
+                if (FileIDPaths.length > 0) {
+                    var interval = 1000;
+                    $.each(FileIDPaths, function (i, e) {
+                        var doc = FileIDPaths[i];
+                        debugger;
+                        if (doc) {
+                            try {
+                                setTimeout(function () {
+                                    window.location = doc;
+                                }, interval * (i + 1));
+                            }
+                            catch (err) {
+
+                            }
+                        }
+                    });
+                }
+            }
+
+        });
+
+        $('#btnSelectSourceFolder').click(function () {
+            alert('Please select folder or copy paste folder directory in box.');
+            $('#openFolder').click();
+        });
+
+        // edit
+        $(document).on('click', '.btn-comment',function (e) {
+            //alert('clicked change ex. date');
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            tr.find('.edit, .read').toggle();
+
+        });
+      
+        // cancel
+        $(document).on('click','.btn-cancel',function (e) {
+            //window.location.reload(true);
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            tr.find('.edit, .read').toggle();
+        });
+
+        // update
+        $(document).on('click','.btn-Update',function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var ID = tr.find('#hiddenHarmonizedTempalteID').val();
+            var newComment = tr.find('#txtComment').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateHarmonizeCommnet", "FHManage")',
+                data: '{ID: "' + ID + '",Comment:"' + newComment + '" }',
+                dataType: "json",
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    // Nothing
+                    debugger;
+                    if (data > 0) {
+                        window.location.reload(true);
+                    }
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+
+    });
+
+
+    function GetSchemeValue(ddlschema, fltrId) {
+        debugger;
+        var currentSelectedvalue = ddlschema.value;
+        var FltrID = fltrId;
+        //alert('change data:' + currentSelectedvalue + "-------" + FltrID);
+
+        // Ajax update scheme assing value 
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("UpdateAssignScheme", "FHManage")',
+            data: '{schemenum: "' + currentSelectedvalue + '",FLTRID:"' + FltrID + '" }',
+            dataType: "json",
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data < 1) {
+                    alert("Error! Please try again.");
+                    $("#wait").hide();
+                } else {
+                    location.reload(true);
+                }
+            },
+            error: function (error) {
+                $("#wait").hide();
+                alert("Error! Please try again.");
+            }
+        });
+
+    }
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        // View
+        $(document).on('click','.btn-view',function (e) {
+            // alert('clicked vew');
+             e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var TargetFilePath = tr.find('#hiddenHarmonizedTempalteFileName').val();
+
+            // ajax call to find filter data.
+            $("#wait").show();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ViewFile", "FHManage")',
+                data: '{FilePath: "' + TargetFilePath + '" }',
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $("#wait").hide();
+                    $('.modal-dialog').addClass('modal-lg');
+                    $('#modelbodydata').html('');
+                    $('#modelbodydata').html(data);
+                    $('#btnShowData').click();
+                },
+                error: function (error) {
+                    $("#wait").hide();
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+
+    });
+</script>

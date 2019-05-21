@@ -27,6 +27,8 @@ namespace Harmonizer.Core.Model
         public string Location { get; set; }
         public string DistrictPostalCode { get; set; }
         public string CountryKey { get; set; }
+        public string county { get; set; }
+       
 
     }
 }

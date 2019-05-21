@@ -1,0 +1,157 @@
+﻿
+@{
+    ViewBag.Title = "Archive";
+}
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Archive</h4></div>
+            <hr />
+            <div class="bg-white p-3 border w-100 float-left">
+                <div id="divArchiveTemplate">
+                    @Html.Action("_ArchiveTemplate", "FHManage")
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- The Modal -->
+<input type="button" id="btnShowData" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModal" />
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Template Details</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modelbodydata">
+
+            </div>
+            @*<div class="modal-footer">
+                    <input type="button" value="Print" id="print" />
+                </div>*@
+        </div>
+    </div>
+
+</div>
+<div id="wait" style="display:none;width:100%;height:100%;position:fixed;top:0px;left:0px;bottom:0px;right:0px;padding:20%;z-index: 99999;background-color:rgba(0,0,0,0.3);text-align:center;">
+    <img src='~/images/sa.gif' width="150" height="150" /><br>Loading..
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#btnMerge').click(function () {
+            alert('Merge click');
+        });
+
+        $('#btnRestore').click(function () {
+            //alert('Restore click');
+            var FileIDs = new Array();
+            $("#ArchiveTemplate input[type='checkbox']:checked").each(
+                function () {
+                    var tr = $(this).parents('tr:first');
+                    var FileID = tr.find('#hddFileID').val();
+                    //alert(FileID);
+                    FileIDs.push(FileID);
+                }
+            );
+            if (FileIDs.length == 0) {
+                alert('Please select filter.');
+                return;
+            }
+
+            // Import data in excel and downloads file
+             $.ajax({
+                type: "POST",
+                url: '@Url.Action("RestoreDelatedTemplateFile", "FHManage")',
+                data: JSON.stringify(FileIDs),
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $("#wait").hide();
+                    if (data > 0) {
+                        location.reload(true);
+                    }
+                    else {
+                        alert('Error! Please try again.')
+                    }
+                },
+                error: function (error) {
+                    $("#wait").hide();
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.btn-Create').click(function (e) {
+            alert('Create click');
+        });
+        $('.btn-rename').click(function (e) {
+            //alert('Reame click');
+             e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var FileID = tr.find('#hddFileID').val();
+            var HFLTRID = tr.find('#hddHFLTRID').val();
+            var Description =tr.find('#lblTemplateDesc').text();
+            var TemplateText = tr.find('#lblTemplateText').text();
+
+            //RenameFilter(int FileID, string Comment,string Description,string FLTRID)
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("RenameTemplate", "FHManage")',
+                data: '{FileID: "' + FileID + '",TemplateText:"' + TemplateText + '",Description:"' + Description + '",HFLTRID:"' + HFLTRID + '" }',
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $('.modal-dialog').removeClass('modal-lg');
+                    $('#modelbodydata').html('');
+                    $('#modelbodydata').html(data);
+                    $('#btnShowData').click();
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+        $('.btn-Archive').click(function (e) {
+            //alert('Archive click');
+             e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var FileID = tr.find('#hddFileID').val();
+            var HFLTRID = tr.find('#hddHFLTRID').val();
+            var Description =tr.find('#lblTemplateDesc').text();
+            var TemplateText = tr.find('#lblTemplateText').text();
+
+            //RenameFilter(int FileID, string Comment,string Description,string FLTRID)
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ArchiveTemplate", "FHManage")',
+                data: '{FileID: "' + FileID + '" }',
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data > 0) {
+                        location.reload(true);
+                    }
+                    else {
+                        alert('Error! Please try again.')
+                    }
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+
+        });
+
+    });
+</script>

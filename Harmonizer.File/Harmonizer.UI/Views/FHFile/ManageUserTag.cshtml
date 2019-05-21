@@ -1,0 +1,249 @@
+﻿@using System.Collections
+@{
+    ViewBag.Title = "File Harmonizer - Manage Tag";
+}
+<link href="~/Content/select2.css" rel="stylesheet" />
+
+<script src="~/Scripts/select2.js"></script>
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Maintain Tag</h4>
+            <blink>
+                <span style="color:red;font-size:18px;" id="messageData" class="blink ml-4">
+
+                </span>
+            </blink>
+        </div>
+        <hr />
+        <div id="foldersettioninfo" class="bg-white p-3 border w-100 float-left mb-3">
+            <div class="">
+                @Html.Action("_FileStatusSettingInfo", "FHFile")
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="">
+                        <div class="w-29 float-left">
+                            Select Sector:
+                        </div>
+                        <div class="w-71 float-left">
+                            @Html.DropDownList("Sectore", new SelectList((IEnumerable)ViewData["lstSectore"], "Value", "Text"), new { @class = "js-example-basic-single multiselectdropdown" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="w-100 float-left">
+                        <div class="float-left mr-2">
+                            Template Per BPID/FH#
+                        </div>
+                        <div class="float-left mr-2">
+                            <input type="text" id="txtBPFHNumber" placeholder="BPID Or FH#" class="" style="background-color:yellow;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="bg-white p-3 border w-100 float-left">
+            <div id="divBusinessTemplate" class="col-lg-5 col-md-5 col-sm-12 col-12 float-left pl-0 search-replace-table ">
+
+            </div>
+            <div id="divUserDetails" class="col-lg-7 col-md-7 col-sm-12 col-12 float-left border-left" style="max-height: 380px; overflow: auto; margin-bottom: 20px;">
+                @Html.Action("ViewAllUserTag", "FHFile")
+            </div>
+            <div class="clearfix"></div>
+            <div class="row text-right mx-0" id="actionHarmonizeButton">
+                <div class="col-md-12">
+                    <input type="button" value="Harmonize" id="bntHarmonize" class="btn btn-info" />
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="row text-right mx-0" id="actionUpdateFilterButton">
+                <div class="col-md-12">
+                    <input type="button" value="Update Value" id="bntsave" class="btn btn-info" />
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="row text-left mx-0" id="actionUpdateFilterButton">
+                <div class="col-md-12">
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="wait" style="display:none;width:100%;height:100%;position:fixed;top:0px;left:0px;bottom:0px;right:0px;padding:20%;z-index: 99999;background-color:rgba(0,0,0,0.3);text-align:center;">
+    <img src='~/images/sa.gif' width="150" height="150" /><br>Loading..
+</div>
+<style>
+    .active {
+        background-color: gold !important;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $('#filterTempateFileinfo').hide();
+
+        $('.js-example-basic-single').select2();
+
+        setTimeout(function () {
+            $('#lblFHNumber').text($('#lblHarmonizerId').text());
+        }, 1000);
+        $('#lblFilterName').text('FH001-Filter');
+        $('#lblTemplateName ').text('FH001-Template');
+        $('#bntsave').click(function () {
+
+            var dataArr = [];
+            debugger;
+            if ($('#UserTagDetails >tbody >tr').length != 0) {
+                $('#UserTagDetails >tbody >tr').each(function () {
+                    var tabledata = {};
+                    var tr = $(this).parents('tr:first');
+                    tabledata.GlobPri = $(this).closest('tr').find('#txtGlobPriValue').val();
+                    tabledata.Description = $(this).closest('tr').find('#lblDescription').text();
+                    tabledata.Share = $(this).closest('tr').find('#txtShareValue').val();
+                    tabledata.TemplateID = '0';
+                    tabledata.UTAGID = $(this).closest('tr').find('#lblUTagID').val();
+                    tabledata.Tag = $(this).closest('tr').find('#lblTagName').val();
+                    tabledata.Org = $(this).closest('tr').find('#lblOrig').val();
+                    dataArr.push(tabledata);
+
+
+                });
+
+                debugger;
+                // Call ajax and update value
+
+                $("#wait").css("display", "block");
+                jQuery.ajax({
+                    type: "POST",
+                    url: '@Url.Action("saveRepositoryInfo", "FHFile")',
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(dataArr),
+                    success: function (data) {
+                        $("#wait").css("display", "none");
+                        //alert(data.massage);
+                        $('#messageData').text(data.massage);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 3000);
+                    },
+                    error: function (errMsg) {
+                        $("#wait").css("display", "none");
+                        //alert(errMsg);
+                        $('#messageData').text(errMsg);
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 3000);
+                    }
+                });
+            }
+        });
+
+
+        $('#Sectore').change(function () {
+            //alert($('#Sectore').val());
+            var sectorId = $('#Sectore').val().trim();
+            //debugger;
+             $("#wait").css("display", "block");
+                jQuery.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ViewAllUserTag", "FHFile")',
+                    dataType: "html",
+                    contentType: "application/json; charset=utf-8",
+                    data: '{ SecID: "'+sectorId+'" }',
+                    success: function (data) {
+                        $("#wait").css("display", "none");
+                        $('#divUserDetails').html('');
+                        $('#divUserDetails').html(data);
+                    },
+                    error: function (errMsg) {
+                        $("#wait").css("display", "none");
+                        alert('Error! Please try again!');
+                    }
+            });
+
+        });
+
+        $('#txtBPFHNumber').change(function () {
+            //alert('Hi i am change');
+            var bpIdOrHN = $('#txtBPFHNumber').val().trim();
+            var sectorId = $('#Sectore').val().trim();
+
+            $("#wait").css("display", "block");
+                jQuery.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetBusinessTemplateByBPIDOrFH", "FHFile")',
+                    dataType: "html",
+                    contentType: "application/json; charset=utf-8",
+                    data: '{BPIDOrFH:"' + bpIdOrHN + '", SecID: "' + sectorId+'" }',
+                    success: function (data) {
+                        $("#wait").css("display", "none");
+                        $('#divUserDetails').html('');
+                        $('#divBusinessTemplate').html('');
+                        $('#actionUpdateFilterButton').hide();
+                        $('#actionHarmonizeButton').hide();
+                        $('#divBusinessTemplate').html(data);
+                       
+                    },
+                    error: function (errMsg) {
+                        $("#wait").css("display", "none");
+                        alert('Error! Please try again!');
+                    }
+            });
+        });
+
+        // --Create H.template
+        $('#bntHarmonize').click(function () {
+            alert('I am click for harmonize template');
+        });
+    });
+</script>
+<script>
+    $(document).on('click', '#tbltemp tbody > tr', function (e) {
+         e.preventDefault();
+        debugger;
+        var FileID = $(this).find('td').find('#hddFileID').val();
+        GetFilterByFileID(FileID, $(this));
+    });
+
+    function GetFilterByFileID(FileId, row) {
+        GetTemplateDetails(FileId);
+        $('#tbltemp tbody > tr').removeClass("active");
+        $(row).addClass("active");
+    }
+    function GetTemplateDetails(fileid) {
+        var bpIdOrHN = $('#txtBPFHNumber').val().trim();
+        var sectorId = $('#Sectore').val().trim();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("GetBusinessFilter", "FHFile")',
+            data: '{BPIDOrFH:"' + bpIdOrHN + '", SecID: "' + sectorId + '",FileID:"' + fileid+'" }',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (data) {
+                $('#divUserDetails').html('');
+                $('#divUserDetails').html(data);
+                $('#actionUpdateFilterButton').show();
+                $('#actionHarmonizeButton').hide();
+            },
+            error: function (response) {
+                alert('Error! Please try again');
+            }
+        });
+
+    }
+
+</script>

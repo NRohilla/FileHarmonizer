@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewBag.Title = "Maintain Custom Tag";
+}
+
+
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Maintain Custom Tag</h4>
+            <blink>
+                <span style="color:red;font-size:18px;" id="messageData" class="blink ml-4">
+                </span>
+            </blink>
+        </div>
+        <hr />
+
+        <div class="bg-white p-3 border">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("Tag Name", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="Tag" class="form-control" id="txtTag" />
+                    </div>
+
+                    <div class="col-md-2 ">
+                        @Html.Label("Description", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="Description" class="form-control" id="txtDescription" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("Global Pri", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control" id="ddGlobPri">
+                            <option value="P" selected="selected">P</option>
+                            <option value="G">G</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-left col-md-7">
+
+                </div>
+                <div class="text-right col-md-5">
+                    <input type="button" id="btnsave" name="Create" class="btn btn-info" value="Create" />
+                    <input type="button" id="btncancle" name="Cancel" class="btn btn-info" value="Cancel" />
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-3 border w-100 float-left">
+            <div id="divUserDetails">
+                @Html.Action("viewCustomTag", "User")
+            </div>
+        </div>
+    </div>
+ </div>
+
+<script>
+    $(document).ready(function () {
+        $('.edit').hide();
+
+        $('#btnsave').click(function () {
+
+            if ($('#txtTag').val() == '')
+            {
+                $('#txtTag').addClass('validateClass');
+                return false;
+            }
+            else if ($('#txtDescription').val() == '')
+            {
+                $('#txtDescription').addClass('validateClass');
+                return false;
+            }
+            else {
+                // Ajax call to save
+                 var Tagdata = {};
+                Tagdata.TagName = $('#txtTag').val().trim();
+                Tagdata.Description = $('#txtDescription').val().trim();
+                Tagdata.UserID = "C";
+                Tagdata.Orig = "C";
+                Tagdata.GlobPri = $('#ddGlobPri').val().trim().toUpperCase();
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddTagDetails", "FHFile")',
+                    data: JSON.stringify(Tagdata),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            window.location.reload(true);
+                        }, 3000);
+                        
+                    },
+                    error: function (error) {
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 3000);
+                    }
+                });
+
+            }
+
+           
+
+
+        });
+        $('#btncancle').click(function () {
+            //alert('cancel');
+            Cleardata();
+        });
+
+        $('.btn-edit').click(function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            tr.find('.edit, .read').toggle();
+        });
+
+        $('.btn-cancel').click(function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            tr.find('.edit, .read').toggle();
+        });
+
+
+        $('.btn-update').click(function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+
+            var ID = tr.find('#hiddenTagIDGrid').val().trim();
+            var TagName = tr.find('#txtTagNameGrid').val().trim();
+            var Description = tr.find('#txtTagDescriptionGrid').val().trim();
+            var globalPriValue = tr.find('#txtTagGlobpriGrid').val().toUpperCase().trim();
+            var utagId = tr.find('#lblTagIDGrid').text().trim();
+
+            // Ajax call to update data
+            var Tagdata = {};
+            Tagdata.TagName = TagName;
+            Tagdata.Description = Description;
+            Tagdata.GlobPri = globalPriValue;
+            Tagdata.UTAGID = utagId;
+
+            $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateCustomTag", "FHFile")',
+                    data: JSON.stringify(Tagdata),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            window.location.reload(true);
+                        }, 3000);
+                        
+                    },
+                    error: function (error) {
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 3000);
+                    }
+                });
+
+        });
+
+    });
+
+    function Cleardata() {
+        $('#txtTag').val('');
+        $('#txtDescription').val('');
+    }
+
+</script>

@@ -1,0 +1,71 @@
+﻿@model Harmonizer.Core.Model.PaymentModel
+@{
+    ViewBag.Title = "File Harmonizer - Payment Success";
+}
+<div class="form-horizontal my-3">
+    <div class="container">
+        <h4>Payment Success</h4>
+        <hr />
+        <div class="box">
+            <table class="table table-bordered table-sm table-striped search-replace-table" id="tblPrint">
+                <tr>
+                    <td>Transaction ID</td>
+                    <td>@Model.TransactionId</td>
+                </tr>
+                <tr>
+                    <td>Payment ID</td>
+                    <td>@Model.id</td>
+                </tr>
+                <tr>
+                    <td>Invoice No.</td>
+                    <td>@Model.invoice</td>
+                </tr>
+                <tr>
+                    <td>Currency</td>
+                    <td>@Model.currency</td>
+                </tr>
+                <tr>
+                    <td>Amount</td>
+                    <td>@Model.amount</td>
+                </tr>
+                <tr>
+                    <td>Item description</td>
+                    <td>@Model.description</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td>@Model.create_time</td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>@Model.state</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center;">
+                        <input type="button" value="Goto Home" name="Return" class="btn btn-info" id="btnreturn" onclick="window.location='@Url.Action("Index", "Home",new {token=Model.TokenId })'" />
+                        <input type="button" value="Print" name="print" class="btn btn-info" id="btnprintsuccess" />
+                    </td>
+                </tr>
+
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#btnprintsuccess').click(function () {
+            printData();
+        });
+
+    });
+    function printData() {
+        var divToPrint = document.getElementById("tblPrint");
+        newWin = window.open("");
+        newWin.document.write(divToPrint.outerHTML);
+        newWin.print();
+        newWin.close();
+    }
+</script>

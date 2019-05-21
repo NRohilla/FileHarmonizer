@@ -1,0 +1,584 @@
+﻿@model Harmonizer.UI.Models.Individual
+@{
+    ViewBag.Title = "File Harmonizer - Harmonizer Template";
+}
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Template Information</h4>
+            <blink>
+                <span style="color:red;font-size:18px;" id="messageData" class="blink ml-4">
+                </span>
+            </blink>
+        </div>
+        <hr />
+        <div id="foldersettioninfo" class="bg-white p-3 border w-100 float-left mb-3">
+            @Html.Action("_FileStatusSettingInfo", "FHFile")
+        </div>
+
+        <div class="bg-white p-3 border w-100 float-left">
+            <div class="col-lg-5 col-md-5 col-sm-12 col-12 float-left pl-0 search-replace-table">
+                @*<table class="table table-bordered table-sm table-striped search-replace-table" id="tbltemp">
+                    <thead>
+                        <tr>
+                            <th class="w-75" id="tempHeader"></th>
+                            <th class="w-25">Sector</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>*@
+                @Html.Action("GetTemplateDataForFinalTemplate", "FHFile")
+            </div>
+
+
+
+            <div class="col-lg-7 col-md-7 col-sm-12 col-12 float-left border-left">
+
+
+                <div class="form-group">
+                    <div class="row scrollable-table" style="max-height:380px;">
+                        <table id="tblIndividual" class="table table-bordered table-sm table-striped search-replace-table">
+                            <thead>
+                                <tr>
+                                    <th>Global\Private</th>
+                                    <th>Description</th>
+                                    <th>Share</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+        <div class="bg-white pt-1 pb-1 pl-3 pr-3 border border-top-0 w-100 float-left">
+            <div class="row">
+                <div class="text-left col-md-7">
+
+                </div>
+                <div class="col-md-5 text-right">
+                    <input type="button" id="btncopy" name="CopyTemplate" class="btn btn-info" value="Copy template" />
+                    <input type="button" id="btnsave" name="Create" class="btn btn-info" value="Update Values" />
+                    <input type="button" id="btnHarmonize" name="CreateHarmonize" class="btn btn-info" value="Harmonize" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- The Modal -->
+<input type="button" id="btnShowData" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModal" />
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Copy template</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modelbodydata">
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="hidden" id="hiddenFileID" />
+                        <label>Old Template Name</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="txtOldTemplateName" readonly />
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-md-4">
+                        <label>New Template Name</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="txtNewTemplateName" />
+                    </div>
+                    </div>
+                <div class="row mt-1">
+                    <div class="col-md-12">
+                        <input type="button" value="Copy template" id="btnCreateCopyTemplate" name="btnCreateCopyTemplate" class="btn btn-info" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="wait" style="display:none;width:100%;height:100%;position:fixed;top:0px;left:0px;bottom:0px;right:0px;padding:20%;z-index: 99999;background-color:rgba(0,0,0,0.3);text-align:center;">
+    <img src='~/images/sa.gif' width="150" height="150" /><br>Loading..
+</div>
+<style>
+    .active {
+        background-color: gold !important;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //DefaultBindData();
+        validateTableRows();
+        setTimeout(function () {
+            $('#lblFHNumber').text($('#lblHarmonizerId').text());
+        }, 1000);
+
+
+        $("#tbltemp tbody > tr").click(function (e) {
+            e.preventDefault();
+            $('#hiddenFileID').val('');
+            $('#txtOldTemplateName').val('');
+            debugger;
+            //var tr = $(this).parents('tr:first');
+           // var tr = $(this).closest('tr:first');
+            var FileID = $(this).find('td').find('#hddFileID').val();
+            var name = $(this).find('td').find('#lblFileName').text();
+            $('#hiddenFileID').val(FileID);
+            $('#txtOldTemplateName').val(name);
+            GetFilterByFileID(FileID,$(this));
+        });
+
+    });
+
+    function DefaultBindData() {
+        // need spineer here
+        $('#wait').show();
+            $.ajax({
+                type: "GET",
+                url:'@Url.Action("GetTemplateList", "FHFile")', // "/FHFile/GetTemplateList",
+                //data:null,
+                //contentType: "application/text; charset=utf-8",
+                dataType: "json",
+                cache: false,
+                //async: false,
+                success: function (response) {
+                    $('#wait').hide();
+                    if (response.length == 0) {
+                        var pValue = '@Session["Partner"].ToString()';
+                            $('#tempHeader').text('Template (' + pValue + ')');
+                    } else {
+                        $('#tempHeader').text('Template (' + response[0].Partner + ')');
+                    }
+                    $.each(response, function (i,e) {
+
+                        bindData(e.FileID, e.TemplateDesc, e.SECID);
+                        // Hide first column of table
+                        $('#tbltemp td:nth-child(1)').hide();
+                    });
+                },
+                error: function (response) {
+                    $('#wait').hide();
+                    alert('Error! Please try again, load template');
+                }
+            });
+
+    }
+    function bindData(FileID,TemplateDesc,SECID) {
+
+        //Get the reference of the Table's TBODY element.
+        var tBody = document.getElementById("tbltemp").getElementsByTagName("TBODY")[0];
+
+        //Add Row.
+        row = tBody.insertRow(-1);
+
+        //Add Name cell.
+        var cell = row.insertCell(-1);
+        cell.innerHTML = FileID;
+
+        //Add Name cell.
+        var cell = row.insertCell(-1);
+        cell.innerHTML = TemplateDesc;
+
+        //Add Tag cell.
+        cell = row.insertCell(-1);
+        cell.innerHTML = SECID;
+        row.setAttribute("onclick", "GetId(this);");
+
+    }
+    function GetFilterByFileID(FileId,row) {
+
+        GetTemplateDetails(FileId);
+        $('#tbltemp tbody > tr').removeClass("active");
+        $(row).addClass("active");
+    }
+
+    function GetId(button)
+    {
+        var row = button;
+        var FileId = row.getElementsByTagName("TD")[0].innerHTML;
+        GetTemplateDetails(FileId);
+        $('#tbltemp tbody > tr').removeClass("active");
+        $(row).addClass("active");
+    }
+
+    function GetTemplateDetails(fileid)
+    {
+        $.ajax({
+            type: "GET",
+            url: "/FHFile/GetTemplateDetail",
+            data: { FileId: fileid },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                $('#tblIndividual tbody').empty();
+                $.each(response.lst, function (i, e) {
+
+                    BindIndvidualtable(e.GlobPri, e.Description, fileid, e.UTAGID, e.TagName, e.Orig, e.Share);
+                });
+                $('#tblIndividual td:nth-child(1)').hide();
+                $('#tblIndividual td:nth-child(2)').hide();
+                $('#tblIndividual td:nth-child(3)').hide();
+                $('#tblIndividual td:nth-child(4)').hide();
+                $('#tblIndividual td:nth-child(5)').hide();
+                validateTableRows();
+                $('#lblTemplateName').text(response.template);
+                $('#lblFilterName').text(response.filter);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+
+    }
+
+    function validateTableRows() {
+
+        if ($('#tblIndividual >tbody >tr').length == 0)
+        {
+            var tBody = document.getElementById("tblIndividual").getElementsByTagName("TBODY")[0];
+
+            //Add Row.
+            row = tBody.insertRow(-1);
+
+            //Add Name cell.
+            var cell = row.insertCell(-1);
+            cell.setAttribute("colspan", "3")
+
+
+            var span = document.createElement("span");
+            span.style = "color: red; margin-left: 37%;";
+            span.textContent = "";// "Record not found !";
+            cell.appendChild(span);
+
+        }
+
+
+
+    }
+
+
+    function BindIndvidualtable(GlobPri, Description, fileId, UTAGID, TagName, Orig, Share)
+    {
+        //Get the reference of the Table's TBODY element.
+        var tBody = document.getElementById("tblIndividual").getElementsByTagName("TBODY")[0];
+
+        //Add Row.
+        row = tBody.insertRow(-1);
+
+        //Add Name cell.
+
+        var cell = row.insertCell(-1);
+        cell.innerHTML = GlobPri;
+
+        var cell = row.insertCell(-1);
+        cell.innerHTML = fileId;
+
+        var cell = row.insertCell(-1);
+        cell.innerHTML = UTAGID;
+
+        var cell = row.insertCell(-1);
+        cell.innerHTML = escapeHTML(TagName);
+
+        var cell = row.insertCell(-1);
+        cell.innerHTML = Orig;
+
+
+
+        var cell = row.insertCell(-1);
+        var InputGlob = document.createElement("INPUT");
+        InputGlob.type = "text";
+        InputGlob.value = GlobPri;
+        InputGlob.style = "width: 30%; text-align:center;text-transform: uppercase;";
+        InputGlob.maxLength = 1;
+        InputGlob.setAttribute("onchange","ChangeValue(this);")
+        cell.appendChild(InputGlob);
+
+
+        //Add Name cell.
+        cell = row.insertCell(-1);
+        cell.innerHTML = Description;
+        //Add Share cell.
+        cell = row.insertCell(-1);
+        var InputShare = document.createElement("INPUT");
+        InputShare.type = "text";
+        InputShare.value = Share;
+        InputShare.style = "background-color: yellow; width: 100%;";
+        cell.appendChild(InputShare);
+
+
+    }
+
+
+    function ChangeValue(inputval)
+    {
+        var row = inputval.parentNode.parentNode;
+        var OriginalGlobval = row.getElementsByTagName("TD")[0].innerHTML;
+
+        if (inputval.value === '')
+        {
+            inputval.value = OriginalGlobval;
+            return;
+        }
+
+        else if (inputval.value !== 'P' && inputval.value !== 'p' && inputval.value !== 'G' && inputval.value !== 'g')
+        {
+            inputval.value = OriginalGlobval;
+        }
+
+
+    }
+
+
+    $('#btnsave').click(function () {
+
+        var dataArr = [];
+
+        if ($('#tblIndividual >tbody >tr').length != 0) {
+            $('#tblIndividual >tbody >tr').each(function (a, b) {
+                var tabledata = {};
+                try {
+                    tabledata.GlobPri = $(this).closest('tr').find("input")[0].value;
+                    tabledata.Description = $(this).closest('tr').find('td')[6].innerHTML;
+                    tabledata.Share = $(this).closest('tr').find("input")[1].value;
+                    tabledata.TemplateID = $(this).closest('tr').find('td')[1].innerHTML;
+                    tabledata.UTAGID = $(this).closest('tr').find('td')[2].innerHTML;
+                    tabledata.Tag = reverseescapeHTML($(this).closest('tr').find('td')[3].innerHTML);
+                    tabledata.Org = $(this).closest('tr').find('td')[4].innerHTML;
+                    dataArr.push(tabledata);
+                }
+                catch(error){
+
+                }
+
+            });
+
+            if (dataArr.length == 0) {
+                $('#messageData').text('No Filter available!');
+                $('#messageData').css('color', 'red');
+                setTimeout(function () {
+                    $('#messageData').text('');
+                }, 3000);
+                return;
+            }
+
+            $("#wait").css("display", "block");
+            jQuery.ajax({
+                type: "POST",
+                url: '@Url.Action("saveRepositoryInfo", "FHFile")',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(dataArr),
+                success: function (data) {
+                    $("#wait").css("display", "none");
+                    //alert(data.massage);
+                    $('#messageData').text(data.massage);
+                    $('#messageData').css('color', 'green');
+                    setTimeout(function () {
+                        $('#messageData').text('');
+                    }, 3000);
+                },
+                error: function (errMsg) {
+                    $("#wait").css("display", "none");
+                    //alert(errMsg);
+                    $('#messageData').text(errMsg);
+                    $('#messageData').css('color', 'red');
+                    setTimeout(function () {
+                        $('#messageData').text('');
+                    }, 3000);
+                }
+            });
+
+
+        }
+
+    });
+
+
+    $('#btnHarmonize').click(function () {
+        // create harmonizer
+        var dataArr = [];
+
+        if ($('#tblIndividual >tbody >tr').length != 0)
+        {
+            $('#tblIndividual >tbody >tr').each(function (a, b) {
+                var tabledata = {};
+                try {
+                    tabledata.GlobPri = 'G';// $(this).closest('tr').find("input")[0].value;
+                    tabledata.Description = $(this).closest('tr').find('td')[6].innerHTML;
+                    tabledata.Share = $(this).closest('tr').find("input")[1].value;
+                    tabledata.TemplateID = $(this).closest('tr').find('td')[1].innerHTML;
+                    tabledata.UTAGID = $(this).closest('tr').find('td')[2].innerHTML;
+                    tabledata.Tag = reverseescapeHTML($(this).closest('tr').find('td')[3].innerHTML);
+                    tabledata.Org = $(this).closest('tr').find('td')[4].innerHTML;
+                    dataArr.push(tabledata);
+                }
+                catch(error){
+
+                }
+
+            });
+            if (dataArr.length == 0) {
+                $('#messageData').text('No Filter available!');
+                $('#messageData').css('color', 'red');
+                setTimeout(function () {
+                    $('#messageData').text('');
+                }, 3000);
+                return;
+            }
+
+           // Ajax call for harmonizer process
+
+            $("#wait").css("display", "block");
+             jQuery.ajax({
+            type: "POST",
+           url: '@Url.Action("CreateHarmonizerTemplate", "FHFile")',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+                 data: JSON.stringify(dataArr),
+                 success: function (data) {
+                     $("#wait").css("display", "none");
+                     //alert(data.massage);
+                     $('#messageData').text(data.massage);
+                     $('#messageData').css('color', 'green');
+                     setTimeout(function () {
+                         $('#messageData').text('');
+                     }, 3000);
+                     if (data.fileName !== "") {
+                         window.location.href = "@Url.RouteUrl(new
+                                                        { Controller = "FHFile", Action = "DownloadFile" })/?FileName=" + data.fileName + "&mode=download";
+                                                        //$("#downloadFile_dialog").dialog("close");//10/4/2019
+                             }
+                 },
+                 error: function (errMsg) {
+                     $("#wait").css("display", "none");
+                     //alert(errMsg);
+                     $('#messageData').text(errMsg);
+                     $('#messageData').css('color', 'red');
+                     setTimeout(function () {
+                         $('#messageData').text('');
+                     }, 3000);
+            }
+        });
+
+
+        }
+    });
+
+    $('#btncopy').click(function () {
+
+        var dataArr = [];
+        debugger;
+        if ($('#tblIndividual >tbody >tr').length != 0) {
+            $('#tblIndividual >tbody >tr').each(function (a, b) {
+                var tabledata = {};
+                try {
+                    tabledata.GlobPri = $(this).closest('tr').find("input")[0].value;
+                    tabledata.Description = $(this).closest('tr').find('td')[6].innerHTML;
+                    tabledata.Share = $(this).closest('tr').find("input")[1].value;
+                    tabledata.TemplateID = $(this).closest('tr').find('td')[1].innerHTML;
+                    tabledata.UTAGID = $(this).closest('tr').find('td')[2].innerHTML;
+                    tabledata.Tag = reverseescapeHTML($(this).closest('tr').find('td')[3].innerHTML);
+                    tabledata.Org = $(this).closest('tr').find('td')[4].innerHTML;
+                    dataArr.push(tabledata);
+                }
+                catch(error){
+
+                }
+            });
+            if (dataArr.length == 0) {
+                $('#messageData').text('No Filter available!');
+                $('#messageData').css('color', 'red');
+                setTimeout(function () {
+                    $('#messageData').text('');
+                }, 3000);
+                return;
+            }
+            else {
+                // open popop to take new template file name
+                $('#btnShowData').click();
+            }
+        }
+    });
+
+
+    $('#btnCreateCopyTemplate').click(function () {
+
+        var oldName = $('#txtOldTemplateName').val();
+        var NewName = $('#txtNewTemplateName').val();
+        var FileID = $('#hiddenFileID').val();
+
+        if (oldName == '' || NewName == '' || FileID == '') {
+
+            $('#messageData').text('Fill correct data and try again.');
+            $('#messageData').css('color', 'red');
+            setTimeout(function () {
+                $('#messageData').text('');
+            }, 3000);
+            return;
+        }
+        //Call ajax to copy template
+        $("#wait").css("display", "block");
+        jQuery.ajax({
+            type: "POST",
+            url: '@Url.Action("CopyTemplate", "FHFile")',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: '{fileID: "' + FileID + '",oldName:"' + oldName + '",newName:"' + NewName + '" }',
+            success: function (data) {
+                $("#wait").css("display", "none");
+                //alert(data.massage);
+                $('#messageData').text(data);
+                $('#messageData').css('color', 'green');
+                setTimeout(function () {
+                    $('#messageData').text('');
+                    location.reload(true);
+                }, 3000);
+            },
+            error: function (errMsg) {
+                $("#wait").css("display", "none");
+                //alert(errMsg);
+                $('#messageData').text('Error! Please try again!');
+                $('#messageData').css('color', 'red');
+                setTimeout(function () {
+                    $('#messageData').text('');
+                }, 3000);
+            }
+        });
+    });
+
+    //bytpass the special characters
+    function escapeHTML(html) {
+        return html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+
+    function reverseescapeHTML(html) {
+
+        return html.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+    }
+
+
+</script>
+
+
+
+

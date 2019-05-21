@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+   
+</head>
+<body class="bg-light">
+    <div style="position: fixed; width: 100%; top: 0; z-index:999">
+        <section class="header-top w-100 float-left">
+            <div class="container">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-12 float-left ">
+                    <span class="text-white d-block float-left float-sm-right py-2 helpline">Help Line No. <i class="fa fa-phone"></i><small> 1-513-445-4954</small></span>
+                </div>
+                <div class="col-lg-4 col-md-5 col-sm-12 col-12 float-left ">
+                    <div class="smo-top sociallink">
+                        <ul class="p-0 m-0">
+                            <li class="float-left d-block p-1"><a href="https://www.facebook.com/Fileharmonizer-283020212272663/?modal=admin_todo_tour"><i class="fa fa fa-facebook"></i></a></li>
+                            <li class="float-left d-block p-1"><a href="#"><i class="fa fa fa-twitter"></i></a></li>
+                            <li class="float-left d-block p-1"><a href="#"><i class="fa fa fa-linkedin"></i></a></li>
+                            <li class="float-left d-block p-1"><a href="https://plus.google.com/u/0/101166263494075105321"><i class="fa fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-3 col-sm-12 col-12 float-left">
+                    <ul class="m-0 p-0 float-right login-top">
+                        @if (Session["UserID"] != null)
+                    {
+                        <li class="d-block py-2 float-left">
+                            <label id="lblloginUser" class="d-block px-2 text-white float-left"></label>
+                            <a href='@Url.Action("Logout", "Account")' class="d-block px-2 text-white float-left"><i class="fa fa-sign-out"></i> Logout</a>
+                        </li>
+                }
+                else
+                {
+                    <li class="d-block py-2 float-left">
+                        <a href='@Url.Action("SignIn", "Account")' class="d-block px-2 border-right text-white"><i class="fa fa-sign-in"></i> Login</a>
+                    </li>
+                    <li class="d-block py-2 float-left"><a href='@Url.Action("SignUp", "Account")' class="d-block px-2 text-white"><i class="fa fa-sign-out"></i> Register</a></li>
+            }
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+        <header class="header w-100 float-left">
+            <div id="header-toggle">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-12 float-left">
+                            <div class="logo">
+                                <img src="~/images/NewLogo.png" title="logo" class="img-fluid" />
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-6 col-sm-12 col-12 float-left">
+                            <nav class="mt-3 pt-2" id="topMenuActive">
+                                <ul class="p-0 m-0 float-right">
+                                    <li class="float-left d-block mr-1">
+                                        @Html.ActionLink("Home", "Index", "Home", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                    </li>
+                                    <li class="float-left d-block mr-1">
+                                        @Html.ActionLink("About", "About", "Home", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2 " })
+                                    </li>
+                                    <li class="float-left d-block mr-1">
+                                        @Html.ActionLink("Contact", "Contact", "Home", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                    </li>
+
+                                </ul>
+                            </nav>
+                            <br style="clear:both;" />
+
+                            <nav class="navbar navbar-expand-lg float-right secondary-menu">
+                                <a class="navbar-brand d-sm-block d-md-none d-lg-none" href="#" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">Menu</a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="fa fa-bars"></span>
+                                </button>
+                                @if (Session["UserID"] != null)
+                            {
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav mr-auto">
+                                        <li class="nav-item dropdown d-none">
+                                            <a class="nav-link dropdown-toggle d-block py-1 px-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Filter
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                @Html.ActionLink("Create Filter", "FilterTemplate", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Maintain Filters", "ManageFilter", "FHManage", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Maintain Tag", "ManageTag", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                            </div>
+                                        </li>
+
+                                        <li class="nav-item dropdown d-none">
+                                            <a class="nav-link dropdown-toggle d-block py-1 px-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Template
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                @Html.ActionLink("Create Template", "Individual", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Maintain Templates", "ManageTemplate", "FHManage", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Harmonize Templates", "HarmonizeTemplate", "FHManage", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                            </div>
+                                        </li>
+
+
+
+                                        <li class="nav-item dropdown d-none">
+                                            <a class="nav-link dropdown-toggle d-block py-1 px-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Harmonized
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                @Html.ActionLink("Harmonize Template", "HarmonizeTemplate", "FHManage", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2 dropdown-item" })
+                                            </div>
+                                        </li>
+                                        <li class="nav-item dropdown d-none">
+                                            <a class="nav-link dropdown-toggle d-block py-1 px-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Mannage Scheme
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                @Html.ActionLink("Create Scheme", "CreateScheme", "Scheme", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Maintaine Scheme", "MaintainScheme", "Scheme", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Archives", "Archive", "Scheme", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                            </div>
+                                        </li>
+                                        @*<li class="nav-item d-none">
+                                            @Html.ActionLink("Report", "Index", "Report", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                        </li>*@
+                                        <li class="nav-item dropdown d-none">
+                                            <a class="nav-link dropdown-toggle d-block py-1 px-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Mannage Account
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                @Html.ActionLink("Profile", "UserProfile", "User", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Archives", "Archive", "User", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Account Settings", "FHAccountSetting", "User", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @if (Convert.ToInt32(Session["Role"]) == 5)
+                                            {
+                                                @Html.ActionLink("Maintain Users", "ManageUser", "User", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                        }
+                                                @Html.ActionLink("Maintain Custom Tag", "MaintainCustomTag", "User", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                            </div>
+                                        </li>
+                                        @if (Convert.ToInt32(Session["Role"]) == 1 || Convert.ToInt32(Session["Role"]) == 4 || Convert.ToInt32(Session["Role"]) == 3 || Convert.ToInt32(Session["Role"]) == 7)
+                                    {
+                                        <li class="nav-item dropdown d-none">
+                                            <a class="nav-link dropdown-toggle d-block py-1 px-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Admin
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                @if (Convert.ToInt32(Session["Role"]) == 1)
+    {
+                                            @Html.ActionLink("Maintain Admin User", "ManageAdminUser", "Admin", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+}
+                                                @Html.ActionLink("Maintain User", "ManageAllUser", "Admin", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Globle Sta. Tag", "StandardGlobalTag", "Admin", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Country", "Country", "Admin", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Sector", "sector", "Admin", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Industry", "Industry", "Admin", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Category", "Category", "Admin", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Language", "Language", "Admin", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Maintain Plan", "GetAllPlan", "Admin", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                @Html.ActionLink("Transaction Details", "GetPaymentDetails", "Admin", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                            </div>
+                                        </li>
+                                }
+                                    </ul>
+                                </div>
+                        }
+                            </nav>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*<div class="position-absolute header-toggle"><i class="fa fa-plus">Menu</i> <i class="fa fa-minus">Menu</i> </div>*@
+        </header>
+    </div>
+    <section class="content w-100 float-left py-1" style="margin-top: 145px; ">
+        @RenderBody()
+    </section>
+    <footer class="footer w-100 float-left bg-dark" style="margin-top:15px;">
+        <div class="container">
+            <div class="p-4 text-white float-left">
+                Copyright © 2018 <a href="https://fileharmonizer.com/" class="text-white">File Harmonizer</a>. All Rights Reserved.
+            </div>
+            <div class="float-right">
+                <ul class="nav mt-4 footer-link mr-2">
+                    <li><a href='@Url.Action("TermAndCondition","Home",new { token = Request.QueryString["token"] })'>Terms &amp; Conditions</a></li>
+                    <li class="ml-3"><a href='@Url.Action("PrivacyPolicy","Home",new { token = Request.QueryString["token"] })'>Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    @RenderSection("scripts", required: false)
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/2.1.3/jquery.floatThead.js"></script>
+
+</body>
+</html>
+<script>
+    
+    $(document).ready(function () {
+        $(document).on('focus', ':input', function () {
+            $(this).attr('autocomplete', 'off');
+        });
+
+        var bodyEle = document.body;
+        bodyEle.scrollTop += 100;
+        var html = document.documentElement;
+        html.scrollTop += 100;
+        //scroll(50);
+        var userID = '@Session["UserID"]';
+        if (userID != '') {
+            $('li').removeClass('d-none');
+            $('li').addClass('d-block');
+            $('#lblloginUser').text(userID);
+        }
+        //$(".sticky-header").floatThead({ top: 50 });
+
+        // toggle navigation
+
+        //$('#header-toggle, .fa-minus').hide();
+        //$('.fa-plus').click(function () {
+        //    $('#header-toggle, .fa-minus').show();
+        //    $('.fa-plus').hide();
+        //});
+        //$('.fa-minus').click(function () {
+        //    $('#header-toggle, .fa-minus').hide();
+        //    $('.fa-plus').show();
+        //});
+
+    });
+
+    $(document).ajaxError(function (xhr, props) {
+        if (props.status === 401) {
+            alert('ajax error');
+            window.location.href = '@Url.Action("SignIn", "Account")';
+        }
+    });
+
+</script>
+
+@*<style>
+    .header-toggle {
+        right: 5%;
+        top: 52px;
+        color: #fff;
+        background: #9370db;
+        padding: 5px 20px;
+        height: 30px;
+        text-align: center;
+        border-radius: 5px;
+    }
+</style>*@

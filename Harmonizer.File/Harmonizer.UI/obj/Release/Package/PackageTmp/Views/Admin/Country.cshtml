@@ -1,0 +1,455 @@
+﻿@using System.Collections
+@model Harmonizer.Core.Model.Country
+@{
+    ViewBag.Title = "File Harmonizer - Country";
+}
+
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div class="blink_heading">
+            <h4>Country</h4>
+            <blink>
+                <span style="color:red;font-size:18px;" id="messageData" class="blink ml-4">
+                </span>
+            </blink>
+        </div>
+        <hr />
+        <div class="bg-white p-3 border">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("Country Name", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="Country" class="form-control" id="txtCountry" />
+                        @*@Html.TextBoxFor(model => model. new { @class = "form-control", @ID = "txtCountry" })*@
+                    </div>
+                    <div class="col-md-2 ">
+                        @Html.Label("UN Code", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" name="UnCode" class="form-control" id="txtUnCode" />
+                        @*@Html.TextBoxFor(model => model.User.UserID, new { @class = "form-control", @ID = "txtUnCode" })*@
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("Alpha 2", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="Alpha2" class="form-control" id="txtAlpha2" />
+                        @*@Html.TextBoxFor(model => model.User.UserID, new { @class = "form-control", @ID = "txtAlpha2" })*@
+                    </div>
+                    <div class="col-md-2 ">
+                        @Html.Label("Alpha 3", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="Alpha3" class="form-control" id="txtAlpha3" />
+                        @*@Html.TextBoxFor(model => model.User.UserID, new { @class = "form-control", @ID = "txtAlpha3" })*@
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="text-left col-md-7">
+                   
+                </div>
+                <div class="text-right col-md-5">
+                    <input type="button" id="btnsave" name="Create" class="btn btn-info" value="Create" />
+                    <input type="button" id="btncancle" name="Cancle" class="btn btn-info" value="Cancel" />
+                </div>
+            </div>
+        </div>
+        <div class="my-2">
+            <h4 class="fll_wdth_xs">
+                <span class="fll_wdth_xs">
+                    Country List
+                </span>
+                <span class="float-right mr-2 fll_wdth_xs ml-xs-2">
+                    <input type="button" class="btn-danger btn" value="Mass Delete" id="btnMassDeleteCountry" />
+                    @*<input type="button" class="btn-success btn" value="Mass Upload" id="btnMassUploadCountry" />*@
+                    <label for="fileupload" class="btn-success btn">Mass Upload</label>
+                </span>
+            </h4>
+            <hr class="hidden-divider" />
+            <div class="bg-white  border fll_wdth_xs">
+                <div class="table-responsive scrollable-table" style="max-height:500px;">
+                    <table id="tblCountry" class="table table-bordered table-sm table-striped search-replace-table w-100 mb-0">
+                        <thead>
+                            <tr>
+                                <th>S No.</th>
+                                <th>Country Name</th>
+                                <th>UN Code</th>
+                                <th>Alpha 2</th>
+                                <th>Alpha 3</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<input type="file" id="fileupload" name="fileupload" class="hidden" style="visibility: hidden;" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        var formData = new FormData();
+        GetCountryList();
+        $('#btnMassDeleteCountry').click(function (e) {
+            if (confirm('Mass delete all record from system and it will impect on operation, Are you want to delete?') == true) {
+                //alert('Delete mass data');
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteMassData", "Admin")',
+                    data: '{"op":"country"}',
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                        //alert(msg);
+                        //window.location.reload(true);
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            window.location.reload(true);
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        //alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+            }
+           
+
+        });
+
+        $('#btnMassUploadCountry').click(function (e) {
+            if (confirm('Are you want to upload mass data?') == true) {
+                $('#fileupload').click();
+            }
+        });
+
+         $('#fileupload').change(function (e) {
+
+            formData.append("FileUpload", document.getElementById("fileupload").files[0])
+            $("#wait").css("display", "block");
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("MassUploadDataCountry", "Admin")',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                enctype: 'multipart/form-data',
+                success: function (msg) {
+                    debugger;
+                    $("#wait").css("display", "none");
+                    formData = new FormData();
+                    //alert(msg);
+                    //window.location.reload(true);
+                    $('#messageData').text(msg);
+                    $('#messageData').css('color', 'green');
+                    setTimeout(function () {
+                        window.location.reload(true);
+                    }, 2000);
+                },
+                error: function (error) {
+                    $("#wait").css("display", "none");
+                    formData = new FormData();
+                    //alert("error");
+                    $('#messageData').text("Error! Please try again.");
+                    $('#messageData').css('color', 'red');
+                    setTimeout(function () {
+                        $('#messageData').text('');
+                    }, 2000);
+                }
+            });
+        });
+    })
+
+    function GetCountryList()
+    {
+        $.ajax({
+            type: "GET",
+            url:'@Url.Action("GetCountry", "Admin")',
+            success: function (response) {
+                $('#tblCountry tbody').empty();
+                var sno = 1;
+                $.each(response, function (i, e)
+                {
+                    bindData(sno, response[i].CountryName, response[i].UNCode, response[i].Alpha2, response[i].Alpha3);
+                    sno++;
+                });
+                clear_form_elements();
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+    function bindData(CountryId, CountryName, UNCode, Alpha2, Alpha3) {
+
+
+        //Get the reference of the Table's TBODY element.
+        var tBody = document.getElementById("tblCountry").getElementsByTagName("TBODY")[0];
+
+        //Add Row.
+        row = tBody.insertRow(-1);
+
+        //Add CountryId cell.
+        var cell = row.insertCell(-1);
+        cell.innerHTML = CountryId;
+
+        //Add CountryName cell.
+        cell = row.insertCell(-1);
+        cell.innerHTML = CountryName;
+
+        //Add UNCode cell.
+        cell = row.insertCell(-1);
+        cell.innerHTML = UNCode;
+
+        //Add Alpha2 cell.
+        var cell = row.insertCell(-1);
+        cell.innerHTML = Alpha2;
+
+        //Add Alpha3 cell.
+        var cell = row.insertCell(-1);
+        cell.innerHTML = Alpha3;
+
+        //Add Button cell.
+        cell = row.insertCell(-1);
+        var btnRemove = document.createElement("INPUT");
+        btnRemove.type = "button";
+        btnRemove.value = "Delete";
+        btnRemove.className = "btn-info";
+        btnRemove.setAttribute("onclick", "Remove(this);");
+        cell.appendChild(btnRemove);
+
+
+        var btnEdit = document.createElement("INPUT");
+        btnEdit.type = "button";
+        btnEdit.value = "Edit";
+        btnEdit.className = "btn-info";
+        btnEdit.style = "margin-left:10px";
+        btnEdit.setAttribute("onclick", "Edit(this);");
+        cell.appendChild(btnEdit);
+
+
+    }
+
+    function Remove(button) {
+        var r = confirm("They will effect on operation. Are you sure you want to delete?");
+        if (r == false) {
+            return;
+        } 
+        var row = button.parentNode.parentNode;
+        var Country = {};
+        Country.Operation = "Delete";
+        Country.UNCode = row.getElementsByTagName("TD")[2].innerHTML;
+        $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteCountry", "Admin")',
+                data: JSON.stringify(Country),
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (msg) {
+                    GetCountryList();
+                    //alert(msg);
+                    $('#messageData').text(msg);
+                    $('#messageData').css('color', 'green');
+                    setTimeout(function () {
+                        window.location.reload(true);
+                    }, 2000);
+                },
+                error: function (error) {
+                    //alert("Error! Please try again.");
+                    $('#messageData').text("Error! Please try again.");
+                    $('#messageData').css('color', 'red');
+                    setTimeout(function () {
+                        $('#messageData').text('');
+                    }, 2000);
+                }
+            });
+    }
+
+    function Edit(button) {
+        var row = button.parentNode.parentNode;
+        $('#txtCountry').val(row.getElementsByTagName("TD")[1].innerHTML);
+        $('#txtUnCode').val(row.getElementsByTagName("TD")[2].innerHTML);
+        $('#txtAlpha2').val(row.getElementsByTagName("TD")[3].innerHTML);
+        $('#txtAlpha3').val(row.getElementsByTagName("TD")[4].innerHTML);
+        $('#btnsave').val("Update");
+        $('#txtUnCode').attr("disabled", "disabled");
+        $(window).scrollTop(0);
+    }
+
+    $('#btnsave').click(function () {
+        if (ValidateUserData() == true) {
+            var Country = {};
+            Country.CountryName = $('#txtCountry').val();
+            Country.UNCode = $('#txtUnCode').val();
+            Country.Alpha2 = $('#txtAlpha2').val();
+            Country.Alpha3 = $('#txtAlpha3').val();
+
+            if ($('#btnsave').val() == "Create") {
+                Country.Operation = "Insert";
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddCountryDetails", "Admin")',
+                    data: JSON.stringify(Country),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                        GetCountryList();
+                        //alert(msg);
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        //alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+            }
+            else {
+                Country.Operation = "Update";
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateCountryDetails", "Admin")',
+                    data: JSON.stringify(Country),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                        GetCountryList();
+                        //alert(msg);
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        //alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+            }
+            Country = null;
+            ClearForm();
+        }
+        else {
+            //alert("Please fill correct data!");
+            $('#messageData').text("Please fill correct data!");
+            $('#messageData').css('color', 'red');
+            setTimeout(function () {
+                $('#messageData').text('');
+            }, 2000);
+
+            return false;
+        }
+    })
+
+    $('#btncancle').click(function () {
+        ClearForm();
+    })
+
+    function ClearForm() {
+        $('#txtCountry').val("");
+        $('#txtUnCode').val("");
+        $('#txtAlpha2').val("");
+        $('#txtAlpha3').val("");
+        $('#btnsave').val("Create");
+        $('#txtUnCode').removeAttr("disabled");
+        $('#txtCountry').removeClass("validateClass");
+        $('#txtUnCode').removeClass("validateClass");
+        $('#txtAlpha2').removeClass("validateClass");
+        $('#txtAlpha3').removeClass("validateClass");
+    }
+
+    function ValidateUserData() {
+        IsValide = false;
+        var regex = /^[a-zA-Z ]*$/;
+
+        var vtxtCountry = 0, vtxtUnCode = 0, vtxtAlpha2 = 0, vtxtAlpha3 = 0 ;
+
+        if ($('#txtCountry').val() == "") {
+            vtxtCountry = -1;
+            $('#txtCountry').addClass("validateClass");
+        }
+        else {
+            vtxtCountry = 0;
+            $('#txtCountry').removeClass("validateClass");
+        }
+
+        if ($('#txtUnCode').val() == "") {
+            vtxtUnCode = -1;
+            $('#txtUnCode').addClass("validateClass");
+        }
+        else {
+
+            vtxtUnCode = 0;
+            $('#txtUnCode').removeClass("validateClass");
+        }
+
+        if ($('#txtAlpha2').val() == "" || !regex.test(document.getElementById("txtAlpha2").value)) {
+            vtxtAlpha2 = -1;
+            $('#txtAlpha2').addClass("validateClass");
+        }
+        else {
+            $('#txtAlpha2').removeClass("validateClass");
+        }
+
+        if ($('#txtAlpha3').val() == "" || !regex.test(document.getElementById("txtAlpha3").value)) {
+            vtxtAlpha3 = -1;
+            $('#txtAlpha3').addClass("validateClass");
+        }
+        else {
+            $('#txtAlpha3').removeClass("validateClass");
+        }
+
+        if (vtxtCountry == 0 && vtxtUnCode == 0 && vtxtAlpha2 == 0 && vtxtAlpha3==0) {
+            IsValide = true;
+        }
+
+        return IsValide;
+    }
+
+    function clear_form_elements() {
+        $('input').each(function (e, index) {
+            switch (this.type) {
+                case 'text':
+                    $(this).val('');
+                    break;
+
+            }
+        });
+    }
+
+</script>

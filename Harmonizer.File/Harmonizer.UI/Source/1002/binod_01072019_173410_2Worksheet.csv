@@ -1,0 +1,13 @@
+SECID;SEC Code;Description
+AGR;11;Agriculture, Forestry, Fishing and Hunting
+MIN;21;Mining, Quarrying, and Oil and Gas Extraction
+UTL;22;Utilities
+CON;23;Construction
+MAN;31-33;Manufacturing
+WHL;42;Wholesale Trade
+RET;44-45;Retail Trade
+TRN;48-49;Transportation and Warehousing
+INF;51;Information
+FI;52;Finance and Insurance
+RE;53;Real Estate and Rental and Leasing
+PST;54;Professional, Scientific, and Technical Services

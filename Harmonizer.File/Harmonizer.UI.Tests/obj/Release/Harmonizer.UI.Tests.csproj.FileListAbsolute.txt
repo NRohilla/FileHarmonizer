@@ -1,0 +1,2 @@
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI.Tests\obj\Release\Harmonizer.UI.Tests.csprojResolveAssemblyReference.cache
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI.Tests\obj\Release\Harmonizer.UI.Tests.csproj.CoreCompileInputs.cache

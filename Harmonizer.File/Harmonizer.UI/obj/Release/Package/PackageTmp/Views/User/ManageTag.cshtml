@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "File Harmonizer - Manage Private Tag";
+}
+
+
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <h4>Maintain Private Tag</h4>
+        <hr />
+        <div class="bg-white p-3 border w-100 float-left">
+            <div id="divUserDetails">
+                @Html.Action("ViewPrivateTag", "User")
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.edit').hide();
+
+
+        $('.btnTagEdit').click(function (e) {
+            //alert('Edit click');
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            tr.find('.edit, .read').toggle();
+        });
+
+        $('.btnTagUpdate').click(function (e) {
+           // alert('Update click');
+            var tr = $(this).parents('tr:first');
+            var ID = tr.find('#hiddenID').val();
+            var shareValue = tr.find('#txtShareValue').val();
+            var globalPriValue = tr.find('#txtGlobPriValue').val();
+            var utagId = tr.find('#lblUTagID').text();
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateShareValue", "User")',
+                data: '{ID: "' + ID + '",shareValue:"' + shareValue + '",globalPriValue:"' + globalPriValue + '",utagId:"' + utagId + '" }',
+                dataType: "json",
+                async: true,
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    // Nothing
+                    debugger;
+                    if (data > 0) {
+                        window.location.reload(true);
+                    }
+                    else {
+                        alert('Error to update data! Please try again');
+                    }
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+        $('.btnTagCancel').click(function (e) {
+            //alert('Cancle click');
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            tr.find('.edit, .read').toggle();
+        });
+        $('.btnTagDelete').click(function (e) {
+            //alert('Delete click');
+            // alert('Update click');
+            var tr = $(this).parents('tr:first');
+            var ID = tr.find('#hiddenID').val();
+            var shareValue = tr.find('#txtShareValue').val();
+            var globalPriValue = tr.find('#txtGlobPriValue').val();
+            var utagId = tr.find('#lblUTagID').text();
+            if (confirm("Ary you sure want to delete?") == true) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteShareValue", "User")',
+                    data: '{ID: "' + ID + '",shareValue:"' + shareValue + '",globalPriValue:"' + globalPriValue + '",utagId:"' + utagId + '" }',
+                    dataType: "json",
+                    async: false,
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        // Nothing
+                        debugger;
+                        if (data > 0) {
+                            window.location.reload(true);
+                        }
+                        else {
+                            alert('Error to update data! Please try again');
+                        }
+                    },
+                    error: function (error) {
+                        alert("Error! Please try again.");
+                    }
+                });
+            }
+        });
+
+    });
+
+
+</script>

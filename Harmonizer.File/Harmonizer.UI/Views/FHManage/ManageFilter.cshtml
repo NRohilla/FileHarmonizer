@@ -1,0 +1,290 @@
+﻿
+@{
+    ViewBag.Title = "Maintain Filter";
+}
+
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Maintain Filter</h4>
+            </div>
+            <hr />
+            <div class="bg-white p-3 border w-100 float-left">
+                <div id="divFilterDetails">
+                    @Html.Action("_FilterFileDetails", "FHManage")
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- The Modal -->
+<input type="button" id="btnShowData" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModal" />
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Filter Details</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modelbodydata">
+
+            </div>
+            <div class="modal-footer">
+                <input type="button" id="btnexport" class="btn btn-info" value="Export" />
+            </div>
+        </div>
+        </div>
+    
+</div>
+<div id="wait" style="display:none;width:100%;height:100%;position:fixed;top:0px;left:0px;bottom:0px;right:0px;padding:20%;z-index: 99999;background-color:rgba(0,0,0,0.3);text-align:center;">
+    <img src='~/images/sa.gif' width="150" height="150" /><br>Loading..
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#btnexport').click(function (e) {
+            // Bowser always work with doc/xls/ppt do not work with x(xml file) as xlsx or docx
+           // For IE browser
+            if ((navigator.userAgent.indexOf("MSIE") != -1) || (!!document.documentMode == true)) //IF IE > 10
+            {
+                Response.AddHeader("Content-Disposition", "attachment;filename=FilterExport.xls");
+            }  
+            //window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData').html()));
+            //e.preventDefault();
+
+            var a = document.createElement('a');
+            var data_type = 'data:application/vnd.ms-excel';
+            a.href = data_type + ', ' + encodeURIComponent($('#dvData').html());
+            a.download = 'FilterExport.xls';
+            a.click();
+            e.preventDefault();
+            return (a);
+        });
+
+        $('#btnPrintTemplateFilter').click(function () {
+            //alert('i am clicked for print');
+            var FileIDs = new Array();
+            $("#FilterTemplateDetails input[type='checkbox']:checked").each(
+                function () {
+                    var tr = $(this).parents('tr:first');
+                    var FileID = tr.find('#hddFileID').val();
+                    //alert(FileID);
+                    FileIDs.push(FileID);
+                  }
+            );
+            if (FileIDs.length == 0) {
+                alert('Please select filter.');
+                return;
+            }
+            //http://www.dotnetspeak.com/asp-net-mvc/printing-table-in-asp-net-mvc/
+            // Call ajax and return all data in Tablebular format and send to print
+            //$("#wait").show();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetOrignalFileteTagDetailsToPrint", "FHManage")',
+                data: JSON.stringify(FileIDs),
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    var printWindow = window.open();
+                    if (printWindow) {
+                        $(printWindow.document.body).html(data);
+                        printWindow.focus();
+                        printWindow.print();
+                    } else {
+                        alert('Please allow popups.');
+                    }
+                },
+                error: function (error) {
+                    $("#wait").hide();
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+
+        // Import data in excel file
+        $('#btnExportTemplateFilter').click(function () {
+            //alert('i am clicked for export filter');
+            var FileIDs = new Array();
+            $("#FilterTemplateDetails input[type='checkbox']:checked").each(
+                function () {
+                    var tr = $(this).parents('tr:first');
+                    var FileID = tr.find('#hddFileID').val();
+                    //alert(FileID);
+                    FileIDs.push(FileID);
+                }
+            );
+            if (FileIDs.length == 0) {
+                alert('Please select filter.');
+                return;
+            }
+
+            // Import data in excel and downloads file
+             $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetOrignalFileteTagDetailsToPrint", "FHManage")',
+                data: JSON.stringify(FileIDs),
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $('.modal-dialog').addClass('modal-lg');
+                    $('#modelbodydata').html('');
+                    $('#modelbodydata').html(data);
+                    $('#btnShowData').click();
+                    $('#btnexport').show();
+                },
+                error: function (error) {
+                    $("#wait").hide();
+                    alert("Error! Please try again.");
+                }
+            });
+
+        });
+
+      
+
+    });//document close
+
+    function GetSchemeValue(ddlschema, fltrId) {
+        debugger;
+        var currentSelectedvalue = ddlschema.value;
+        var FltrID = fltrId;
+        //alert('change data:' + currentSelectedvalue + "-------" + FltrID);
+
+        // Ajax update scheme assing value 
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("UpdateAssignScheme", "FHManage")',
+            data: '{schemenum: "' + currentSelectedvalue + '",FLTRID:"' + FltrID + '" }',
+            dataType: "json",
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data < 1 ) {
+                    alert("Error! Please try again.");
+                    $("#wait").hide();
+                }
+            },
+            error: function (error) {
+                $("#wait").hide();
+                alert("Error! Please try again.");
+            }
+        });
+
+    }
+</script>
+<script type="text/javascript">
+
+
+    $(function () {
+        // Delete
+        $('.btn-delete').click(function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var FileID = tr.find('#hddFileID').val();
+            var FLTRID = tr.find('#hddFLTRID').val();
+            if (confirm('That file associate with multiple operations, Are you want to delete.') == true) {
+                // Call ajax function
+                // ajax call to find filter data.
+            $("#wait").show();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteFileter", "FHManage")',
+                data: '{FileID: "' + FileID + '",FLTRID:"' + FLTRID+'" }',
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data >= 1) {
+                        $('#divFilterDetails').html('');
+                        //$('#divFilterDetails').load('@Url.Action("_FilterFileDetails", "FHManage")');
+                        location.reload(true);
+                        $("#wait").hide();
+                    }
+                    else {
+                        alert("Error! Please try again.");
+                        $("#wait").hide();
+                    }
+                },
+                error: function (error) {
+                    $("#wait").hide();
+                    alert("Error! Please try again.");
+                }
+            });
+
+            }
+            else {
+                //alert('Not delete');
+            }
+        });
+
+        // View
+        $('.btn-view').click(function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var FileID = tr.find('#hddFileID').val();
+
+            // ajax call to find filter data.
+            $("#wait").show();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetOrignalFileteTagDetails", "FHManage")',
+                data: '{FileID: "' + FileID + '" }',
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $("#wait").hide();
+                    $('.modal-dialog').addClass('modal-lg');
+                    $('#modelbodydata').html('');
+                    $('#modelbodydata').html(data);
+                    $('#btnShowData').click();
+                    $('#btnexport').show();
+                },
+                error: function (error) {
+                    $("#wait").hide();
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+
+        //Rename
+        $('.btn-rename').click(function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var FileID = tr.find('#hddFileID').val();
+            var FLTRID = tr.find('#hddFLTRID').val();
+            var Description = tr.find('#lblFilterDescription').text();
+            var Comment = tr.find('#lblFilterComment').text();
+
+            //RenameFilter(int FileID, string Comment,string Description,string FLTRID)
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("RenameFilter", "FHManage")',
+                data: '{FileID: "' + FileID + '",Comment:"' + Comment + '",Description:"' + Description + '",FLTRID:"' + FLTRID + '" }',
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $('.modal-dialog').removeClass('modal-lg');
+                    $('#modelbodydata').html('');
+                    $('#modelbodydata').html(data);
+                    $('#btnShowData').click();
+                    $('#btnexport').hide();
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+
+        
+
+    });
+
+    
+
+</script>

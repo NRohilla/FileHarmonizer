@@ -1,0 +1,9 @@
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.DB\bin\Release\Harmonizer.DB.dll
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.DB\bin\Release\Harmonizer.DB.pdb
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.DB\bin\Release\Harmonizer.Core.dll
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.DB\bin\Release\Harmonizer.Core.pdb
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.DB\obj\Release\Harmonizer.DB.csprojResolveAssemblyReference.cache
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.DB\obj\Release\Harmonizer.DB.csproj.CoreCompileInputs.cache
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.DB\obj\Release\Harmonizer.DB.csproj.CopyComplete
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.DB\obj\Release\Harmonizer.DB.dll
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.DB\obj\Release\Harmonizer.DB.pdb

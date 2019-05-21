@@ -1,0 +1,325 @@
+﻿@using System.Collections
+@{
+    ViewBag.Title = "Create Filter and Template";
+}
+@*<form method="post" action='@Url.Action("UploadFileData","FHFile")' id="formUploadFile" enctype="multipart/form-data">*@
+<div class="form-horizontal my-3">
+    <div class="container">
+        <h4>Create Filter and Template</h4>
+        <hr />
+
+        <div class="row mt-5">
+            <div class="col-md-2">
+                <label class="control-label"> Select source file</label>
+            </div>
+            <div class="col-md-3">
+                <input type="file" name="fileupload" id="fileupload" />
+            </div>
+            <div class="col-md-3">
+                <label id="lblnameoffile"></label>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-2"><label class="control-label">Template Type</label></div>
+            <div class="col-md-3">
+                @Html.DropDownList("Sectore", new SelectList((IEnumerable)ViewData["lstSectore"], "Value", "Text"), new { @class = "form-control" })
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-2"><label class="control-label">Template Name</label></div>
+            <div class="col-md-3"><input type="text" name="templateName" class="form-control" id="templateName" /></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-2"><label class="control-label">Template Description</label></div>
+            <div class="col-md-3"><input type="text" name="templateDesc" class="form-control" id="templateDesc" /></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-2"><label class="control-label">Search Word</label></div>
+            <div class="col-md-3">
+                <input type="text" name="SearchData" class="form-control" id="SearchData" />
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-2"><label class="control-label">Tag</label></div>
+            <div class="col-md-3">
+                @Html.DropDownList("Tag", new SelectList((IEnumerable)ViewData["lstStandardGlobalTag"], "Value", "Text"), new { @class = "form-control" })
+            </div>
+            <div class="col-md-3">
+                <input type="button" id="btnAddNewTag" style="width: 100px;" value="+ Add" class="btn-info btn-sm" data-toggle="modal" data-target="#myModal"/>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-2"><label class="control-label">Instruction</label></div>
+            <div class="col-md-3">
+                <select class="form-control" name="Instruction" id="Instruction">
+                    <option value="0">None</option>
+                    <option value="1">Upper case</option>
+                    <option value="2">Lower case</option>
+                </select>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row mt-3" ">
+            <div class="col-md-3"></div>
+            <div class="col-md-3"> <input type="button" id="btnlst" value="+ Add to list" class="btn-info btn-sm" /></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="mt-3">
+            <div id="listofsearch" class="col-md-5">
+
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-3">          <input type="button" name="btnsubmit" value="Upload data" id="btnsubmit" class="btn btn-info " /></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-3">
+                <span style="color:red;">
+                    @ViewBag.message
+                </span>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add Custom Tag</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2"><label class="control-label">Tag Name</label></div>
+                    <div class="col-md-3"><input type="text" name="newTagName" class="form-control" style="width: 360px;" id="newTagName" /></div>
+                    <div class="col-md-3"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-2"><label class="control-label">Description</label></div>
+                    <div class="col-md-3"><textarea name="newTagDesc" style="width: 360px;" class="form-control" id="newTagDesc"></textarea></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" style="width: 100px;" class="btn-info btn-sm" id="btnsave">Save</button> &nbsp;&nbsp;&nbsp; <button type="button" style="width: 100px; margin-right: 27px;" id="btnmodeldismis" class="btn-danger btn-sm" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@*</form>*@
+
+
+<script>
+
+
+    $(document).ready(function () {
+
+        var cart = {};
+        cart.products = [];
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        $('#btnlst').click(function () {
+
+            var product = {};
+            product.Name = $('#SearchData').val();
+            product.Tag = $('#Tag').val();
+            product.Expression = $('#Instruction').val();
+            addToCart(product);
+            bindData();
+        });
+
+        $('#btnsubmit').click(function () {
+
+            // Ajax call
+            var searchData = [];
+            var cartData = JSON.parse(localStorage.getItem('cart'));
+            $.each(cartData.products, function (i, e) {
+                var searchlist = {};
+                searchlist.ID = i;
+                searchlist.SearchWord = e.Name;
+                searchlist.TagName = escapeHTML(e.Tag);
+                searchlist.Instruction = e.Expression;
+                searchData.push(searchlist);
+            });
+
+            var formData = new FormData();
+            var totalFiles = document.getElementById("fileupload").files.length;
+
+            var file = document.getElementById("fileupload").files[0];
+            formData.append("FileUpload", file);
+            formData.append("ListofSearchData", JSON.stringify(searchData));//0
+            formData.append("Sectore", $('#Sectore option:selected').text().trim());//1
+            formData.append("TemplateName", $('#templateName').val().trim());//2
+            formData.append("TemplateDesc", $('#templateDesc').val().trim());//3
+            formData.append("SectoreCode", $('#Sectore').val().trim());//4
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UploadFileData", "FHFile")',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (msg) {
+                    alert(msg);
+                },
+                error: function (error) {
+                    alert("error");
+                }
+            });
+
+        });
+
+        //$('#removelist1').click(function () {
+        //    debugger;
+        //    var row = $(this).closest("tr");
+        //    var customerId = row.find('td:eq(1)').text();
+
+        //})
+
+    });
+           
+       
+
+    function myFunction(k) {
+        debugger;
+        alert("Hi");
+    }
+   
+
+    function addToCart(product) {
+        // Retrieve the cart object from local storage
+        if (localStorage && localStorage.getItem('cart')) {
+            var cart = JSON.parse(localStorage.getItem('cart'));
+            cart.products.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    }
+    function bindData() {
+        var cartData = JSON.parse(localStorage.getItem('cart'));
+        var data = "";
+        var tableData = '<table id="main" name="tblsearchdata" class="table table-bordered table-sm table-striped search-replace-table"> <thead style="background: #0998af; color: #fff;"><tr> <th>Search Data</th><th>Tag Name</th><th>Expression</th><th>Remove</th></tr></thead><tbody>'
+
+
+        $.each(cartData.products, function (i, e) {
+            //data += '<div class="row mt-1"><div class="col-md-3">' + e.Name + '</div><div class="col-md-3">' + escapeHTML(e.Tag) + '</div><div class="col-md-3">' + e.Expression + '</div><div class="col-md-3"></div></div>';
+            var btnid = 'removelist' + i; 
+            data += '<tr><td>' + e.Name + '</td><td>' + escapeHTML(e.Tag) + '</td><td>' + e.Expression + '</td> <td><input type="button" value="Remove" name ="removelist" id="' + btnid + '" onclick="myFunction("' + escapeHTML(e.Tag)+'")" /></td ></tr > ';
+        });
+
+        var closeTable = '</tbody></table>';
+        $('#listofsearch').html('');
+        $('#listofsearch').html((tableData + data + closeTable));
+    }
+
+    //bytpass the special characters
+    function escapeHTML(html) {
+        return html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    $('#btnsave').click(function () {
+        if ($('#newTagName').val() == '' || $('#newTagDesc').val() == '') {
+            alert('Fill correct data.');
+            return;
+        }
+      
+        debugger;
+        var Tagdata = {};
+        Tagdata.TagName = $('#newTagName').val().trim();
+        Tagdata.Description = $('#newTagDesc').val().trim();
+        Tagdata.UserID = "C";
+        Tagdata.Orig = "C";
+        Tagdata.GlobPri = "P";
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddTagDetails", "FHFile")',
+            data: JSON.stringify(Tagdata),
+            dataType: "json",  
+            contentType: 'application/json; charset=utf-8', 
+            success: function (msg) {
+               
+                alert(msg);
+                $('#myModal').modal('hide');
+                $('#newTagName').val('');
+                $('#newTagDesc').val('');
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+
+    });
+
+
+
+</script>

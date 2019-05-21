@@ -7,9 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonizer.UI", "Harmonizer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonizer.UI.Tests", "Harmonizer.UI.Tests\Harmonizer.UI.Tests.csproj", "{8BE4C12D-09CE-4A01-9E43-96D19ED24892}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonizer.Core", "Harmonizer.Core\Harmonizer.Core.csproj", "{B76F8385-914E-465B-ACAE-36604C951748}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonizer.DB", "Harmonizer.DB\Harmonizer.DB.csproj", "{4D1930BC-85E5-455D-BF8F-C60184D2BC19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonizer.Data", "Harmonizer.Data\Harmonizer.Data.csproj", "{E08C2160-DB9A-4EF6-AA2C-C301E3F0259F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonizer.Core", "Harmonizer.Core\Harmonizer.Core.csproj", "{E050EEC7-8AEB-429B-9669-B61409D4E307}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonizer.API", "Harmonizer.API\Harmonizer.API.csproj", "{DFE651FA-E1FB-4565-BB7B-D6A878A8A157}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +27,18 @@ Global
 		{8BE4C12D-09CE-4A01-9E43-96D19ED24892}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BE4C12D-09CE-4A01-9E43-96D19ED24892}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BE4C12D-09CE-4A01-9E43-96D19ED24892}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B76F8385-914E-465B-ACAE-36604C951748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B76F8385-914E-465B-ACAE-36604C951748}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B76F8385-914E-465B-ACAE-36604C951748}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B76F8385-914E-465B-ACAE-36604C951748}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E08C2160-DB9A-4EF6-AA2C-C301E3F0259F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E08C2160-DB9A-4EF6-AA2C-C301E3F0259F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E08C2160-DB9A-4EF6-AA2C-C301E3F0259F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E08C2160-DB9A-4EF6-AA2C-C301E3F0259F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D1930BC-85E5-455D-BF8F-C60184D2BC19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D1930BC-85E5-455D-BF8F-C60184D2BC19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D1930BC-85E5-455D-BF8F-C60184D2BC19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D1930BC-85E5-455D-BF8F-C60184D2BC19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E050EEC7-8AEB-429B-9669-B61409D4E307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E050EEC7-8AEB-429B-9669-B61409D4E307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E050EEC7-8AEB-429B-9669-B61409D4E307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E050EEC7-8AEB-429B-9669-B61409D4E307}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFE651FA-E1FB-4565-BB7B-D6A878A8A157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE651FA-E1FB-4565-BB7B-D6A878A8A157}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE651FA-E1FB-4565-BB7B-D6A878A8A157}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE651FA-E1FB-4565-BB7B-D6A878A8A157}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

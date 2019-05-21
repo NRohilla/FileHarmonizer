@@ -1,0 +1,471 @@
+﻿@model Harmonizer.Core.Model.CommanUserData
+@{
+    ViewBag.Title = "File Harmonizer - Create Scheme";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<style>
+
+    .ui-datepicker table {
+        table-layout: fixed !important;
+    }
+
+    .ui-datepicker {
+        width: 337px; /*what ever width you want*/
+    }
+</style>
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Create Scheme</h4>
+            <blink>
+                <span style="color:red;font-size:18px;" id="messageData" class="blink ml-4">
+
+                </span>
+            </blink>
+        </div>
+        <hr />
+        <div class="box">
+            <div class="row  mt-3">
+                <div class="col-md-2">
+                    <label class="control-label">Scheme Number</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtScheme" value="@ViewBag.scheme" readonly />
+                </div>
+                <div class="col-md-2">
+                    <label class="control-label">Scheme Type</label>
+                </div>
+                <div class="col-md-3">
+                    @if (Model.BPType == "PIND" || Model.BPType == "IND")
+                    {
+                        <input type="text" class="form-control" id="txtSchemeType" value="P" readonly />
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control" id="txtSchemeType" value="CR" readonly />
+                    }
+
+                </div>
+            </div>
+            <div class="row  mt-3">
+                <div class="col-md-2">
+                    <label class="control-label">Client (BP# or FH#)</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtClinetNum" value="@Convert.ToInt64(Model.BPID)" />
+                </div>
+                <div class="col-md-2">
+                    <label class="control-label">Registration Type</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtRegistrationType" value="@Model.BPType" readonly />
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-2">
+                    <label class="control-label">Scheme Name</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtSchemeName" placeholder="Scheme Name" />
+                </div>
+                <div class="col-md-2">
+                    <label class="control-label">Scheme Description</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtSchemeDesc" placeholder="Scheme Description" />
+                </div>
+            </div>
+
+
+            <div class="row  mt-3">
+                <div class="col-md-2">
+                    <label class="control-label">Name</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtName" placeholder="Client/Company/Individual" />
+                </div>
+                <div class="col-md-2">
+                    <label class="control-label">Project Type</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtProjectType" placeholder="Blue Print, Strategy, Development, Plan, Pre-Sales, etc." />
+                </div>
+            </div>
+            <div class="row  mt-3">
+                <div class="col-md-2">
+                    <label class="control-label">Project Name</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtProjectName" placeholder="Project Name" />
+                </div>
+                <div class="col-md-2">
+                    <label class="control-label">Project Description</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtProjectDesc" placeholder="Project Description" />
+                </div>
+            </div>
+            <div class="row  mt-3">
+                <div class="col-md-2">
+                    <label class="control-label">Project Start Date</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtProjectStartDate2" placeholder="mm/dd/yyyy" size=10 maxlength=10 onkeyup="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2').replace(/^(\d\d\/\d\d)(\d+)$/g,'$1/$2').replace(/[^\d\/]/g,'')" />
+                    <i style="position: absolute; right: 25px; top: 12px;" class="fa fa-calendar ui-datepicker-trigger"></i>
+                </div>
+                <div class="col-md-2">
+                    <label class="control-label">Project End Date</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtProjectEndDate2" placeholder="mm/dd/yyyy" size=10 maxlength=10 onkeyup="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2').replace(/^(\d\d\/\d\d)(\d+)$/g,'$1/$2').replace(/[^\d\/]/g,'')" />
+                    <i style="position: absolute; right: 25px; top: 12px;" class="fa fa-calendar componycal ui-datepicker-trigger"></i>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-2">
+                    <label class="control-label">Note</label>
+                </div>
+                <div class="col-md-3">
+                    @*<input type="text" class="form-control" id="txtSchemeSuggestion" multiple placeholder="Suggestion" />*@
+                    <textarea class="form-control" id="txtSchemeSuggestion" maxlength="400" placeholder="Suggestion"></textarea>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-2">
+                    <input type="button" class="btn btn-info" id="btnCreate" value="Create" />
+                </div>
+                <div class="col-md-2">
+                    <input type="button" class="btn btn-info" id="btnCancel" value="Clear" />
+                </div>
+                <div class="col-md-8">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        // calendar
+        $("#txtProjectStartDate2").datepicker({
+
+            dateFormat: "mm/dd/yy",
+            //yyyy/mm/dd
+            changeMonth: true,
+            changeYear: true
+        });
+        $('.fa-calendar').click(function () {
+            $("#txtProjectStartDate2").focus();
+
+        });
+        $("#txtProjectEndDate2").datepicker({
+
+            dateFormat: "mm/dd/yy",
+            //yyyy/mm/dd
+            changeMonth: true,
+            changeYear: true
+        });
+        $('.componycal').click(function () {
+            $("#txtProjectEndDate2").focus();
+
+        });
+        // end
+
+        $('#btnCancel').click(function () {
+            //cleare all text box
+            ClearDataFiled();
+        });
+
+        $('#txtClinetNum').change(function () {
+            var BPID = $('#txtClinetNum').val().trim();
+            // Ajax call
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("CheckBPIDExist", "Scheme")',
+                    data: '{BPID: "' + BPID + '"}',
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    async: false,
+                    cache: false,
+                    success: function (data) {
+                        if (data < 1) {
+                            // alert("success");
+                            $('#messageData').text("Client Id not exist");
+                            $('#messageData').css('color', 'red');
+                            setTimeout(function () {
+                                $('#messageData').text('');
+                            }, 2000);
+                        }
+                    },
+                    error: function (error) {
+                        // alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+
+        });
+
+        $('#btnCreate').click(function () {
+            redirecturl = window.location.origin ? window.location.origin + '/' : window.location.protocol + '/' + window.location.host + '/';
+            debugger;
+            //create scheme
+            var userScheme = {};
+            userScheme.FHNumber = $('#lblHarmonizerId').text().trim();
+            userScheme.ProjectEndDate = $('#txtProjectEndDate2').val().trim();
+            userScheme.ProjectStartDate = $('#txtProjectStartDate2').val().trim();
+            userScheme.ProjectDescription = $('#txtProjectDesc').val().trim();
+            userScheme.ProjectName = $('#txtProjectName').val().trim();
+            userScheme.ProjectType = $('#txtProjectType').val().trim();
+            userScheme.RegistrationType = $('#txtRegistrationType').val().trim();
+            userScheme.Client = $('#txtClinetNum').val().trim();
+            userScheme.SchemeDescription = $('#txtSchemeDesc').val().trim();
+            userScheme.SchemeName = $('#txtSchemeName').val().trim();
+            userScheme.SchemeType = $('#txtSchemeType').val().trim();
+            userScheme.SchemeNum = $('#txtScheme').val().trim();
+            userScheme.Name = $('#txtName').val().trim();
+            userScheme.Suggestion = $('#txtSchemeSuggestion').val().trim();
+            if (Validatedata() == false) {
+                return;
+            }
+            else {
+                // Ajax call
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("CreateNewScheme", "Scheme")',
+                    data: JSON.stringify(userScheme),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    async: false,
+                    cache: false,
+                    success: function (data) {
+                        if (data >= 1) {
+                            // alert("success");
+                            $('#messageData').text("Successfully created scheme");
+                            $('#messageData').css('color', 'green');
+                            setTimeout(function () {
+                                window.location.href = redirecturl + "FHManage/ManageTemplate?token=@Request.QueryString["token"]"
+                            }, 2000);
+                        }
+                        else {
+                            $('#messageData').text("Error! Please try again.");
+                            $('#messageData').css('color', 'red');
+                            setTimeout(function () {
+                                //window.location.reload(true);
+                                $('#messageData').text('');
+                            }, 2000);
+                        }
+                    },
+                    error: function (error) {
+                        // alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            window.location.reload(true);
+                        }, 2000);
+                    }
+                });
+            }
+        });
+
+
+    });
+
+    function ClearDataFiled() {
+        $('#txtProjectEndDate').val('');
+        $('#txtProjectStartDate').val('');
+        $('#txtProjectDesc').val('');
+        $('#txtProjectName').val('');
+        $('#txtProjectType').val('');
+        //$('#txtRegistrationType').val('');
+       // $('#txtClinetNum').val('');
+        $('#txtSchemeDesc').val('');
+        $('#txtSchemeName').val('');
+        //$('#txtSchemeType').val('');
+        //$('#txtScheme').val('');
+        $('#txtName').val('');
+    }
+
+    function Validatedata() {
+        var txtProjectEndDate = 0, txtProjectStartDate = 0, txtProjectDesc = 0, txtProjectName = 0, txtProjectType = 0,
+            txtRegistrationType = 0, txtClinetNum = 0, txtSchemeDesc = 0, txtSchemeName = 0, txtSchemeType = 0, txtScheme = 0, txtName = 0;
+
+        if ($('#txtProjectEndDate2').val().trim() == '') {
+            $('#txtProjectEndDate2').addClass("validateClass");
+            txtProjectEndDate = -1;
+        }
+        else {
+
+            if (validatedate($('#txtProjectEndDate2').val(), 'txtProjectEndDate')) {
+                $('#txtProjectEndDate2').removeClass("validateClass");
+                txtProjectEndDate = 0;
+
+            } else {
+                $('#txtProjectEndDate2').addClass("validateClass");
+                txtProjectEndDate = -1;
+            }
+        }
+
+        if ($('#txtProjectStartDate2').val().trim() == '') {
+            $('#txtProjectStartDate2').addClass("validateClass");
+            txtProjectStartDate = -1;
+        }
+        else {
+            if (validatedate($('#txtProjectStartDate2').val(), 'txtProjectStartDate')) {
+                $('#txtProjectStartDate2').removeClass("validateClass");
+                txtProjectStartDate = 0;
+
+            } else {
+                $('#txtProjectStartDate2').addClass("validateClass");
+                txtProjectStartDate = -1;
+            }
+        }
+
+        if ($('#txtProjectDesc').val().trim() == '') {
+            $('#txtProjectDesc').addClass("validateClass");
+            txtProjectDesc = -1;
+        }
+        else {
+            $('#txtProjectDesc').removeClass("validateClass");
+            txtProjectDesc = 0;
+
+        }
+
+        if ($('#txtProjectType').val().trim() == '') {
+            $('#txtProjectType').addClass("validateClass");
+            txtProjectType = -1;
+        }
+        else {
+            $('#txtProjectType').removeClass("validateClass");
+            txtProjectType = 0;
+
+        }
+
+        if ($('#txtSchemeDesc').val().trim() == '') {
+            $('#txtSchemeDesc').addClass("validateClass");
+            txtSchemeDesc = -1;
+        }
+        else {
+            $('#txtSchemeDesc').removeClass("validateClass");
+            txtSchemeDesc = 0;
+
+        }
+
+        if ($('#txtSchemeName').val().trim() == '') {
+            $('#txtSchemeName').addClass("validateClass");
+            txtSchemeName = -1;
+        }
+        else {
+            $('#txtSchemeName').removeClass("validateClass");
+            txtSchemeName = 0;
+
+        }
+
+        if ($('#txtScheme').val().trim() == '') {
+            $('#txtScheme').addClass("validateClass");
+            txtScheme = -1;
+        }
+        else {
+            $('#txtScheme').removeClass("validateClass");
+            txtScheme = 0;
+
+        }
+
+        if ($('#txtName').val().trim() == '') {
+            $('#txtName').addClass("validateClass");
+            txtName = -1;
+        }
+        else {
+            $('#txtName').removeClass("validateClass");
+            txtName = 0;
+
+        }
+
+        if ($('#txtProjectName').val().trim() == '') {
+            $('#txtProjectName').addClass("validateClass");
+            txtProjectName = -1;
+        }
+        else {
+            $('#txtProjectName').removeClass("validateClass");
+            txtProjectName = 0;
+
+        }
+        //
+        if (txtProjectEndDate == 0 && txtProjectStartDate == 0 && txtProjectDesc == 0 && txtProjectName == 0 && txtProjectType == 0 && txtRegistrationType == 0 && txtClinetNum == 0 && txtSchemeDesc == 0 && txtSchemeName == 0 && txtSchemeType == 0 && txtScheme == 0 && txtName == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+    function validatedate(inputText, Element) {
+        debugger;
+        var returnValue = true;
+        var dateformat = /^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/;
+        // Match the date format through regular expression
+        if (inputText.match(dateformat)) {
+            $('#'+Element+'').focus();
+            //Test which seperator is used '/' or '-'
+            var opera1 = inputText.split('/');
+            var opera2 = inputText.split('-');
+            lopera1 = opera1.length;
+            lopera2 = opera2.length;
+            // Extract the string into month, date and year
+            if (lopera1 > 1) {
+                var pdate = inputText.split('/');
+            }
+            else if (lopera2 > 1) {
+                var pdate = inputText.split('-');
+            }
+            var mm = parseInt(pdate[0]);
+            var dd = parseInt(pdate[1]);
+            var yy = parseInt(pdate[2]);
+            // Create list of days of a month [assume there is no leap year by default]
+            var ListofDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            if (mm == 1 || mm > 2) {
+                if (dd > ListofDays[mm - 1]) {
+                    //alert('Invalid date format!');
+                    returnValue= false;
+                }
+            }
+            if (mm == 2) {
+                var lyear = false;
+                if ((!(yy % 4) && yy % 100) || !(yy % 400)) {
+                    lyear = true;
+                }
+                if ((lyear == false) && (dd >= 29)) {
+                    //alert('Invalid date format!');
+                    return false;
+                }
+                if ((lyear == true) && (dd > 29)) {
+                    //alert('Invalid date format!');
+                    returnValue= false;
+                }
+            }
+        }
+        else {
+            //alert("Invalid date format!");
+            $('#' + Element + '').focus();
+            returnValue= false;
+        }
+        return returnValue;
+    }
+
+</script>

@@ -1,0 +1,15 @@
+﻿<div>
+    <h4>Activation information</h4>
+    <hr />
+    <div class="mt-1 mb-4">
+        Dear customer your plan activation time is over. Please active your plan for use of that system.
+    </div>
+    <div>
+        <input type="button" name="activate" id="btnContinue" value="Continue"
+               onclick="window.location.href='@Url.Action("StartMyFreeMonth","User",new { token=(string)ViewBag.token})'" class="btn btn-info" />
+        @*<input type="button" name="activate" id="btnLater" value="Later" class="btn btn-info" />*@
+        <input type="button" id="closemodel" class="btn btn-info" data-dismiss="modal" value="Later"/>
+    </div>
+</div>
+<!--onclick="window.location.href('@Url.Action("ForgotPassword","Account")')"-->
+

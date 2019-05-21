@@ -1,0 +1,389 @@
+﻿
+@{
+    ViewBag.Title = "Maintain Template";
+}
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+                <h4>Maintain Template</h4>
+                    <blink>
+                        <span style="color:red;font-size:18px;" id="messageData" class="blink ml-4">
+                        </span>
+                    </blink>
+        </div>
+        <hr />
+        <div class="bg-white p-3 border w-100 float-left">
+            <div id="divTemplateDetails">
+                @Html.Action("_TemplateFileDetails", "FHManage")
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<input type="button" id="btnShowData" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModal" />
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Template Details</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modelbodydata">
+
+            </div>
+            @*<div class="modal-footer">
+                <input type="button" value="Print" id="print" />
+            </div>*@
+        </div>
+    </div>
+
+</div>
+<div id="wait" style="display:none;width:100%;height:100%;position:fixed;top:0px;left:0px;bottom:0px;right:0px;padding:20%;z-index: 99999;background-color:rgba(0,0,0,0.3);text-align:center;">
+    <img src='~/images/sa.gif' width="150" height="150" /><br>Loading..
+</div>
+
+
+<div id="printContent">
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#printContent').html('');
+
+        $('#btnHarmonizedTemplate').click(function () {
+            //alert('Clicl for harmonized');
+            var FHNum = "";
+            var FileIDPaths = new Array();
+            FHNum = $('#txtFHNumber').val().trim();
+            $("#TemplateManageDetails input[type='checkbox']:checked").each(
+                function () {
+                    var tr = $(this).parents('tr:first');
+                    var FileID = tr.find('#hddFileID').val();
+                    //alert(FileID);
+                    FileIDPaths.push(FileID);
+                }
+            );
+            if (FileIDPaths.length == 0) {
+                alert('Please select filter.');
+                return;
+            }
+            else {
+                // Call Ajax for ReHarminized file with existing filter and update comment with FHNumber
+                if (FHNum.trim() == "") {
+                    FHNum = "0";
+                }
+                debugger;
+                    $.each(FileIDPaths, function (i, e) {
+                        var docFileID = FileIDPaths[i];
+                       // alert('Selected FileID' + docFileID);
+                        // Ajax call
+                         $("#wait").show();
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("HarmonizeTemplateWithShareVaule", "FHFile")',
+                            data: '{FileID: "' + docFileID + '",PersonaID:"' + FHNum + '" }',
+                            dataType: "json",
+                            contentType: 'application/json; charset=utf-8',
+                            async: false,
+                            success: function (data) {
+                                $("#wait").hide();
+                               // alert('Process completed');
+                                $('#messageData').text('Process completed');
+                                $('#messageData').css('color', 'green');
+                                setTimeout(function () {
+                                    $('#messageData').text('');
+                                }, 3000);
+                            },
+                            error: function (error) {
+                                $("#wait").hide();
+                               // alert("Error! Please try again.");
+                                $('#messageData').text("Error! Please try again.");
+                                $('#messageData').css('color', 'red');
+                                setTimeout(function () {
+                                    $('#messageData').text('');
+                                }, 5000);
+                            }
+                        });
+
+                    });
+                
+            }
+        });
+
+
+
+        $('#btnPrintTemplate').click(function () {
+           // alert('i am clicked for print template on printer');
+            var FileIDPaths = new Array();
+            $("#TemplateManageDetails input[type='checkbox']:checked").each(
+                function () {
+                    var tr = $(this).parents('tr:first');
+                    var FileID = tr.find('#hddFileID').val();
+                    //alert(FileID);
+                    FileIDPaths.push(FileID);
+                }
+            );
+            if (FileIDPaths.length == 0) {
+                alert('Please select filter.');
+                return;
+            }
+            else {
+                //Start print
+                if (FileIDPaths.length > 0) {
+                    var interval = 1000;
+                    $.each(FileIDPaths, function (i, e) {
+                        var docFileID = FileIDPaths[i];
+                        var HFileID = "0";
+                        $("#wait").show();
+                        var obj = {};
+                        obj.FileID = docFileID;
+                        obj.HTFileID = HFileID;
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("ViewPrintFile", "FHFile")',
+                            data: '{FileID:"' + docFileID + '",HTFileID:"' + HFileID + '" }',//JSON.stringify(obj),
+                            dataType: "json",
+                            contentType: 'application/json; charset=utf-8',
+                            async: false,
+                            cache: false,
+                            success: function (data) {
+                                $("#wait").hide();
+                                if (data == "") {
+                                    alert("Please download this file and print it.");
+                                }
+                                else {
+                                    var w = window.open(data, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=700,height=700");
+                                    if (window.focus) {
+                                        w.focus();
+                                        w.print();
+                                    }
+                                }
+
+                            },
+                            error: function (error) {
+                                $("#wait").hide();
+                                alert("Error! Please try again.");
+                            }
+                        });
+                    });
+                }
+            }
+
+        });
+
+        $('#btnDownloadTemplate').click(function () {
+            //alert('i am clicked for downlaod Template');
+            var FileIDPaths = new Array();
+            $("#TemplateManageDetails input[type='checkbox']:checked").each(
+                function () {
+                    var tr = $(this).parents('tr:first');
+                    var TargetFilePath = tr.find('#hiddenTempalteFileName').val();
+                    //alert(FileID);
+                    FileIDPaths.push(TargetFilePath);
+                }
+            );
+            if (FileIDPaths.length == 0) {
+                alert('Please select filter.');
+                return;
+            }
+            else {
+
+                //Start Download
+                if (FileIDPaths.length > 0) {
+                    var interval = 1000;
+                    $.each(FileIDPaths, function (i, e) {
+                        var doc = FileIDPaths[i];
+                        debugger;
+                        if (doc) {
+                            setTimeout(function () {
+                                window.location = doc;
+                            }, interval * (i + 1));
+                        }
+                    });
+                }
+            }
+
+        });
+
+        $('#btnArchiveTemplate').click(function () {
+           
+             //alert('Restore click');
+            var FileIDs = new Array();
+            $("#TemplateManageDetails input[type='checkbox']:checked").each(
+                function () {
+                    var tr = $(this).parents('tr:first');
+                    var FileID = tr.find('#hddFileID').val();
+                    //alert(FileID);
+                    FileIDs.push(FileID);
+                }
+            );
+            if (FileIDs.length == 0) {
+                alert('Please select template.');
+                return;
+            }
+            $("#wait").show();
+            // Import data in excel and downloads file
+             $.ajax({
+                type: "POST",
+                url: '@Url.Action("ArchiveTemplate", "FHManage")',
+                data: JSON.stringify(FileIDs),
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $("#wait").hide();
+                    if (data > 0) {
+                        location.reload(true);
+                    }
+                    else {
+                        alert('Error! Please try again.')
+                    }
+                },
+                error: function (error) {
+                    $("#wait").hide();
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+
+    });
+
+    function GetSchemeValue(ddlschema, fltrId) {
+        debugger;
+        var currentSelectedvalue = ddlschema.value;
+        var FltrID = fltrId;
+        //alert('change data:' + currentSelectedvalue + "-------" + FltrID);
+
+        // Ajax update scheme assing value 
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("UpdateAssignScheme", "FHManage")',
+            data: '{schemenum: "' + currentSelectedvalue + '",FLTRID:"' + FltrID + '" }',
+            dataType: "json",
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data < 1) {
+                    alert("Error! Please try again.");
+                    $("#wait").hide();
+                } else {
+                    location.reload(true);
+                }
+            },
+            error: function (error) {
+                $("#wait").hide();
+                alert("Error! Please try again.");
+            }
+        });
+
+    }
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        // Delete
+        $('.btn-delete').click(function (e) {
+            //alert('clicked');
+              e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var FileID = tr.find('#hddFileID').val();
+
+            if (confirm('That file associate with multiple operations, Are you want to delete.') == true) {
+                // Call ajax function
+                // ajax call to find filter data.
+            $("#wait").show();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteTemplate", "FHManage")',
+                data: '{FileID: "' + FileID + '" }',
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data >= 1) {
+                        $('#divFilterDetails').html('');
+                        //$('#divFilterDetails').load('@Url.Action("_FilterFileDetails", "FHManage")');
+                        location.reload(true);
+                        $("#wait").hide();
+                    }
+                    else {
+                        alert("Error! Please try again.");
+                        $("#wait").hide();
+                    }
+                },
+                error: function (error) {
+                    $("#wait").hide();
+                    alert("Error! Please try again.");
+                }
+            });
+
+            }
+            else {
+                //alert('Not delete');
+            }
+        });
+
+        // View
+        $('.btn-view').click(function (e) {
+            // alert('clicked vew');
+             e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var TargetFilePath = tr.find('#hiddenTempalteFileName').val();
+
+            // ajax call to find filter data.
+            $("#wait").show();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ViewFile", "FHManage")',
+                data: '{FilePath: "' + TargetFilePath + '" }',
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $("#wait").hide();
+                    $('.modal-dialog').addClass('modal-lg');
+                    $('#modelbodydata').html('');
+                    $('#modelbodydata').html(data);
+                    $('#btnShowData').click();
+                },
+                error: function (error) {
+                    $("#wait").hide();
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+
+        //Rename
+        $('.btn-rename').click(function (e) {
+           // alert('clicked rename');
+             e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var FileID = tr.find('#hddFileID').val();
+            var HFLTRID = tr.find('#hddHFLTRID').val();
+            var Description = tr.find('#lblTemplateDesc').text();
+            var TemplateText = tr.find('#lblTemplateText').text();
+            var IEValue = tr.find('#lblTemplateIE').text();
+            debugger;
+            //RenameFilter(int FileID, string Comment,string Description,string FLTRID)
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("RenameTemplate", "FHManage")',
+                data: '{FileID: "' + FileID + '",TemplateText:"' + TemplateText + '",Description:"' + Description + '",HFLTRID:"' + HFLTRID + '",IE:"' + IEValue +'" }',
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $('.modal-dialog').removeClass('modal-lg');
+                    $('#modelbodydata').html('');
+                    $('#modelbodydata').html(data);
+                    $('#btnShowData').click();
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+    });
+</script>

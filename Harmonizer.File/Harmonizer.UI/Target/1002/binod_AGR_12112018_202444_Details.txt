@@ -1,0 +1,48 @@
+WebX link for metting.
+https://itelligencegroup.webex.com/webappng/sites/itelligencegroup/meeting/info/110409880385367642?MTID=m93751e082c3b03a1b182810f1d8b4fde
+Name: Binod
+email: binodkgupta@virtualemployee.com
+
+Requirement File Details :
+https://www.dropbox.com/sh/fh86yc66rce096x/AADLj6z70k5xIqV7i6mh3kE4a?dl=0&preview=FH+Notes+Meeting+10-17-2018.docx
+https://www.dropbox.com/sh/fh86yc66rce096x/AACG1dNJE5tkmeVEDIU3Td2Ka/Onboarding?dl=0&subfolder_nav_tracking=1
+
+// New link
+
+https://www.dropbox.com/sh/fh86yc66rce096x/AADLj6z70k5xIqV7i6mh3kE4a?dl=0 
+
+
+GitHub Repository url: https://github.com/fharmonizer/FileHarmonizer.git
+
+A2Hosting :-
+URL: https://my.a2hosting.com/clientarea.php
+UserID:- nitinrohilla@fileharmonizer.com
+Password: fhwelcome1
+
+
+------ A2 Hosting -------cPanel details
+URL : https://wwwaz1-ss7.a2hosting.com:2083/  -- Linux
+-------- for Window
+https://mi3-wss11.a2hosting.com:8443/login_up.php?success_redirect_url=https%3A%2F%2Fmi3-wss11.a2hosting.com%3A8443%2Fsmb%2F
+USER NAME: fileharm
+PAsswor: @0xFo0D2M*vLt0   -- corrected
+Password: WelcomeVE1
+
+Working credential for ftp:-
+Host Name: 162.249.5.4
+User: mi3-wss11\fileharm
+Password: @0xFo0D2M*vLt0
+
+
+
+New FTP for filezila
+Host Name: 162.249.5.4
+FTP Account Name= mi3-wss11\fileharm1
+Pass: @0xFo0D2M*vLt0
+
+ fileharmonizer.com
+-------------
+Host Name: mi3-wsq4.t9echuta.com
+DB name: fileharm_HarmonizerDB
+USer Naem : fileharm_fileharm
+Pass: @0xFo0D2M*vLt0db

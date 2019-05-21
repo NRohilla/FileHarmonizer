@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using Harmonizer.UI.App_Start;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Harmonizer.UI
@@ -8,6 +9,7 @@ namespace Harmonizer.UI
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+           // filters.Add(new GeneralExceptionHandlerAttribute());
         }
     }
 }

@@ -1,0 +1,2177 @@
+SECID;INDID;Share;Industry
+AGR;111;AGR111;Crop Production
+AGR;112;AGR112;Animal Production and Aquaculture
+AGR;113;AGR113;Forestry and Logging
+AGR;114;AGR114;Fishing- Hunting and Trapping
+AGR;115;AGR115;SupporActivities for Agriculture and Forestry
+AGR;1111;AGR1111;Oilseed and Grain Farming
+AGR;1112;AGR1112;Vegetable and Melon Farming
+AGR;1113;AGR1113;Fruiand Tree NuFarming
+AGR;1114;AGR1114;Greenhouse- Nursery- and Floriculture Production
+AGR;1119;AGR1119;Other Crop Farming
+AGR;1121;AGR1121;Cattle Ranching and Farming
+AGR;1122;AGR1122;Hog and Pig Farming
+AGR;1123;AGR1123;Poultry and Egg Production
+AGR;1124;AGR1124;Sheep and GoaFarming
+AGR;1125;AGR1125;Aquaculture
+AGR;1129;AGR1129;Other Animal Production
+AGR;1131;AGR1131;Timber TracOperations
+AGR;1132;AGR1132;ForesNurseries and Gathering of ForesProducts
+AGR;1133;AGR1133;Logging
+AGR;1141;AGR1141;Fishing
+AGR;1142;AGR1142;Hunting and Trapping
+AGR;1151;AGR1151;SupporActivities for Crop Production
+AGR;1152;AGR1152;SupporActivities for Animal Production
+AGR;1153;AGR1153;SupporActivities for Forestry
+AGR;11111;AGR11111;Soybean Farming
+AGR;11112;AGR11112;Oilseed (excepSoybean) Farming
+AGR;11113;AGR11113;Dry Pea and Bean Farming
+AGR;11114;AGR11114;WheaFarming
+AGR;11115;AGR11115;Corn Farming
+AGR;11116;AGR11116;Rice Farming
+AGR;11119;AGR11119;Other Grain Farming
+AGR;11121;AGR11121;Vegetable and Melon Farming
+AGR;11131;AGR11131;Orange Groves
+AGR;11132;AGR11132;Citrus (excepOrange) Groves
+AGR;11133;AGR11133;Noncitrus Fruiand Tree NuFarming
+AGR;11141;AGR11141;Food Crops Grown Under Cover
+AGR;11142;AGR11142;Nursery and Floriculture Production
+AGR;11191;AGR11191;Tobacco Farming
+AGR;11192;AGR11192;Cotton Farming
+AGR;11193;AGR11193;Sugarcane Farming
+AGR;11194;AGR11194;Hay Farming
+AGR;11199;AGR11199;All Other Crop Farming
+AGR;11211;AGR11211;Beef Cattle Ranching and Farming- including Feedlots
+AGR;11212;AGR11212;Dairy Cattle and Milk Production
+AGR;11213;AGR11213;Dual-Purpose Cattle Ranching and Farming
+AGR;11221;AGR11221;Hog and Pig Farming
+AGR;11231;AGR11231;Chicken Egg Production
+AGR;11232;AGR11232;Broilers and Other MeaType Chicken Production
+AGR;11233;AGR11233;Turkey Production
+AGR;11234;AGR11234;Poultry Hatcheries
+AGR;11239;AGR11239;Other Poultry Production
+AGR;11241;AGR11241;Sheep Farming
+AGR;11242;AGR11242;GoaFarming
+AGR;11251;AGR11251;Aquaculture
+AGR;11291;AGR11291;Apiculture
+AGR;11292;AGR11292;Horses and Other Equine Production
+AGR;11293;AGR11293;Fur-Bearing Animal and RabbiProduction
+AGR;11299;AGR11299;All Other Animal Production
+AGR;11311;AGR11311;Timber TracOperations
+AGR;11321;AGR11321;ForesNurseries and Gathering of ForesProducts
+AGR;11331;AGR11331;Logging
+AGR;11411;AGR11411;Fishing
+AGR;11421;AGR11421;Hunting and Trapping
+AGR;11511;AGR11511;SupporActivities for Crop Production
+AGR;11521;AGR11521;SupporActivities for Animal Production
+AGR;11531;AGR11531;SupporActivities for Forestry
+AGR;111110;AGR111110;Soybean Farming
+AGR;111120;AGR111120;Oilseed (except Soybean) Farming 
+AGR;111130;AGR111130;Dry Pea and Bean Farming 
+AGR;111140;AGR111140;Wheat Farming
+AGR;111150;AGR111150;Corn Farming 
+AGR;111160;AGR111160;Rice Farming
+AGR;111191;AGR111191;Oilseed and Grain Combination Farming 
+AGR;111199;AGR111199;All Other Grain Farming 
+AGR;111211;AGR111211;Potato Farming 
+AGR;111219;AGR111219;Other Vegetable (except Potato) and Melon Farming 
+AGR;111310;AGR111310;Orange Groves
+AGR;111320;AGR111320;Citrus (except Orange) Groves 
+AGR;111331;AGR111331;Apple Orchards 
+AGR;111332;AGR111332;Grape Vineyards 
+AGR;111333;AGR111333;Strawberry Farming 
+AGR;111334;AGR111334;Berry (except Strawberry) Farming 
+AGR;111335;AGR111335;Tree Nut Farming 
+AGR;111336;AGR111336;Fruit and Tree Nut Combination Farming 
+AGR;111339;AGR111339;Other Noncitrus Fruit Farming 
+AGR;111411;AGR111411;Mushroom Production 
+AGR;111419;AGR111419;Other Food Crops Grown Under Cover 
+AGR;111421;AGR111421;Nursery and Tree Production 
+AGR;111422;AGR111422;Floriculture Production 
+AGR;111910;AGR111910;Tobacco Farming
+AGR;111920;AGR111920;Cotton Farming
+AGR;111930;AGR111930;Sugarcane Farming
+AGR;111940;AGR111940;Hay Farming 
+AGR;111991;AGR111991;Sugar Beet Farming 
+AGR;111992;AGR111992;Peanut Farming 
+AGR;111998;AGR111998;All Other Miscellaneous Crop Farming 
+AGR;112111;AGR112111;Beef Cattle Ranching and Farming 
+AGR;112112;AGR112112;Cattle Feedlots 
+AGR;112120;AGR112120;Dairy Cattle and Milk Production
+AGR;112130;AGR112130;Dual-Purpose Cattle Ranching and Farming 
+AGR;112210;AGR112210;Hog and Pig Farming 
+AGR;112310;AGR112310;Chicken Egg Production 
+AGR;112320;AGR112320;Broilers and Other Meat Type Chicken Production 
+AGR;112330;AGR112330;Turkey Production
+AGR;112340;AGR112340;Poultry Hatcheries
+AGR;112390;AGR112390;Other Poultry Production 
+AGR;112410;AGR112410;Sheep Farming
+AGR;112420;AGR112420;Goat Farming
+AGR;112511;AGR112511;Finfish Farming and Fish Hatcheries 
+AGR;112512;AGR112512;Shellfish Farming 
+AGR;112519;AGR112519;Other Aquaculture 
+AGR;112910;AGR112910;Apiculture
+AGR;112920;AGR112920;Horses and Other Equine Production
+AGR;112930;AGR112930;Fur-Bearing Animal and Rabbit Production
+AGR;112990;AGR112990;All Other Animal Production 
+AGR;113110;AGR113110;Timber Tract Operations
+AGR;113210;AGR113210;Forest Nurseries and Gathering of Forest Products 
+AGR;113310;AGR113310;Logging 
+AGR;114111;AGR114111;Finfish Fishing 
+AGR;114112;AGR114112;Shellfish Fishing 
+AGR;114119;AGR114119;Other Marine Fishing 
+AGR;114210;AGR114210;Hunting and Trapping
+AGR;115111;AGR115111;Cotton Ginning 
+AGR;115112;AGR115112;Soil Preparation- Planting- and Cultivating 
+AGR;115113;AGR115113;Crop Harvesting- Primarily by Machine 
+AGR;115114;AGR115114;Postharvest Crop Activities (except Cotton Ginning) 
+AGR;115115;AGR115115;Farm Labor Contractors and Crew Leaders 
+AGR;115116;AGR115116;Farm Management Services 
+AGR;115210;AGR115210;Support Activities for Animal Production
+AGR;115310;AGR115310;Support Activities for Forestry
+MIN;211;MIN211;Oil and Gas Extraction
+MIN;212;MIN212;Mining (excepOil and Gas)
+MIN;213;MIN213;SupporActivities for Mining
+MIN;2111;MIN2111;Oil and Gas Extraction
+MIN;2121;MIN2121;Coal Mining
+MIN;2122;MIN2122;Metal Ore Mining
+MIN;2123;MIN2123;Nonmetallic Mineral Mining and Quarrying
+MIN;2131;MIN2131;SupporActivities for Mining
+MIN;21112;MIN21112;Crude Petroleum Extraction 
+MIN;21113;MIN21113;Natural Gas Extraction 
+MIN;21211;MIN21211;Coal Mining
+MIN;21221;MIN21221;Iron Ore Mining
+MIN;21222;MIN21222;Gold Ore and Silver Ore Mining
+MIN;21223;MIN21223;Copper- Nickel- Lead- and Zinc Mining
+MIN;21229;MIN21229;Other Metal Ore Mining
+MIN;21231;MIN21231;Stone Mining and Quarrying
+MIN;21232;MIN21232;Sand- Gravel- Clay- and Ceramic and Refractory Minerals Mining and Quarrying
+MIN;21239;MIN21239;Other Nonmetallic Mineral Mining and Quarrying
+MIN;21311;MIN21311;SupporActivities for Mining
+MIN;211120;MIN211120;Crude Petroleum Extraction 
+MIN;211130;MIN211130;Natural Gas Extraction 
+MIN;212111;MIN212111;Bituminous Coal and Lignite Surface Mining 
+MIN;212112;MIN212112;Bituminous Coal Underground Mining 
+MIN;212113;MIN212113;Anthracite Mining 
+MIN;212210;MIN212210;Iron Ore Mining
+MIN;212221;MIN212221;Gold Ore Mining 
+MIN;212222;MIN212222;Silver Ore Mining 
+MIN;212230;MIN212230;Copper- Nickel- Lead- and Zinc Mining 
+MIN;212291;MIN212291;Uranium-Radium-Vanadium Ore Mining 
+MIN;212299;MIN212299;All Other Metal Ore Mining 
+MIN;212311;MIN212311;Dimension Stone Mining and Quarrying 
+MIN;212312;MIN212312;Crushed and Broken Limestone Mining and Quarrying 
+MIN;212313;MIN212313;Crushed and Broken Granite Mining and Quarrying 
+MIN;212319;MIN212319;Other Crushed and Broken Stone Mining and Quarrying 
+MIN;212321;MIN212321;Construction Sand and Gravel Mining 
+MIN;212322;MIN212322;Industrial Sand Mining 
+MIN;212324;MIN212324;Kaolin and Ball Clay Mining 
+MIN;212325;MIN212325;Clay and Ceramic and Refractory Minerals Mining 
+MIN;212391;MIN212391;Potash- Soda- and Borate Mineral Mining 
+MIN;212392;MIN212392;Phosphate Rock Mining 
+MIN;212393;MIN212393;Other Chemical and Fertilizer Mineral Mining 
+MIN;212399;MIN212399;All Other Nonmetallic Mineral Mining 
+MIN;213111;MIN213111;Drilling Oil and Gas Wells
+MIN;213112;MIN213112;Support Activities for Oil and Gas Operations 
+MIN;213113;MIN213113;Support Activities for Coal Mining 
+MIN;213114;MIN213114;Support Activities for Metal Mining 
+MIN;213115;MIN213115;Support Activities for Nonmetallic Minerals (except Fuels) Mining 
+UTL;221;UTL221;Utilities
+UTL;2211;UTL2211;Electric Power Generation- Transmission and Distribution
+UTL;2212;UTL2212;Natural Gas Distribution
+UTL;2213;UTL2213;Water- Sewage and Other Systems
+UTL;22111;UTL22111;Electric Power Generation
+UTL;22112;UTL22112;Electric Power Transmission- Control- and Distribution
+UTL;22121;UTL22121;Natural Gas Distribution
+UTL;22131;UTL22131;Water Supply and Irrigation Systems 
+UTL;22132;UTL22132;Sewage Treatment Facilities 
+UTL;22133;UTL22133;Steam and Air-Conditioning Supply 
+UTL;221111;UTL221111;Hydroelectric Power Generation 
+UTL;221112;UTL221112;Fossil Fuel Electric Power Generation 
+UTL;221113;UTL221113;Nuclear Electric Power Generation 
+UTL;221114;UTL221114;Solar Electric Power Generation 
+UTL;221115;UTL221115;Wind Electric Power Generation 
+UTL;221116;UTL221116;Geothermal Electric Power Generation 
+UTL;221117;UTL221117;Biomass Electric Power Generation 
+UTL;221118;UTL221118;Other Electric Power Generation 
+UTL;221121;UTL221121;Electric Bulk Power Transmission and Control 
+UTL;221122;UTL221122;Electric Power Distribution 
+UTL;221210;UTL221210;Natural Gas Distribution 
+UTL;221310;UTL221310;Water Supply and Irrigation Systems 
+UTL;221320;UTL221320;Sewage Treatment Facilities 
+UTL;221330;UTL221330;Steam and Air-Conditioning Supply 
+CON;236;CON236;Construction of Buildings
+CON;237;CON237;Heavy and Civil Engineering Construction
+CON;238;CON238;Specialty Trade Contractors
+CON;2361;CON2361;Residential Building Construction
+CON;2362;CON2362;Nonresidential Building Construction
+CON;2371;CON2371;Utility System Construction
+CON;2372;CON2372;Land Subdivision
+CON;2373;CON2373;Highway- Street- and Bridge Construction
+CON;2379;CON2379;Other Heavy and Civil Engineering Construction
+CON;2381;CON2381;Foundation- Structure- and Building Exterior Contractors
+CON;2382;CON2382;Building EquipmenContractors
+CON;2383;CON2383;Building Finishing Contractors
+CON;2389;CON2389;Other Specialty Trade Contractors
+CON;23611;CON23611;Residential Building Construction
+CON;23621;CON23621;Industrial Building Construction
+CON;23622;CON23622;Commercial and Institutional Building Construction
+CON;23711;CON23711;Water and Sewer Line and Related Structures Construction
+CON;23712;CON23712;Oil and Gas Pipeline and Related Structures Construction
+CON;23713;CON23713;Power and Communication Line and Related Structures Construction
+CON;23721;CON23721;Land Subdivision
+CON;23731;CON23731;Highway- Street- and Bridge Construction
+CON;23799;CON23799;Other Heavy and Civil Engineering Construction
+CON;23811;CON23811;Poured Concrete Foundation and Structure Contractors 
+CON;23812;CON23812;Structural Steel and Precast Concrete Contractors 
+CON;23813;CON23813;Framing Contractors 
+CON;23814;CON23814;Masonry Contractors 
+CON;23815;CON23815;Glass and Glazing Contractors 
+CON;23816;CON23816;Roofing Contractors 
+CON;23817;CON23817;Siding Contractors 
+CON;23819;CON23819;Other Foundation- Structure- and Building Exterior Contractors 
+CON;23821;CON23821;Electrical Contractors and Other Wiring Installation Contractors
+CON;23822;CON23822;Plumbing- Heating- and Air-Conditioning Contractors
+CON;23829;CON23829;Other Building EquipmenContractors
+CON;23831;CON23831;Drywall and Insulation Contractors
+CON;23832;CON23832;Painting and Wall Covering Contractors
+CON;23833;CON23833;Flooring Contractors
+CON;23834;CON23834;Tile and Terrazzo Contractors
+CON;23835;CON23835;Finish Carpentry Contractors
+CON;23839;CON23839;Other Building Finishing Contractors
+CON;23891;CON23891;Site Preparation Contractors
+CON;23899;CON23899;All Other Specialty Trade Contractors
+CON;236115;CON236115;New Single-Family Housing Construction (except For-Sale Builders) 
+CON;236116;CON236116;New Multifamily Housing Construction (except For-Sale Builders) 
+CON;236117;CON236117;New Housing For-Sale Builders 
+CON;236118;CON236118;Residential Remodelers 
+CON;236210;CON236210;Industrial Building Construction 
+CON;236220;CON236220;Commercial and Institutional Building Construction 
+CON;237110;CON237110;Water and Sewer Line and Related Structures Construction 
+CON;237120;CON237120;Oil and Gas Pipeline and Related Structures Construction 
+CON;237130;CON237130;Power and Communication Line and Related Structures Construction 
+CON;237210;CON237210;Land Subdivision 
+CON;237310;CON237310;Highway- Street- and Bridge Construction 
+CON;237990;CON237990;Other Heavy and Civil Engineering Construction 
+CON;238110;CON238110;Poured Concrete Foundation and Structure Contractors 
+CON;238120;CON238120;Structural Steel and Precast Concrete Contractors 
+CON;238130;CON238130;Framing Contractors 
+CON;238140;CON238140;Masonry Contractors 
+CON;238150;CON238150;Glass and Glazing Contractors 
+CON;238160;CON238160;Roofing Contractors 
+CON;238170;CON238170;Siding Contractors 
+CON;238190;CON238190;Other Foundation- Structure- and Building Exterior Contractors 
+CON;238210;CON238210;Electrical Contractors and Other Wiring Installation Contractors
+CON;238220;CON238220;Plumbing- Heating- and Air-Conditioning Contractors 
+CON;238290;CON238290;Other Building Equipment Contractors 
+CON;238310;CON238310;Drywall and Insulation Contractors 
+CON;238320;CON238320;Painting and Wall Covering Contractors
+CON;238330;CON238330;Flooring Contractors
+CON;238340;CON238340;Tile and Terrazzo Contractors
+CON;238350;CON238350;Finish Carpentry Contractors
+CON;238390;CON238390;Other Building Finishing Contractors
+CON;238910;CON238910;Site Preparation Contractors
+CON;238990;CON238990;All Other Specialty Trade Contractors
+WHL;423;WHL423;Merchant Wholesalers- Durable Goods 
+WHL;424;WHL424;Merchant Wholesalers- Nondurable Goods 
+WHL;425;WHL425;Wholesale Electronic Markets and Agents and Brokers 
+WHL;4231;WHL4231;Motor Vehicle and Motor Vehicle Parts and Supplies Merchant Wholesalers 
+WHL;4232;WHL4232;Furniture and Home Furnishing Merchant Wholesalers 
+WHL;4233;WHL4233;Lumber and Other Construction Materials Merchant Wholesalers 
+WHL;4234;WHL4234;Professional and Commercial Equipment and Supplies Merchant Wholesalers 
+WHL;4235;WHL4235;Metal and Mineral (except Petroleum) Merchant Wholesalers 
+WHL;4236;WHL4236;Household Appliances and Electrical and Electronic Goods Merchant Wholesalers 
+WHL;4237;WHL4237;Hardware- and Plumbing and Heating Equipment and Supplies Merchant Wholesalers 
+WHL;4238;WHL4238;Machinery- Equipment- and Supplies Merchant Wholesalers 
+WHL;4239;WHL4239;Miscellaneous Durable Goods Merchant Wholesalers 
+WHL;4241;WHL4241;Paper and Paper Product Merchant Wholesalers 
+WHL;4242;WHL4242;Drugs and Druggists' Sundries Merchant Wholesalers 
+WHL;4243;WHL4243;Apparel- Piece Goods- and Notions Merchant Wholesalers 
+WHL;4244;WHL4244;Grocery and Related Product Merchant Wholesalers 
+WHL;4245;WHL4245;Farm Product Raw Material Merchant Wholesalers 
+WHL;4246;WHL4246;Chemical and Allied Products Merchant Wholesalers 
+WHL;4247;WHL4247;Petroleum and Petroleum Products Merchant Wholesalers 
+WHL;4248;WHL4248;Beer- Wine- and Distilled Alcoholic Beverage Merchant Wholesalers 
+WHL;4249;WHL4249;Miscellaneous Nondurable Goods Merchant Wholesalers 
+WHL;4251;WHL4251;Wholesale Electronic Markets and Agents and Brokers 
+WHL;42311;WHL42311;Automobile and Other Motor Vehicle Merchant Wholesalers 
+WHL;42312;WHL42312;Motor Vehicle Supplies and New Parts Merchant Wholesalers 
+WHL;42313;WHL42313;Tire and Tube Merchant Wholesalers 
+WHL;42314;WHL42314;Motor Vehicle Parts (Used) Merchant Wholesalers 
+WHL;42321;WHL42321;Furniture Merchant Wholesalers 
+WHL;42322;WHL42322;Home Furnishing Merchant Wholesalers 
+WHL;42331;WHL42331;Lumber- Plywood- Millwork- and Wood Panel Merchant Wholesalers 
+WHL;42332;WHL42332;Brick- Stone- and Related Construction Material Merchant Wholesalers 
+WHL;42333;WHL42333;Roofing- Siding- and Insulation Material Merchant Wholesalers 
+WHL;42339;WHL42339;Other Construction Material Merchant Wholesalers 
+WHL;42341;WHL42341;Photographic Equipment and Supplies Merchant Wholesalers 
+WHL;42342;WHL42342;Office Equipment Merchant Wholesalers 
+WHL;42343;WHL42343;Computer and Computer Peripheral Equipment and Software Merchant Wholesalers 
+WHL;42344;WHL42344;Other Commercial Equipment Merchant Wholesalers 
+WHL;42345;WHL42345;Medical- Dental- and Hospital Equipment and Supplies Merchant Wholesalers 
+WHL;42346;WHL42346;Ophthalmic Goods Merchant Wholesalers 
+WHL;42349;WHL42349;Other Professional Equipment and Supplies Merchant Wholesalers 
+WHL;42351;WHL42351;Metal Service Centers and Other Metal Merchant Wholesalers 
+WHL;42352;WHL42352;Coal and Other Mineral and Ore Merchant Wholesalers 
+WHL;42361;WHL42361;Electrical Apparatus and Equipment- Wiring Supplies- and Related Equipment Merchant Wholesalers 
+WHL;42362;WHL42362;Household Appliances- Electric Housewares- and Consumer Electronics Merchant Wholesalers 
+WHL;42369;WHL42369;Other Electronic Parts and Equipment Merchant Wholesalers 
+WHL;42371;WHL42371;Hardware Merchant Wholesalers 
+WHL;42372;WHL42372;Plumbing and Heating Equipment and Supplies (Hydronics) Merchant Wholesalers 
+WHL;42373;WHL42373;Warm Air Heating and Air-Conditioning Equipment and Supplies Merchant Wholesalers 
+WHL;42374;WHL42374;Refrigeration Equipment and Supplies Merchant Wholesalers 
+WHL;42381;WHL42381;Construction and Mining (except Oil Well) Machinery and Equipment Merchant Wholesalers 
+WHL;42382;WHL42382;Farm and Garden Machinery and Equipment Merchant Wholesalers 
+WHL;42383;WHL42383;Industrial Machinery and Equipment Merchant Wholesalers 
+WHL;42384;WHL42384;Industrial Supplies Merchant Wholesalers 
+WHL;42385;WHL42385;Service Establishment Equipment and Supplies Merchant Wholesalers 
+WHL;42386;WHL42386;Transportation Equipment and Supplies (except Motor Vehicle) Merchant Wholesalers 
+WHL;42391;WHL42391;Sporting and Recreational Goods and Supplies Merchant Wholesalers
+WHL;42392;WHL42392;Toy and Hobby Goods and Supplies Merchant Wholesalers 
+WHL;42393;WHL42393;Recyclable Material Merchant Wholesalers 
+WHL;42394;WHL42394;Jewelry- Watch- Precious Stone- and Precious Metal Merchant Wholesalers 
+WHL;42399;WHL42399;Other Miscellaneous Durable Goods Merchant Wholesalers 
+WHL;42411;WHL42411;Printing and Writing Paper Merchant Wholesalers 
+WHL;42412;WHL42412;Stationery and Office Supplies Merchant Wholesalers 
+WHL;42413;WHL42413;Industrial and Personal Service Paper Merchant Wholesalers 
+WHL;42421;WHL42421;Drugs and Druggists' Sundries Merchant Wholesalers 
+WHL;42431;WHL42431;Piece Goods- Notions- and Other Dry Goods Merchant Wholesalers 
+WHL;42432;WHL42432;Men's and Boys' Clothing and Furnishings Merchant Wholesalers 
+WHL;42433;WHL42433;Women's- Children's- and Infants' Clothing and Accessories Merchant Wholesalers 
+WHL;42434;WHL42434;Footwear Merchant Wholesalers 
+WHL;42441;WHL42441;General Line Grocery Merchant Wholesalers 
+WHL;42442;WHL42442;Packaged Frozen Food Merchant Wholesalers 
+WHL;42443;WHL42443;Dairy Product (except Dried or Canned) Merchant Wholesalers 
+WHL;42444;WHL42444;Poultry and Poultry Product Merchant Wholesalers 
+WHL;42445;WHL42445;Confectionery Merchant Wholesalers 
+WHL;42446;WHL42446;Fish and Seafood Merchant Wholesalers 
+WHL;42447;WHL42447;Meat and Meat Product Merchant Wholesalers 
+WHL;42448;WHL42448;Fresh Fruit and Vegetable Merchant Wholesalers 
+WHL;42449;WHL42449;Other Grocery and Related Products Merchant Wholesalers 
+WHL;42451;WHL42451;Grain and Field Bean Merchant Wholesalers 
+WHL;42452;WHL42452;Livestock Merchant Wholesalers 
+WHL;42459;WHL42459;Other Farm Product Raw Material Merchant Wholesalers 
+WHL;42461;WHL42461;Plastics Materials and Basic Forms and Shapes Merchant Wholesalers 
+WHL;42469;WHL42469;Other Chemical and Allied Products Merchant Wholesalers 
+WHL;42471;WHL42471;Petroleum Bulk Stations and Terminals 
+WHL;42472;WHL42472;Petroleum and Petroleum Products Merchant Wholesalers (except Bulk Stations and Terminals) 
+WHL;42481;WHL42481;Beer and Ale Merchant Wholesalers 
+WHL;42482;WHL42482;Wine and Distilled Alcoholic Beverage Merchant Wholesalers 
+WHL;42491;WHL42491;Farm Supplies Merchant Wholesalers 
+WHL;42492;WHL42492;Book- Periodical- and Newspaper Merchant Wholesalers 
+WHL;42493;WHL42493;Flower- Nursery Stock- and Florists' Supplies Merchant Wholesalers 
+WHL;42494;WHL42494;Tobacco and Tobacco Product Merchant Wholesalers 
+WHL;42495;WHL42495;Paint- Varnish- and Supplies Merchant Wholesalers 
+WHL;42499;WHL42499;Other Miscellaneous Nondurable Goods Merchant Wholesalers 
+WHL;42511;WHL42511;Business to Business Electronic Markets 
+WHL;42512;WHL42512;Wholesale Trade Agents and Brokers 
+WHL;423110;WHL423110;Automobile and Other Motor Vehicle Merchant Wholesalers 
+WHL;423120;WHL423120;Motor Vehicle Supplies and New Parts Merchant Wholesalers 
+WHL;423130;WHL423130;Tire and Tube Merchant Wholesalers 
+WHL;423140;WHL423140;Motor Vehicle Parts (Used) Merchant Wholesalers 
+WHL;423210;WHL423210;Furniture Merchant Wholesalers 
+WHL;423220;WHL423220;Home Furnishing Merchant Wholesalers 
+WHL;423310;WHL423310;Lumber- Plywood- Millwork- and Wood Panel Merchant Wholesalers 
+WHL;423320;WHL423320;Brick- Stone- and Related Construction Material Merchant Wholesalers 
+WHL;423330;WHL423330;Roofing- Siding- and Insulation Material Merchant Wholesalers 
+WHL;423390;WHL423390;Other Construction Material Merchant Wholesalers 
+WHL;423410;WHL423410;Photographic Equipment and Supplies Merchant Wholesalers 
+WHL;423420;WHL423420;Office Equipment Merchant Wholesalers 
+WHL;423430;WHL423430;Computer and Computer Peripheral Equipment and Software Merchant Wholesalers 
+WHL;423440;WHL423440;Other Commercial Equipment Merchant Wholesalers 
+WHL;423450;WHL423450;Medical- Dental- and Hospital Equipment and Supplies Merchant Wholesalers 
+WHL;423460;WHL423460;Ophthalmic Goods Merchant Wholesalers 
+WHL;423490;WHL423490;Other Professional Equipment and Supplies Merchant Wholesalers 
+WHL;423510;WHL423510;Metal Service Centers and Other Metal Merchant Wholesalers 
+WHL;423520;WHL423520;Coal and Other Mineral and Ore Merchant Wholesalers 
+WHL;423610;WHL423610;Electrical Apparatus and Equipment- Wiring Supplies- and Related Equipment Merchant Wholesalers 
+WHL;423620;WHL423620;Household Appliances- Electric Housewares- and Consumer Electronics Merchant Wholesalers 
+WHL;423690;WHL423690;Other Electronic Parts and Equipment Merchant Wholesalers 
+WHL;423710;WHL423710;Hardware Merchant Wholesalers 
+WHL;423720;WHL423720;Plumbing and Heating Equipment and Supplies (Hydronics) Merchant Wholesalers 
+WHL;423730;WHL423730;Warm Air Heating and Air-Conditioning Equipment and Supplies Merchant Wholesalers 
+WHL;423740;WHL423740;Refrigeration Equipment and Supplies Merchant Wholesalers 
+WHL;423810;WHL423810;Construction and Mining (except Oil Well) Machinery and Equipment Merchant Wholesalers 
+WHL;423820;WHL423820;Farm and Garden Machinery and Equipment Merchant Wholesalers 
+WHL;423830;WHL423830;Industrial Machinery and Equipment Merchant Wholesalers 
+WHL;423840;WHL423840;Industrial Supplies Merchant Wholesalers
+WHL;423850;WHL423850;Service Establishment Equipment and Supplies Merchant Wholesalers 
+WHL;423860;WHL423860;Transportation Equipment and Supplies (except Motor Vehicle) Merchant Wholesalers 
+WHL;423910;WHL423910;Sporting and Recreational Goods and Supplies Merchant Wholesalers 
+WHL;423920;WHL423920;Toy and Hobby Goods and Supplies Merchant Wholesalers 
+WHL;423930;WHL423930;Recyclable Material Merchant Wholesalers 
+WHL;423940;WHL423940;Jewelry- Watch- Precious Stone- and Precious Metal Merchant Wholesalers 
+WHL;423990;WHL423990;Other Miscellaneous Durable Goods Merchant Wholesalers 
+WHL;424110;WHL424110;Printing and Writing Paper Merchant Wholesalers 
+WHL;424120;WHL424120;Stationery and Office Supplies Merchant Wholesalers 
+WHL;424130;WHL424130;Industrial and Personal Service Paper Merchant Wholesalers 
+WHL;424210;WHL424210;Drugs and Druggists' Sundries Merchant Wholesalers 
+WHL;424310;WHL424310;Piece Goods- Notions- and Other Dry Goods Merchant Wholesalers 
+WHL;424320;WHL424320;Men's and Boys' Clothing and Furnishings Merchant Wholesalers 
+WHL;424330;WHL424330;Women's- Children's- and Infants' Clothing and Accessories Merchant Wholesalers 
+WHL;424340;WHL424340;Footwear Merchant Wholesalers 
+WHL;424410;WHL424410;General Line Grocery Merchant Wholesalers 
+WHL;424420;WHL424420;Packaged Frozen Food Merchant Wholesalers 
+WHL;424430;WHL424430;Dairy Product (except Dried or Canned) Merchant Wholesalers 
+WHL;424440;WHL424440;Poultry and Poultry Product Merchant Wholesalers 
+WHL;424450;WHL424450;Confectionery Merchant Wholesalers 
+WHL;424460;WHL424460;Fish and Seafood Merchant Wholesalers 
+WHL;424470;WHL424470;Meat and Meat Product Merchant Wholesalers 
+WHL;424480;WHL424480;Fresh Fruit and Vegetable Merchant Wholesalers 
+WHL;424490;WHL424490;Other Grocery and Related Products Merchant Wholesalers 
+WHL;424510;WHL424510;Grain and Field Bean Merchant Wholesalers 
+WHL;424520;WHL424520;Livestock Merchant Wholesalers 
+WHL;424590;WHL424590;Other Farm Product Raw Material Merchant Wholesalers 
+WHL;424610;WHL424610;Plastics Materials and Basic Forms and Shapes Merchant Wholesalers 
+WHL;424690;WHL424690;Other Chemical and Allied Products Merchant Wholesalers 
+WHL;424710;WHL424710;Petroleum Bulk Stations and Terminals 
+WHL;424720;WHL424720;Petroleum and Petroleum Products Merchant Wholesalers (except Bulk Stations and Terminals) 
+WHL;424810;WHL424810;Beer and Ale Merchant Wholesalers 
+WHL;424820;WHL424820;Wine and Distilled Alcoholic Beverage Merchant Wholesalers 
+WHL;424910;WHL424910;Farm Supplies Merchant Wholesalers 
+WHL;424920;WHL424920;Book- Periodical- and Newspaper Merchant Wholesalers 
+WHL;424930;WHL424930;Flower- Nursery Stock- and Florists' Supplies Merchant Wholesalers 
+WHL;424940;WHL424940;Tobacco and Tobacco Product Merchant Wholesalers 
+WHL;424950;WHL424950;Paint- Varnish- and Supplies Merchant Wholesalers 
+WHL;424990;WHL424990;Other Miscellaneous Nondurable Goods Merchant Wholesalers 
+WHL;425110;WHL425110;Business to Business Electronic Markets 
+WHL;425120;WHL425120;Wholesale Trade Agents and Brokers 
+INF;511;INF511;Publishing Industries (excepInternet)
+INF;512;INF512;Motion Picture and Sound Recording Industries
+INF;515;INF515;Broadcasting (excepInternet)
+INF;517;INF517;Telecommunications
+INF;518;INF518;Data Processing- Hosting- and Related Services
+INF;519;INF519;Other Information Services
+INF;5111;INF5111;Newspaper- Periodical- Book- and Directory Publishers
+INF;5112;INF5112;Software Publishers
+INF;5121;INF5121;Motion Picture and Video Industries
+INF;5122;INF5122;Sound Recording Industries
+INF;5151;INF5151;Radio and Television Broadcasting
+INF;5152;INF5152;Cable and Other Subscription Programming
+INF;5173;INF5173;Wired and Wireless Telecommunications Carriers
+INF;5174;INF5174;Satellite Telecommunications
+INF;5179;INF5179;Other Telecommunications
+INF;5182;INF5182;Data Processing- Hosting- and Related Services
+INF;5191;INF5191;Other Information Services
+INF;51111;INF51111;Newspaper Publishers
+INF;51112;INF51112;Periodical Publishers
+INF;51113;INF51113;Book Publishers
+INF;51114;INF51114;Directory and Mailing LisPublishers
+INF;51119;INF51119;Other Publishers
+INF;51121;INF51121;Software Publishers
+INF;51211;INF51211;Motion Picture and Video Production
+INF;51212;INF51212;Motion Picture and Video Distribution
+INF;51213;INF51213;Motion Picture and Video Exhibition
+INF;51219;INF51219;Postproduction Services and Other Motion Picture and Video Industries
+INF;51223;INF51223;Music Publishers
+INF;51224;INF51224;Sound Recording Studios
+INF;51225;INF51225;Record Production and Distribution
+INF;51229;INF51229;Other Sound Recording Industries
+INF;51511;INF51511;Radio Broadcasting
+INF;51512;INF51512;Television Broadcasting
+INF;51521;INF51521;Cable and Other Subscription Programming
+INF;51731;INF51731;Wired and Wireless Telecommunications Carriers
+INF;51741;INF51741;Satellite Telecommunications
+INF;51791;INF51791;Other Telecommunications
+INF;51821;INF51821;Data Processing- Hosting- and Related Services
+INF;51911;INF51911;News Syndicates
+INF;51912;INF51912;Libraries and Archives
+INF;51913;INF51913;InternePublishing and Broadcasting and Web Search Portals
+INF;51919;INF51919;All Other Information Services
+INF;511110;INF511110;Newspaper Publishers 
+INF;511120;INF511120;Periodical Publishers 
+INF;511130;INF511130;Book Publishers 
+INF;511140;INF511140;Directory and Mailing List Publishers 
+INF;511191;INF511191;Greeting Card Publishers 
+INF;511199;INF511199;All Other Publishers 
+INF;511210;INF511210;Software Publishers
+INF;512110;INF512110;Motion Picture and Video Production 
+INF;512120;INF512120;Motion Picture and Video Distribution
+INF;512131;INF512131;Motion Picture Theaters (except Drive-Ins) 
+INF;512132;INF512132;Drive-In Motion Picture Theaters 
+INF;512191;INF512191;Teleproduction and Other Postproduction Services 
+INF;512199;INF512199;Other Motion Picture and Video Industries 
+INF;512230;INF512230;Music Publishers
+INF;512240;INF512240;Sound Recording Studios
+INF;512250;INF512250;Record Production and Distribution
+INF;512290;INF512290;Other Sound Recording Industries
+INF;515111;INF515111;Radio Networks 
+INF;515112;INF515112;Radio Stations 
+INF;515120;INF515120;Television Broadcasting
+INF;515210;INF515210;Cable and Other Subscription Programming
+INF;517311;INF517311;Wired Telecommunications Carriers 
+INF;517312;INF517312;Wireless Telecommunications Carriers (except Satellite)
+INF;517410;INF517410;Satellite Telecommunications
+INF;517911;INF517911;Telecommunications Resellers 
+INF;517919;INF517919;All Other Telecommunications 
+INF;518210;INF518210;Data Processing- Hosting- and Related Services
+INF;519110;INF519110;News Syndicates
+INF;519120;INF519120;Libraries and Archives 
+INF;519130;INF519130;Internet Publishing and Broadcasting and Web Search Portals
+INF;519190;INF519190;All Other Information Services
+FI;521;FI521;Monetary Authorities-Central Bank
+FI;522;FI522;CrediIntermediation and Related Activities
+FI;523;FI523;Securities- Commodity Contracts- and Other Financial Investments and Related Activities
+FI;524;FI524;Insurance Carriers and Related Activities
+FI;525;FI525;Funds- Trusts- and Other Financial Vehicles 
+FI;5211;FI5211;Monetary Authorities-Central Bank
+FI;5221;FI5221;Depository Credit Intermediation 
+FI;5222;FI5222;Nondepository Credit Intermediation 
+FI;5223;FI5223;Activities Related to Credit Intermediation 
+FI;5231;FI5231;Securities and Commodity Contracts Intermediation and Brokerage
+FI;5232;FI5232;Securities and Commodity Exchanges
+FI;5239;FI5239;Other Financial InvestmenActivities
+FI;5241;FI5241;Insurance Carriers
+FI;5242;FI5242;Agencies- Brokerages- and Other Insurance Related Activities
+FI;5251;FI5251;Insurance and Employee Benefit Funds 
+FI;5259;FI5259;Other Investment Pools and Funds
+FI;52111;FI52111;Monetary Authorities-Central Bank
+FI;52211;FI52211;Commercial Banking 
+FI;52212;FI52212;Savings Institutions 
+FI;52213;FI52213;Credit Unions 
+FI;52219;FI52219;Other Depository Credit Intermediation 
+FI;52221;FI52221;Credit Card Issuing 
+FI;52222;FI52222;Sales Financing 
+FI;52229;FI52229;Other Nondepository Credit Intermediation 
+FI;52231;FI52231;Mortgage and Nonmortgage Loan Brokers 
+FI;52232;FI52232;Financial Transactions Processing- Reserve- and Clearinghouse Activities 
+FI;52239;FI52239;Other Activities Related to Credit Intermediation 
+FI;52311;FI52311;Investment Banking and Securities Dealing 
+FI;52312;FI52312;Securities Brokerage 
+FI;52313;FI52313;Commodity Contracts Dealing 
+FI;52314;FI52314;Commodity Contracts Brokerage 
+FI;52321;FI52321;Securities and Commodity Exchanges
+FI;52391;FI52391;Miscellaneous Intermediation 
+FI;52392;FI52392;Portfolio Management 
+FI;52393;FI52393;Investment Advice 
+FI;52399;FI52399;All Other Financial Investment Activities 
+FI;52411;FI52411;Direct Life- Health- and Medical Insurance Carriers 
+FI;52412;FI52412;Direct Insurance (except Life- Health- and Medical) Carriers 
+FI;52413;FI52413;Reinsurance Carriers 
+FI;52421;FI52421;Insurance Agencies and Brokerages 
+FI;52429;FI52429;Other Insurance Related Activities 
+FI;52511;FI52511;Pension Funds 
+FI;52512;FI52512;Health and Welfare Funds 
+FI;52519;FI52519;Other Insurance Funds 
+FI;52591;FI52591;Open-End Investment Funds 
+FI;52592;FI52592;Trusts- Estates- and Agency Accounts 
+FI;52599;FI52599;Other Financial Vehicles 
+FI;521110;FI521110;Monetary Authorities-Central Bank
+FI;522110;FI522110;Commercial Banking 
+FI;522120;FI522120;Savings Institutions 
+FI;522130;FI522130;Credit Unions 
+FI;522190;FI522190;Other Depository Credit Intermediation 
+FI;522210;FI522210;Credit Card Issuing 
+FI;522220;FI522220;Sales Financing 
+FI;522291;FI522291;Consumer Lending 
+FI;522292;FI522292;Real Estate Credit 
+FI;522293;FI522293;International Trade Financing 
+FI;522294;FI522294;Secondary Market Financing 
+FI;522298;FI522298;All Other Nondepository Credit Intermediation 
+FI;522310;FI522310;Mortgage and Nonmortgage Loan Brokers 
+FI;522320;FI522320;Financial Transactions Processing- Reserve- and Clearinghouse Activities 
+FI;522390;FI522390;Other Activities Related to Credit Intermediation 
+FI;523110;FI523110;Investment Banking and Securities Dealing 
+FI;523120;FI523120;Securities Brokerage 
+FI;523130;FI523130;Commodity Contracts Dealing 
+FI;523140;FI523140;Commodity Contracts Brokerage 
+FI;523210;FI523210;Securities and Commodity Exchanges
+FI;523910;FI523910;Miscellaneous Intermediation 
+FI;523920;FI523920;Portfolio Management 
+FI;523930;FI523930;Investment Advice 
+FI;523991;FI523991;Trust- Fiduciary- and Custody Activities 
+FI;523999;FI523999;Miscellaneous Financial Investment Activities 
+FI;524113;FI524113;Direct Life Insurance Carriers 
+FI;524114;FI524114;Direct Health and Medical Insurance Carriers 
+FI;524126;FI524126;Direct Property and Casualty Insurance Carriers 
+FI;524127;FI524127;Direct Title Insurance Carriers 
+FI;524128;FI524128;Other Direct Insurance (except Life- Health- and Medical) Carriers 
+FI;524130;FI524130;Reinsurance Carriers 
+FI;524210;FI524210;Insurance Agencies and Brokerages 
+FI;524291;FI524291;Claims Adjusting 
+FI;524292;FI524292;Third Party Administration of Insurance and Pension Funds 
+FI;524298;FI524298;All Other Insurance Related Activities 
+FI;525110;FI525110;Pension Funds 
+FI;525120;FI525120;Health and Welfare Funds 
+FI;525190;FI525190;Other Insurance Funds 
+FI;525910;FI525910;Open-End Investment Funds 
+FI;525920;FI525920;Trusts- Estates- and Agency Accounts 
+FI;525990;FI525990;Other Financial Vehicles 
+RE;531;RE531;Real Estate
+RE;532;RE532;Rental and Leasing Services
+RE;533;RE533;Lessors of Nonfinancial Intangible Assets (excepCopyrighted Works)
+RE;5311;RE5311;Lessors of Real Estate
+RE;5312;RE5312;Offices of Real Estate Agents and Brokers
+RE;5313;RE5313;Activities Related to Real Estate
+RE;5321;RE5321;Automotive EquipmenRental and Leasing
+RE;5322;RE5322;Consumer Goods Rental
+RE;5323;RE5323;General Rental Centers
+RE;5324;RE5324;Commercial and Industrial Machinery and EquipmenRental and Leasing
+RE;5331;RE5331;Lessors of Nonfinancial Intangible Assets (excepCopyrighted Works)
+RE;53111;RE53111;Lessors of Residential Buildings and Dwellings 
+RE;53112;RE53112;Lessors of Nonresidential Buildings (except Miniwarehouses) 
+RE;53113;RE53113;Lessors of Miniwarehouses and Self-Storage Units 
+RE;53119;RE53119;Lessors of Other Real Estate Property 
+RE;53121;RE53121;Offices of Real Estate Agents and Brokers
+RE;53131;RE53131;Real Estate Property Managers 
+RE;53132;RE53132;Offices of Real Estate Appraisers 
+RE;53139;RE53139;Other Activities Related to Real Estate 
+RE;53211;RE53211;Passenger Car Rental and Leasing
+RE;53212;RE53212;Truck- Utility Trailer- and RV (Recreational Vehicle) Rental and Leasing
+RE;53221;RE53221;Consumer Electronics and Appliances Rental
+RE;53228;RE53228;Other Consumer Goods Rental
+RE;53231;RE53231;General Rental Centers
+RE;53241;RE53241;Construction- Transportation- Mining- and Forestry Machinery and EquipmenRental and Leasing
+RE;53242;RE53242;Office Machinery and EquipmenRental and Leasing
+RE;53249;RE53249;Other Commercial and Industrial Machinery and EquipmenRental and Leasing
+RE;53311;RE53311;Lessors of Nonfinancial Intangible Assets (excepCopyrighted Works)
+RE;531110;RE531110;Lessors of Residential Buildings and Dwellings 
+RE;531120;RE531120;Lessors of Nonresidential Buildings (except Miniwarehouses) 
+RE;531130;RE531130;Lessors of Miniwarehouses and Self-Storage Units 
+RE;531190;RE531190;Lessors of Other Real Estate Property 
+RE;531210;RE531210;Offices of Real Estate Agents and Brokers
+RE;531311;RE531311;Residential Property Managers 
+RE;531312;RE531312;Nonresidential Property Managers 
+RE;531320;RE531320;Offices of Real Estate Appraisers 
+RE;531390;RE531390;Other Activities Related to Real Estate 
+RE;532111;RE532111;Passenger Car Rental 
+RE;532112;RE532112;Passenger Car Leasing 
+RE;532120;RE532120;Truck- Utility Trailer- and RV (Recreational Vehicle) Rental and Leasing 
+RE;532210;RE532210;Consumer Electronics and Appliances Rental
+RE;532281;RE532281;Formal Wear and Costume Rental
+RE;532282;RE532282;Video Tape and Disc Rental
+RE;532283;RE532283;Home Health Equipment Rental 
+RE;532284;RE532284;Recreational Goods Rental 
+RE;532289;RE532289;All Other Consumer Goods Rental 
+RE;532310;RE532310;General Rental Centers
+RE;532411;RE532411;Commercial Air- Rail- and Water Transportation Equipment Rental and Leasing 
+RE;532412;RE532412;Construction- Mining- and Forestry Machinery and Equipment Rental and Leasing 
+RE;532420;RE532420;Office Machinery and Equipment Rental and Leasing
+RE;532490;RE532490;Other Commercial and Industrial Machinery and Equipment Rental and Leasing 
+RE;533110;RE533110;Lessors of Nonfinancial Intangible Assets (except Copyrighted Works)
+PST;541;PST541;Professional- Scientific- and Technical Services
+PST;5411;PST5411;Legal Services
+PST;5412;PST5412;Accounting- Tax Preparation- Bookkeeping- and Payroll Services
+PST;5413;PST5413;Architectural- Engineering- and Related Services
+PST;5414;PST5414;Specialized Design Services
+PST;5415;PST5415;Computer Systems Design and Related Services
+PST;5416;PST5416;Management- Scientific- and Technical Consulting Services
+PST;5417;PST5417;Scientific Research and DevelopmenServices
+PST;5418;PST5418;Advertising- Public Relations- and Related Services
+PST;5419;PST5419;Other Professional- Scientific- and Technical Services
+PST;54111;PST54111;Offices of Lawyers
+PST;54112;PST54112;Offices of Notaries
+PST;54119;PST54119;Other Legal Services
+PST;54121;PST54121;Accounting- Tax Preparation- Bookkeeping- and Payroll Services
+PST;54131;PST54131;Architectural Services
+PST;54132;PST54132;Landscape Architectural Services
+PST;54133;PST54133;Engineering Services
+PST;54134;PST54134;Drafting Services
+PST;54135;PST54135;Building Inspection Services
+PST;54136;PST54136;Geophysical Surveying and Mapping Services
+PST;54137;PST54137;Surveying and Mapping (excepGeophysical) Services
+PST;54138;PST54138;Testing Laboratories
+PST;54141;PST54141;Interior Design Services
+PST;54142;PST54142;Industrial Design Services
+PST;54143;PST54143;Graphic Design Services
+PST;54149;PST54149;Other Specialized Design Services
+PST;54151;PST54151;Computer Systems Design and Related Services
+PST;54161;PST54161;ManagemenConsulting Services
+PST;54162;PST54162;Environmental Consulting Services
+PST;54169;PST54169;Other Scientific and Technical Consulting Services
+PST;54171;PST54171;Research and Developmenin the Physical- Engineering- and Life Sciences
+PST;54172;PST54172;Research and Developmenin the Social Sciences and Humanities
+PST;54181;PST54181;Advertising Agencies
+PST;54182;PST54182;Public Relations Agencies
+PST;54183;PST54183;Media Buying Agencies
+PST;54184;PST54184;Media Representatives
+PST;54185;PST54185;Outdoor Advertising
+PST;54186;PST54186;DirecMail Advertising
+PST;54187;PST54187;Advertising Material Distribution Services
+PST;54189;PST54189;Other Services Related to Advertising
+PST;54191;PST54191;Marketing Research and Public Opinion Polling
+PST;54192;PST54192;Photographic Services
+PST;54193;PST54193;Translation and Interpretation Services
+PST;54194;PST54194;Veterinary Services
+PST;54199;PST54199;All Other Professional- Scientific- and Technical Services
+PST;541110;PST541110;Offices of Lawyers
+PST;541120;PST541120;Offices of Notaries
+PST;541191;PST541191;Title Abstract and Settlement Offices 
+PST;541199;PST541199;All Other Legal Services 
+PST;541211;PST541211;Offices of Certified Public Accountants 
+PST;541213;PST541213;Tax Preparation Services 
+PST;541214;PST541214;Payroll Services 
+PST;541219;PST541219;Other Accounting Services 
+PST;541310;PST541310;Architectural Services
+PST;541320;PST541320;Landscape Architectural Services
+PST;541330;PST541330;Engineering Services
+PST;541340;PST541340;Drafting Services
+PST;541350;PST541350;Building Inspection Services
+PST;541360;PST541360;Geophysical Surveying and Mapping Services
+PST;541370;PST541370;Surveying and Mapping (except Geophysical) Services
+PST;541380;PST541380;Testing Laboratories
+PST;541410;PST541410;Interior Design Services
+PST;541420;PST541420;Industrial Design Services
+PST;541430;PST541430;Graphic Design Services
+PST;541490;PST541490;Other Specialized Design Services
+PST;541511;PST541511;Custom Computer Programming Services 
+PST;541512;PST541512;Computer Systems Design Services 
+PST;541513;PST541513;Computer Facilities Management Services 
+PST;541519;PST541519;Other Computer Related Services
+PST;541611;PST541611;Administrative Management and General Management Consulting Services 
+PST;541612;PST541612;Human Resources Consulting Services 
+PST;541613;PST541613;Marketing Consulting Services 
+PST;541614;PST541614;Process- Physical Distribution- and Logistics Consulting Services 
+PST;541618;PST541618;Other Management Consulting Services 
+PST;541620;PST541620;Environmental Consulting Services
+PST;541690;PST541690;Other Scientific and Technical Consulting Services
+PST;541713;PST541713;Research and Development in Nanotechnology 
+PST;541714;PST541714;Research and Development in Biotechnology (except Nanobiotechnology)
+PST;541715;PST541715;Research and Development in the Physical- Engineering- and Life Sciences (except Nanotechnology and Biotechnology) 
+PST;541720;PST541720;Research and Development in the Social Sciences and Humanities 
+PST;541810;PST541810;Advertising Agencies
+PST;541820;PST541820;Public Relations Agencies
+PST;541830;PST541830;Media Buying Agencies
+PST;541840;PST541840;Media Representatives
+PST;541850;PST541850;Outdoor Advertising
+PST;541860;PST541860;Direct Mail Advertising
+PST;541870;PST541870;Advertising Material Distribution Services
+PST;541890;PST541890;Other Services Related to Advertising 
+PST;541910;PST541910;Marketing Research and Public Opinion Polling
+PST;541921;PST541921;Photography Studios- Portrait 
+PST;541922;PST541922;Commercial Photography 
+PST;541930;PST541930;Translation and Interpretation Services
+PST;541940;PST541940;Veterinary Services 
+PST;541990;PST541990;All Other Professional- Scientific- and Technical Services
+MNG;551;MNG551;Managemenof Companies and Enterprises
+MNG;5511;MNG5511;Managemenof Companies and Enterprises
+MNG;55111;MNG55111;Managemenof Companies and Enterprises
+MNG;551111;MNG551111;Offices of Bank Holding Companies 
+MNG;551112;MNG551112;Offices of Other Holding Companies 
+MNG;551114;MNG551114;Corporate- Subsidiary- and Regional Managing Offices 
+ADM;561;ADM561;Administrative and SupporServices
+ADM;562;ADM562;Waste Managemenand Remediation Services
+ADM;5611;ADM5611;Office Administrative Services
+ADM;5612;ADM5612;Facilities SupporServices
+ADM;5613;ADM5613;EmploymenServices
+ADM;5614;ADM5614;Business SupporServices
+ADM;5615;ADM5615;Travel Arrangemenand Reservation Services
+ADM;5616;ADM5616;Investigation and Security Services
+ADM;5617;ADM5617;Services to Buildings and Dwellings
+ADM;5619;ADM5619;Other SupporServices
+ADM;5621;ADM5621;Waste Collection 
+ADM;5622;ADM5622;Waste Treatment and Disposal 
+ADM;5629;ADM5629;Remediation and Other Waste Management Services 
+ADM;56111;ADM56111;Office Administrative Services
+ADM;56121;ADM56121;Facilities SupporServices
+ADM;56131;ADM56131;EmploymenPlacemenAgencies and Executive Search Services
+ADM;56132;ADM56132;Temporary Help Services
+ADM;56133;ADM56133;Professional Employer Organizations
+ADM;56141;ADM56141;DocumenPreparation Services
+ADM;56142;ADM56142;Telephone Call Centers
+ADM;56143;ADM56143;Business Service Centers
+ADM;56144;ADM56144;Collection Agencies
+ADM;56145;ADM56145;CrediBureaus
+ADM;56149;ADM56149;Other Business SupporServices
+ADM;56151;ADM56151;Travel Agencies
+ADM;56152;ADM56152;Tour Operators
+ADM;56159;ADM56159;Other Travel Arrangemenand Reservation Services
+ADM;56161;ADM56161;Investigation- Guard- and Armored Car Services
+ADM;56162;ADM56162;Security Systems Services
+ADM;56171;ADM56171;Exterminating and PesControl Services
+ADM;56172;ADM56172;Janitorial Services
+ADM;56173;ADM56173;Landscaping Services
+ADM;56174;ADM56174;Carpeand Upholstery Cleaning Services
+ADM;56179;ADM56179;Other Services to Buildings and Dwellings
+ADM;56191;ADM56191;Packaging and Labeling Services
+ADM;56192;ADM56192;Convention and Trade Show Organizers
+ADM;56199;ADM56199;All Other SupporServices
+ADM;56211;ADM56211;Waste Collection 
+ADM;56221;ADM56221;Waste Treatment and Disposal 
+ADM;56291;ADM56291;Remediation Services 
+ADM;56292;ADM56292;Materials Recovery Facilities 
+ADM;56299;ADM56299;All Other Waste Management Services 
+ADM;561110;ADM561110;Office Administrative Services
+ADM;561210;ADM561210;Facilities Support Services
+ADM;561311;ADM561311;Employment Placement Agencies 
+ADM;561312;ADM561312;Executive Search Services 
+ADM;561320;ADM561320;Temporary Help Services
+ADM;561330;ADM561330;Professional Employer Organizations
+ADM;561410;ADM561410;Document Preparation Services
+ADM;561421;ADM561421;Telephone Answering Services 
+ADM;561422;ADM561422;Telemarketing Bureaus and Other Contact Centers 
+ADM;561431;ADM561431;Private Mail Centers 
+ADM;561439;ADM561439;Other Business Service Centers (including Copy Shops) 
+ADM;561440;ADM561440;Collection Agencies
+ADM;561450;ADM561450;Credit Bureaus
+ADM;561491;ADM561491;Repossession Services 
+ADM;561492;ADM561492;Court Reporting and Stenotype Services 
+ADM;561499;ADM561499;All Other Business Support Services 
+ADM;561510;ADM561510;Travel Agencies
+ADM;561520;ADM561520;Tour Operators
+ADM;561591;ADM561591;Convention and Visitors Bureaus 
+ADM;561599;ADM561599;All Other Travel Arrangement and Reservation Services 
+ADM;561611;ADM561611;Investigation Services 
+ADM;561612;ADM561612;Security Guards and Patrol Services 
+ADM;561613;ADM561613;Armored Car Services 
+ADM;561621;ADM561621;Security Systems Services (except Locksmiths) 
+ADM;561622;ADM561622;Locksmiths 
+ADM;561710;ADM561710;Exterminating and Pest Control Services
+ADM;561720;ADM561720;Janitorial Services 
+ADM;561730;ADM561730;Landscaping Services
+ADM;561740;ADM561740;Carpet and Upholstery Cleaning Services
+ADM;561790;ADM561790;Other Services to Buildings and Dwellings 
+ADM;561910;ADM561910;Packaging and Labeling Services
+ADM;561920;ADM561920;Convention and Trade Show Organizers
+ADM;561990;ADM561990;All Other Support Services
+ADM;562111;ADM562111;Solid Waste Collection 
+ADM;562112;ADM562112;Hazardous Waste Collection 
+ADM;562119;ADM562119;Other Waste Collection 
+ADM;562211;ADM562211;Hazardous Waste Treatment and Disposal 
+ADM;562212;ADM562212;Solid Waste Landfill 
+ADM;562213;ADM562213;Solid Waste Combustors and Incinerators 
+ADM;562219;ADM562219;Other Nonhazardous Waste Treatment and Disposal 
+ADM;562910;ADM562910;Remediation Services 
+ADM;562920;ADM562920;Materials Recovery Facilities 
+ADM;562991;ADM562991;Septic Tank and Related Services 
+ADM;562998;ADM562998;All Other Miscellaneous Waste Management Services 
+EDU;611;EDU611;Educational Services
+EDU;6111;EDU6111;Elementary and Secondary Schools
+EDU;6112;EDU6112;Junior Colleges
+EDU;6113;EDU6113;Colleges- Universities- and Professional Schools
+EDU;6114;EDU6114;Business Schools and Computer and ManagemenTraining
+EDU;6115;EDU6115;Technical and Trade Schools
+EDU;6116;EDU6116;Other Schools and Instruction
+EDU;6117;EDU6117;Educational Support Services
+EDU;61111;EDU61111;Elementary and Secondary Schools 
+EDU;61121;EDU61121;Junior Colleges
+EDU;61131;EDU61131;Colleges- Universities- and Professional Schools
+EDU;61141;EDU61141;Business and Secretarial Schools
+EDU;61142;EDU61142;Computer Training
+EDU;61143;EDU61143;Professional and ManagemenDevelopmenTraining
+EDU;61151;EDU61151;Technical and Trade Schools
+EDU;61161;EDU61161;Fine Arts Schools
+EDU;61162;EDU61162;Sports and Recreation Instruction
+EDU;61163;EDU61163;Language Schools
+EDU;61169;EDU61169;All Other Schools and Instruction
+EDU;61171;EDU61171;Educational Support Services
+EDU;611110;EDU611110;Elementary and Secondary Schools 
+EDU;611210;EDU611210;Junior Colleges 
+EDU;611310;EDU611310;Colleges- Universities- and Professional Schools 
+EDU;611410;EDU611410;Business and Secretarial Schools 
+EDU;611420;EDU611420;Computer Training 
+EDU;611430;EDU611430;Professional and Management Development Training 
+EDU;611511;EDU611511;Cosmetology and Barber Schools 
+EDU;611512;EDU611512;Flight Training 
+EDU;611513;EDU611513;Apprenticeship Training 
+EDU;611519;EDU611519;Other Technical and Trade Schools 
+EDU;611610;EDU611610;Fine Arts Schools 
+EDU;611620;EDU611620;Sports and Recreation Instruction 
+EDU;611630;EDU611630;Language Schools 
+EDU;611691;EDU611691;Exam Preparation and Tutoring 
+EDU;611692;EDU611692;Automobile Driving Schools 
+EDU;611699;EDU611699;All Other Miscellaneous Schools and Instruction 
+EDU;611710;EDU611710;Educational Support Services
+H;621;H621;Ambulatory Health Care Services
+H;622;H622;Hospitals
+H;623;H623;Nursing and Residential Care Facilities
+H;624;H624;Social Assistance
+H;6211;H6211;Offices of Physicians
+H;6212;H6212;Offices of Dentists
+H;6213;H6213;Offices of Other Health Practitioners
+H;6214;H6214;OutpatienCare Centers
+H;6215;H6215;Medical and Diagnostic Laboratories
+H;6216;H6216;Home Health Care Services
+H;6219;H6219;Other Ambulatory Health Care Services
+H;6221;H6221;General Medical and Surgical Hospitals
+H;6222;H6222;Psychiatric and Substance Abuse Hospitals
+H;6223;H6223;Specialty (excepPsychiatric and Substance Abuse) Hospitals
+H;6231;H6231;Nursing Care Facilities (Skilled Nursing Facilities)
+H;6232;H6232;Residential Intellectual and Developmental Disability- Mental Health- and Substance Abuse Facilities
+H;6233;H6233;Continuing Care RetiremenCommunities and Assisted Living Facilities for the Elderly
+H;6239;H6239;Other Residential Care Facilities
+H;6241;H6241;Individual and Family Services
+H;6242;H6242;Community Food and Housing- and Emergency and Other Relief Services
+H;6243;H6243;Vocational Rehabilitation Services
+H;6244;H6244;Child Day Care Services
+H;62111;H62111;Offices of Physicians
+H;62121;H62121;Offices of Dentists
+H;62131;H62131;Offices of Chiropractors
+H;62132;H62132;Offices of Optometrists
+H;62133;H62133;Offices of Mental Health Practitioners (excepPhysicians)
+H;62134;H62134;Offices of Physical- Occupational and Speech Therapists- and Audiologists
+H;62139;H62139;Offices of All Other Health Practitioners
+H;62141;H62141;Family Planning Centers
+H;62142;H62142;OutpatienMental Health and Substance Abuse Centers
+H;62149;H62149;Other OutpatienCare Centers
+H;62151;H62151;Medical and Diagnostic Laboratories
+H;62161;H62161;Home Health Care Services
+H;62191;H62191;Ambulance Services
+H;62199;H62199;All Other Ambulatory Health Care Services
+H;62211;H62211;General Medical and Surgical Hospitals
+H;62221;H62221;Psychiatric and Substance Abuse Hospitals
+H;62231;H62231;Specialty (excepPsychiatric and Substance Abuse) Hospitals
+H;62311;H62311;Nursing Care Facilities (Skilled Nursing Facilities)
+H;62321;H62321;Residential Intellectual and Developmental Disability Facilities
+H;62322;H62322;Residential Mental Health and Substance Abuse Facilities
+H;62331;H62331;Continuing Care RetiremenCommunities and Assisted Living Facilities for the Elderly
+H;62399;H62399;Other Residential Care Facilities
+H;62411;H62411;Child and Youth Services
+H;62412;H62412;Services for the Elderly and Persons with Disabilities
+H;62419;H62419;Other Individual and Family Services
+H;62421;H62421;Community Food Services
+H;62422;H62422;Community Housing Services
+H;62423;H62423;Emergency and Other Relief Services
+H;62431;H62431;Vocational Rehabilitation Services
+H;62441;H62441;Child Day Care Services
+H;621111;H621111;Offices of Physicians (except Mental Health Specialists) 
+H;621112;H621112;Offices of Physicians- Mental Health Specialists 
+H;621210;H621210;Offices of Dentists 
+H;621310;H621310;Offices of Chiropractors 
+H;621320;H621320;Offices of Optometrists
+H;621330;H621330;Offices of Mental Health Practitioners (except Physicians) 
+H;621340;H621340;Offices of Physical- Occupational and Speech Therapists- and Audiologists 
+H;621391;H621391;Offices of Podiatrists 
+H;621399;H621399;Offices of All Other Miscellaneous Health Practitioners 
+H;621410;H621410;Family Planning Centers 
+H;621420;H621420;Outpatient Mental Health and Substance Abuse Centers 
+H;621491;H621491;HMO Medical Centers 
+H;621492;H621492;Kidney Dialysis Centers 
+H;621493;H621493;Freestanding Ambulatory Surgical and Emergency Centers 
+H;621498;H621498;All Other Outpatient Care Centers 
+H;621511;H621511;Medical Laboratories 
+H;621512;H621512;Diagnostic Imaging Centers 
+H;621610;H621610;Home Health Care Services
+H;621910;H621910;Ambulance Services 
+H;621991;H621991;Blood and Organ Banks 
+H;621999;H621999;All Other Miscellaneous Ambulatory Health Care Services 
+H;622110;H622110;General Medical and Surgical Hospitals 
+H;622210;H622210;Psychiatric and Substance Abuse Hospitals 
+H;622310;H622310;Specialty (except Psychiatric and Substance Abuse) Hospitals 
+H;623110;H623110;Nursing Care Facilities (Skilled Nursing Facilities) 
+H;623210;H623210;Residential Intellectual and Developmental Disability Facilities 
+H;623220;H623220;Residential Mental Health and Substance Abuse Facilities 
+H;623311;H623311;Continuing Care Retirement Communities 
+H;623312;H623312;Assisted Living Facilities for the Elderly 
+H;623990;H623990;Other Residential Care Facilities 
+H;624110;H624110;Child and Youth Services 
+H;624120;H624120;Services for the Elderly and Persons with Disabilities 
+H;624190;H624190;Other Individual and Family Services 
+H;624210;H624210;Community Food Services 
+H;624221;H624221;Temporary Shelters 
+H;624229;H624229;Other Community Housing Services 
+H;624230;H624230;Emergency and Other Relief Services 
+H;624310;H624310;Vocational Rehabilitation Services 
+H;624410;H624410;Child Day Care Services 
+ART;711;ART711;Performing Arts- Spectator Sports- and Related Industries
+ART;712;ART712;Museums- Historical Sites- and Similar Institutions
+ART;713;ART713;Amusement- Gambling- and Recreation Industries
+ART;7111;ART7111;Performing Arts Companies
+ART;7112;ART7112;Spectator Sports
+ART;7113;ART7113;Promoters of Performing Arts- Sports- and Similar Events
+ART;7114;ART7114;Agents and Managers for Artists- Athletes- Entertainers- and Other Public Figures
+ART;7115;ART7115;IndependenArtists- Writers- and Performers
+ART;7121;ART7121;Museums- Historical Sites- and Similar Institutions
+ART;7131;ART7131;AmusemenParks and Arcades
+ART;7132;ART7132;Gambling Industries
+ART;7139;ART7139;Other Amusemenand Recreation Industries
+ART;71111;ART71111;Theater Companies and Dinner Theaters
+ART;71112;ART71112;Dance Companies
+ART;71113;ART71113;Musical Groups and Artists
+ART;71119;ART71119;Other Performing Arts Companies
+ART;71121;ART71121;Spectator Sports
+ART;71131;ART71131;Promoters of Performing Arts- Sports- and Similar Events with Facilities
+ART;71132;ART71132;Promoters of Performing Arts- Sports- and Similar Events withouFacilities
+ART;71141;ART71141;Agents and Managers for Artists- Athletes- Entertainers- and Other Public Figures
+ART;71151;ART71151;IndependenArtists- Writers- and Performers
+ART;71211;ART71211;Museums
+ART;71212;ART71212;Historical Sites
+ART;71213;ART71213;Zoos and Botanical Gardens
+ART;71219;ART71219;Nature Parks and Other Similar Institutions
+ART;71311;ART71311;Amusemenand Theme Parks
+ART;71312;ART71312;AmusemenArcades
+ART;71321;ART71321;Casinos (excepCasino Hotels)
+ART;71329;ART71329;Other Gambling Industries
+ART;71391;ART71391;Golf Courses and Country Clubs
+ART;71392;ART71392;Skiing Facilities
+ART;71393;ART71393;Marinas
+ART;71394;ART71394;Fitness and Recreational Sports Centers
+ART;71395;ART71395;Bowling Centers
+ART;71399;ART71399;All Other Amusemenand Recreation Industries
+ART;711110;ART711110;Theater Companies and Dinner Theaters 
+ART;711120;ART711120;Dance Companies 
+ART;711130;ART711130;Musical Groups and Artists 
+ART;711190;ART711190;Other Performing Arts Companies 
+ART;711211;ART711211;Sports Teams and Clubs 
+ART;711212;ART711212;Racetracks 
+ART;711219;ART711219;Other Spectator Sports 
+ART;711310;ART711310;Promoters of Performing Arts- Sports- and Similar Events with Facilities 
+ART;711320;ART711320;Promoters of Performing Arts- Sports- and Similar Events without Facilities 
+ART;711410;ART711410;Agents and Managers for Artists- Athletes- Entertainers- and Other Public Figures
+ART;711510;ART711510;Independent Artists- Writers- and Performers 
+ART;712110;ART712110;Museums 
+ART;712120;ART712120;Historical Sites
+ART;712130;ART712130;Zoos and Botanical Gardens 
+ART;712190;ART712190;Nature Parks and Other Similar Institutions
+ART;713110;ART713110;Amusement and Theme Parks 
+ART;713120;ART713120;Amusement Arcades
+ART;713210;ART713210;Casinos (except Casino Hotels)
+ART;713290;ART713290;Other Gambling Industries 
+ART;713910;ART713910;Golf Courses and Country Clubs
+ART;713920;ART713920;Skiing Facilities
+ART;713930;ART713930;Marinas
+ART;713940;ART713940;Fitness and Recreational Sports Centers 
+ART;713950;ART713950;Bowling Centers
+ART;713990;ART713990;All Other Amusement and Recreation Industries 
+ACC;721;ACC721;Accommodation
+ACC;722;ACC722;Food Services and Drinking Places
+ACC;7211;ACC7211;Traveler Accommodation
+ACC;7212;ACC7212;RV (Recreational Vehicle) Parks and Recreational Camps
+ACC;7213;ACC7213;Rooming and Boarding Houses- Dormitories- and Workers' Camps
+ACC;7223;ACC7223;Special Food Services
+ACC;7224;ACC7224;Drinking Places (Alcoholic Beverages)
+ACC;7225;ACC7225;Restaurants and Other Eating Places
+ACC;72111;ACC72111;Hotels (excepCasino Hotels) and Motels
+ACC;72112;ACC72112;Casino Hotels
+ACC;72119;ACC72119;Other Traveler Accommodation
+ACC;72121;ACC72121;RV (Recreational Vehicle) Parks and Recreational Camps
+ACC;72131;ACC72131;Rooming and Boarding Houses- Dormitories- and Workers' Camps
+ACC;72231;ACC72231;Food Service Contractors
+ACC;72232;ACC72232;Caterers
+ACC;72233;ACC72233;Mobile Food Services
+ACC;72241;ACC72241;Drinking Places (Alcoholic Beverages)
+ACC;72251;ACC72251;Restaurants and Other Eating Places
+ACC;721110;ACC721110;Hotels (except Casino Hotels) and Motels 
+ACC;721120;ACC721120;Casino Hotels
+ACC;721191;ACC721191;Bed-and-Breakfast Inns 
+ACC;721199;ACC721199;All Other Traveler Accommodation 
+ACC;721211;ACC721211;RV (Recreational Vehicle) Parks and Campgrounds 
+ACC;721214;ACC721214;Recreational and Vacation Camps (except Campgrounds) 
+ACC;721310;ACC721310;Rooming and Boarding Houses- Dormitories- and Workers' Camps 
+ACC;722310;ACC722310;Food Service Contractors
+ACC;722320;ACC722320;Caterers
+ACC;722330;ACC722330;Mobile Food Services
+ACC;722410;ACC722410;Drinking Places (Alcoholic Beverages) 
+ACC;722511;ACC722511;Full-Service Restaurants 
+ACC;722513;ACC722513;Limited-Service Restaurants 
+ACC;722514;ACC722514;Cafeterias- Grill Buffets- and Buffets 
+ACC;722515;ACC722515;Snack and Nonalcoholic Beverage Bars 
+OTH;811;OTH811;Repair and Maintenance
+OTH;812;OTH812;Personal and Laundry Services
+OTH;813;OTH813;Religious- Grantmaking- Civic- Professional- and Similar Organizations
+OTH;814;OTH814;Private Households
+OTH;8111;OTH8111;Automotive Repair and Maintenance
+OTH;8112;OTH8112;Electronic and Precision Equipment Repair and Maintenance
+OTH;8113;OTH8113;Commercial and Industrial Machinery and Equipment (except Automotive and Electronic) Repair and Maintenance
+OTH;8114;OTH8114;Personal and Household Goods Repair and Maintenance
+OTH;8121;OTH8121;Personal Care Services 
+OTH;8122;OTH8122;Death Care Services 
+OTH;8123;OTH8123;Drycleaning and Laundry Services 
+OTH;8129;OTH8129;Other Personal Services 
+OTH;8131;OTH8131;Religious Organizations 
+OTH;8132;OTH8132;Grantmaking and Giving Services 
+OTH;8133;OTH8133;Social Advocacy Organizations 
+OTH;8134;OTH8134;Civic and Social Organizations 
+OTH;8139;OTH8139;Business- Professional- Labor- Political- and Similar Organizations 
+OTH;8141;OTH8141;Private Households
+OTH;81111;OTH81111;Automotive Mechanical and Electrical Repair and Maintenance
+OTH;81112;OTH81112;Automotive Body- Paint- Interior- and Glass Repair
+OTH;81119;OTH81119;Other Automotive Repair and Maintenance
+OTH;81121;OTH81121;Electronic and Precision EquipmenRepair and Maintenance
+OTH;81131;OTH81131;Commercial and Industrial Machinery and Equipmen(excepAutomotive and Electronic) Repair and Maintenance
+OTH;81141;OTH81141;Home and Garden Equipmenand Appliance Repair and Maintenance
+OTH;81142;OTH81142;Reupholstery and Furniture Repair
+OTH;81143;OTH81143;Footwear and Leather Goods Repair
+OTH;81149;OTH81149;Other Personal and Household Goods Repair and Maintenance
+OTH;81211;OTH81211;Hair- Nail- and Skin Care Services 
+OTH;81219;OTH81219;Other Personal Care Services 
+OTH;81221;OTH81221;Funeral Homes and Funeral Services 
+OTH;81222;OTH81222;Cemeteries and Crematories 
+OTH;81231;OTH81231;Coin-Operated Laundries and Drycleaners 
+OTH;81232;OTH81232;Drycleaning and Laundry Services (except Coin-Operated) 
+OTH;81233;OTH81233;Linen and Uniform Supply 
+OTH;81291;OTH81291;Pet Care (except Veterinary) Services 
+OTH;81292;OTH81292;Photofinishing 
+OTH;81293;OTH81293;Parking Lots and Garages 
+OTH;81299;OTH81299;All Other Personal Services 
+OTH;81311;OTH81311;Religious Organizations 
+OTH;81321;OTH81321;Grantmaking and Giving Services 
+OTH;81331;OTH81331;Social Advocacy Organizations 
+OTH;81341;OTH81341;Civic and Social Organizations 
+OTH;81391;OTH81391;Business Associations 
+OTH;81392;OTH81392;Professional Organizations 
+OTH;81393;OTH81393;Labor Unions and Similar Labor Organizations 
+OTH;81394;OTH81394;Political Organizations 
+OTH;81399;OTH81399;Other Similar Organizations (except Business- Professional- Labor- and Political Organizations) 
+OTH;81411;OTH81411;Private HouseholdsT 
+OTH;811111;OTH811111;General Automotive Repair 
+OTH;811112;OTH811112;Automotive Exhaust System Repair 
+OTH;811113;OTH811113;Automotive Transmission Repair 
+OTH;811118;OTH811118;Other Automotive Mechanical and Electrical Repair and Maintenance 
+OTH;811121;OTH811121;Automotive Body- Paint- and Interior Repair and Maintenance 
+OTH;811122;OTH811122;Automotive Glass Replacement Shops 
+OTH;811191;OTH811191;Automotive Oil Change and Lubrication Shops 
+OTH;811192;OTH811192;Car Washes 
+OTH;811198;OTH811198;All Other Automotive Repair and Maintenance 
+OTH;811211;OTH811211;Consumer Electronics Repair and Maintenance 
+OTH;811212;OTH811212;Computer and Office Machine Repair and Maintenance 
+OTH;811213;OTH811213;Communication Equipment Repair and Maintenance 
+OTH;811219;OTH811219;Other Electronic and Precision Equipment Repair and Maintenance 
+OTH;811310;OTH811310;Commercial and Industrial Machinery and Equipment (except Automotive and Electronic) Repair and Maintenance 
+OTH;811411;OTH811411;Home and Garden Equipment Repair and Maintenance 
+OTH;811412;OTH811412;Appliance Repair and Maintenance 
+OTH;811420;OTH811420;Reupholstery and Furniture Repair
+OTH;811430;OTH811430;Footwear and Leather Goods Repair
+OTH;811490;OTH811490;Other Personal and Household Goods Repair and Maintenance 
+OTH;812111;OTH812111;Barber Shops 
+OTH;812112;OTH812112;Beauty Salons 
+OTH;812113;OTH812113;Nail Salons 
+OTH;812191;OTH812191;Diet and Weight Reducing Centers 
+OTH;812199;OTH812199;Other Personal Care Services 
+OTH;812210;OTH812210;Funeral Homes and Funeral Services 
+OTH;812220;OTH812220;Cemeteries and Crematories 
+OTH;812310;OTH812310;Coin-Operated Laundries and Drycleaners 
+OTH;812320;OTH812320;Drycleaning and Laundry Services (except Coin-Operated) 
+OTH;812331;OTH812331;Linen Supply 
+OTH;812332;OTH812332;Industrial Launderers 
+OTH;812910;OTH812910;Pet Care (except Veterinary) Services 
+OTH;812921;OTH812921;Photofinishing Laboratories (except One-Hour) 
+OTH;812922;OTH812922;One-Hour Photofinishing 
+OTH;812930;OTH812930;Parking Lots and Garages 
+OTH;812990;OTH812990;All Other Personal Services 
+OTH;813110;OTH813110;Religious Organizations 
+OTH;813211;OTH813211;Grantmaking Foundations 
+OTH;813212;OTH813212;Voluntary Health Organizations 
+OTH;813219;OTH813219;Other Grantmaking and Giving Services 
+OTH;813311;OTH813311;Human Rights Organizations 
+OTH;813312;OTH813312;Environment- Conservation and Wildlife Organizations 
+OTH;813319;OTH813319;Other Social Advocacy Organizations 
+OTH;813410;OTH813410;Civic and Social Organizations 
+OTH;813910;OTH813910;Business Associations 
+OTH;813920;OTH813920;Professional Organizations 
+OTH;813930;OTH813930;Labor Unions and Similar Labor Organizations 
+OTH;813940;OTH813940;Political Organizations 
+OTH;813990;OTH813990;Other Similar Organizations (except Business- Professional- Labor- and Political Organizations) 
+OTH;814110;OTH814110;Private Households
+PUB;921;PUB921;Executive- Legislative- and Other General Government Support 
+PUB;922;PUB922;Justice- Public Order- and Safety Activities 
+PUB;923;PUB923;Administration of Human Resource Programs 
+PUB;924;PUB924;Administration of Environmental Quality Programs 
+PUB;925;PUB925;Administration of Housing Programs- Urban Planning- and Community Development 
+PUB;926;PUB926;Administration of Economic Programs 
+PUB;927;PUB927;Space Research and Technology 
+PUB;928;PUB928;National Security and International Affairs 
+PUB;9211;PUB9211;Executive- Legislative- and Other General Government Support 
+PUB;9221;PUB9221;Justice- Public Order- and Safety Activities 
+PUB;9231;PUB9231;Administration of Human Resource Programs 
+PUB;9241;PUB9241;Administration of Environmental Quality Programs 
+PUB;9251;PUB9251;Administration of Housing Programs- Urban Planning- and Community Development 
+PUB;9261;PUB9261;Administration of Economic Programs 
+PUB;9271;PUB9271;Space Research and Technology 
+PUB;9281;PUB9281;National Security and International Affairs 
+PUB;92111;PUB92111;Executive Offices 
+PUB;92112;PUB92112;Legislative Bodies 
+PUB;92113;PUB92113;Public Finance Activities 
+PUB;92114;PUB92114;Executive and Legislative Offices- Combined 
+PUB;92115;PUB92115;American Indian and Alaska Native Tribal Governments 
+PUB;92119;PUB92119;Other General Government Support 
+PUB;92211;PUB92211;Courts 
+PUB;92212;PUB92212;Police Protection 
+PUB;92213;PUB92213;Legal Counsel and Prosecution 
+PUB;92214;PUB92214;Correctional Institutions 
+PUB;92215;PUB92215;Parole Offices and Probation Offices 
+PUB;92216;PUB92216;Fire Protection 
+PUB;92219;PUB92219;Other Justice- Public Order- and Safety Activities 
+PUB;92311;PUB92311;Administration of Education Programs 
+PUB;92312;PUB92312;Administration of Public Health Programs 
+PUB;92313;PUB92313;Administration of Human Resource Programs (except Education- Public Health- and Veterans' Affairs Programs) 
+PUB;92314;PUB92314;Administration of Veterans' Affairs 
+PUB;92411;PUB92411;Administration of Air and Water Resource and Solid Waste Management Programs 
+PUB;92412;PUB92412;Administration of Conservation Programs 
+PUB;92511;PUB92511;Administration of Housing Programs 
+PUB;92512;PUB92512;Administration of Urban Planning and Community and Rural Development 
+PUB;92611;PUB92611;Administration of General Economic Programs 
+PUB;92612;PUB92612;Regulation and Administration of Transportation Programs 
+PUB;92613;PUB92613;Regulation and Administration of Communications- Electric- Gas- and Other Utilities 
+PUB;92614;PUB92614;Regulation of Agricultural Marketing and Commodities 
+PUB;92615;PUB92615;Regulation- Licensing- and Inspection of Miscellaneous Commercial Sectors 
+PUB;92711;PUB92711;Space Research and Technology 
+PUB;92811;PUB92811;National Security 
+PUB;92812;PUB92812;International Affairs 
+PUB;921110;PUB921110;Executive Offices 
+PUB;921120;PUB921120;Legislative Bodies 
+PUB;921130;PUB921130;Public Finance Activities 
+PUB;921140;PUB921140;Executive and Legislative Offices- Combined 
+PUB;921150;PUB921150;American Indian and Alaska Native Tribal Governments 
+PUB;921190;PUB921190;Other General Government Support 
+PUB;922110;PUB922110;Courts 
+PUB;922120;PUB922120;Police Protection 
+PUB;922130;PUB922130;Legal Counsel and Prosecution 
+PUB;922140;PUB922140;Correctional Institutions 
+PUB;922150;PUB922150;Parole Offices and Probation Offices 
+PUB;922160;PUB922160;Fire Protection 
+PUB;922190;PUB922190;Other Justice- Public Order- and Safety Activities 
+PUB;923110;PUB923110;Administration of Education Programs 
+PUB;923120;PUB923120;Administration of Public Health Programs 
+PUB;923130;PUB923130;Administration of Human Resource Programs (except Education- Public Health- and Veterans' Affairs Programs) 
+PUB;923140;PUB923140;Administration of Veterans' Affairs 
+PUB;924110;PUB924110;Administration of Air and Water Resource and Solid Waste Management Programs 
+PUB;924120;PUB924120;Administration of Conservation Programs 
+PUB;925110;PUB925110;Administration of Housing Programs 
+PUB;925120;PUB925120;Administration of Urban Planning and Community and Rural Development 
+PUB;926110;PUB926110;Administration of General Economic Programs 
+PUB;926120;PUB926120;Regulation and Administration of Transportation Programs 
+PUB;926130;PUB926130;Regulation and Administration of Communications- Electric- Gas- and Other Utilities 
+PUB;926140;PUB926140;Regulation of Agricultural Marketing and Commodities 
+PUB;926150;PUB926150;Regulation- Licensing- and Inspection of Miscellaneous Commercial Sectors 
+PUB;927110;PUB927110;Space Research and Technology 
+PUB;928110;PUB928110;National Security 
+PUB;928120;PUB928120;International Affairs 
+MAN;311;MAN311;Food Manufacturing
+MAN;312;MAN312;Beverage and Tobacco ProducManufacturing
+MAN;313;MAN313;Textile Mills
+MAN;314;MAN314;Textile ProducMills
+MAN;315;MAN315;Apparel Manufacturing
+MAN;316;MAN316;Leather and Allied ProducManufacturing
+MAN;321;MAN321;Wood ProducManufacturing
+MAN;322;MAN322;Paper Manufacturing
+MAN;323;MAN323;Printing and Related SupporActivities
+MAN;324;MAN324;Petroleum and Coal Products Manufacturing
+MAN;325;MAN325;Chemical Manufacturing
+MAN;326;MAN326;Plastics and Rubber Products Manufacturing
+MAN;327;MAN327;Nonmetallic Mineral ProducManufacturing
+MAN;331;MAN331;Primary Metal Manufacturing
+MAN;332;MAN332;Fabricated Metal ProducManufacturing
+MAN;333;MAN333;Machinery Manufacturing
+MAN;334;MAN334;Computer and Electronic ProducManufacturing
+MAN;335;MAN335;Electrical Equipment- Appliance- and ComponenManufacturing
+MAN;336;MAN336;Transportation EquipmenManufacturing
+MAN;337;MAN337;Furniture and Related ProducManufacturing
+MAN;339;MAN339;Miscellaneous Manufacturing
+MAN;3111;MAN3111;Animal Food Manufacturing
+MAN;3112;MAN3112;Grain and Oilseed Milling
+MAN;3113;MAN3113;Sugar and Confectionery ProducManufacturing
+MAN;3114;MAN3114;Fruiand Vegetable Preserving and Specialty Food Manufacturing
+MAN;3115;MAN3115;Dairy ProducManufacturing
+MAN;3116;MAN3116;Animal Slaughtering and Processing
+MAN;3117;MAN3117;Seafood ProducPreparation and Packaging
+MAN;3118;MAN3118;Bakeries and Tortilla Manufacturing
+MAN;3119;MAN3119;Other Food Manufacturing
+MAN;3121;MAN3121;Beverage Manufacturing
+MAN;3122;MAN3122;Tobacco Manufacturing
+MAN;3131;MAN3131;Fiber- Yarn- and Thread Mills
+MAN;3132;MAN3132;Fabric Mills
+MAN;3133;MAN3133;Textile and Fabric Finishing and Fabric Coating Mills
+MAN;3141;MAN3141;Textile Furnishings Mills
+MAN;3149;MAN3149;Other Textile ProducMills
+MAN;3151;MAN3151;Apparel Knitting Mills
+MAN;3152;MAN3152;Cuand Sew Apparel Manufacturing
+MAN;3159;MAN3159;Apparel Accessories and Other Apparel Manufacturing
+MAN;3161;MAN3161;Leather and Hide Tanning and Finishing
+MAN;3162;MAN3162;Footwear Manufacturing
+MAN;3169;MAN3169;Other Leather and Allied ProducManufacturing
+MAN;3211;MAN3211;Sawmills and Wood Preservation
+MAN;3212;MAN3212;Veneer- Plywood- and Engineered Wood ProducManufacturing
+MAN;3219;MAN3219;Other Wood ProducManufacturing
+MAN;3221;MAN3221;Pulp- Paper- and Paperboard Mills
+MAN;3222;MAN3222;Converted Paper ProducManufacturing
+MAN;3231;MAN3231;Printing and Related SupporActivities
+MAN;3241;MAN3241;Petroleum and Coal Products Manufacturing
+MAN;3251;MAN3251;Basic Chemical Manufacturing
+MAN;3252;MAN3252;Resin- Synthetic Rubber- and Artificial and Synthetic Fibers and Filaments Manufacturing
+MAN;3253;MAN3253;Pesticide- Fertilizer- and Other Agricultural Chemical Manufacturing
+MAN;3254;MAN3254;Pharmaceutical and Medicine Manufacturing
+MAN;3255;MAN3255;Paint- Coating- and Adhesive Manufacturing
+MAN;3256;MAN3256;Soap- Cleaning Compound- and ToilePreparation Manufacturing
+MAN;3259;MAN3259;Other Chemical Producand Preparation Manufacturing
+MAN;3261;MAN3261;Plastics ProducManufacturing
+MAN;3262;MAN3262;Rubber ProducManufacturing
+MAN;3271;MAN3271;Clay Producand Refractory Manufacturing
+MAN;3272;MAN3272;Glass and Glass ProducManufacturing
+MAN;3273;MAN3273;Cemenand Concrete ProducManufacturing
+MAN;3274;MAN3274;Lime and Gypsum ProducManufacturing
+MAN;3279;MAN3279;Other Nonmetallic Mineral ProducManufacturing
+MAN;3311;MAN3311;Iron and Steel Mills and Ferroalloy Manufacturing
+MAN;3312;MAN3312;Steel ProducManufacturing from Purchased Steel
+MAN;3313;MAN3313;Alumina and Aluminum Production and Processing
+MAN;3314;MAN3314;Nonferrous Metal (excepAluminum) Production and Processing
+MAN;3315;MAN3315;Foundries
+MAN;3321;MAN3321;Forging and Stamping
+MAN;3322;MAN3322;Cutlery and Handtool Manufacturing
+MAN;3323;MAN3323;Architectural and Structural Metals Manufacturing
+MAN;3324;MAN3324;Boiler- Tank- and Shipping Container Manufacturing
+MAN;3325;MAN3325;Hardware Manufacturing
+MAN;3326;MAN3326;Spring and Wire ProducManufacturing
+MAN;3327;MAN3327;Machine Shops; Turned Product; and Screw- Nut- and BolManufacturing
+MAN;3328;MAN3328;Coating- Engraving- HeaTreating- and Allied Activities
+MAN;3329;MAN3329;Other Fabricated Metal ProducManufacturing
+MAN;3331;MAN3331;Agriculture- Construction- and Mining Machinery Manufacturing
+MAN;3332;MAN3332;Industrial Machinery Manufacturing
+MAN;3333;MAN3333;Commercial and Service Industry Machinery Manufacturing
+MAN;3334;MAN3334;Ventilation- Heating- Air-Conditioning- and Commercial Refrigeration EquipmenManufacturing
+MAN;3335;MAN3335;Metalworking Machinery Manufacturing
+MAN;3336;MAN3336;Engine- Turbine- and Power Transmission EquipmenManufacturing
+MAN;3339;MAN3339;Other General Purpose Machinery Manufacturing
+MAN;3341;MAN3341;Computer and Peripheral EquipmenManufacturing
+MAN;3342;MAN3342;Communications EquipmenManufacturing
+MAN;3343;MAN3343;Audio and Video EquipmenManufacturing
+MAN;3344;MAN3344;Semiconductor and Other Electronic ComponenManufacturing
+MAN;3345;MAN3345;Navigational- Measuring- Electromedical- and Control Instruments Manufacturing
+MAN;3346;MAN3346;Manufacturing and Reproducing Magnetic and Optical Media
+MAN;3351;MAN3351;Electric Lighting EquipmenManufacturing
+MAN;3352;MAN3352;Household Appliance Manufacturing
+MAN;3353;MAN3353;Electrical EquipmenManufacturing
+MAN;3359;MAN3359;Other Electrical Equipmenand ComponenManufacturing
+MAN;3361;MAN3361;Motor Vehicle Manufacturing
+MAN;3362;MAN3362;Motor Vehicle Body and Trailer Manufacturing
+MAN;3363;MAN3363;Motor Vehicle Parts Manufacturing
+MAN;3364;MAN3364;Aerospace Producand Parts Manufacturing
+MAN;3365;MAN3365;Railroad Rolling Stock Manufacturing
+MAN;3366;MAN3366;Ship and BoaBuilding
+MAN;3369;MAN3369;Other Transportation EquipmenManufacturing
+MAN;3371;MAN3371;Household and Institutional Furniture and Kitchen CabineManufacturing
+MAN;3372;MAN3372;Office Furniture (including Fixtures) Manufacturing
+MAN;3379;MAN3379;Other Furniture Related ProducManufacturing
+MAN;3391;MAN3391;Medical Equipmenand Supplies Manufacturing
+MAN;3399;MAN3399;Other Miscellaneous Manufacturing
+MAN;31111;MAN31111;Animal Food Manufacturing
+MAN;31121;MAN31121;Flour Milling and MalManufacturing
+MAN;31122;MAN31122;Starch and Vegetable Fats and Oils Manufacturing
+MAN;31123;MAN31123;BreakfasCereal Manufacturing
+MAN;31131;MAN31131;Sugar Manufacturing
+MAN;31134;MAN31134;Nonchocolate Confectionery Manufacturing
+MAN;31135;MAN31135;Chocolate and Confectionery Manufacturing
+MAN;31141;MAN31141;Frozen Food Manufacturing
+MAN;31142;MAN31142;Fruiand Vegetable Canning- Pickling- and Drying
+MAN;31151;MAN31151;Dairy Produc(excepFrozen) Manufacturing
+MAN;31152;MAN31152;Ice Cream and Frozen DesserManufacturing
+MAN;31161;MAN31161;Animal Slaughtering and Processing
+MAN;31171;MAN31171;Seafood ProducPreparation and Packaging
+MAN;31181;MAN31181;Bread and Bakery ProducManufacturing
+MAN;31182;MAN31182;Cookie- Cracker- and Pasta Manufacturing
+MAN;31183;MAN31183;Tortilla Manufacturing
+MAN;31191;MAN31191;Snack Food Manufacturing
+MAN;31192;MAN31192;Coffee and Tea Manufacturing
+MAN;31193;MAN31193;Flavoring Syrup and Concentrate Manufacturing
+MAN;31194;MAN31194;Seasoning and Dressing Manufacturing
+MAN;31199;MAN31199;All Other Food Manufacturing
+MAN;31211;MAN31211;SofDrink and Ice Manufacturing
+MAN;31212;MAN31212;Breweries
+MAN;31213;MAN31213;Wineries
+MAN;31214;MAN31214;Distilleries
+MAN;31223;MAN31223;Tobacco Manufacturing
+MAN;31311;MAN31311;Fiber- Yarn- and Thread Mills
+MAN;31321;MAN31321;Broadwoven Fabric Mills
+MAN;31322;MAN31322;Narrow Fabric Mills and Schiffli Machine Embroidery
+MAN;31323;MAN31323;Nonwoven Fabric Mills
+MAN;31324;MAN31324;KniFabric Mills
+MAN;31331;MAN31331;Textile and Fabric Finishing Mills
+MAN;31332;MAN31332;Fabric Coating Mills
+MAN;31411;MAN31411;Carpeand Rug Mills
+MAN;31412;MAN31412;Curtain and Linen Mills
+MAN;31491;MAN31491;Textile Bag and Canvas Mills
+MAN;31499;MAN31499;All Other Textile ProducMills
+MAN;31511;MAN31511;Hosiery and Sock Mills
+MAN;31519;MAN31519;Other Apparel Knitting Mills
+MAN;31521;MAN31521;Cut and Sew Apparel Contractors 
+MAN;31522;MAN31522;Men’s and Boys’ Cut and Sew Apparel Manufacturing 
+MAN;31524;MAN31524;Women’s- Girls’- and Infants’ Cut and Sew Apparel Manufacturing
+MAN;31528;MAN31528;Other Cut and Sew Apparel Manufacturing 
+MAN;31599;MAN31599;Apparel Accessories and Other Apparel Manufacturing
+MAN;31611;MAN31611;Leather and Hide Tanning and Finishing
+MAN;31621;MAN31621;Footwear Manufacturing
+MAN;31699;MAN31699;Other Leather and Allied ProducManufacturing
+MAN;32111;MAN32111;Sawmills and Wood Preservation
+MAN;32121;MAN32121;Veneer- Plywood- and Engineered Wood ProducManufacturing
+MAN;32191;MAN32191;Millwork
+MAN;32192;MAN32192;Wood Container and PalleManufacturing
+MAN;32199;MAN32199;All Other Wood ProducManufacturing
+MAN;32211;MAN32211;Pulp Mills
+MAN;32212;MAN32212;Paper Mills
+MAN;32213;MAN32213;Paperboard Mills
+MAN;32221;MAN32221;Paperboard Container Manufacturing
+MAN;32222;MAN32222;Paper Bag and Coated and Treated Paper Manufacturing
+MAN;32223;MAN32223;Stationery ProducManufacturing
+MAN;32229;MAN32229;Other Converted Paper ProducManufacturing
+MAN;32311;MAN32311;Printing
+MAN;32312;MAN32312;SupporActivities for Printing
+MAN;32411;MAN32411;Petroleum Refineries
+MAN;32412;MAN32412;AsphalPaving- Roofing- and Saturated Materials Manufacturing
+MAN;32419;MAN32419;Other Petroleum and Coal Products Manufacturing
+MAN;32511;MAN32511;Petrochemical Manufacturing
+MAN;32512;MAN32512;Industrial Gas Manufacturing
+MAN;32513;MAN32513;Synthetic Dye and PigmenManufacturing
+MAN;32518;MAN32518;Other Basic Inorganic Chemical Manufacturing
+MAN;32519;MAN32519;Other Basic Organic Chemical Manufacturing
+MAN;32521;MAN32521;Resin and Synthetic Rubber Manufacturing
+MAN;32522;MAN32522;Artificial and Synthetic Fibers and Filaments Manufacturing
+MAN;32531;MAN32531;Fertilizer Manufacturing
+MAN;32532;MAN32532;Pesticide and Other Agricultural Chemical Manufacturing
+MAN;32541;MAN32541;Pharmaceutical and Medicine Manufacturing
+MAN;32551;MAN32551;Painand Coating Manufacturing
+MAN;32552;MAN32552;Adhesive Manufacturing
+MAN;32561;MAN32561;Soap and Cleaning Compound Manufacturing
+MAN;32562;MAN32562;ToilePreparation Manufacturing
+MAN;32591;MAN32591;Printing Ink Manufacturing
+MAN;32592;MAN32592;Explosives Manufacturing
+MAN;32599;MAN32599;All Other Chemical Producand Preparation Manufacturing
+MAN;32611;MAN32611;Plastics Packaging Materials and Unlaminated Film and SheeManufacturing
+MAN;32612;MAN32612;Plastics Pipe- Pipe Fitting- and Unlaminated Profile Shape Manufacturing
+MAN;32613;MAN32613;Laminated Plastics Plate- Shee(excepPackaging)- and Shape Manufacturing
+MAN;32614;MAN32614;Polystyrene Foam ProducManufacturing
+MAN;32615;MAN32615;Urethane and Other Foam Produc(excepPolystyrene) Manufacturing
+MAN;32616;MAN32616;Plastics Bottle Manufacturing
+MAN;32619;MAN32619;Other Plastics ProducManufacturing
+MAN;32621;MAN32621;Tire Manufacturing
+MAN;32622;MAN32622;Rubber and Plastics Hoses and Belting Manufacturing
+MAN;32629;MAN32629;Other Rubber ProducManufacturing
+MAN;32711;MAN32711;Pottery- Ceramics- and Plumbing Fixture Manufacturing
+MAN;32712;MAN32712;Clay Building Material and Refractories Manufacturing
+MAN;32721;MAN32721;Glass and Glass ProducManufacturing
+MAN;32731;MAN32731;CemenManufacturing
+MAN;32732;MAN32732;Ready-Mix Concrete Manufacturing
+MAN;32733;MAN32733;Concrete Pipe- Brick- and Block Manufacturing
+MAN;32739;MAN32739;Other Concrete ProducManufacturing
+MAN;32741;MAN32741;Lime Manufacturing
+MAN;32742;MAN32742;Gypsum ProducManufacturing
+MAN;32791;MAN32791;Abrasive ProducManufacturing
+MAN;32799;MAN32799;All Other Nonmetallic Mineral ProducManufacturing
+MAN;33111;MAN33111;Iron and Steel Mills and Ferroalloy Manufacturing
+MAN;33121;MAN33121;Iron and Steel Pipe and Tube Manufacturing from Purchased Steel
+MAN;33122;MAN33122;Rolling and Drawing of Purchased Steel
+MAN;33131;MAN33131;Alumina and Aluminum Production and Processing
+MAN;33141;MAN33141;Nonferrous Metal (excepAluminum) Smelting and Refining
+MAN;33142;MAN33142;Copper Rolling- Drawing- Extruding- and Alloying
+MAN;33149;MAN33149;Nonferrous Metal (excepCopper and Aluminum) Rolling- Drawing- Extruding- and Alloying
+MAN;33151;MAN33151;Ferrous Metal Foundries
+MAN;33152;MAN33152;Nonferrous Metal Foundries
+MAN;33211;MAN33211;Forging and Stamping
+MAN;33221;MAN33221;Cutlery and Handtool Manufacturing
+MAN;33231;MAN33231;Plate Work and Fabricated Structural ProducManufacturing
+MAN;33232;MAN33232;Ornamental and Architectural Metal Products Manufacturing
+MAN;33241;MAN33241;Power Boiler and HeaExchanger Manufacturing
+MAN;33242;MAN33242;Metal Tank (Heavy Gauge) Manufacturing
+MAN;33243;MAN33243;Metal Can- Box- and Other Metal Container (LighGauge) Manufacturing
+MAN;33251;MAN33251;Hardware Manufacturing
+MAN;33261;MAN33261;Spring and Wire ProducManufacturing
+MAN;33271;MAN33271;Machine Shops
+MAN;33272;MAN33272;Turned Producand Screw- Nut- and BolManufacturing
+MAN;33281;MAN33281;Coating- Engraving- HeaTreating- and Allied Activities
+MAN;33291;MAN33291;Metal Valve Manufacturing
+MAN;33299;MAN33299;All Other Fabricated Metal ProducManufacturing
+MAN;33311;MAN33311;Agricultural ImplemenManufacturing
+MAN;33312;MAN33312;Construction Machinery Manufacturing
+MAN;33313;MAN33313;Mining and Oil and Gas Field Machinery Manufacturing
+MAN;33324;MAN33324;Industrial Machinery Manufacturing
+MAN;33331;MAN33331;Commercial and Service Industry Machinery Manufacturing
+MAN;33341;MAN33341;Ventilation- Heating- Air-Conditioning- and Commercial Refrigeration EquipmenManufacturing
+MAN;33351;MAN33351;Metalworking Machinery Manufacturing
+MAN;33361;MAN33361;Engine- Turbine- and Power Transmission EquipmenManufacturing
+MAN;33391;MAN33391;Pump and Compressor Manufacturing
+MAN;33392;MAN33392;Material Handling EquipmenManufacturing
+MAN;33399;MAN33399;All Other General Purpose Machinery Manufacturing
+MAN;33411;MAN33411;Computer and Peripheral EquipmenManufacturing
+MAN;33421;MAN33421;Telephone Apparatus Manufacturing
+MAN;33422;MAN33422;Radio and Television Broadcasting and Wireless Communications EquipmenManufacturing
+MAN;33429;MAN33429;Other Communications EquipmenManufacturing
+MAN;33431;MAN33431;Audio and Video EquipmenManufacturing
+MAN;33441;MAN33441;Semiconductor and Other Electronic ComponenManufacturing
+MAN;33451;MAN33451;Navigational- Measuring- Electromedical- and Control Instruments Manufacturing
+MAN;33461;MAN33461;Manufacturing and Reproducing Magnetic and Optical Media
+MAN;33511;MAN33511;Electric Lamp Bulb and ParManufacturing
+MAN;33512;MAN33512;Lighting Fixture Manufacturing
+MAN;33521;MAN33521;Small Electrical Appliance Manufacturing
+MAN;33522;MAN33522;Major Household Appliance Manufacturing
+MAN;33531;MAN33531;Electrical EquipmenManufacturing
+MAN;33591;MAN33591;Battery Manufacturing
+MAN;33592;MAN33592;Communication and Energy Wire and Cable Manufacturing
+MAN;33593;MAN33593;Wiring Device Manufacturing
+MAN;33599;MAN33599;All Other Electrical Equipmenand ComponenManufacturing
+MAN;33611;MAN33611;Automobile and LighDuty Motor Vehicle Manufacturing
+MAN;33612;MAN33612;Heavy Duty Truck Manufacturing
+MAN;33621;MAN33621;Motor Vehicle Body and Trailer Manufacturing
+MAN;33631;MAN33631;Motor Vehicle Gasoline Engine and Engine Parts Manufacturing
+MAN;33632;MAN33632;Motor Vehicle Electrical and Electronic EquipmenManufacturing
+MAN;33633;MAN33633;Motor Vehicle Steering and Suspension Components (excepSpring) Manufacturing
+MAN;33634;MAN33634;Motor Vehicle Brake System Manufacturing
+MAN;33635;MAN33635;Motor Vehicle Transmission and Power Train Parts Manufacturing
+MAN;33636;MAN33636;Motor Vehicle Seating and Interior Trim Manufacturing
+MAN;33637;MAN33637;Motor Vehicle Metal Stamping
+MAN;33639;MAN33639;Other Motor Vehicle Parts Manufacturing
+MAN;33641;MAN33641;Aerospace Producand Parts Manufacturing
+MAN;33651;MAN33651;Railroad Rolling Stock Manufacturing
+MAN;33661;MAN33661;Ship and BoaBuilding
+MAN;33699;MAN33699;Other Transportation EquipmenManufacturing
+MAN;33711;MAN33711;Wood Kitchen Cabineand Countertop Manufacturing
+MAN;33712;MAN33712;Household and Institutional Furniture Manufacturing
+MAN;33721;MAN33721;Office Furniture (including Fixtures) Manufacturing
+MAN;33791;MAN33791;Mattress Manufacturing
+MAN;33792;MAN33792;Blind and Shade Manufacturing
+MAN;33911;MAN33911;Medical Equipmenand Supplies Manufacturing
+MAN;33991;MAN33991;Jewelry and Silverware Manufacturing
+MAN;33992;MAN33992;Sporting and Athletic Goods Manufacturing
+MAN;33993;MAN33993;Doll- Toy- and Game Manufacturing
+MAN;33994;MAN33994;Office Supplies (excepPaper) Manufacturing
+MAN;33995;MAN33995;Sign Manufacturing
+MAN;33999;MAN33999;All Other Miscellaneous Manufacturing
+MAN;311111;MAN311111;Dog and Cat Food Manufacturing 
+MAN;311119;MAN311119;Other Animal Food Manufacturing 
+MAN;311211;MAN311211;Flour Milling 
+MAN;311212;MAN311212;Rice Milling 
+MAN;311213;MAN311213;Malt Manufacturing 
+MAN;311221;MAN311221;Wet Corn Milling 
+MAN;311224;MAN311224;Soybean and Other Oilseed Processing 
+MAN;311225;MAN311225;Fats and Oils Refining and Blending 
+MAN;311230;MAN311230;Breakfast Cereal Manufacturing
+MAN;311313;MAN311313;Beet Sugar Manufacturing 
+MAN;311314;MAN311314;Cane Sugar Manufacturing 
+MAN;311340;MAN311340;Nonchocolate Confectionery Manufacturing
+MAN;311351;MAN311351;Chocolate and Confectionery Manufacturing from Cacao Beans 
+MAN;311352;MAN311352;Confectionery Manufacturing from Purchased Chocolate 
+MAN;311411;MAN311411;Frozen Fruit- Juice- and Vegetable Manufacturing 
+MAN;311412;MAN311412;Frozen Specialty Food Manufacturing 
+MAN;311421;MAN311421;Fruit and Vegetable Canning 
+MAN;311422;MAN311422;Specialty Canning 
+MAN;311423;MAN311423;Dried and Dehydrated Food Manufacturing 
+MAN;311511;MAN311511;Fluid Milk Manufacturing 
+MAN;311512;MAN311512;Creamery Butter Manufacturing 
+MAN;311513;MAN311513;Cheese Manufacturing 
+MAN;311514;MAN311514;Dry- Condensed- and Evaporated Dairy Product Manufacturing 
+MAN;311520;MAN311520;Ice Cream and Frozen Dessert Manufacturing
+MAN;311611;MAN311611;Animal (except Poultry) Slaughtering 
+MAN;311612;MAN311612;Meat Processed from Carcasses 
+MAN;311613;MAN311613;Rendering and Meat Byproduct Processing 
+MAN;311615;MAN311615;Poultry Processing 
+MAN;311710;MAN311710;Seafood Product Preparation and Packaging
+MAN;311811;MAN311811;Retail Bakeries 
+MAN;311812;MAN311812;Commercial Bakeries 
+MAN;311813;MAN311813;Frozen Cakes- Pies- and Other Pastries Manufacturing 
+MAN;311821;MAN311821;Cookie and Cracker Manufacturing 
+MAN;311824;MAN311824;Dry Pasta- Dough- and Flour Mixes Manufacturing from Purchased Flour 
+MAN;311830;MAN311830;Tortilla Manufacturing
+MAN;311911;MAN311911;Roasted Nuts and Peanut Butter Manufacturing 
+MAN;311919;MAN311919;Other Snack Food Manufacturing 
+MAN;311920;MAN311920;Coffee and Tea Manufacturing 
+MAN;311930;MAN311930;Flavoring Syrup and Concentrate Manufacturing
+MAN;311941;MAN311941;Mayonnaise- Dressing- and Other Prepared Sauce Manufacturing 
+MAN;311942;MAN311942;Spice and Extract Manufacturing 
+MAN;311991;MAN311991;Perishable Prepared Food Manufacturing 
+MAN;311999;MAN311999;All Other Miscellaneous Food Manufacturing 
+MAN;312111;MAN312111;Soft Drink Manufacturing 
+MAN;312112;MAN312112;Bottled Water Manufacturing 
+MAN;312113;MAN312113;Ice Manufacturing 
+MAN;312120;MAN312120;Breweries
+MAN;312130;MAN312130;Wineries 
+MAN;312140;MAN312140;Distilleries 
+MAN;312230;MAN312230;Tobacco Manufacturing 
+MAN;313110;MAN313110;Fiber- Yarn- and Thread Mills 
+MAN;313210;MAN313210;Broadwoven Fabric Mills
+MAN;313220;MAN313220;Narrow Fabric Mills and Schiffli Machine Embroidery
+MAN;313230;MAN313230;Nonwoven Fabric Mills
+MAN;313240;MAN313240;Knit Fabric Mills
+MAN;313310;MAN313310;Textile and Fabric Finishing Mills 
+MAN;313320;MAN313320;Fabric Coating Mills
+MAN;314110;MAN314110;Carpet and Rug Mills
+MAN;314120;MAN314120;Curtain and Linen Mills
+MAN;314910;MAN314910;Textile Bag and Canvas Mills 
+MAN;314994;MAN314994;Rope- Cordage- Twine- Tire Cord- and Tire Fabric Mills 
+MAN;314999;MAN314999;All Other Miscellaneous Textile Product Mills 
+MAN;315110;MAN315110;Hosiery and Sock Mills
+MAN;315190;MAN315190;Other Apparel Knitting Mills 
+MAN;315210;MAN315210;Cut and Sew Apparel Contractors 
+MAN;315220;MAN315220;Men’s and Boys’ Cut and Sew Apparel Manufacturing 
+MAN;315240;MAN315240;Women’s- Girls’- and Infants’ Cut and Sew Apparel Manufacturing 
+MAN;315280;MAN315280;Other Cut and Sew Apparel Manufacturing 
+MAN;315990;MAN315990;Apparel Accessories and Other Apparel Manufacturing 
+MAN;316110;MAN316110;Leather and Hide Tanning and Finishing
+MAN;316210;MAN316210;Footwear Manufacturing 
+MAN;316992;MAN316992;Women's Handbag and Purse Manufacturing 
+MAN;316998;MAN316998;All Other Leather Good and Allied Product Manufacturing 
+MAN;321113;MAN321113;Sawmills 
+MAN;321114;MAN321114;Wood Preservation 
+MAN;321211;MAN321211;Hardwood Veneer and Plywood Manufacturing 
+MAN;321212;MAN321212;Softwood Veneer and Plywood Manufacturing 
+MAN;321213;MAN321213;Engineered Wood Member (except Truss) Manufacturing 
+MAN;321214;MAN321214;Truss Manufacturing 
+MAN;321219;MAN321219;Reconstituted Wood Product Manufacturing 
+MAN;321911;MAN321911;Wood Window and Door Manufacturing 
+MAN;321912;MAN321912;Cut Stock- Resawing Lumber- and Planing 
+MAN;321918;MAN321918;Other Millwork (including Flooring) 
+MAN;321920;MAN321920;Wood Container and Pallet Manufacturing
+MAN;321991;MAN321991;Manufactured Home (Mobile Home) Manufacturing 
+MAN;321992;MAN321992;Prefabricated Wood Building Manufacturing 
+MAN;321999;MAN321999;All Other Miscellaneous Wood Product Manufacturing 
+MAN;322110;MAN322110;Pulp Mills 
+MAN;322121;MAN322121;Paper (except Newsprint) Mills 
+MAN;322122;MAN322122;Newsprint Mills 
+MAN;322130;MAN322130;Paperboard Mills 
+MAN;322211;MAN322211;Corrugated and Solid Fiber Box Manufacturing 
+MAN;322212;MAN322212;Folding Paperboard Box Manufacturing 
+MAN;322219;MAN322219;Other Paperboard Container Manufacturing 
+MAN;322220;MAN322220;Paper Bag and Coated and Treated Paper Manufacturing
+MAN;322230;MAN322230;Stationery Product Manufacturing
+MAN;322291;MAN322291;Sanitary Paper Product Manufacturing 
+MAN;322299;MAN322299;All Other Converted Paper Product Manufacturing 
+MAN;323111;MAN323111;Commercial Printing (except Screen and Books) 
+MAN;323113;MAN323113;Commercial Screen Printing 
+MAN;323117;MAN323117;Books Printing 
+MAN;323120;MAN323120;Support Activities for Printing
+MAN;324110;MAN324110;Petroleum Refineries
+MAN;324121;MAN324121;Asphalt Paving Mixture and Block Manufacturing 
+MAN;324122;MAN324122;Asphalt Shingle and Coating Materials Manufacturing 
+MAN;324191;MAN324191;Petroleum Lubricating Oil and Grease Manufacturing 
+MAN;324199;MAN324199;All Other Petroleum and Coal Products Manufacturing 
+MAN;325110;MAN325110;Petrochemical Manufacturing
+MAN;325120;MAN325120;Industrial Gas Manufacturing
+MAN;325130;MAN325130;Synthetic Dye and Pigment Manufacturing
+MAN;325180;MAN325180;Other Basic Inorganic Chemical Manufacturing 
+MAN;325193;MAN325193;Ethyl Alcohol Manufacturing 
+MAN;325194;MAN325194;Cyclic Crude- Intermediate- and Gum and Wood Chemical Manufacturing 
+MAN;325199;MAN325199;All Other Basic Organic Chemical Manufacturing 
+MAN;325211;MAN325211;Plastics Material and Resin Manufacturing 
+MAN;325212;MAN325212;Synthetic Rubber Manufacturing 
+MAN;325220;MAN325220;Artificial and Synthetic Fibers and Filaments Manufacturing
+MAN;325311;MAN325311;Nitrogenous Fertilizer Manufacturing 
+MAN;325312;MAN325312;Phosphatic Fertilizer Manufacturing 
+MAN;325314;MAN325314;Fertilizer (Mixing Only) Manufacturing 
+MAN;325320;MAN325320;Pesticide and Other Agricultural Chemical Manufacturing
+MAN;325411;MAN325411;Medicinal and Botanical Manufacturing 
+MAN;325412;MAN325412;Pharmaceutical Preparation Manufacturing 
+MAN;325413;MAN325413;In-Vitro Diagnostic Substance Manufacturing 
+MAN;325414;MAN325414;Biological Product (except Diagnostic) Manufacturing 
+MAN;325510;MAN325510;Paint and Coating Manufacturing
+MAN;325520;MAN325520;Adhesive Manufacturing
+MAN;325611;MAN325611;Soap and Other Detergent Manufacturing 
+MAN;325612;MAN325612;Polish and Other Sanitation Good Manufacturing 
+MAN;325613;MAN325613;Surface Active Agent Manufacturing 
+MAN;325620;MAN325620;Toilet Preparation Manufacturing
+MAN;325910;MAN325910;Printing Ink Manufacturing
+MAN;325920;MAN325920;Explosives Manufacturing
+MAN;325991;MAN325991;Custom Compounding of Purchased Resins 
+MAN;325992;MAN325992;Photographic Film- Paper- Plate- and Chemical Manufacturing 
+MAN;325998;MAN325998;All Other Miscellaneous Chemical Product and Preparation Manufacturing 
+MAN;326111;MAN326111;Plastics Bag and Pouch Manufacturing 
+MAN;326112;MAN326112;Plastics Packaging Film and Sheet (including Laminated) Manufacturing 
+MAN;326113;MAN326113;Unlaminated Plastics Film and Sheet (except Packaging) Manufacturing 
+MAN;326121;MAN326121;Unlaminated Plastics Profile Shape Manufacturing 
+MAN;326122;MAN326122;Plastics Pipe and Pipe Fitting Manufacturing 
+MAN;326130;MAN326130;Laminated Plastics Plate- Sheet (except Packaging)- and Shape Manufacturing
+MAN;326140;MAN326140;Polystyrene Foam Product Manufacturing
+MAN;326150;MAN326150;Urethane and Other Foam Product (except Polystyrene) Manufacturing
+MAN;326160;MAN326160;Plastics Bottle Manufacturing
+MAN;326191;MAN326191;Plastics Plumbing Fixture Manufacturing 
+MAN;326199;MAN326199;All Other Plastics Product Manufacturing 
+MAN;326211;MAN326211;Tire Manufacturing (except Retreading) 
+MAN;326212;MAN326212;Tire Retreading 
+MAN;326220;MAN326220;Rubber and Plastics Hoses and Belting Manufacturing
+MAN;326291;MAN326291;Rubber Product Manufacturing for Mechanical Use 
+MAN;326299;MAN326299;All Other Rubber Product Manufacturing 
+MAN;327110;MAN327110;Pottery- Ceramics- and Plumbing Fixture Manufacturing 
+MAN;327120;MAN327120;Clay Building Material and Refractories Manufacturing 
+MAN;327211;MAN327211;Flat Glass Manufacturing 
+MAN;327212;MAN327212;Other Pressed and Blown Glass and Glassware Manufacturing 
+MAN;327213;MAN327213;Glass Container Manufacturing 
+MAN;327215;MAN327215;Glass Product Manufacturing Made of Purchased Glass 
+MAN;327310;MAN327310;Cement Manufacturing
+MAN;327320;MAN327320;Ready-Mix Concrete Manufacturing
+MAN;327331;MAN327331;Concrete Block and Brick Manufacturing 
+MAN;327332;MAN327332;Concrete Pipe Manufacturing 
+MAN;327390;MAN327390;Other Concrete Product Manufacturing 
+MAN;327410;MAN327410;Lime Manufacturing
+MAN;327420;MAN327420;Gypsum Product Manufacturing
+MAN;327910;MAN327910;Abrasive Product Manufacturing
+MAN;327991;MAN327991;Cut Stone and Stone Product Manufacturing 
+MAN;327992;MAN327992;Ground or Treated Mineral and Earth Manufacturing 
+MAN;327993;MAN327993;Mineral Wool Manufacturing 
+MAN;327999;MAN327999;All Other Miscellaneous Nonmetallic Mineral Product Manufacturing 
+MAN;331110;MAN331110;Iron and Steel Mills and Ferroalloy Manufacturing 
+MAN;331210;MAN331210;Iron and Steel Pipe and Tube Manufacturing from Purchased Steel
+MAN;331221;MAN331221;Rolled Steel Shape Manufacturing 
+MAN;331222;MAN331222;Steel Wire Drawing 
+MAN;331313;MAN331313;Alumina Refining and Primary Aluminum Production 
+MAN;331314;MAN331314;Secondary Smelting and Alloying of Aluminum 
+MAN;331315;MAN331315;Aluminum Sheet- Plate- and Foil Manufacturing 
+MAN;331318;MAN331318;Other Aluminum Rolling- Drawing- and Extruding 
+MAN;331410;MAN331410;Nonferrous Metal (except Aluminum) Smelting and Refining 
+MAN;331420;MAN331420;Copper Rolling- Drawing- Extruding- and Alloying
+MAN;331491;MAN331491;Nonferrous Metal (except Copper and Aluminum) Rolling- Drawing- and Extruding 
+MAN;331492;MAN331492;Secondary Smelting- Refining- and Alloying of Nonferrous Metal (except Copper and Aluminum) 
+MAN;331511;MAN331511;Iron Foundries 
+MAN;331512;MAN331512;Steel Investment Foundries 
+MAN;331513;MAN331513;Steel Foundries (except Investment) 
+MAN;331523;MAN331523;Nonferrous Metal Die-Casting Foundries 
+MAN;331524;MAN331524;Aluminum Foundries (except Die-Casting) 
+MAN;331529;MAN331529;Other Nonferrous Metal Foundries (except Die-Casting) 
+MAN;332111;MAN332111;Iron and Steel Forging 
+MAN;332112;MAN332112;Nonferrous Forging 
+MAN;332114;MAN332114;Custom Roll Forming 
+MAN;332117;MAN332117;Powder Metallurgy Part Manufacturing 
+MAN;332119;MAN332119;Metal Crown- Closure- and Other Metal Stamping (except Automotive) 
+MAN;332215;MAN332215;Metal Kitchen Cookware- Utensil- Cutlery- and Flatware (except Precious) Manufacturing 
+MAN;332216;MAN332216;Saw Blade and Handtool Manufacturing 
+MAN;332311;MAN332311;Prefabricated Metal Building and Component Manufacturing 
+MAN;332312;MAN332312;Fabricated Structural Metal Manufacturing 
+MAN;332313;MAN332313;Plate Work Manufacturing 
+MAN;332321;MAN332321;Metal Window and Door Manufacturing 
+MAN;332322;MAN332322;Sheet Metal Work Manufacturing 
+MAN;332323;MAN332323;Ornamental and Architectural Metal Work Manufacturing 
+MAN;332410;MAN332410;Power Boiler and Heat Exchanger Manufacturing
+MAN;332420;MAN332420;Metal Tank (Heavy Gauge) Manufacturing
+MAN;332431;MAN332431;Metal Can Manufacturing 
+MAN;332439;MAN332439;Other Metal Container Manufacturing 
+MAN;332510;MAN332510;Hardware Manufacturing
+MAN;332613;MAN332613;Spring Manufacturing 
+MAN;332618;MAN332618;Other Fabricated Wire Product Manufacturing 
+MAN;332710;MAN332710;Machine Shops
+MAN;332721;MAN332721;Precision Turned Product Manufacturing 
+MAN;332722;MAN332722;Bolt- Nut- Screw- Rivet- and Washer Manufacturing 
+MAN;332811;MAN332811;Metal Heat Treating 
+MAN;332812;MAN332812;Metal Coating- Engraving (except Jewelry and Silverware)- and Allied Services to Manufacturers 
+MAN;332813;MAN332813;Electroplating- Plating- Polishing- Anodizing- and Coloring 
+MAN;332911;MAN332911;Industrial Valve Manufacturing 
+MAN;332912;MAN332912;Fluid Power Valve and Hose Fitting Manufacturing 
+MAN;332913;MAN332913;Plumbing Fixture Fitting and Trim Manufacturing 
+MAN;332919;MAN332919;Other Metal Valve and Pipe Fitting Manufacturing 
+MAN;332991;MAN332991;Ball and Roller Bearing Manufacturing
+MAN;332992;MAN332992;Small Arms Ammunition Manufacturing 
+MAN;332993;MAN332993;Ammunition (except Small Arms) Manufacturing 
+MAN;332994;MAN332994;Small Arms- Ordnance- and Ordnance Accessories Manufacturing 
+MAN;332996;MAN332996;Fabricated Pipe and Pipe Fitting Manufacturing 
+MAN;332999;MAN332999;All Other Miscellaneous Fabricated Metal Product Manufacturing 
+MAN;333111;MAN333111;Farm Machinery and Equipment Manufacturing 
+MAN;333112;MAN333112;Lawn and Garden Tractor and Home Lawn and Garden Equipment Manufacturing 
+MAN;333120;MAN333120;Construction Machinery Manufacturing
+MAN;333131;MAN333131;Mining Machinery and Equipment Manufacturing 
+MAN;333132;MAN333132;Oil and Gas Field Machinery and Equipment Manufacturing 
+MAN;333241;MAN333241;Food Product Machinery Manufacturing 
+MAN;333242;MAN333242;Semiconductor Machinery Manufacturing 
+MAN;333243;MAN333243;Sawmill- Woodworking- and Paper Machinery Manufacturing 
+MAN;333244;MAN333244;Printing Machinery and Equipment Manufacturing 
+MAN;333249;MAN333249;Other Industrial Machinery Manufacturing 
+MAN;333314;MAN333314;Optical Instrument and Lens Manufacturing 
+MAN;333316;MAN333316;Photographic and Photocopying Equipment Manufacturing 
+MAN;333318;MAN333318;Other Commercial and Service Industry Machinery Manufacturing 
+MAN;333413;MAN333413;Industrial and Commercial Fan and Blower and Air Purification Equipment Manufacturing 
+MAN;333414;MAN333414;Heating Equipment (except Warm Air Furnaces) Manufacturing 
+MAN;333415;MAN333415;Air-Conditioning and Warm Air Heating Equipment and Commercial and Industrial Refrigeration Equipment Manufacturing 
+MAN;333511;MAN333511;Industrial Mold Manufacturing 
+MAN;333514;MAN333514;Special Die and Tool- Die Set- Jig- and Fixture Manufacturing 
+MAN;333515;MAN333515;Cutting Tool and Machine Tool Accessory Manufacturing 
+MAN;333517;MAN333517;Machine Tool Manufacturing 
+MAN;333519;MAN333519;Rolling Mill and Other Metalworking Machinery Manufacturing 
+MAN;333611;MAN333611;Turbine and Turbine Generator Set Units Manufacturing 
+MAN;333612;MAN333612;Speed Changer- Industrial High-Speed Drive- and Gear Manufacturing 
+MAN;333613;MAN333613;Mechanical Power Transmission Equipment Manufacturing 
+MAN;333618;MAN333618;Other Engine Equipment Manufacturing 
+MAN;333912;MAN333912;Air and Gas Compressor Manufacturing 
+MAN;333914;MAN333914;Measuring- Dispensing- and Other Pumping Equipment Manufacturing 
+MAN;333921;MAN333921;Elevator and Moving Stairway Manufacturing 
+MAN;333922;MAN333922;Conveyor and Conveying Equipment Manufacturing 
+MAN;333923;MAN333923;Overhead Traveling Crane- Hoist- and Monorail System Manufacturing 
+MAN;333924;MAN333924;Industrial Truck- Tractor- Trailer- and Stacker Machinery Manufacturing 
+MAN;333991;MAN333991;Power-Driven Handtool Manufacturing 
+MAN;333992;MAN333992;Welding and Soldering Equipment Manufacturing 
+MAN;333993;MAN333993;Packaging Machinery Manufacturing 
+MAN;333994;MAN333994;Industrial Process Furnace and Oven Manufacturing 
+MAN;333995;MAN333995;Fluid Power Cylinder and Actuator Manufacturing 
+MAN;333996;MAN333996;Fluid Power Pump and Motor Manufacturing 
+MAN;333997;MAN333997;Scale and Balance Manufacturing 
+MAN;333999;MAN333999;All Other Miscellaneous General Purpose Machinery Manufacturing 
+MAN;334111;MAN334111;Electronic Computer Manufacturing 
+MAN;334112;MAN334112;Computer Storage Device Manufacturing 
+MAN;334118;MAN334118;Computer Terminal and Other Computer Peripheral Equipment Manufacturing 
+MAN;334210;MAN334210;Telephone Apparatus Manufacturing
+MAN;334220;MAN334220;Radio and Television Broadcasting and Wireless Communications Equipment Manufacturing
+MAN;334290;MAN334290;Other Communications Equipment Manufacturing
+MAN;334310;MAN334310;Audio and Video Equipment Manufacturing
+MAN;334412;MAN334412;Bare Printed Circuit Board Manufacturing  
+MAN;334413;MAN334413;Semiconductor and Related Device Manufacturing 
+MAN;334416;MAN334416;Capacitor- Resistor- Coil- Transformer- and Other Inductor Manufacturing 
+MAN;334417;MAN334417;Electronic Connector Manufacturing 
+MAN;334418;MAN334418;Printed Circuit Assembly (Electronic Assembly) Manufacturing 
+MAN;334419;MAN334419;Other Electronic Component Manufacturing 
+MAN;334510;MAN334510;Electromedical and Electrotherapeutic Apparatus Manufacturing 
+MAN;334511;MAN334511;Search- Detection- Navigation- Guidance- Aeronautical- and Nautical System and Instrument Manufacturing 
+MAN;334512;MAN334512;Automatic Environmental Control Manufacturing for Residential- Commercial- and Appliance Use 
+MAN;334513;MAN334513;Instruments and Related Products Manufacturing for Measuring- Displaying- and Controlling Industrial Process Variables 
+MAN;334514;MAN334514;Totalizing Fluid Meter and Counting Device Manufacturing 
+MAN;334515;MAN334515;Instrument Manufacturing for Measuring and Testing Electricity and Electrical Signals 
+MAN;334516;MAN334516;Analytical Laboratory Instrument Manufacturing 
+MAN;334517;MAN334517;Irradiation Apparatus Manufacturing 
+MAN;334519;MAN334519;Other Measuring and Controlling Device Manufacturing 
+MAN;334613;MAN334613;Blank Magnetic and Optical Recording Media Manufacturing 
+MAN;334614;MAN334614;Software and Other Prerecorded Compact Disc- Tape- and Record Reproducing 
+MAN;335110;MAN335110;Electric Lamp Bulb and Part Manufacturing
+MAN;335121;MAN335121;Residential Electric Lighting Fixture Manufacturing 
+MAN;335122;MAN335122;Commercial- Industrial- and Institutional Electric Lighting Fixture Manufacturing 
+MAN;335129;MAN335129;Other Lighting Equipment Manufacturing 
+MAN;335210;MAN335210;Small Electrical Appliance Manufacturing
+MAN;335220;MAN335220;Major Household Appliance Manufacturing 
+MAN;335311;MAN335311;Power- Distribution- and Specialty Transformer Manufacturing 
+MAN;335312;MAN335312;Motor and Generator Manufacturing 
+MAN;335313;MAN335313;Switchgear and Switchboard Apparatus Manufacturing 
+MAN;335314;MAN335314;Relay and Industrial Control Manufacturing 
+MAN;335911;MAN335911;Storage Battery Manufacturing 
+MAN;335912;MAN335912;Primary Battery Manufacturing 
+MAN;335921;MAN335921;Fiber Optic Cable Manufacturing 
+MAN;335929;MAN335929;Other Communication and Energy Wire Manufacturing 
+MAN;335931;MAN335931;Current-Carrying Wiring Device Manufacturing 
+MAN;335932;MAN335932;Noncurrent-Carrying Wiring Device Manufacturing 
+MAN;335991;MAN335991;Carbon and Graphite Product Manufacturing 
+MAN;335999;MAN335999;All Other Miscellaneous Electrical Equipment and Component Manufacturing 
+MAN;336111;MAN336111;Automobile Manufacturing 
+MAN;336112;MAN336112;Light Truck and Utility Vehicle Manufacturing 
+MAN;336120;MAN336120;Heavy Duty Truck Manufacturing
+MAN;336211;MAN336211;Motor Vehicle Body Manufacturing 
+MAN;336212;MAN336212;Truck Trailer Manufacturing 
+MAN;336213;MAN336213;Motor Home Manufacturing 
+MAN;336214;MAN336214;Travel Trailer and Camper Manufacturing 
+MAN;336310;MAN336310;Motor Vehicle Gasoline Engine and Engine Parts Manufacturing
+MAN;336320;MAN336320;Motor Vehicle Electrical and Electronic Equipment Manufacturing
+MAN;336330;MAN336330;Motor Vehicle Steering and Suspension Components (except Spring) Manufacturing
+MAN;336340;MAN336340;Motor Vehicle Brake System Manufacturing
+MAN;336350;MAN336350;Motor Vehicle Transmission and Power Train Parts Manufacturing
+MAN;336360;MAN336360;Motor Vehicle Seating and Interior Trim Manufacturing
+MAN;336370;MAN336370;Motor Vehicle Metal Stamping
+MAN;336390;MAN336390;Other Motor Vehicle Parts Manufacturing
+MAN;336411;MAN336411;Aircraft Manufacturing 
+MAN;336412;MAN336412;Aircraft Engine and Engine Parts Manufacturing 
+MAN;336413;MAN336413;Other Aircraft Parts and Auxiliary Equipment Manufacturing 
+MAN;336414;MAN336414;Guided Missile and Space Vehicle Manufacturing 
+MAN;336415;MAN336415;Guided Missile and Space Vehicle Propulsion Unit and Propulsion Unit Parts Manufacturing 
+MAN;336419;MAN336419;Other Guided Missile and Space Vehicle Parts and Auxiliary Equipment Manufacturing 
+MAN;336510;MAN336510;Railroad Rolling Stock Manufacturing
+MAN;336611;MAN336611;Ship Building and Repairing 
+MAN;336612;MAN336612;Boat Building 
+MAN;336991;MAN336991;Motorcycle- Bicycle- and Parts Manufacturing 
+MAN;336992;MAN336992;Military Armored Vehicle- Tank- and Tank Component Manufacturing 
+MAN;336999;MAN336999;All Other Transportation Equipment Manufacturing 
+MAN;337110;MAN337110;Wood Kitchen Cabinet and Countertop Manufacturing
+MAN;337121;MAN337121;Upholstered Household Furniture Manufacturing 
+MAN;337122;MAN337122;Nonupholstered Wood Household Furniture Manufacturing 
+MAN;337124;MAN337124;Metal Household Furniture Manufacturing 
+MAN;337125;MAN337125;Household Furniture (except Wood and Metal) Manufacturing 
+MAN;337127;MAN337127;Institutional Furniture Manufacturing 
+MAN;337211;MAN337211;Wood Office Furniture Manufacturing 
+MAN;337212;MAN337212;Custom Architectural Woodwork and Millwork Manufacturing 
+MAN;337214;MAN337214;Office Furniture (except Wood) Manufacturing 
+MAN;337215;MAN337215;Showcase- Partition- Shelving- and Locker Manufacturing 
+MAN;337910;MAN337910;Mattress Manufacturing
+MAN;337920;MAN337920;Blind and Shade Manufacturing
+MAN;339112;MAN339112;Surgical and Medical Instrument Manufacturing 
+MAN;339113;MAN339113;Surgical Appliance and Supplies Manufacturing 
+MAN;339114;MAN339114;Dental Equipment and Supplies Manufacturing 
+MAN;339115;MAN339115;Ophthalmic Goods Manufacturing 
+MAN;339116;MAN339116;Dental Laboratories 
+MAN;339910;MAN339910;Jewelry and Silverware Manufacturing 
+MAN;339920;MAN339920;Sporting and Athletic Goods Manufacturing
+MAN;339930;MAN339930;Doll- Toy- and Game Manufacturing
+MAN;339940;MAN339940;Office Supplies (except Paper) Manufacturing
+MAN;339950;MAN339950;Sign Manufacturing
+MAN;339991;MAN339991;Gasket- Packing- and Sealing Device Manufacturing 
+MAN;339992;MAN339992;Musical Instrument Manufacturing 
+MAN;339993;MAN339993;Fastener- Button- Needle- and Pin Manufacturing 
+MAN;339994;MAN339994;Broom- Brush- and Mop Manufacturing 
+MAN;339995;MAN339995;Burial Casket Manufacturing 
+MAN;339999;MAN339999;All Other Miscellaneous Manufacturing 
+RET;441;RET441;Motor Vehicle and Parts Dealers 
+RET;442;RET442;Furniture and Home Furnishings Stores 
+RET;443;RET443;Electronics and Appliance Stores 
+RET;444;RET444;Building Material and Garden Equipment and Supplies Dealers 
+RET;445;RET445;Food and Beverage Stores 
+RET;446;RET446;Health and Personal Care Stores 
+RET;447;RET447;Gasoline Stations 
+RET;448;RET448;Clothing and Clothing Accessories Stores 
+RET;451;RET451;Sporting Goods- Hobby- Musical Instrument- and Book Stores 
+RET;452;RET452;General Merchandise Stores 
+RET;453;RET453;Miscellaneous Store Retailers 
+RET;454;RET454;Nonstore Retailers 
+RET;4411;RET4411;Automobile Dealers 
+RET;4412;RET4412;Other Motor Vehicle Dealers 
+RET;4413;RET4413;Automotive Parts- Accessories- and Tire Stores 
+RET;4421;RET4421;Furniture Stores 
+RET;4422;RET4422;Home Furnishings Stores 
+RET;4431;RET4431;Electronics and Appliance Stores 
+RET;4441;RET4441;Building Material and Supplies Dealers 
+RET;4442;RET4442;Lawn and Garden Equipment and Supplies Stores 
+RET;4451;RET4451;Grocery Stores 
+RET;4452;RET4452;Specialty Food Stores 
+RET;4453;RET4453;Beer- Wine- and Liquor Stores 
+RET;4461;RET4461;Health and Personal Care Stores 
+RET;4471;RET4471;Gasoline Stations 
+RET;4481;RET4481;Clothing Stores 
+RET;4482;RET4482;Shoe Stores 
+RET;4483;RET4483;Jewelry- Luggage- and Leather Goods Stores 
+RET;4511;RET4511;Sporting Goods- Hobby- and Musical Instrument Stores 
+RET;4512;RET4512;Book Stores and News Dealers 
+RET;4522;RET4522;Department Stores 
+RET;4523;RET4523;General Merchandise Stores- including Warehouse Clubs and Supercenters 
+RET;4531;RET4531;Florists 
+RET;4532;RET4532;Office Supplies- Stationery- and Gift Stores 
+RET;4533;RET4533;Used Merchandise Stores 
+RET;4539;RET4539;Other Miscellaneous Store Retailers 
+RET;4541;RET4541;Electronic Shopping and Mail-Order Houses 
+RET;4542;RET4542;Vending Machine Operators 
+RET;4543;RET4543;Direct Selling Establishments 
+RET;44111;RET44111;New Car Dealers 
+RET;44112;RET44112;Used Car Dealers 
+RET;44121;RET44121;Recreational Vehicle Dealers 
+RET;44122;RET44122;Motorcycle- Boat- and Other Motor Vehicle Dealers 
+RET;44131;RET44131;Automotive Parts and Accessories Stores 
+RET;44132;RET44132;Tire Dealers 
+RET;44211;RET44211;Furniture Stores 
+RET;44221;RET44221;Floor Covering Stores 
+RET;44229;RET44229;Other Home Furnishings Stores 
+RET;44314;RET44314;Electronics and Appliance Stores 
+RET;44411;RET44411;Home Centers 
+RET;44412;RET44412;Paint and Wallpaper Stores 
+RET;44413;RET44413;Hardware Stores 
+RET;44419;RET44419;Other Building Material Dealers 
+RET;44421;RET44421;Outdoor Power Equipment Stores 
+RET;44422;RET44422;Nursery- Garden Center- and Farm Supply Stores 
+RET;44511;RET44511;Supermarkets and Other Grocery (except Convenience) Stores 
+RET;44512;RET44512;Convenience Stores 
+RET;44521;RET44521;Meat Markets 
+RET;44522;RET44522;Fish and Seafood Markets 
+RET;44523;RET44523;Fruit and Vegetable Markets 
+RET;44529;RET44529;Other Specialty Food Stores 
+RET;44531;RET44531;Beer- Wine- and Liquor Stores 
+RET;44611;RET44611;Pharmacies and Drug Stores 
+RET;44612;RET44612;Cosmetics- Beauty Supplies- and Perfume Stores 
+RET;44613;RET44613;Optical Goods Stores 
+RET;44619;RET44619;Other Health and Personal Care Stores 
+RET;44711;RET44711;Gasoline Stations with Convenience Stores 
+RET;44719;RET44719;Other Gasoline Stations 
+RET;44811;RET44811;Men's Clothing Stores 
+RET;44812;RET44812;Women's Clothing Stores 
+RET;44813;RET44813;Children's and Infants' Clothing Stores 
+RET;44814;RET44814;Family Clothing Stores 
+RET;44815;RET44815;Clothing Accessories Stores 
+RET;44819;RET44819;Other Clothing Stores 
+RET;44821;RET44821;Shoe Stores 
+RET;44831;RET44831;Jewelry Stores 
+RET;44832;RET44832;Luggage and Leather Goods Stores 
+RET;45111;RET45111;Sporting Goods Stores 
+RET;45112;RET45112;Hobby- Toy- and Game Stores 
+RET;45113;RET45113;Sewing- Needlework- and Piece Goods Stores 
+RET;45114;RET45114;Musical Instrument and Supplies Stores 
+RET;45121;RET45121;Book Stores and News Dealers 
+RET;45221;RET45221;Department Stores 
+RET;45231;RET45231;General Merchandise Stores- including Warehouse Clubs and Supercenters 
+RET;45311;RET45311;Florists 
+RET;45321;RET45321;Office Supplies and Stationery Stores 
+RET;45322;RET45322;Gift- Novelty- and Souvenir Stores 
+RET;45331;RET45331;Used Merchandise Stores 
+RET;45391;RET45391;Pet and Pet Supplies Stores 
+RET;45392;RET45392;Art Dealers 
+RET;45393;RET45393;Manufactured (Mobile) Home Dealers 
+RET;45399;RET45399;All Other Miscellaneous Store Retailers 
+RET;45411;RET45411;Electronic Shopping and Mail-Order Houses 
+RET;45421;RET45421;Vending Machine Operators 
+RET;45431;RET45431;Fuel Dealers 
+RET;45439;RET45439;Other Direct Selling Establishments 
+RET;441110;RET441110;New Car Dealers 
+RET;441120;RET441120;Used Car Dealers 
+RET;441210;RET441210;Recreational Vehicle Dealers 
+RET;441222;RET441222;Boat Dealers 
+RET;441228;RET441228;Motorcycle- ATV- and All Other Motor Vehicle Dealers 
+RET;441310;RET441310;Automotive Parts and Accessories Stores 
+RET;441320;RET441320;Tire Dealers 
+RET;442110;RET442110;Furniture Stores 
+RET;442210;RET442210;Floor Covering Stores 
+RET;442291;RET442291;Window Treatment Stores 
+RET;442299;RET442299;All Other Home Furnishings Stores 
+RET;443141;RET443141;Household Appliance Stores 
+RET;443142;RET443142;Electronics Stores 
+RET;444110;RET444110;Home Centers 
+RET;444120;RET444120;Paint and Wallpaper Stores 
+RET;444130;RET444130;Hardware Stores 
+RET;444190;RET444190;Other Building Material Dealers 
+RET;444210;RET444210;Outdoor Power Equipment Stores 
+RET;444220;RET444220;Nursery- Garden Center- and Farm Supply Stores 
+RET;445110;RET445110;Supermarkets and Other Grocery (except Convenience) Stores 
+RET;445120;RET445120;Convenience Stores 
+RET;445210;RET445210;Meat Markets 
+RET;445220;RET445220;Fish and Seafood Markets 
+RET;445230;RET445230;Fruit and Vegetable Markets 
+RET;445291;RET445291;Baked Goods Stores 
+RET;445292;RET445292;Confectionery and Nut Stores 
+RET;445299;RET445299;All Other Specialty Food Stores 
+RET;445310;RET445310;Beer- Wine- and Liquor Stores 
+RET;446110;RET446110;Pharmacies and Drug Stores 
+RET;446120;RET446120;Cosmetics- Beauty Supplies- and Perfume Stores 
+RET;446130;RET446130;Optical Goods Stores 
+RET;446191;RET446191;Food (Health) Supplement Stores 
+RET;446199;RET446199;All Other Health and Personal Care Stores 
+RET;447110;RET447110;Gasoline Stations with Convenience Stores 
+RET;447190;RET447190;Other Gasoline Stations 
+RET;448110;RET448110;Men's Clothing Stores 
+RET;448120;RET448120;Women's Clothing Stores 
+RET;448130;RET448130;Children's and Infants' Clothing Stores 
+RET;448140;RET448140;Family Clothing Stores 
+RET;448150;RET448150;Clothing Accessories Stores 
+RET;448190;RET448190;Other Clothing Stores 
+RET;448210;RET448210;Shoe Stores 
+RET;448310;RET448310;Jewelry Stores 
+RET;448320;RET448320;Luggage and Leather Goods Stores 
+RET;451110;RET451110;Sporting Goods Stores 
+RET;451120;RET451120;Hobby- Toy- and Game Stores 
+RET;451130;RET451130;Sewing- Needlework- and Piece Goods Stores 
+RET;451140;RET451140;Musical Instrument and Supplies Stores 
+RET;451211;RET451211;Book Stores 
+RET;451212;RET451212;News Dealers and Newsstands 
+RET;452210;RET452210;Department Stores 
+RET;452311;RET452311;Warehouse Clubs and Supercenters 
+RET;452319;RET452319;All Other General Merchandise Stores 
+RET;453110;RET453110;Florists 
+RET;453210;RET453210;Office Supplies and Stationery Stores 
+RET;453220;RET453220;Gift- Novelty- and Souvenir Stores 
+RET;453310;RET453310;Used Merchandise Stores 
+RET;453910;RET453910;Pet and Pet Supplies Stores 
+RET;453920;RET453920;Art Dealers 
+RET;453930;RET453930;Manufactured (Mobile) Home Dealers 
+RET;453991;RET453991;Tobacco Stores 
+RET;453998;RET453998;All Other Miscellaneous Store Retailers (except Tobacco Stores) 
+RET;454110;RET454110;Electronic Shopping and Mail-Order Houses 
+RET;454210;RET454210;Vending Machine Operators 
+RET;454310;RET454310;Fuel Dealers 
+RET;454390;RET454390;Other Direct Selling Establishments 
+TRN;481;TRN481;Air Transportation
+TRN;482;TRN482;Rail Transportation
+TRN;483;TRN483;Water Transportation
+TRN;484;TRN484;Truck Transportation
+TRN;485;TRN485;Transit and Ground Passenger Transportation
+TRN;486;TRN486;Pipeline Transportation
+TRN;487;TRN487;Scenic and Sightseeing Transportation
+TRN;488;TRN488;Support Activities for Transportation
+TRN;491;TRN491;Postal Service
+TRN;492;TRN492;Couriers and Messengers
+TRN;493;TRN493;Warehousing and Storage
+TRN;4811;TRN4811;Scheduled Air Transportation
+TRN;4812;TRN4812;Nonscheduled Air Transportation
+TRN;4821;TRN4821;Rail Transportation
+TRN;4831;TRN4831;Deep Sea- Coastal- and Great Lakes Water Transportation
+TRN;4832;TRN4832;Inland Water Transportation
+TRN;4841;TRN4841;General Freight Trucking
+TRN;4842;TRN4842;Specialized Freight Trucking
+TRN;4851;TRN4851;Urban Transit Systems
+TRN;4852;TRN4852;Interurban and Rural Bus Transportation
+TRN;4853;TRN4853;Taxi and Limousine Service
+TRN;4854;TRN4854;School and Employee Bus Transportation
+TRN;4855;TRN4855;Charter Bus Industry
+TRN;4859;TRN4859;Other Transit and Ground Passenger Transportation
+TRN;4861;TRN4861;Pipeline Transportation of Crude Oil
+TRN;4862;TRN4862;Pipeline Transportation of Natural Gas
+TRN;4869;TRN4869;Other Pipeline Transportation
+TRN;4871;TRN4871;Scenic and Sightseeing Transportation- Land
+TRN;4872;TRN4872;Scenic and Sightseeing Transportation- Water
+TRN;4879;TRN4879;Scenic and Sightseeing Transportation- Other
+TRN;4881;TRN4881;Support Activities for Air Transportation
+TRN;4882;TRN4882;Support Activities for Rail Transportation
+TRN;4883;TRN4883;Support Activities for Water Transportation
+TRN;4884;TRN4884;Support Activities for Road Transportation
+TRN;4885;TRN4885;Freight Transportation Arrangement
+TRN;4889;TRN4889;Other Support Activities for Transportation
+TRN;4911;TRN4911;Postal Service
+TRN;4921;TRN4921;Couriers and Express Delivery Services
+TRN;4922;TRN4922;Local Messengers and Local Delivery
+TRN;4931;TRN4931;Warehousing and Storage
+TRN;48111;TRN48111;Scheduled Air Transportation
+TRN;48121;TRN48121;Nonscheduled Air Transportation
+TRN;48211;TRN48211;Rail Transportation
+TRN;48311;TRN48311;Deep Sea- Coastal- and Great Lakes Water Transportation
+TRN;48321;TRN48321;Inland Water Transportation
+TRN;48411;TRN48411;General Freight Trucking- Local
+TRN;48412;TRN48412;General Freight Trucking- Long-Distance
+TRN;48421;TRN48421;Used Household and Office Goods Moving
+TRN;48422;TRN48422;Specialized Freight (except Used Goods) Trucking- Local
+TRN;48423;TRN48423;Specialized Freight (except Used Goods) Trucking- Long-Distance
+TRN;48511;TRN48511;Urban Transit Systems
+TRN;48521;TRN48521;Interurban and Rural Bus Transportation
+TRN;48531;TRN48531;Taxi Service
+TRN;48532;TRN48532;Limousine Service
+TRN;48541;TRN48541;School and Employee Bus Transportation
+TRN;48551;TRN48551;Charter Bus IndustryT 
+TRN;48599;TRN48599;Other Transit and Ground Passenger TransportationT 
+TRN;48611;TRN48611;Pipeline Transportation of Crude OilT 
+TRN;48621;TRN48621;Pipeline Transportation of Natural GasT 
+TRN;48691;TRN48691;Pipeline Transportation of Refined Petroleum ProductsT 
+TRN;48699;TRN48699;All Other Pipeline TransportationT 
+TRN;48711;TRN48711;Scenic and Sightseeing Transportation- LandT 
+TRN;48721;TRN48721;Scenic and Sightseeing Transportation- WaterT 
+TRN;48799;TRN48799;Scenic and Sightseeing Transportation- OtherT 
+TRN;48811;TRN48811;Airport OperationsT 
+TRN;48819;TRN48819;Other Support Activities for Air TransportationT 
+TRN;48821;TRN48821;Support Activities for Rail TransportationT 
+TRN;48831;TRN48831;Port and Harbor OperationsT 
+TRN;48832;TRN48832;Marine Cargo HandlingT 
+TRN;48833;TRN48833;Navigational Services to ShippingT 
+TRN;48839;TRN48839;Other Support Activities for Water TransportationT 
+TRN;48841;TRN48841;Motor Vehicle TowingT 
+TRN;48849;TRN48849;Other Support Activities for Road TransportationT 
+TRN;48851;TRN48851;Freight Transportation ArrangementT 
+TRN;48899;TRN48899;Other Support Activities for TransportationT 
+TRN;49111;TRN49111;Postal ServiceT 
+TRN;49211;TRN49211;Couriers and Express Delivery ServicesT 
+TRN;49221;TRN49221;Local Messengers and Local DeliveryT 
+TRN;49311;TRN49311;General Warehousing and StorageT 
+TRN;49312;TRN49312;Refrigerated Warehousing and StorageT 
+TRN;49313;TRN49313;Farm Product Warehousing and Storage
+TRN;49319;TRN49319;Other Warehousing and StorageT 
+TRN;481111;TRN481111;Scheduled Passenger Air Transportation 
+TRN;481112;TRN481112;Scheduled Freight Air Transportation 
+TRN;481211;TRN481211;Nonscheduled Chartered Passenger Air Transportation 
+TRN;481212;TRN481212;Nonscheduled Chartered Freight Air Transportation 
+TRN;481219;TRN481219;Other Nonscheduled Air Transportation 
+TRN;482111;TRN482111;Line-Haul Railroads 
+TRN;482112;TRN482112;Short Line Railroads 
+TRN;483111;TRN483111;Deep Sea Freight Transportation 
+TRN;483112;TRN483112;Deep Sea Passenger Transportation 
+TRN;483113;TRN483113;Coastal and Great Lakes Freight Transportation 
+TRN;483114;TRN483114;Coastal and Great Lakes Passenger Transportation 
+TRN;483211;TRN483211;Inland Water Freight Transportation 
+TRN;483212;TRN483212;Inland Water Passenger Transportation 
+TRN;484110;TRN484110;General Freight Trucking- Local 
+TRN;484121;TRN484121;General Freight Trucking- Long-Distance- Truckload 
+TRN;484122;TRN484122;General Freight Trucking- Long-Distance- Less Than Truckload 
+TRN;484210;TRN484210;Used Household and Office Goods Moving
+TRN;484220;TRN484220;Specialized Freight (except Used Goods) Trucking- Local 
+TRN;484230;TRN484230;Specialized Freight (except Used Goods) Trucking- Long-Distance 
+TRN;485111;TRN485111;Mixed Mode Transit Systems 
+TRN;485112;TRN485112;Commuter Rail Systems 
+TRN;485113;TRN485113;Bus and Other Motor Vehicle Transit Systems 
+TRN;485119;TRN485119;Other Urban Transit Systems 
+TRN;485210;TRN485210;Interurban and Rural Bus Transportation
+TRN;485310;TRN485310;Taxi Service 
+TRN;485320;TRN485320;Limousine Service
+TRN;485410;TRN485410;School and Employee Bus Transportation
+TRN;485510;TRN485510;Charter Bus Industry
+TRN;485991;TRN485991;Special Needs Transportation 
+TRN;485999;TRN485999;All Other Transit and Ground Passenger Transportation 
+TRN;486110;TRN486110;Pipeline Transportation of Crude Oil
+TRN;486210;TRN486210;Pipeline Transportation of Natural Gas
+TRN;486910;TRN486910;Pipeline Transportation of Refined Petroleum Products
+TRN;486990;TRN486990;All Other Pipeline Transportation
+TRN;487110;TRN487110;Scenic and Sightseeing Transportation- Land
+TRN;487210;TRN487210;Scenic and Sightseeing Transportation- Water
+TRN;487990;TRN487990;Scenic and Sightseeing Transportation- Other
+TRN;488111;TRN488111;Air Traffic Control
+TRN;488119;TRN488119;Other Airport Operations 
+TRN;488190;TRN488190;Other Support Activities for Air Transportation
+TRN;488210;TRN488210;Support Activities for Rail Transportation
+TRN;488310;TRN488310;Port and Harbor Operations
+TRN;488320;TRN488320;Marine Cargo Handling
+TRN;488330;TRN488330;Navigational Services to Shipping 
+TRN;488390;TRN488390;Other Support Activities for Water Transportation
+TRN;488410;TRN488410;Motor Vehicle Towing
+TRN;488490;TRN488490;Other Support Activities for Road Transportation 
+TRN;488510;TRN488510;Freight Transportation Arrangement 
+TRN;488991;TRN488991;Packing and Crating 
+TRN;488999;TRN488999;All Other Support Activities for Transportation 
+TRN;491110;TRN491110;Postal Service
+TRN;492110;TRN492110;Couriers and Express Delivery Services
+TRN;492210;TRN492210;Local Messengers and Local Delivery
+TRN;493110;TRN493110;General Warehousing and Storage 
+TRN;493120;TRN493120;Refrigerated Warehousing and Storage
+TRN;493130;TRN493130;Farm Product Warehousing and Storage
+TRN;493190;TRN493190;Other Warehousing and Storage

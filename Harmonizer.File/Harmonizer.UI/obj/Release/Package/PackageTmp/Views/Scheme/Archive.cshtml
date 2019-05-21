@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "File Harmonizer - Archives";
+}
+
+
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Archives</h4></div>
+            <hr />
+            <div class="bg-white p-3 border w-100 float-left">
+                <div id="divSchemeData">
+                    @Html.Action("_ArchiveSchemeData", "Scheme")
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- The Modal -->
+<input type="button" id="btnShowData" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModal" />
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Scheme Details</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modelbodydata">
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+         // Delete
+        $(document).on('click', '.btn-delete', function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            //alert('clicked btn-delete');
+            var ID = tr.find('#hiddenID').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteScheme", "Scheme")',
+                data: '{ID: "' + ID + '"}',
+                dataType: "json",
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    // Nothing
+                    debugger;
+                    if (data > 0) {
+                        window.location.reload(true);
+                    }
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+
+        // Unarchive
+        $(document).on('click', '.btn-UnArchive', function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            //alert('clicked btn-delete');
+            var ID = tr.find('#lblSchemeNum').text().trim(); //tr.find('#hiddenID').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UnArchiveScheme", "Scheme")',
+                data: '{ID: "' + ID + '"}',
+                dataType: "json",
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    // Nothing
+                    debugger;
+                    if (data > 0) {
+                        window.location.reload(true);
+                    }
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+        // View
+        $(document).on('click', '.btn-view', function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var ID = tr.find('#hiddenID').val();
+            //alert('clicked view');
+             $.ajax({
+                type: "POST",
+                url: '@Url.Action("ViewScheme", "Scheme")',
+                data: '{ID: "' + ID + '" }',
+                 dataType: "html",
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    // Nothing
+                    debugger;
+                    $('.modal-dialog').addClass('modal-lg');
+                    $('#modelbodydata').html('');
+                    $('#modelbodydata').html(data);
+                    $('#btnShowData').click();
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+
+
+    });
+</script>

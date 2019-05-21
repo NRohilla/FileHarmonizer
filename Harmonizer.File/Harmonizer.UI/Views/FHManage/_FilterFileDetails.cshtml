@@ -1,0 +1,62 @@
+﻿@using System.Collections
+@model IEnumerable<Harmonizer.UI.Models.ManageFilterTemplateModel>
+@{
+    WebGrid webGrid = new WebGrid(source: Model, canPage: false, canSort: false);
+}
+
+@if (Model.Count() > 0)
+{
+    <div class="row mb-2">
+        <div class="col-md-6 float-left">
+            <input type="button" id="btnChkAll" class="btn btn-info" name="check all" value="Check All" />
+            <input type="button" id="btnUnChkAll" class="btn btn-info" name="uncheck all" value="UnCheck All" />
+        </div>
+        <div class="col-md-6 text-right">
+            <input type="button" class="btn btn-info" name="Impoirt" id="btnImportTemplateFilter" value="Import" onclick="window.location='@Url.Action("FilterTemplate","FHFile")'" />
+            <input type="button" class="btn btn-info" name="Export" id="btnExportTemplateFilter" value="Export" />
+            <input type="button" class="btn btn-info" name="Print" id="btnPrintTemplateFilter" value="Print" />
+        </div>
+    </div>
+    <div class="row scrollable-table">
+        <div class="col-md-12">
+            @webGrid.GetHtml(
+             htmlAttributes: new { @id = "FilterTemplateDetails", @class = "table table-bordered table-sm table-striped search-replace-table sticky-header" },
+             columns: webGrid.Columns(
+             webGrid.Column("*", format: @<text><input type="hidden" name='hiddenFileID' id="hddFileID" value="@item.Filter.FileID" />
+                <input type="hidden" name='hiddenFLTRID' id="hddFLTRID" value="@item.Filter.FLTRID" />
+                <input type="checkbox" class="check" id="chk" name="chk" /></text>),
+                 webGrid.Column("Filter Name", format: @<span>@Html.Label("lblFilterName", String.Format("{0}-{1}", (string)item.Filter.FLTRID, (string)item.Filter.FilterDesc))</span>),
+                  webGrid.Column("Description", format: @<span>@Html.Label("lblFilterDescription", (string)item.Filter.FilterDesc, new { @id = "lblFilterDescription" })</span>),
+                     webGrid.Column("Source Filter Comments", format: @<span>@Html.Label("lblFilterComment", (string)item.Filter.FilterText, new { @id = "lblFilterComment" })</span>),
+                         webGrid.Column("Sector", format: @<span>@Html.Label("lblFilterSector", (string)item.Filter.SECID, new { @id = "lblFilterSector" })</span>),
+                             webGrid.Column("Assign Scheme", format: @<text>@Html.DropDownList("ddlFilterSchme", new SelectList((IEnumerable)ViewData["lstSchme"], "Value", "Text",item.Filter.AssignScheme), new {onchange= "GetSchemeValue(this, '"+@item.Filter.FLTRID+"');", @id = "ddlFilterSchme" })</text>),
+                                 webGrid.Column("View", format: @<input type="button" name='btnView' value="View" class="btn-info btn-view" />),
+                                     webGrid.Column("Update", format: @<input type="button" name='btnRename' value="Update" class="btn-info btn-rename" />),
+                                         webGrid.Column("Delete", format: @<input type="button" name='btnDelete' value="Delete" class="btn-info btn-delete" />)
+
+
+                                                                        ))
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <span class="text-danger">Will need to create a filter!</span>
+        </div>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        $('#btnChkAll').click(function () {
+            $("#FilterTemplateDetails td input[type=checkBox]").prop("checked", true);
+        });
+
+        $('#btnUnChkAll').click(function () {
+            $("#FilterTemplateDetails td input[type=checkBox]").removeAttr('checked');
+        });
+    });
+
+</script>
+

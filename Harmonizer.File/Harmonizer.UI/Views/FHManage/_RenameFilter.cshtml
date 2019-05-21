@@ -1,0 +1,61 @@
+﻿@model Harmonizer.Core.Model.CHFilter
+<div class="row mb-2">
+    <div class="col-md-3">
+        <label>Filter Comments:</label>
+    </div>
+    <div class="col-md-9">
+        <input type="text" id="txtComment" value="@Model.FilterText" class="form-control" />
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-md-3">
+        <label>Filter Description:</label>
+    </div>
+    <div class="col-md-9">
+        <input type="text" id="txtDescription"  value="@Model.FilterDesc" multiple height="90" class="form-control" />
+    </div>
+</div>
+
+<div class="row mb-2">
+    <div class="col-md-3">
+        <input type="hidden" value="@Model.FileID" id="hiddenFileID" />
+        <input type="hidden" value="@Model.FLTRID" id="hiddenFLTRID" />
+    </div>
+    <div class="col-md-9 text-right">
+        <input type="button" value="Update" name="update" class="btn btn-info" id="bntUpdateFilterComment" />
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#bntUpdateFilterComment').click(function () {
+
+            var FileID =$('#hiddenFileID').val();
+            var FLTRID = $('#hiddenFLTRID').val();
+            var Description = $('#txtDescription').val();
+            var Comment = $('#txtComment').val();
+            //alert(FileID + "-" + FLTRID + "-" + Description + "-" + Comment);
+            //RenameFilter(int FileID, string Comment,string Description,string FLTRID,int op)
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("RenameFilter", "FHManage")',
+                data: '{FileID: "' + FileID + '",Comment:"' + Comment + '",Description:"' + Description + '",FLTRID:"' + FLTRID+'",op:"1" }',
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data >= 1) {
+                        //window.location.href = '@Url.Action("ManageFilter", "FHManage")';
+                        location.reload(true);
+                    }
+                    else {
+                        alert('Error! Please try it again.');
+                    }
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+
+    });
+</script>

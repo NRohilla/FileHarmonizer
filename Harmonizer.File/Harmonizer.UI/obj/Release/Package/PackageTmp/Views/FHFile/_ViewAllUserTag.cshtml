@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Harmonizer.Core.Model.Tag>
+@{
+    WebGrid webGrid = new WebGrid(source: Model, canPage: false, canSort: false);
+}
+
+@if (Model.Count() > 0)
+{
+    <div class="row">
+        <div class="col-md-12">
+            @webGrid.GetHtml(
+     htmlAttributes: new { @id = "UserTagDetails", @class = "table table-bordered table-sm table-striped search-replace-table" },
+columns: webGrid.Columns(
+        webGrid.Column("Global/Private", format: @<text>
+            <input type="hidden" value="@item.ID" id="hiddenID" />
+            @{string tagid = item.UTAGID.ToString();}
+            @Html.Hidden("lblUTagID", tagid, new { @id = "lblUTagID" })
+
+            @Html.Hidden("lblTagName", String.Format("{0}", (string)item.TagName), new { @id = "lblTagName" })
+            @Html.Hidden("lblOrig", String.Format("{0}", (string)item.Orig), new { @id = "lblOrig" })
+          
+            @Html.TextBox("txtGlobPriValue", (string)item.GlobPri, new { @id = "txtGlobPriValue", @maxlength = "1", @onchange = "ChangeGlobPriValue(this);", @style = "text-transform:uppercase;width:30%; text-align:center;"})
+        </text>),
+webGrid.Column("Description", format: @<span>@Html.Label("lblDescription", String.Format("{0}", (string)item.Description), new { @id = "lblDescription" })</span>),
+
+ webGrid.Column("Share Value", format: @<text>
+            @Html.TextBox("txtShareValue", (string)item.Share, new { @id = "txtShareValue", @style = "background-color:yellow" })
+        </text>)
+     ))
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <span class="text-danger">Tag not for maintain.</span>
+        </div>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+        if ($('#UserTagDetails >tbody >tr').length == 0) {
+            $('#actionUpdateFilterButton').hide();
+            $('#actionHarmonizeButton').hide();
+        } else {
+            $('#actionUpdateFilterButton').show();
+            $('#actionHarmonizeButton').hide();
+        }
+    });
+    function ChangeGlobPriValue(gvalue) {
+        var defaultValue = gvalue.defaultValue;
+        var v = gvalue.value;
+        if (v != 'P' && v != 'G' && v != 'p' && v != 'g' ) {
+            //alert('Wrong value');
+            gvalue.value = defaultValue;
+        }
+    }
+</script>

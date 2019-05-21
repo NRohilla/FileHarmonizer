@@ -1,0 +1,185 @@
+﻿
+@{
+    ViewBag.Title = "FH Account-Setting";
+}
+
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Account Setting</h4>
+            <blink>
+                <span style="color:red;font-size:18px;" id="messageData" class="blink ml-4">
+
+                </span>
+            </blink>
+        </div>
+        <hr />
+        <div class="bg-white p-3 border w-100 float-left">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#folder">Folder</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#general">General</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#naming">Naming</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#registration">Registration</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#viewlog">View Log</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content" style="border: 1px solid #e1e1e1;   min-height:400px; padding-top: 15px;   padding-bottom: 20px; border-top: 0;    float: left;
+    width: 100%;">
+                <div id="folder" class="container tab-pane active">
+                    @Html.Action("_FolderSetting", "User")
+                </div>
+                <div id="general" class="container tab-pane fade">
+                    @Html.Action("_GeneralSetting", "User")
+                </div>
+                <div id="naming" class="container tab-pane fade">
+                    @Html.Action("_NamingSetting", "User")
+
+                </div>
+                <div id="registration" class="container tab-pane fade">
+                    @Html.Action("_RegistrationSetting", "User")
+
+                </div>
+                <div id="viewlog" class="container tab-pane fade">
+                    @Html.Action("_ViewLog", "User")
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="wait" style="display:none;width:100%;height:100%;position:fixed;top:0px;left:0px;bottom:0px;right:0px;padding:20%;z-index: 99999;background-color:rgba(0,0,0,0.3);text-align:center;">
+    <img src='~/images/sa.gif' width="150" height="150" /><br>Loading..
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#btnApplyFolderLocation').click(function () {
+           // alert('folder apply click');
+            UpdateInsertFolder('update');
+        });
+
+        $('#btnRestoreFolderLocation').click(function () {
+           // alert('folder restore click');
+            UpdateInsertFolder('restore');
+        });
+
+        $('#btnCancelFolderLocation').click(function () {
+            window.location.reload(true);
+        });
+
+        $('#btnRestoreNaming').click(function () {
+            // alert('Restore naming')
+            UpdateInsertNaming('restore');
+        });
+        $('#btnApplyNaming').click(function () {
+            // alert('apply naming')
+            UpdateInsertNaming('update');
+        });
+        $('#btnCancelNaming').click(function () {
+            // alert('Cancel naming')
+            window.location.reload(true);
+        });
+
+
+    });
+    function UpdateInsertNaming(op) {
+        var postValue = '';
+        var preValue = '';
+        if (op == 'restore') {
+
+        }
+        else {
+            postValue = $('#txtPostfix').val();
+            preValue = $('#txtPrifix').val();
+        }
+
+        //Ajax call
+        $("#wait").show();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("UpadateRestoreNaming", "User")',
+            data: JSON.stringify({ op: op, prostfix: postValue, prefix: preValue }),
+            dataType: "json",
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                $("#wait").hide();
+                //alert(data);
+                $('#messageData').text(data);
+                $('#messageData').css('color', 'green');
+                setTimeout(function () {
+                    $('#messageData').text('');
+                }, 2000);
+            },
+            error: function (error) {
+                $("#wait").hide();
+               // alert("Error! Please try again.");
+                $('#messageData').text("Error! Please try again");
+                $('#messageData').css('color', 'red');
+                setTimeout(function () {
+                    $('#messageData').text('');
+                }, 2000);
+            }
+        });
+    }
+
+    function UpdateInsertFolder(op) {
+        var FolderLocation = {};
+        if (op == 'restore') {
+
+        }
+        else {
+            FolderLocation.Source = $('#txtSource').val();
+            FolderLocation.Target = $('#txtTarget').val();
+            FolderLocation.Conversion = $('#txtConversion').val();
+            FolderLocation.Filter = $('#txtFilter').val();
+            FolderLocation.Archive = $('#txtArchive').val();
+            FolderLocation.Template = $('#txtTemplate').val();
+            FolderLocation.Report = $('#txtReport').val();
+            FolderLocation.Changelog = $('#txtChangelog').val();
+            FolderLocation.Errorlog = $('#txtErrorLog').val();
+        }
+
+        //Ajax call
+         $("#wait").show();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("UpadateRestoreFolderLoc", "User")',
+            data: JSON.stringify({ op: op, folderLocation:FolderLocation }),
+            dataType: "json",
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                $("#wait").hide();
+                //alert(data);
+                $('#messageData').text(data);
+                $('#messageData').css('color', 'green');
+                setTimeout(function () {
+                    $('#messageData').text('');
+                }, 2000);
+            },
+            error: function (error) {
+                $("#wait").hide();
+                //alert("Error! Please try again.");
+                $('#messageData').text("Error! Please try again");
+                $('#messageData').css('color', 'red');
+                setTimeout(function () {
+                    $('#messageData').text('');
+                }, 2000);
+            }
+        });
+    }
+</script>

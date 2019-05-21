@@ -1,0 +1,328 @@
+﻿@model IEnumerable<Harmonizer.Core.Model.PlanDetails>
+@{
+    ViewBag.Title = "File Harmonizer - Plan";
+}
+
+@{
+    WebGrid webGrid = new WebGrid(source: Model, canPage: false, canSort: false);
+}
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Maintain Plan</h4></div>
+            <hr />
+            <div class="bg-white p-3 border w-100 float-left">
+                <div class="float-right">
+                    <input type="button" id="btnCreateUserPlan" class="btn btn-info" value="Create New Plan" />
+                </div>
+                <br />
+
+                <div id="divPlanList">
+                    @if (Model.Count() > 0)
+            {
+
+
+                @webGrid.GetHtml(
+ htmlAttributes: new { @id = "PlanDetailsTable", @class = "table table-bordered table-sm table-striped search-replace-table" },
+ columns: webGrid.Columns(
+ webGrid.Column("Titel", format: @<text>
+
+
+            <input type="hidden" name='hiddenID' id="hddID" value="@item.ID" />
+            @Html.Label("lblTitleName", String.Format("{0}", (string)item.Title), new { @class = "read" })
+            @Html.TextBox("txtGridTile", String.Format("{0}", (string)item.Title), new { id = "txtGridTile", @class = "edit" })
+        </text>),
+                                    webGrid.Column("Description", format: @<text>@Html.Label("lblDescription", (string)item.Description, new { @id = "lblDescription", @class = "read" })
+                                    @Html.TextBox("txtGridDescription", String.Format("{0}", (string)item.Description), new { id = "txtGridDescription", @class = "edit" })
+                                    </text>),
+
+  webGrid.Column("Cost/Month", format: @<text>
+            @{ string _cost = item.Cost.ToString();}
+
+            @Html.Label("lblCost", _cost, new { @id = "lblCost", @class = "read" })
+            @Html.TextBox("txtGridCost", String.Format("{0}", _cost), new { id = "txtGridCost", @class = "edit" })
+        </text>),
+               webGrid.Column("Display Order", format: @<text>
+                @{string _Order = item.OrderDisplay.ToString();}
+                @Html.Label("lblDisplayOrder", _Order, new { @id = "lblDisplayOrder", @class = "read" })
+                @Html.TextBox("txtGridDisplayOrder", _Order, new { @id = "txtGridDisplayOrder", @class = "edit" })
+            </text>),
+                  webGrid.Column("Status", format: @<text>
+                    @{string _IsActive = item.IsActive == false ? "False" : "True"; }
+                    @Html.Label("lbIsActive", _IsActive, new { @id = "lblIsActive", @class = "read" })
+                    @Html.TextBox("txtGridIsActive", (bool)item.IsActive, new { id = "txtGridIsActive", @class = "edit" })
+                </text>),
+webGrid.Column("Edit", format:@<text>
+            <input type="button" name='btnEdit' value="Edit" class="btn-info btn-edit read" />
+            <input type="button" name='btnUpdate' value="Update" class="btn-info btn-update edit" />
+            <input type="button" name='btnCancel' value="Cancel" class="btn-info btn-Cancel edit" />
+        </text>),
+               webGrid.Column("Delete", format: @<input type="button" name='btnDelete' value="Delete" class="btn-info btn-delete" />)
+
+               ))
+    }
+                </div>
+            </div>
+        </div>
+</div>
+<!-- The Modal -->
+<input type="button" id="btnShowData" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModal" />
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Create Plan</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modelbodydata">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Group</label>
+                    </div>
+                    <div class="col-md-6">
+                        <select id="ddlBPType" class="form-control"></select>
+                    </div>
+                </div>
+
+                <div class="row mt-1">
+                    <div class="col-md-4">
+                        <label>Title</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="txtTitle" placeholder="Title" />
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-md-4">
+                        <label>Description</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="txtDescription" placeholder="Description" />
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-md-4">
+                        <label>Plan for</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="radio"  id="rdoPlan1" name="rdoPlan"  value="1" /><label for="rdoPlan1">Weekly</label>
+                        <input type="radio" id="rdoPlan2" name="rdoPlan" checked value="2" /><label for="rdoPlan2">Monthly</label>
+                        <input type="radio"  id="rdoPlan3" name="rdoPlan" value="3" /><label for="rdoPlan3">Yearly</label>
+                    </div>
+                </div>
+
+                <div class="row mt-1">
+                    <div class="col-md-4">
+                        <label>Cost</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="txtCost" onkeyup="checkDec(this);" placeholder="Cost Weekly/Monthly/Yearly" />
+                    </div>
+                </div>
+
+                <div class="row mt-1">
+                    <div class="col-md-8 text-left">
+                        <blink>
+                            <span style="color:red;font-size:18px;" id="messageData" class="blink">
+
+                            </span>
+                        </blink>
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <input type="button" value="Create Plan" id="btnCreate" name="btnCreate" class="btn btn-info" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        BindBusinessType();
+        $('.edit').hide();
+
+        $('.btn-edit').click(function (e) {
+            //alert('Edit click');
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            tr.find('.edit, .read').toggle();
+        });
+        $('.btn-Cancel').click(function (e) {
+            //alert('Cancle click');
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            tr.find('.edit, .read').toggle();
+        });
+
+        $('.btn-delete').click(function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var ID = tr.find('#hddID').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateDelete", "Admin")',
+                data: '{ID: "' + ID + '",op:"delete" }',
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                success: function (data) {
+                    $("#wait").hide();
+                    // alert('Process completed');
+                    location.reload(true);
+                },
+                error: function (error) {
+                    $("#wait").hide();
+                    // alert("Error! Please try again.");
+                }
+            });
+        });
+
+        // string title="", string description="", decimal cost=0, int ID=0, bool status=false,string op=""
+        $('.btn-update').click(function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var ID = tr.find('#hddID').val();
+            var status = tr.find('#txtGridIsActive').val();
+            var cost = tr.find('#txtGridCost').val();
+            var description = tr.find('#txtGridDescription').val();
+            var title = tr.find('#txtGridTile').val();
+            var order = tr.find('#txtGridDisplayOrder').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateDelete", "Admin")',
+                data: '{title:"' + title + '",description:"' + description + '",cost:"' + cost + '",status:"' + status + '",order:"' + order+'",ID: "' + ID + '",op:"update" }',
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                success: function (data) {
+                    $("#wait").hide();
+                    // alert('Process completed');
+                    location.reload(true);
+                },
+                error: function (error) {
+                    $("#wait").hide();
+                    // alert("Error! Please try again.");
+                }
+            });
+        });
+
+
+
+
+        $('#btnCreateUserPlan').click(function () {
+            $('#btnShowData').click();
+        });
+
+        $('#btnCreate').click(function () {
+            var title = $('#txtTitle').val();
+            var description = $('#txtDescription').val();
+            var cost = $('#txtCost').val();
+            var group = $('#ddlBPType').val();
+            var planfor = $("input[name='rdoPlan']:checked").val();
+            //alert(title + "-" + description + "-" + cost + "-" + group + "-" + planfor);
+            //return;
+
+            if (validate()) {
+                //call ajax
+                //alert('validate');
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("CreatePlan", "Admin")',
+                    data: '{title: "' + title + '",description:"' + description + '",cost:"' + cost + '",group:"' + group + '",planfor:"' + planfor+'" }',
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    async: false,
+                    success: function (data) {
+                        $("#wait").hide();
+                        // alert('Process completed');
+                        $('#messageData').text(data);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            location.reload(true);
+                        }, 3000);
+                    },
+                    error: function (error) {
+                        $("#wait").hide();
+                        // alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 5000);
+                    }
+                });
+            }
+
+
+        });
+
+    });
+     function BindBusinessType() {
+        $(function () {
+            var ddlBPType = $("#ddlBPType");
+            ddlBPType.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+            $.ajax({
+                type: "GET",
+                url:'@Url.Action("GetBusinessType", "Account")',
+                success: function (response) {
+                    ddlBPType.empty().append('<option selected="selected" value="0">Select Business Type</option>');
+                    $.each(response, function () {
+                        ddlBPType.append($("<option></option>").val(this['Value']).html(this['Text']));
+                    });
+
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        });
+
+    }
+    function checkDec(el) {
+        var ex = /^[0-9]+\.?[0-9]*$/;
+        if (ex.test(el.value) == false) {
+            el.value = el.value.substring(0, el.value.length - 1);
+        }
+    }
+
+    function validate() {
+        if ($('#ddlBPType').val() == 0) {
+            $('#ddlBPType').addClass("validateClass");
+            return false;
+        }
+        else {
+            $('#ddlBPType').removeClass("validateClass");
+        }
+
+        if ($('#txtTitle').val() == '') {
+            $('#txtTitle').addClass("validateClass");
+            return false;
+        }
+        else {
+            $('#txtTitle').removeClass("validateClass");
+        }
+        if ($('#txtDescription').val() == '') {
+            $('#txtDescription').addClass("validateClass");
+            return false;
+        }
+        else {
+            $('#txtDescription').removeClass("validateClass");
+        }
+        if ($('#txtCost').val() == '') {
+            $('#txtCost').addClass("validateClass");
+            return false;
+        }
+        else {
+            $('#txtCost').removeClass("validateClass");
+        }
+
+        return true;
+    }
+</script>

@@ -1,0 +1,6 @@
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Core\bin\Debug\Harmonizer.Core.dll
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Core\bin\Debug\Harmonizer.Core.pdb
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Core\obj\Debug\Harmonizer.Core.csproj.CoreCompileInputs.cache
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Core\obj\Debug\Harmonizer.Core.dll
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Core\obj\Debug\Harmonizer.Core.pdb
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Core\obj\Debug\Harmonizer.Core.csprojAssemblyReference.cache

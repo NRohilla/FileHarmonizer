@@ -1,0 +1,71 @@
+﻿
+@model IEnumerable<Harmonizer.Core.Model.UserScheme>
+@{
+    WebGrid webGrid = new WebGrid(source: Model, canPage: false, canSort: false);
+}
+
+@if (Model.Count() > 0)
+{
+    <div class="row mb-2">
+        <div class="col-md-4 float-left">
+            <input type="button" id="btnChkAll" class="btn btn-info" name="check all" value="Check All" />
+            <input type="button" id="btnUnChkAll" class="btn btn-info" name="uncheck all" value="UnCheck All" />
+        </div>
+        <div class="col-md-8 text-right">
+            <input type="button" class="btn btn-info" name="Archive" id="btnArchive" value="Archive" />
+        </div>
+    </div>
+    <div class="row scrollable-table">
+        <div class="col-md-12">
+            @webGrid.GetHtml(
+                htmlAttributes: new { @id = "SchemeManageDetails", @class = "table table-bordered table-sm table-striped search-replace-table sticky-header" },
+                columns: webGrid.Columns(
+                webGrid.Column("*", format: @<text> <input type="hidden" name='hiddenID' id="hiddenID" value="@item.ID" />
+                    <input type="checkbox" class="check" id="chk" name="chk" />
+                </text> ),
+  webGrid.Column("Scheme #", format: @<span>@Html.Label("lblSchemeNum", Convert.ToString((int)item.SchemeNum),new {id= "lblSchemeNum" })</span>),
+webGrid.Column("Scheme", format: @<span>@Html.Label("lblTemplate", (string)item.SchemeName)</span>),
+     webGrid.Column("Description", format: @<text>
+            @Html.Label("lblSchemeDesc", (string)item.SchemeDescription)
+
+        </text>),
+      webGrid.Column("Comment", format: @<text>@Html.Label("lblComment", (string)item.SchemeComment, new { @class = "read" })
+        @Html.TextBox("txtComment", (string)item.SchemeComment, new { @class = "edit" })
+        </text>),
+                           webGrid.Column("Scheme Type", format: @<text>@Html.Label("lblShemeType", (string)item.SchemeType)
+                       
+                        </text>),
+ webGrid.Column("Update Comment", format: @<text>
+            <input type="button" name='btnComment' value="Update" class="btn-info btn-edit read" />
+            <input type="button" name='btnUpdateComment' value="Update" class="btn-info btn-Update edit" />
+            <input type="button" name='btnCancelComment' value="Cancel" class="btn-info btn-cancel edit" />
+        </text>),
+       webGrid.Column("View", format: @<input type="button" name='btnView' value="View" class="btn-info btn-view" />),
+    webGrid.Column("Delete", format: @<input type="button" name='btnDelete' value="Delete" class="btn-info btn-delete" />)
+))
+
+        </div>
+    </div>
+
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <span class="text-danger">Data not found! Please create scheme.</span>
+        </div>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+
+        $('#btnChkAll').click(function () {
+            $("#SchemeManageDetails td input[type=checkBox]").prop("checked", true);
+        });
+
+        $('#btnUnChkAll').click(function () {
+            $("#SchemeManageDetails td input[type=checkBox]").removeAttr('checked');
+        });
+    });
+</script>

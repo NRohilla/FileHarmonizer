@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Harmonizer.Core.Model.PaymentModel>
+@{
+    ViewBag.Title = "File Harmonizer - GetPaymentDetails";
+    WebGrid webGrid = new WebGrid(source: Model, canPage: false, canSort: false);
+}
+
+
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Credit Report</h4></div>
+            <hr />
+            <div class="bg-white p-3 border w-100 float-left">
+
+                <div id="divUserList">
+                    <div id="divUserList">
+                        @if (Model.Count() > 0)
+                {
+
+                    <div class="row scrollable-table">
+                        <div class="col-md-12">
+                            @webGrid.GetHtml(
+htmlAttributes: new { @id = "TeamUserDetails", @class = "table table-bordered table-sm table-striped search-replace-table sticky-header" },
+columns: webGrid.Columns(
+webGrid.Column("BPID", format: @<span>@Html.Label("lblBpId", (string)item.Value.BPID, new { @id = "lblBpId" })</span>),
+webGrid.Column("Payment ID", format: @<span>@Html.Label("lblPaymentID", String.Format("{0}", (string)item.Value.id), new { @id = "lblPaymentID" })</span>),
+webGrid.Column("Invoice Id", format: @<span>@Html.Label("lblinvoice", String.Format("{0}", (string)item.Value.invoice))</span>),
+
+webGrid.Column("Amount", format: @<span>@Html.Label("lblamount", (string)item.Value.amount)</span>),
+webGrid.Column("Status", format: @<span>@Html.Label("lblstate", (string)item.Value.state)</span>),
+webGrid.Column("Failure Reason", format: @<span>@Html.Label(" lblPersonalEmail", ((string)item.Value.failuerexception == null ? "" : (string)item.Value.failuerexception), new { @id = " lblPesonalEmail" })</span>)
+
+))
+                        </div>
+                    </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="text-danger">User not maintain.</span>
+                </div>
+            </div>
+}
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

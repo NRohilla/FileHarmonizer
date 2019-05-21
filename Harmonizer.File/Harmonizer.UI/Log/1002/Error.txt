@@ -1,0 +1,334 @@
+12/12/2018 1:20:20 PM : BP ID : 1002 :- this is an errror!
+12/12/2018 1:22:30 PM : BP ID : 1002 :- this is an errror!
+12/12/2018 2:05:37 PM : BP ID : 1002 :- this is an errror!
+12/12/2018 2:06:23 PM : BP ID : 1002 :-    at Microsoft.Office.Interop.Word.Find.Execute(Object& FindText, Object& MatchCase, Object& MatchWholeWord, Object& MatchWildcards, Object& MatchSoundsLike, Object& MatchAllWordForms, Object& Forward, Object& Wrap, Object& Format, Object& ReplaceWith, Object& Replace, Object& MatchKashida, Object& MatchDiacritics, Object& MatchAlefHamza, Object& MatchControl)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 368
+12/12/2018 2:09:07 PM : BP ID : 1002 :- this is an errror!
+12/12/2018 2:16:51 PM : BP ID : 1002 :- this is an errror!
+12/12/2018 2:17:20 PM : BP ID : 1002 :- Failed to open doc file:   at Microsoft.Office.Interop.Word.Documents.Open(Object& FileName, Object& ConfirmConversions, Object& ReadOnly, Object& AddToRecentFiles, Object& PasswordDocument, Object& PasswordTemplate, Object& Revert, Object& WritePasswordDocument, Object& WritePasswordTemplate, Object& Format, Object& Encoding, Object& Visible, Object& OpenAndRepair, Object& DocumentDirection, Object& NoEncodingDialog, Object& XMLTransform)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 344
+12/12/2018 2:19:38 PM : BP ID : 1002 :- Failed to open doc file:   at Microsoft.Office.Interop.Word.Documents.Open(Object& FileName, Object& ConfirmConversions, Object& ReadOnly, Object& AddToRecentFiles, Object& PasswordDocument, Object& PasswordTemplate, Object& Revert, Object& WritePasswordDocument, Object& WritePasswordTemplate, Object& Format, Object& Encoding, Object& Visible, Object& OpenAndRepair, Object& DocumentDirection, Object& NoEncodingDialog, Object& XMLTransform)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 344
+12/12/2018 2:22:36 PM : BP ID : 1002 :- Failed to open doc file:   at Microsoft.Office.Interop.Word.Documents.Open(Object& FileName, Object& ConfirmConversions, Object& ReadOnly, Object& AddToRecentFiles, Object& PasswordDocument, Object& PasswordTemplate, Object& Revert, Object& WritePasswordDocument, Object& WritePasswordTemplate, Object& Format, Object& Encoding, Object& Visible, Object& OpenAndRepair, Object& DocumentDirection, Object& NoEncodingDialog, Object& XMLTransform)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 344
+12/12/2018 2:24:41 PM : BP ID : 1002 :- this is an errror!
+12/12/2018 2:25:08 PM : BP ID : 1002 :- Failed to open doc file:   at Microsoft.Office.Interop.Word.Documents.Open(Object& FileName, Object& ConfirmConversions, Object& ReadOnly, Object& AddToRecentFiles, Object& PasswordDocument, Object& PasswordTemplate, Object& Revert, Object& WritePasswordDocument, Object& WritePasswordTemplate, Object& Format, Object& Encoding, Object& Visible, Object& OpenAndRepair, Object& DocumentDirection, Object& NoEncodingDialog, Object& XMLTransform)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 347
+12/12/2018 2:29:15 PM : BP ID : 1002 :-    at Microsoft.Office.Interop.Word.Find.Execute(Object& FindText, Object& MatchCase, Object& MatchWholeWord, Object& MatchWildcards, Object& MatchSoundsLike, Object& MatchAllWordForms, Object& Forward, Object& Wrap, Object& Format, Object& ReplaceWith, Object& Replace, Object& MatchKashida, Object& MatchDiacritics, Object& MatchAlefHamza, Object& MatchControl)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 372
+12/12/2018 2:55:59 PM : BP ID : 1002 :- this is an errror!
+12/12/2018 3:01:00 PM : BP ID : 1002 :- this is an errror!
+12/12/2018 3:59:36 PM : BP ID : 1002 :-    at Microsoft.Office.Interop.Word.Find.Execute(Object& FindText, Object& MatchCase, Object& MatchWholeWord, Object& MatchWildcards, Object& MatchSoundsLike, Object& MatchAllWordForms, Object& Forward, Object& Wrap, Object& Format, Object& ReplaceWith, Object& Replace, Object& MatchKashida, Object& MatchDiacritics, Object& MatchAlefHamza, Object& MatchControl)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 372
+12/12/2018 4:11:17 PM : BP ID : 1002 :-    at Microsoft.Office.Interop.Word.Find.Execute(Object& FindText, Object& MatchCase, Object& MatchWholeWord, Object& MatchWildcards, Object& MatchSoundsLike, Object& MatchAllWordForms, Object& Forward, Object& Wrap, Object& Format, Object& ReplaceWith, Object& Replace, Object& MatchKashida, Object& MatchDiacritics, Object& MatchAlefHamza, Object& MatchControl)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 372
+12/12/2018 4:13:22 PM : BP ID : 1002 :-    at Microsoft.Office.Interop.Word.Find.Execute(Object& FindText, Object& MatchCase, Object& MatchWholeWord, Object& MatchWildcards, Object& MatchSoundsLike, Object& MatchAllWordForms, Object& Forward, Object& Wrap, Object& Format, Object& ReplaceWith, Object& Replace, Object& MatchKashida, Object& MatchDiacritics, Object& MatchAlefHamza, Object& MatchControl)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 372
+12/12/2018 4:44:56 PM : BP ID : 1002 :-    at Microsoft.Office.Interop.Word.Find.Execute(Object& FindText, Object& MatchCase, Object& MatchWholeWord, Object& MatchWildcards, Object& MatchSoundsLike, Object& MatchAllWordForms, Object& Forward, Object& Wrap, Object& Format, Object& ReplaceWith, Object& Replace, Object& MatchKashida, Object& MatchDiacritics, Object& MatchAlefHamza, Object& MatchControl)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 372
+12/12/2018 5:36:47 PM : BP ID : 1002 :-    at Microsoft.Office.Interop.Word.Find.Execute(Object& FindText, Object& MatchCase, Object& MatchWholeWord, Object& MatchWildcards, Object& MatchSoundsLike, Object& MatchAllWordForms, Object& Forward, Object& Wrap, Object& Format, Object& ReplaceWith, Object& Replace, Object& MatchKashida, Object& MatchDiacritics, Object& MatchAlefHamza, Object& MatchControl)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 378
+12/12/2018 6:25:12 PM : BP ID : 1002 :-    at Microsoft.Office.Interop.Word.Find.Execute(Object& FindText, Object& MatchCase, Object& MatchWholeWord, Object& MatchWildcards, Object& MatchSoundsLike, Object& MatchAllWordForms, Object& Forward, Object& Wrap, Object& Format, Object& ReplaceWith, Object& Replace, Object& MatchKashida, Object& MatchDiacritics, Object& MatchAlefHamza, Object& MatchControl)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 387
+12/12/2018 6:39:15 PM : BP ID : 1002 :- Unexpected character encountered while parsing value: o. Path '', line 1, position 1.--   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonTextReader.ReadInternal()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType(JsonReader reader, JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateList(IList list, JsonReader reader, JsonArrayContract contract, JsonProperty containerProperty, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateList(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, Object existingValue, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Harmonizer.UI.Controllers.FHFileController.UploadFileData() in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 112
+12/12/2018 6:39:17 PM : BP ID : 1002 :- Unable to cast object of type 'System.DBNull' to type 'System.String'.--   at Harmonizer.DB.Data.FHFileData.CreateFilter(CHFilter Filter) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.DB\Data\FHFileData.cs:line 253
+   at Harmonizer.UI.Controllers.FHFileController.UploadFileData() in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 189
+12/12/2018 6:41:06 PM : BP ID : 1002 :- Unexpected character encountered while parsing value: o. Path '', line 1, position 1.--   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonTextReader.ReadInternal()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType(JsonReader reader, JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateList(IList list, JsonReader reader, JsonArrayContract contract, JsonProperty containerProperty, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateList(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, Object existingValue, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Harmonizer.UI.Controllers.FHFileController.UploadFileData() in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 112
+12/12/2018 6:41:08 PM : BP ID : 1002 :- Unable to cast object of type 'System.DBNull' to type 'System.String'.--   at Harmonizer.DB.Data.FHFileData.CreateFilter(CHFilter Filter) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.DB\Data\FHFileData.cs:line 253
+   at Harmonizer.UI.Controllers.FHFileController.UploadFileData() in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 189
+12/12/2018 6:43:23 PM : BP ID : 1002 :- Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index--   at System.Collections.ArrayList.get_Item(Int32 index)
+   at System.Collections.Specialized.NameValueCollection.GetKey(Int32 index)
+   at System.Web.HttpValueCollection.Get(Int32 index)
+   at System.Collections.Specialized.NameValueCollection.get_Item(Int32 index)
+   at Harmonizer.UI.Controllers.FHFileController.UploadFileData() in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 112
+1/4/2019 9:09:13 PM : BP ID : 1002 :- Did not get data on that BPID
+1/4/2019 9:09:59 PM : BP ID : 1002 :- Did not get data on that BPID
+1/4/2019 9:10:33 PM : BP ID : 1002 :- Did not get data on that BPID
+1/7/2019 7:19:59 PM : BP ID : 1002 :- Conversion failed when converting the nvarchar value '0180' to data type int.
+1/7/2019 7:40:49 PM : BP ID : 1002 :- Conversion failed when converting the nvarchar value '0180' to data type int.
+1/7/2019 7:57:27 PM : BP ID : 1002 :- Conversion failed when converting the nvarchar value '0180' to data type int.
+1/7/2019 7:58:52 PM : BP ID : 1002 :- Conversion failed when converting the nvarchar value '0180' to data type int.
+1/7/2019 8:05:03 PM : BP ID : 1002 :- Conversion failed when converting the nvarchar value '0180' to data type int.
+1/7/2019 8:07:57 PM : BP ID : 1002 :- Conversion failed when converting the nvarchar value '0140' to data type int.
+1/7/2019 8:09:27 PM : BP ID : 1002 :- Conversion failed when converting the nvarchar value '0010' to data type int.
+1/7/2019 8:12:58 PM : BP ID : 1002 :- Conversion failed when converting the nvarchar value '0010' to data type int.
+1/7/2019 8:37:56 PM : BP ID : 1002 :- Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+1/7/2019 8:38:12 PM : BP ID : 1002 :- Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+1/17/2019 6:45:56 PM : BP ID : 1002 :- Print File Error, data not found: -Index was outside the bounds of the array.--   at Harmonizer.UI.Controllers.FHManageController.PrintFile(String FileID, String HTFileID) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHManageController.cs:line 136
+1/17/2019 6:46:10 PM : BP ID : 1002 :- Print File Error, data not found: -Index was outside the bounds of the array.--   at Harmonizer.UI.Controllers.FHManageController.PrintFile(String FileID, String HTFileID) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHManageController.cs:line 136
+1/17/2019 6:46:41 PM : BP ID : 1002 :- Print File Error, data not found: -Index was outside the bounds of the array.--   at Harmonizer.UI.Controllers.FHManageController.PrintFile(String FileID, String HTFileID) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHManageController.cs:line 136
+1/17/2019 6:47:13 PM : BP ID : 1002 :- Print File Error, data not found: -Index was outside the bounds of the array.--   at Harmonizer.UI.Controllers.FHManageController.PrintFile(String FileID, String HTFileID) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHManageController.cs:line 136
+1/17/2019 6:50:25 PM : BP ID : 1002 :- Print File Error, data not found: -Index was outside the bounds of the array.--   at Harmonizer.UI.Controllers.FHManageController.PrintFile(String FileID, String HTFileID) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHManageController.cs:line 136
+1/17/2019 7:02:45 PM : BP ID : 1002 :- Print File Error, data not found: -Object reference not set to an instance of an object.--   at Harmonizer.UI.Controllers.FHManageController.PrintFile(String FileID, String HTFileID) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHManageController.cs:line 134
+1/18/2019 3:19:30 PM : BP ID : 1002 :- Print File Issue: -157-0
+1/18/2019 3:19:30 PM : BP ID : 1002 :- Print File Issue_1: -157-0
+1/18/2019 3:19:30 PM : BP ID : 1002 :- Print File Issue_2: -157-0
+1/18/2019 3:19:30 PM : BP ID : 1002 :- Print File Issue_3: -157-0
+1/18/2019 3:19:30 PM : BP ID : 1002 :- Print File Issue_4 Insert Try: -157-0
+1/18/2019 3:19:30 PM : BP ID : 1002 :- Print File Issue_5 Insert Try: -157-0
+1/18/2019 3:19:30 PM : BP ID : 1002 :- Print File Issue_6 Insert Try: -157-0
+1/18/2019 3:19:30 PM : BP ID : 1002 :- Print File Issue_8 Insert Try: -157-0
+1/18/2019 3:52:24 PM : BP ID : 1002 :- Print File Issue: -157-0
+1/18/2019 3:52:24 PM : BP ID : 1002 :- Print File Issue_1: -157-0
+1/18/2019 3:52:24 PM : BP ID : 1002 :- Print File Issue_2: -157-0
+1/18/2019 3:52:24 PM : BP ID : 1002 :- Print File Issue_3: -157-0
+1/18/2019 3:52:24 PM : BP ID : 1002 :- Print File Issue_4 Insert Try: -157-0
+1/18/2019 3:52:24 PM : BP ID : 1002 :- Print File Issue_5 Insert Try: -157-0
+1/18/2019 3:52:24 PM : BP ID : 1002 :- Print File Issue_6 Insert Try: -157-0
+1/18/2019 3:52:24 PM : BP ID : 1002 :- Print File Issue_8 Insert Try: -157-0
+1/18/2019 4:54:59 PM : BP ID : 1002 :- Print File Issue: -169-0
+1/18/2019 4:54:59 PM : BP ID : 1002 :- Print File Issue_1: -169-0
+1/18/2019 4:54:59 PM : BP ID : 1002 :- Print File Issue_2: -169-0
+1/18/2019 4:54:59 PM : BP ID : 1002 :- Print File Issue_3: -169-0
+1/18/2019 4:54:59 PM : BP ID : 1002 :- Print File Issue_4 Insert Try: -169-0
+1/18/2019 4:54:59 PM : BP ID : 1002 :- Print file extendsion Insert Try: -.docx
+1/18/2019 4:54:59 PM : BP ID : 1002 :- Print File Issue_5 Insert Try: -169-0
+1/18/2019 4:54:59 PM : BP ID : 1002 :- Print File Issue_6 Insert Try: -169-0
+1/18/2019 4:54:59 PM : BP ID : 1002 :- Print File Issue_8 Insert Try: -169-0
+1/18/2019 4:55:24 PM : BP ID : 1002 :- Print File Issue: -171-0
+1/18/2019 4:55:24 PM : BP ID : 1002 :- Print File Issue_1: -171-0
+1/18/2019 4:55:24 PM : BP ID : 1002 :- Print File Issue_2: -171-0
+1/18/2019 4:55:24 PM : BP ID : 1002 :- Print File Issue_3: -171-0
+1/18/2019 4:55:24 PM : BP ID : 1002 :- Print File Issue_4 Insert Try: -171-0
+1/18/2019 4:55:24 PM : BP ID : 1002 :- Print file extendsion Insert Try: -.xlsx
+1/18/2019 4:55:39 PM : BP ID : 1002 :- Print File Issue: -157-0
+1/18/2019 4:55:39 PM : BP ID : 1002 :- Print File Issue_1: -157-0
+1/18/2019 4:55:39 PM : BP ID : 1002 :- Print File Issue_2: -157-0
+1/18/2019 4:55:39 PM : BP ID : 1002 :- Print File Issue_3: -157-0
+1/18/2019 4:55:39 PM : BP ID : 1002 :- Print File Issue_4 Insert Try: -157-0
+1/18/2019 4:55:39 PM : BP ID : 1002 :- Print file extendsion Insert Try: -.docx
+1/18/2019 4:55:39 PM : BP ID : 1002 :- Print File Issue_5 Insert Try: -157-0
+1/18/2019 4:55:39 PM : BP ID : 1002 :- Print File Issue_6 Insert Try: -157-0
+1/18/2019 4:55:39 PM : BP ID : 1002 :- Print File Issue_8 Insert Try: -157-0
+1/18/2019 5:09:12 PM : BP ID : 1002 :- Print File Issue: -193-0
+1/18/2019 5:09:12 PM : BP ID : 1002 :- Print File Issue_1: -193-0
+1/18/2019 5:09:12 PM : BP ID : 1002 :- Print File Issue_2: -193-0
+1/18/2019 5:09:12 PM : BP ID : 1002 :- Print File Issue_3: -193-0
+1/18/2019 5:09:12 PM : BP ID : 1002 :- Print File Issue_4 Insert Try: -193-0
+1/18/2019 5:09:12 PM : BP ID : 1002 :- Print file extendsion Insert Try: -.xlsx
+1/18/2019 5:09:12 PM : BP ID : 1002 :- Print File Issue_5 Insert Try: -193-0
+1/18/2019 5:09:12 PM : BP ID : 1002 :- Print File Issue_6 Insert Try: -193-0
+1/18/2019 5:09:12 PM : BP ID : 1002 :- Print File Issue_8 Insert Try: -193-0
+1/18/2019 5:09:12 PM : BP ID : 1002 :- Print File Error: -The specified package is not valid.--   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.Load()
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.OpenCore(Stream stream, Boolean readWriteMode)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(Stream stream, Boolean isEditable, OpenSettings openSettings)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(Stream stream, Boolean isEditable)
+   at Harmonizer.UI.Controllers.FHFileController.ViewPrintFile(String FileID, String HTFileID) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 1598
+1/18/2019 5:09:31 PM : BP ID : 1002 :- Print File Issue: -193-0
+1/18/2019 5:09:31 PM : BP ID : 1002 :- Print File Issue_1: -193-0
+1/18/2019 5:09:31 PM : BP ID : 1002 :- Print File Issue_2: -193-0
+1/18/2019 5:09:31 PM : BP ID : 1002 :- Print File Issue_3: -193-0
+1/18/2019 5:09:31 PM : BP ID : 1002 :- Print File Issue_4 Insert Try: -193-0
+1/18/2019 5:09:31 PM : BP ID : 1002 :- Print file extendsion Insert Try: -.xlsx
+1/18/2019 5:09:31 PM : BP ID : 1002 :- Print File Issue_5 Insert Try: -193-0
+1/18/2019 5:09:31 PM : BP ID : 1002 :- Print File Issue_6 Insert Try: -193-0
+1/18/2019 5:09:37 PM : BP ID : 1002 :- Print File Issue_8 Insert Try: -193-0
+1/18/2019 5:10:44 PM : BP ID : 1002 :- Print File Issue: -186-0
+1/18/2019 5:10:44 PM : BP ID : 1002 :- Print File Issue_1: -186-0
+1/18/2019 5:10:44 PM : BP ID : 1002 :- Print File Issue_2: -186-0
+1/18/2019 5:10:44 PM : BP ID : 1002 :- Print File Issue_3: -186-0
+1/18/2019 5:10:44 PM : BP ID : 1002 :- Print File Issue_4 Insert Try: -186-0
+1/18/2019 5:10:44 PM : BP ID : 1002 :- Print file extendsion Insert Try: -.xlsx
+1/18/2019 5:10:44 PM : BP ID : 1002 :- Print File Issue_5 Insert Try: -186-0
+1/18/2019 5:10:44 PM : BP ID : 1002 :- Print File Issue_6 Insert Try: -186-0
+1/18/2019 5:10:47 PM : BP ID : 1002 :- Print File Issue_8 Insert Try: -186-0
+1/25/2019 4:20:04 PM : BP ID : 1002 :- List of search data not find:-Error reading string. Unexpected token: StartObject. Path '[0].SearchWord', line 1, position 23.--   at Newtonsoft.Json.JsonReader.ReadAsStringInternal()
+   at Newtonsoft.Json.JsonTextReader.ReadAsString()
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType(JsonReader reader, JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateList(IList list, JsonReader reader, JsonArrayContract contract, JsonProperty containerProperty, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateList(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, Object existingValue, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Harmonizer.UI.Controllers.FHFileController.UploadFileData() in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 126
+1/25/2019 4:20:07 PM : BP ID : 1002 :- File can not upload from clientUnable to cast object of type 'System.DBNull' to type 'System.String'.--   at Harmonizer.DB.Data.FHFileData.CreateFilter(CHFilter Filter) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.DB\Data\FHFileData.cs:line 257
+   at Harmonizer.UI.Controllers.FHFileController.UploadFileData() in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 204
+1/30/2019 1:19:29 PM : BP ID : 1002 :- Did not get data on that BPID
+1/30/2019 2:02:38 PM : BP ID : 1002 :- Did not get data on that BPID
+1/30/2019 2:09:52 PM : BP ID : 1002 :- Did not get data on that BPID
+1/30/2019 4:04:09 PM : BP ID : 1002 :- Did not get data on that BPID
+1/30/2019 4:06:04 PM : BP ID : 1002 :- Did not get data on that BPID
+1/30/2019 4:06:15 PM : BP ID : 1002 :- Did not get data on that BPID
+1/30/2019 4:18:43 PM : BP ID : 1002 :- Did not get data on that BPID
+1/30/2019 4:19:09 PM : BP ID : 1002 :- Did not get data on that BPID
+1/30/2019 7:59:52 PM : BP ID : 1002 :- Did not get data on that BPID
+2/19/2019 7:25:39 PM : BP ID : 1002 :-    at MS.Internal.IO.Zip.ZipIOEndOfCentralDirectoryBlock.FindPosition(Stream archiveStream)
+   at MS.Internal.IO.Zip.ZipIOEndOfCentralDirectoryBlock.SeekableLoad(ZipIOBlockManager blockManager)
+   at MS.Internal.IO.Zip.ZipArchive..ctor(Stream archiveStream, FileMode mode, FileAccess access, Boolean streaming, Boolean ownStream)
+   at MS.Internal.IO.Zip.ZipArchive.OpenOnFile(String path, FileMode mode, FileAccess access, FileShare share, Boolean streaming)
+   at System.IO.Packaging.ZipPackage..ctor(String path, FileMode mode, FileAccess access, FileShare share, Boolean streaming)
+   at System.IO.Packaging.Package.Open(String path, FileMode packageMode, FileAccess packageAccess, FileShare packageShare, Boolean streaming)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.OpenCore(String path, Boolean readWriteMode)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(String path, Boolean isEditable, OpenSettings openSettings)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(String path, Boolean isEditable)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath, Boolean IsHarmonized) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 542
+2/19/2019 7:30:29 PM : BP ID : 1002 :-    at MS.Internal.IO.Zip.ZipIOEndOfCentralDirectoryBlock.FindPosition(Stream archiveStream)
+   at MS.Internal.IO.Zip.ZipIOEndOfCentralDirectoryBlock.SeekableLoad(ZipIOBlockManager blockManager)
+   at MS.Internal.IO.Zip.ZipArchive..ctor(Stream archiveStream, FileMode mode, FileAccess access, Boolean streaming, Boolean ownStream)
+   at MS.Internal.IO.Zip.ZipArchive.OpenOnFile(String path, FileMode mode, FileAccess access, FileShare share, Boolean streaming)
+   at System.IO.Packaging.ZipPackage..ctor(String path, FileMode mode, FileAccess access, FileShare share, Boolean streaming)
+   at System.IO.Packaging.Package.Open(String path, FileMode packageMode, FileAccess packageAccess, FileShare packageShare, Boolean streaming)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.OpenCore(String path, Boolean readWriteMode)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(String path, Boolean isEditable, OpenSettings openSettings)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(String path, Boolean isEditable)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath, Boolean IsHarmonized) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 542
+2/19/2019 7:34:17 PM : BP ID : 1002 :-    at MS.Internal.IO.Zip.ZipIOEndOfCentralDirectoryBlock.FindPosition(Stream archiveStream)
+   at MS.Internal.IO.Zip.ZipIOEndOfCentralDirectoryBlock.SeekableLoad(ZipIOBlockManager blockManager)
+   at MS.Internal.IO.Zip.ZipArchive..ctor(Stream archiveStream, FileMode mode, FileAccess access, Boolean streaming, Boolean ownStream)
+   at MS.Internal.IO.Zip.ZipArchive.OpenOnFile(String path, FileMode mode, FileAccess access, FileShare share, Boolean streaming)
+   at System.IO.Packaging.ZipPackage..ctor(String path, FileMode mode, FileAccess access, FileShare share, Boolean streaming)
+   at System.IO.Packaging.Package.Open(String path, FileMode packageMode, FileAccess packageAccess, FileShare packageShare, Boolean streaming)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.OpenCore(String path, Boolean readWriteMode)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(String path, Boolean isEditable, OpenSettings openSettings)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(String path, Boolean isEditable)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath, Boolean IsHarmonized) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 542
+2/28/2019 12:12:38 PM : BP ID : 1002 :- Did not get data on that BPID
+2/28/2019 12:15:23 PM : BP ID : 1002 :-    at MS.Internal.IO.Zip.ZipIOEndOfCentralDirectoryBlock.FindPosition(Stream archiveStream)
+   at MS.Internal.IO.Zip.ZipIOEndOfCentralDirectoryBlock.SeekableLoad(ZipIOBlockManager blockManager)
+   at MS.Internal.IO.Zip.ZipArchive..ctor(Stream archiveStream, FileMode mode, FileAccess access, Boolean streaming, Boolean ownStream)
+   at MS.Internal.IO.Zip.ZipArchive.OpenOnFile(String path, FileMode mode, FileAccess access, FileShare share, Boolean streaming)
+   at System.IO.Packaging.ZipPackage..ctor(String path, FileMode mode, FileAccess access, FileShare share, Boolean streaming)
+   at System.IO.Packaging.Package.Open(String path, FileMode packageMode, FileAccess packageAccess, FileShare packageShare, Boolean streaming)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.OpenCore(String path, Boolean readWriteMode)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(String path, Boolean isEditable, OpenSettings openSettings)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(String path, Boolean isEditable)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath, Boolean IsHarmonized) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 544
+2/28/2019 12:27:31 PM : BP ID : 1002 :- Did not get data on that BPID
+2/28/2019 12:28:27 PM : BP ID : 1002 :-    at MS.Internal.IO.Zip.ZipIOEndOfCentralDirectoryBlock.FindPosition(Stream archiveStream)
+   at MS.Internal.IO.Zip.ZipIOEndOfCentralDirectoryBlock.SeekableLoad(ZipIOBlockManager blockManager)
+   at MS.Internal.IO.Zip.ZipArchive..ctor(Stream archiveStream, FileMode mode, FileAccess access, Boolean streaming, Boolean ownStream)
+   at MS.Internal.IO.Zip.ZipArchive.OpenOnFile(String path, FileMode mode, FileAccess access, FileShare share, Boolean streaming)
+   at System.IO.Packaging.ZipPackage..ctor(String path, FileMode mode, FileAccess access, FileShare share, Boolean streaming)
+   at System.IO.Packaging.Package.Open(String path, FileMode packageMode, FileAccess packageAccess, FileShare packageShare, Boolean streaming)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.OpenCore(String path, Boolean readWriteMode)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(String path, Boolean isEditable, OpenSettings openSettings)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(String path, Boolean isEditable)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath, Boolean IsHarmonized) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 544
+2/28/2019 12:28:40 PM : BP ID : 1002 :- Did not get data on that BPID
+2/28/2019 12:49:19 PM : BP ID : 1002 :- Did not get data on that BPID
+2/28/2019 12:49:55 PM : BP ID : 1002 :-    at MS.Internal.IO.Zip.ZipIOEndOfCentralDirectoryBlock.FindPosition(Stream archiveStream)
+   at MS.Internal.IO.Zip.ZipIOEndOfCentralDirectoryBlock.SeekableLoad(ZipIOBlockManager blockManager)
+   at MS.Internal.IO.Zip.ZipArchive..ctor(Stream archiveStream, FileMode mode, FileAccess access, Boolean streaming, Boolean ownStream)
+   at MS.Internal.IO.Zip.ZipArchive.OpenOnFile(String path, FileMode mode, FileAccess access, FileShare share, Boolean streaming)
+   at System.IO.Packaging.ZipPackage..ctor(String path, FileMode mode, FileAccess access, FileShare share, Boolean streaming)
+   at System.IO.Packaging.Package.Open(String path, FileMode packageMode, FileAccess packageAccess, FileShare packageShare, Boolean streaming)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.OpenCore(String path, Boolean readWriteMode)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(String path, Boolean isEditable, OpenSettings openSettings)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(String path, Boolean isEditable)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath, Boolean IsHarmonized) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 544
+3/8/2019 2:14:15 PM : BP ID : 1002 :-    at MS.Internal.IO.Zip.ZipIOEndOfCentralDirectoryBlock.FindPosition(Stream archiveStream)
+   at MS.Internal.IO.Zip.ZipIOEndOfCentralDirectoryBlock.SeekableLoad(ZipIOBlockManager blockManager)
+   at MS.Internal.IO.Zip.ZipArchive..ctor(Stream archiveStream, FileMode mode, FileAccess access, Boolean streaming, Boolean ownStream)
+   at MS.Internal.IO.Zip.ZipArchive.OpenOnFile(String path, FileMode mode, FileAccess access, FileShare share, Boolean streaming)
+   at System.IO.Packaging.ZipPackage..ctor(String path, FileMode mode, FileAccess access, FileShare share, Boolean streaming)
+   at System.IO.Packaging.Package.Open(String path, FileMode packageMode, FileAccess packageAccess, FileShare packageShare, Boolean streaming)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.OpenCore(String path, Boolean readWriteMode)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(String path, Boolean isEditable, OpenSettings openSettings)
+   at DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(String path, Boolean isEditable)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath, Boolean IsHarmonized) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 544
+3/8/2019 3:41:47 PM : BP ID : 1002 :- Did not get data on that BPID
+3/8/2019 3:42:10 PM : BP ID : 1002 :- Did not get data on that BPID
+3/8/2019 3:42:18 PM : BP ID : 1002 :- Did not get data on that BPID
+3/13/2019 4:08:53 PM : BP ID : 1002 :- Did not get data on that BPID
+3/18/2019 2:56:21 PM : BP ID : 1002 :-    at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath, Boolean IsHarmonized) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 613
+3/18/2019 2:58:38 PM : BP ID : 1002 :-    at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath, Boolean IsHarmonized) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 613
+3/18/2019 3:04:18 PM : BP ID : 1002 :-    at MS.Internal.IO.Zip.ZipIOLocalFileBlock.CheckFileAccessParameter(Stream stream, FileAccess access)
+   at MS.Internal.IO.Zip.ZipIOLocalFileBlock.GetStream(FileMode mode, FileAccess access)
+   at System.IO.Packaging.ZipPackagePart.GetStreamCore(FileMode mode, FileAccess access)
+   at System.IO.Packaging.PackagePart.GetStream(FileMode mode, FileAccess access)
+   at System.IO.Packaging.PackagePart.GetStream(FileMode mode)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPart.GetStream(FileMode mode)
+   at DocumentFormat.OpenXml.OpenXmlPartRootElement.SaveToPart(OpenXmlPart openXmlPart)
+   at DocumentFormat.OpenXml.OpenXmlPartRootElement.Save()
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.TrySavePartContent(OpenXmlPart part)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.SavePartContents(Boolean save)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.Dispose(Boolean disposing)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.Close()
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath, Boolean IsHarmonized) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 591
+3/18/2019 3:27:48 PM : BP ID : 1002 :-    at MS.Internal.IO.Zip.ZipIOLocalFileBlock.CheckFileAccessParameter(Stream stream, FileAccess access)
+   at MS.Internal.IO.Zip.ZipIOLocalFileBlock.GetStream(FileMode mode, FileAccess access)
+   at System.IO.Packaging.ZipPackagePart.GetStreamCore(FileMode mode, FileAccess access)
+   at System.IO.Packaging.PackagePart.GetStream(FileMode mode, FileAccess access)
+   at System.IO.Packaging.PackagePart.GetStream(FileMode mode)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPart.GetStream(FileMode mode)
+   at DocumentFormat.OpenXml.OpenXmlPartRootElement.SaveToPart(OpenXmlPart openXmlPart)
+   at DocumentFormat.OpenXml.OpenXmlPartRootElement.Save()
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.TrySavePartContent(OpenXmlPart part)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.SavePartContents(Boolean save)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.Dispose(Boolean disposing)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.Close()
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath, Boolean IsHarmonized) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 597
+3/18/2019 3:35:46 PM : BP ID : 1002 :-    at MS.Internal.IO.Zip.ZipIOLocalFileBlock.CheckFileAccessParameter(Stream stream, FileAccess access)
+   at MS.Internal.IO.Zip.ZipIOLocalFileBlock.GetStream(FileMode mode, FileAccess access)
+   at System.IO.Packaging.ZipPackagePart.GetStreamCore(FileMode mode, FileAccess access)
+   at System.IO.Packaging.PackagePart.GetStream(FileMode mode, FileAccess access)
+   at System.IO.Packaging.PackagePart.GetStream(FileMode mode)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPart.GetStream(FileMode mode)
+   at DocumentFormat.OpenXml.OpenXmlPartRootElement.SaveToPart(OpenXmlPart openXmlPart)
+   at DocumentFormat.OpenXml.OpenXmlPartRootElement.Save()
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.TrySavePartContent(OpenXmlPart part)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.SavePartContents(Boolean save)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.Dispose(Boolean disposing)
+   at DocumentFormat.OpenXml.Packaging.OpenXmlPackage.Close()
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath, Boolean IsHarmonized) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 597
+3/18/2019 3:36:00 PM : BP ID : 1002 :-    at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath, Boolean IsHarmonized) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 580
+3/29/2019 8:09:34 PM : BP ID : 1002 :- Did not get data on that BPID
+4/8/2019 2:40:20 PM : BP ID : 1002 :- File can not upload from clientIndex and length must refer to a location within the string.
+Parameter name: length--   at System.String.Substring(Int32 startIndex, Int32 length)
+   at Harmonizer.UI.Models.ExtensionMethods.Slice(String source, Int32 start, Int32 end) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Models\ExtensionMethods.cs:line 29
+   at Harmonizer.UI.Controllers.FHFileController.GetAllFiltersFromFiles() in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 2483
+4/8/2019 2:58:57 PM : BP ID : 1002 :- File can not upload from clientstartIndex cannot be larger than length of string.
+Parameter name: startIndex--   at System.String.Substring(Int32 startIndex, Int32 length)
+   at Harmonizer.UI.Models.ExtensionMethods.Slice(String source, Int32 start, Int32 end) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Models\ExtensionMethods.cs:line 29
+   at Harmonizer.UI.Controllers.FHFileController.GetAllFiltersFromFiles() in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 2483
+4/10/2019 6:01:33 PM : BP ID : 1002 :- Print File Error: -Input string was not in a correct format.--   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Xml.Linq.XAttribute.op_Explicit(XAttribute attribute)
+   at OpenXmlPowerTools.WmlToHtmlConverter.CalculateSpanWidthForTabs(WordprocessingDocument wordDoc)
+   at OpenXmlPowerTools.WmlToHtmlConverter.ConvertToHtml(WordprocessingDocument wordDoc, WmlToHtmlConverterSettings htmlConverterSettings)
+   at OpenXmlPowerTools.HtmlConverter.ConvertToHtml(WordprocessingDocument wDoc, HtmlConverterSettings htmlConverterSettings)
+   at Harmonizer.UI.Controllers.FHFileController.ViewPrintFile(String FileID, String HTFileID) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 2074
+4/10/2019 6:01:39 PM : BP ID : 1002 :- Print File Error: -Input string was not in a correct format.--   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Xml.Linq.XAttribute.op_Explicit(XAttribute attribute)
+   at OpenXmlPowerTools.WmlToHtmlConverter.CalculateSpanWidthForTabs(WordprocessingDocument wordDoc)
+   at OpenXmlPowerTools.WmlToHtmlConverter.ConvertToHtml(WordprocessingDocument wordDoc, WmlToHtmlConverterSettings htmlConverterSettings)
+   at OpenXmlPowerTools.HtmlConverter.ConvertToHtml(WordprocessingDocument wDoc, HtmlConverterSettings htmlConverterSettings)
+   at Harmonizer.UI.Controllers.FHFileController.ViewPrintFile(String FileID, String HTFileID) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 2074

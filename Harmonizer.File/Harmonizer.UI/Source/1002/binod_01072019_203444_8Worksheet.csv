@@ -1,0 +1,83 @@
+UTAGID;User ID;Tag;Orig;Glob\Pri;Description
+1000001;FH;F<TEMPLATE>H;S;G;Template:
+1000002;FH;F<PROJNAME>H;S;G;Project Name:
+1000003;FH;F<CUST>H;S;G;Customer:
+1000004;FH;F<OBJID>H;S;G;OBJID:
+1000005;FH;F<MODULE>H;S;G;Module:
+1000006;FH;F<SPECNAME>H;S;G;Specification Name:
+1000007;FH;F<BDESC>H;S;G;OBJID Description
+1000008;FH;F<CREATEBY>H;S;G;Created By
+1000009;FH;F<DOCDATE>H;S;G;Document Date:
+1000010;FH;F<DOCTYPE>H;S;G;*Document Type:
+1000011;FH;F<COMPDATE>H;S;G;Target Completion Date:
+1000012;FH;F<PRIORITY>H;S;G;Priority Level (Low, Medium, High):
+1000013;FH;F<REUSEFLAG>H  ;S;G;Reusable Object(Yes/No):
+1000014;FH;F<DOCSTATUS>H;S;G;Document Status:
+1000015;FH;F<BPONAME>H;S;G;Client Owner (BPO) - Name
+1000016;FH;F<FLNAME>H;S;G;Functional Owner (Consultant) - Name
+1000017;FH;F<TLNAME>H;S;G;Technical Owner (Consultant) - Name
+1000018;FH;F<DEVNAME>H;S;G;Developer - Name
+1000019;FH;F<BPOROLE>H;S;G;Client Owner (BPO) - Role
+1000020;FH;F<FLROLE>H;S;G;Functional Owner (Consultant) - Role
+1000021;FH;F<TLROLE>H;S;G;Technical Owner (Consultant) - Role
+1000022;FH;F<DEVROLE>H;S;G;Developer - Role
+1000023;FH;F<BPOEMAIL>H;S;G;Client Owner (BPO) - Email
+1000024;FH;F<FLEMAIL>H;S;G;Functional Owner (Consultant) - Email
+1000025;FH;F<TLEMAIL>H;S;G;Technical Owner (Consultant) - Email
+1000026;FH;F<DEVEMAIL>H;S;G;Developer - Email
+1000027;FH;F<BPOPHONE>H;S;G;Client Owner (BPO) - Phone
+1000028;FH;F<FLPHONE>H;S;G;Functional Owner (Consultant) - Phone
+1000029;FH;F<TLPHONE>H;S;G;Technical Owner (Consultant) - Phone
+1000030;FH;F<DEVPHONE>H;S;G;Developer - Phone
+1000031;FH;F<Fname>H;S;P;First Name
+1000032;FH;F<Mname>H;S;P;Middle Name
+1000033;FH;F<Minitial>H;S;P;Middle Initial
+1000034;FH;F<Lname>H;S;P;Last Name
+1000035;FH;F<Sex>H;S;P;Sex Identification
+1000036;FH;F<Phone>H;S;P;Phone
+1000037;FH;F<Mphone>H;S;P;Mobile Phone
+1000038;FH;F<Fax>H;S;P;Fax
+1000039;FH;F<Hphone>H;S;P;Home Phone
+1000040;FH;F<Bdate>H;S;P;Birth Date (DOB)
+1000041;FH;F<Bmonth>H;S;P;Birth Month
+1000042;FH;F<Bday>H;S;P;Birth Day
+1000043;FH;F<Byear>H;S;G;Birth Year
+1000044;FH;F<Haddress1>H;S;P;Address 1
+1000045;FH;F<Haddress2>H;S;P;Address 2
+1000046;FH;F<SS#>H;S;P;Social Security Number (SS#)
+1000047;FH;F<Height>H;S;G;Height
+1000048;FH;F<Weight>H;S;P;Weight
+1000049;FH;F<Nationality>H;S;P;Nationality
+1000050;FH;F<DLanguage>H;S;G;Default Language
+1000051;FH;F<Dcountry>H;S;P;Default Country
+1000052;FH;F<PassportNum>H;S;P;Passport Number
+1000053;FH;F<Ethnicity>H;S;P;Ethnicity
+1000054;FH;F<NAliase>H;S;G;Aliase
+1000055;FH;F<ShoeSize>H;S;P;Shoe Size
+1000056;FH;F<ShirtSize>H;S;P;Shirt Size
+1000057;FH;F<HatSize>H;S;P;Hat Size
+1000058;FH;F<ShirtNeck>H;S;P;Shirt Neck Size
+1000059;FH;F<ShirtSleve>H;S;P;Shirt Sleeve Length
+1000060;FH;F<PantsWaist>H;S;P;Pants Waist Size
+1000061;FH;F<PantsLength>H;S;P;Pants Leg Length
+1000062;FH;F<City>H;S;P;City
+1000063;FH;F<State>H;S;P;State
+1000064;FH;F<Zip>H;S;P;Postal\Zip Code
+1;YZ00001;F<MyField1>H;C;G;Free Field1
+2;YZ00001;F<MyField2>H;C;G;Free Field2
+1000065;FH;F<Email>H;S;P;Email
+1000066;FH;F<EmpName>H;S;P;Employer Name
+1000067;FH;F<EmpPhone>H;S;P;Employer Phone
+1000068;FH;F<EmpFax>H;S;P;Employer Fax
+1000069;FH;F<EmpWeb>H;S;P;Employer Website
+1000070;;F<RICEF>H;;;RICEF
+1000071;;F<SOLMAN>H;;;Solution Manager
+1000072;FH;F<Aphone>H;S;P;Alternative Phone
+1000073;FH;F<Apt>H;S;P;Apt #
+1000074;FH;F<Age>H;S;P;Age (Auto Calc today() - DOB)
+1000075;FH;F<Gender>H;S;P;Gender
+1000076;FH;F<M>H;S;P;Male 'X'
+1000077;FH;F<F>H;S;P;Female 'X'
+1000078;FH;F<Male>H;S;P;Male
+1000079;FH;F<Female>H;S;P;Female
+1000080;FH;F<Marital>H;S;P;Marital Status (Married, Single, Divorced, Widowed, Civil Union)

@@ -1,0 +1,176 @@
+UTAGID;User ID;Tag;Orig;Glob\Pri;Description
+1000001;FH;F<TEMPLATE>H;S;G;Template:
+1000002;FH;F<PROJNAME>H;S;G;Project Name:
+1000003;FH;F<CUST>H;S;G;Customer:
+1000004;FH;F<OBJID>H;S;G;OBJID:
+1000005;FH;F<MODULE>H;S;G;Module:
+1000006;FH;F<SPECNAME>H;S;G;Specification Name:
+1000007;FH;F<BDESC>H;S;G;OBJID Description
+1000008;FH;F<CREATEBY>H;S;G;Created By
+1000009;FH;F<DOCDATE>H;S;G;Document Date:
+1000010;FH;F<DOCTYPE>H;S;G;*Document Type:
+1000011;FH;F<COMPDATE>H;S;G;Target Completion Date:
+1000012;FH;F<PRIORITY>H;S;G;Priority Level (Low-Medium-High):
+1000013;FH;F<REUSEFLAG>H  ;S;G;Reusable Object(Yes/No):
+1000014;FH;F<DOCSTATUS>H;S;G;Document Status:
+1000015;FH;F<BPONAME>H;S;G;Client Owner (BPO) - Name
+1000016;FH;F<FLNAME>H;S;G;Functional Owner (Consultant) - Name
+1000017;FH;F<TLNAME>H;S;G;Technical Owner (Consultant) - Name
+1000018;FH;F<DEVNAME>H;S;G;Developer - Name
+1000019;FH;F<BPOROLE>H;S;G;Client Owner (BPO) - Role
+1000020;FH;F<FLROLE>H;S;G;Functional Owner (Consultant) - Role
+1000021;FH;F<TLROLE>H;S;G;Technical Owner (Consultant) - Role
+1000022;FH;F<DEVROLE>H;S;G;Developer - Role
+1000023;FH;F<BPOEMAIL>H;S;G;Client Owner (BPO) - Email
+1000024;FH;F<FLEMAIL>H;S;G;Functional Owner (Consultant) - Email
+1000025;FH;F<TLEMAIL>H;S;G;Technical Owner (Consultant) - Email
+1000026;FH;F<DEVEMAIL>H;S;G;Developer - Email
+1000027;FH;F<BPOPHONE>H;S;G;Client Owner (BPO) - Phone
+1000028;FH;F<FLPHONE>H;S;G;Functional Owner (Consultant) - Phone
+1000029;FH;F<TLPHONE>H;S;G;Technical Owner (Consultant) - Phone
+1000030;FH;F<DEVPHONE>H;S;G;Developer - Phone
+1000031;FH;F<Fname>H;S;P;First Name
+1000032;FH;F<Mname>H;S;P;Middle Name
+1000033;FH;F<Minitial>H;S;P;Middle Initial  (Auto calc: first letter of middle Name)
+1000034;FH;F<Lname>H;S;P;Last Name
+1000035;FH;F<Sex>H;S;P;Sex Identification
+1000036;FH;F<Phone>H;S;P;Phone
+1000037;FH;F<Mphone>H;S;P;Mobile Phone
+1000038;FH;F<Fax>H;S;P;Fax Phone Number
+1000039;FH;F<Hphone>H;S;P;Home Phone
+1000040;FH;F<Bdate>H;S;P;Birth Date (DOB)
+1000041;FH;F<Bmonth>H;S;P;Birth Month (Auto calc: Birth Month)
+1000042;FH;F<Bday>H;S;P;Birth Day (Auto calc: Birth Day)
+1000043;FH;F<Byear>H;S;G;Birth Year (Auto calc: Birth Year)
+1000044;FH;F<Address1>H;S;P;Address 1
+1000045;FH;F<Aaddress2>H;S;P;Address 2
+1000046;FH;F<SS#>H;S;P;Social Security Number (SS#)
+1000047;FH;F<Height>H;S;G;Height
+1000048;FH;F<Weight>H;S;P;Weight
+1000049;FH;F<Nationality>H;S;P;Nationality
+1000050;FH;F<DLanguage>H;S;G;Default Language
+1000051;FH;F<Dcountry>H;S;P;Default Country
+1000052;FH;F<PassportNum>H;S;P;Passport Number
+1000053;FH;F<Ethnicity>H;S;P;Ethnicity
+1000054;FH;F<NAliase>H;S;G;Aliase
+1000055;FH;F<ShoeSize>H;S;P;Shoe Size
+1000056;FH;F<ShirtSize>H;S;P;Shirt Size
+1000057;FH;F<HatSize>H;S;P;Hat Size
+1000058;FH;F<ShirtNeck>H;S;P;Shirt Neck Size
+1000059;FH;F<ShirtSleve>H;S;P;Shirt Sleeve Length
+1000060;FH;F<PantsWaist>H;S;P;Pants Waist Size
+1000061;FH;F<PantsLength>H;S;P;Pants Leg Length
+1000062;FH;F<City>H;S;P;City
+1000063;FH;F<State>H;S;P;State
+1000064;FH;F<Zip>H;S;P;Postal\Zip Code
+1000065;FH;F<Email>H;S;P;Email
+1000066;FH;F<EmpName>H;S;P;Employer Name
+1000067;FH;F<EmpPhone>H;S;P;Employer Phone
+1000068;FH;F<EmpFax>H;S;P;Employer Fax
+1000069;FH;F<EmpWeb>H;S;P;Employer Website
+1000070;FH;F<RICEF>H;S;P;RICEF ID\Number
+1000071;FH;F<SOLMAN>H;S;P;Solution Manager
+1000072;FH;F<Aphone>H;S;P;Alternative Phone
+1000073;FH;F<Apt>H;S;P;Apt #
+1000074;FH;F<Age>H;S;P;Age (Auto Calc today() - DOB)
+1000075;FH;F<Gender>H;S;P;Gender
+1000076;FH;F<M>H;S;P;Male 'X'
+1000077;FH;F<F>H;S;P;Female 'X'
+1000078;FH;F<Male>H;S;P;Male
+1000079;FH;F<Female>H;S;P;Female
+1000080;FH;F<Marital>H;S;P;Marital Status (Married-Single-Divorced-Widowed-Civil Union)
+1000081;FH;F<MFLG>H;S;P;Married 'X' flag
+1000082;FH;F<SFLG>H;S;P;Single 'X' flag
+1000083;FH;F<DFLG>H;S;P;Divorced 'X' flag
+1000084;FH;F<WFLG>H;S;P;Widowed 'X' flag
+1000085;FH;F<CFLG>H;S;P;Civil Union 'X' flag
+1000086;FH;F<Employed>H;S;P;Employed Yes\No
+1000087;FH;F<EMPF>H;S;P;Employed Full Time 'X'
+1000088;FH;F<EMPP>H;S;P;Employed Part Time 'X'
+1000089;FH;F<EMPU>H;S;P;Employed Unemployed 'X'
+1000090;FH;F<EMPR>H;S;P;Employed Retired 'X'
+1000091;FH;F<EMPS>H;S;P;Employed Student 'X'
+1000092;FH;F<EMPO>H;S;P;Employed Other 'X'
+1000093;FH;F<EContact>H;S;P;Emergency Contact
+1000094;FH;F<EAddress>H;S;P;Emergency Address
+1000095;FH;F<EPhone>H;S;P;Emergency Phone
+1000096;FH;F<RLTNSHP2P>H;S;P;Relationship to Patient
+1000097;FH;F<PInsurance>H;S;P;Primary Insurance
+1000098;FH;F<SInsurance>H;S;P;Secondary Insurance
+1000099;FH;F<PHOLDR>H;S;P;Subscriber/ Policy Holder
+1000100;FH;F<PRELATNS>H;S;P;Patients Relationship
+1000101;FH;F<PAddrss>H;S;P;Policy Holders Address
+1000102;FH;F<PSSNum>H;S;P;Policy Holders Social Security Number
+1000103;FH;F<PBdate>H;S;P;Policy Holders Birth Date (DOB)
+1000104;FH;F<PEmpName>H;S;P;Policy Holders Employer Name
+1000105;FH;F<PEmpPhone>H;S;P;Policy Holders Employer Phone
+1000106;FH;F<Occupation>H;S;P;Occupation
+1000107;FH;F<NSpouse>H;S;P;Spouse Name
+1000108;FH;F<PIName>H;S;P;Release Personal Information to (Name)
+1000109;FH;F<PIRelat>H;S;P;Release Personal Information (Relationship)
+1000110;FH;F<sysdate>H;S;P;System Date (Auto calc: Todays Date)
+1000111;FH;F<NRAS>H;S;P;Nationality (Race) Asian
+1000112;FH;F<NRAA>H;S;P;Nationality (Race) Black or African American
+1000113;FH;F<NRNA>H;S;P;Nationality (Race) Native American
+1000114;FH;F<NRCW>H;S;P;Nationality (Race) Caucasian / White
+1000115;FH;F<NROTHER>H;S;P;Nationality (Race) Other
+1000116;FH;F<BCity>H;S;P;Birth City
+1000117;FH;F<BState>H;S;P;Birth State
+1000118;FH;F<PInsurance>H;S;P;Primary Insurance Number
+1000119;FH;F<SInsurance>H;S;P;Secondary Insurance Number
+1000120;FH;F<AKA>H;S;;Also Known As
+1000121;FH;F<Bcountry>H;S;P;Birth Country
+1000122;FH;F<WebSite>H;S;G;Website
+1000123;FH;F<Wphone>H;S;G;Work Phone
+1000124;FH;F<ISector>H;S;G;Industry Sector
+1000125;FH;F<Idustry>H;S;G;Industry
+1000126;FH;F<ICategory>H;S;G;Industry Category
+1000127;FH;F<PTitle>H;S;G;Personal Title
+1000128;FH;F<UserID>H;S;P;User ID
+1000129;FH;F<CEmail>H;S;G;Company Email
+1000130;FH;F<CName>H;S;G;Company Name
+1000131;FH;F<CCFName>H;S;G;Company Contact First Name
+1000132;FH;F<CCMName>H;S;G;Company Contact Middle Name
+1000133;FH;F<CCLName>H;S;G;Company Contact Last Name
+1000134;FH;F<CEIN>H;S;G;Company EIN
+1000135;FH;F<CIDate>H;S;G;Company Inception Date
+1000136;FH;F<CDept>H;S;G;Company Department
+1000137;FH;F<CWeb>H;S;G;Company Website
+1000138;FH;F<CICountry>H;S;G;Company Inception Country
+1000139;FH;F<CTFree>H;S;G;Company Toll Free Phone Number
+1000140;FH;F<CMPhone>H;S;G;Company Main Phone
+1000141;FH;F<CSPhone>H;S;G;Company Second Phone
+1000142;FH;F<CFax>H;S;G;Company Fax Phone Number
+1000143;FH;F<HarmonizeID>H;S;G;Harmonization Number ID
+1000044;FH;F<EmpAddr>H;S;P;Employer Address
+1000045;FH;F<PrePharm>H;S;P;Preferred Pharmacy
+1000046;FH;F<PrePharmPhone>H;S;P;Preferred Pharmacy Phone
+1000047;FH;F<PPhysician >H;S;P;Primary Care Physician
+1000048;FH;F<PPhysicianAddr>H;S;P;Primary Care Physician Address
+1000049;FH;F<PPhysicianCity>H;S;P;Primary Care Physician City
+1000050;FH;F<PPhysicianState>H;S;P;Primary Care Physician State
+1000051;FH;F<PPhysicianZip>H;S;P;Primary Care Physician Zip
+1000052;FH;F<PPhysicianPhone>H;S;P;Primary Care Physician Phone
+1000053;FH;F<SysTime>H;S;P;System Time (Auto calc: now Time)
+1000054;FH;F<BusName>H;S;P;Business/Organization Name
+1000055;FH;F<BusAddr>H;S;P;Business Address
+1000056;FH;F<BusCity>H;S;P;Business City
+1000057;FH;F<BusState>H;S;P;Business State
+1000058;FH;F<BusZip>H;S;P;Business Zip
+1000059;FH;F<BusEmail>H;S;P;Business Email
+1000060;FH;F<BusWeb>H;S;P;Business Website
+1000061;FH;F<BusPhone>H;S;P;Business Phone
+1000062;FH;F<BusFax>H;S;P;Business Fax
+1000063;FH;F<BusFName>H;S;P;Business Contact First Name
+1000064;FH;F<BusMName>H;S;P;Business Contact Middle Name
+1000065;FH;F<BusMInitial>H;S;P;Business Contact Middle Initial
+1000066;FH;F<BusLName>H;S;P;Business Contact Last Name
+1000067;FH;F<Bus2FName>H;S;P;Business Secondary Contact First Name
+1000068;FH;F<Bus2MName>H;S;P;Business Secondary Contact Middle Name
+1000069;FH;F<Bus2MInitial>H;S;P;Business Secondary Contact Middle Initial
+1000070;FH;F<Bus2LName>H;S;P;Business Secondary Contact Last Name
+1000071;FH;F<Bus2Email>H;S;P;Business Secondary Email
+1000072;FH;F<Bus2Phone>H;S;P;Business Secondary Phone
+1000073;FH;F<sysday>H;S;P;System Day (Auto calc: Todays Day)
+1000074;FH;F<sysmonth>H;S;P;System Month (Auto calc: Todays Month)
+1000075;FH;F<sysyear>H;S;P;System Year (Auto calc: Todays Year)

@@ -1,0 +1,21 @@
+SECID;SEC Code;Description;TAGSEC
+AGR;11;Agriculture, Forestry, Fishing and Hunting;0010
+MIN;21;Mining, Quarrying, and Oil and Gas Extraction;0180
+UTL;22;Utilities;0140
+CON;23;Construction;0170
+MAN;31-33;Manufacturing;0040
+WHL;42;Wholesale Trade;0150
+RET;44-45;Retail Trade;0100
+TRN;48-49;Transportation and Warehousing;0160
+INF;51;Information;0090
+FI;52;Finance and Insurance;0050
+RE;53;Real Estate and Rental and Leasing;0020
+PST;54;Professional, Scientific, and Technical Services;0130
+MNG;55;Management of Companies and Enterprises;0190
+ADM;56;Administrative and Support and Waste Management and Remediation Services;0120
+EDU;61;Educational Services;0200
+H;62;Health Care and Social Assistance;0110
+ART;71;Arts, Entertainment, and Recreation;0070
+ACC;72;Accommodation and Food Services;0080
+OTH;81;Other Services (except Public Administration);0030
+PUB;92;Public Administration;0060

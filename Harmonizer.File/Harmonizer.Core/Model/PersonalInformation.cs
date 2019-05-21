@@ -30,5 +30,16 @@ namespace Harmonizer.Core.Model
 
         public DateTime? DateFrom { get; set; }
         public DateTime? DateTo { get; set; }
+        public string Website { get; set; }
+        public string Email { get; set; }
+        public string MiddelInitials { get; set; }
+        public DateTime? DateOfBorn { get; set; }
+        public string BirthCountry { get; set; }
+
+        public string DefaulCountry { get; set; }
+        public string Mobile { get; set; }
+        public string Fax { get; set; }
+        public string WorkPhone { get; set; }
+        public string TeamMemberRole { get; set; }
     }
 }

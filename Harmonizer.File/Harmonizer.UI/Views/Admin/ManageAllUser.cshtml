@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Manage User";
+}
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Maintain Users</h4></div>
+            <hr />
+            <div class="bg-white p-3 border w-100 float-left">
+                <div class="row">
+                    <div class="wr-25 pr-1 pl-3">
+                        <label>User Type:</label>
+                    </div>
+                    <div class="wr-75">
+                        @Html.RadioButton("rgbUserType", "2", isChecked: true)@Html.Label("Individual or Private Individual")
+                        @Html.RadioButton("rgbUserType", "5", isChecked: false)@Html.Label("Business Partner")
+                    </div>
+                </div>
+                <div id="divUserList">
+                    @Html.Action("UserList", "Admin", new { RoleID = "2" })
+                </div>
+            </div>
+        </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(":radio[name=rgbUserType]").change(function () {
+            var rolevalue = $(this).val();
+            //alert('Selected value:' + value);
+            var url = '@Url.Action("UserList","Admin")';
+            $('#divUserList').html('');
+            $('#divUserList').load(url + '?RoleID=' + rolevalue);
+        });
+
+       
+    });
+</script>
+
+

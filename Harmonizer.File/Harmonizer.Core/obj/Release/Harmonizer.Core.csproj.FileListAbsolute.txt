@@ -1,0 +1,5 @@
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Core\bin\Release\Harmonizer.Core.dll
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Core\bin\Release\Harmonizer.Core.pdb
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Core\obj\Release\Harmonizer.Core.csproj.CoreCompileInputs.cache
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Core\obj\Release\Harmonizer.Core.dll
+D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.Core\obj\Release\Harmonizer.Core.pdb

@@ -1,0 +1,67 @@
+﻿@model Harmonizer.UI.Models.HarmonizerModel
+
+@{
+    ViewBag.Title = "Harmonizer";
+    WebGrid webGrid = new WebGrid(source: Model.OldHarmonizer, canPage:false,canSort:false);
+    WebGrid webGridNew = new WebGrid(source: Model.NewHarmonizer, canPage: false, canSort: false);
+}
+
+
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <h4>Harmonizer</h4>
+        <hr />
+        <div class="box">
+            <div class="row">
+                <div class="col-md-6">
+                    <!--Lefy-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="font-weight-bold">Commit Default Values To Database</span>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @webGrid.GetHtml(
+                                      htmlAttributes: new { @id = "HarmonizerStandardValue", @class = "Grid-table" },
+                                      columns: webGrid.Columns(
+                                      webGrid.Column("GlobPri", "GlobPri"),
+                                      webGrid.Column("Description", "Description"),
+                                      webGrid.Column("Share",format:@<span style="background-color:yellow;">@item.Share</span> )))
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <!--right-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="font-weight-bold">
+                                Harmonization Values (to create new Target Files)
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @webGridNew.GetHtml(
+                   htmlAttributes: new { @id = "HarmonizerStandardValue", @class = "Grid-table" },
+                   columns: webGrid.Columns(
+                   webGrid.Column("GlobPri", "GlobPri"),
+                   webGrid.Column("Description", "Description"),
+                   webGrid.Column("Share", format: @<span style="background-color:yellow;">@Html.TextBox("name"+(int)item.ID,null,new {@style= "background-color:yellow;height: 20px;" })</span>)))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 offset-md-3 text-right text-right">
+                            <input type="button" value="Harmonizer" name="Harmonizer" id="btnSaveHarmonizer" class="btn btn-info" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

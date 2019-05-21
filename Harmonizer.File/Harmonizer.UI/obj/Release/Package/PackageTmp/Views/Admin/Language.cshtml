@@ -1,0 +1,317 @@
+﻿
+@{
+    ViewBag.Title = "File Harmonizer - Language";
+}
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div class="blink_heading">
+            <h4>Language</h4>
+            <blink>
+                <span style="color:red;font-size:18px;" id="messageData" class="blink ml-4">
+                </span>
+            </blink>
+        </div>
+        <hr />
+
+        <div class="bg-white p-3 border">
+            <div class="row form-group">
+                <div class="col-md-2 ">
+                    <input type="hidden" id="hdnIndustryId" />
+                    @Html.Label("Country", htmlAttributes: new { @class = "control-label form-label" })
+                </div>
+                <div class="col-md-4">
+                    <input type="text" name="country" class="form-control" id="txtCountry" />
+                </div>
+                <div class="col-md-2 ">
+                    @Html.Label("Language", htmlAttributes: new { @class = "control-label form-label" })
+                </div>
+                <div class="col-md-4">
+                    <input type="text" name="language" class="form-control" id="txtLanguage" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2 ">
+                    <input type="hidden" id="hdnIndustryId" />
+                    @Html.Label("Code", htmlAttributes: new { @class = "control-label form-label" })
+                </div>
+                <div class="col-md-4">
+                    <input type="text" name="code" class="form-control" id="txtCode" />
+                </div>
+                <div class="col-md-2 ">
+                    @Html.Label("Name", htmlAttributes: new { @class = "control-label form-label" })
+                </div>
+                <div class="col-md-4">
+                    <input type="text" name="name" class="form-control" id="txtName" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-8">
+                    
+                </div>
+                <div class="col-md-4">
+                    <input type="button" id="btnsave" name="Create" class="btn btn-info" value="Create" />
+                    <input type="button" id="btncancle" name="Cancle" class="btn btn-info" value="Cancel" />
+                </div>
+            </div>
+        </div>
+        <h4 class="fll_wdth_xs">
+            <span class="fll_wdth_xs">
+                Language List
+            </span>
+            <span class="float-right mr-2 fll_wdth_xs ml-xs-2">
+                <input type="button" class="btn-danger btn" value="Mass Delete" id="btnMassDeleteLanguage" />
+                <label for="fileupload" class="btn-success btn">Mass Upload</label>
+            </span>
+        </h4>
+        <hr class="hidden-divider" />
+
+        <div class="bg-white  border fll_wdth_xs" id="divLanguageList">
+            @Html.Action("GetLanguageList", "Admin")
+        </div>
+    </div>
+    </div>
+
+<input type="file" id="fileupload" name="fileupload" class="hidden" style="visibility: hidden;" />
+
+<script>
+    $(document).ready(function () {
+        $('.edit').hide();
+
+        var formData = new FormData();
+        $('#btnsave').click(function () {
+            var LanguageTimeZone = {};
+            LanguageTimeZone.Language = $('#txtLanguage').val();
+            LanguageTimeZone.Country = $('#txtCountry').val();
+            LanguageTimeZone.Code = $('#txtCode').val();
+            LanguageTimeZone.Name = $('#txtName').val();
+
+            if (Validate()) {
+                // Ajax for save in DB
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddLanguageDetails", "Admin")',
+                    data: JSON.stringify(LanguageTimeZone),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                        //alert(msg);
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            window.location.reload(true);
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        //alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+            }
+        });
+
+        $('#btncancle').click(function () {
+            Clear();
+        });
+        $('.btn-delete').click(function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var ID = tr.find('#hddenID').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteLanguage", "Admin")',
+                data: '{ID:"'+ID+'"}',
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (msg) {
+                    //alert(msg);
+                    $('#messageData').text(msg);
+                    $('#messageData').css('color', 'green');
+                    setTimeout(function () {
+                        window.location.reload(true);
+                    }, 2000);
+                },
+                error: function (error) {
+                    //alert("Error! Please try again.");
+                    $('#messageData').text("Error! Please try again.");
+                    $('#messageData').css('color', 'red');
+                    setTimeout(function () {
+                        $('#messageData').text('');
+                    }, 2000);
+                }
+            });
+
+        });
+
+        $('.btn-edit,.btn-cancel').click(function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            tr.find('.edit, .read').toggle();
+        });
+
+        $('.btn-update').click(function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var LanguageTimeZone = {};
+            LanguageTimeZone.Language = tr.find('#txtLanguageGrid').val().trim();
+            LanguageTimeZone.Country = tr.find('#txtCountryGrid').val().trim();
+            LanguageTimeZone.Code = tr.find('#txtCodeGrid').val().trim();
+            LanguageTimeZone.Name = tr.find('#txtNameGrid').val().trim();
+            LanguageTimeZone.ID = tr.find('#hddenID').val().trim();
+
+            // Ajax call for update
+
+             $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateLanguageDetails", "Admin")',
+                    data: JSON.stringify(LanguageTimeZone),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                        //alert(msg);
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            window.location.reload(true);
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        //alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+        });
+
+       $('#fileupload').change(function (e) {
+
+            formData.append("FileUpload", document.getElementById("fileupload").files[0])
+            $("#wait").css("display", "block");
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("MassUploadDataLanguage", "Admin")',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                enctype: 'multipart/form-data',
+                success: function (msg) {
+                    debugger;
+                    $("#wait").css("display", "none");
+                    formData = new FormData();
+                    //alert(msg);
+                    //window.location.reload(true);
+                    $('#messageData').text(msg);
+                    $('#messageData').css('color', 'green');
+                    setTimeout(function () {
+                        window.location.reload(true);
+                    }, 2000);
+                },
+                error: function (error) {
+                    $("#wait").css("display", "none");
+                    formData = new FormData();
+                    //alert("error");
+                    $('#messageData').text("Error! Please try again.");
+                    $('#messageData').css('color', 'red');
+                    setTimeout(function () {
+                        $('#messageData').text('');
+                    }, 2000);
+                }
+            });
+        });
+
+
+
+        $('#btnMassDeleteLanguage').click(function () {
+             if (confirm('Mass delete all record from system and it will impect on operation, Are you want to delete?') == true) {
+                //alert('Delete mass data');
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteMassData", "Admin")',
+                    data: '{"op":"language"}',
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                        //alert(msg);
+                        //window.location.reload(true);
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            window.location.reload(true);
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        //alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+            }
+        });
+
+    });
+    function Validate() {
+        var txtName = 0, txtCode = 0, txtLanguage = 0, txtCountry = 0;
+        if ($('#txtName').val() == 'validateClass') {
+            $('#txtName').addClass('');
+            txtName = -1;
+        }
+        else {
+            $('#txtName').removeClass('validateClass');
+            txtName = 0;
+        }
+
+        if ($('#txtCode').val() == 'validateClass') {
+            $('#txtCode').addClass('');
+            txtCode = -1;
+        }
+        else {
+            $('#txtCode').removeClass('validateClass');
+            txtCode = 0;
+        }
+
+        if ($('#txtLanguage').val() == 'validateClass') {
+            $('#txtLanguage').addClass('');
+            txtLanguage = -1;
+        }
+        else {
+            $('#txtLanguage').removeClass('validateClass');
+            txtLanguage = 0;
+        }
+
+        if ($('#txtCountry').val() == 'validateClass') {
+            $('#txtCountry').addClass('');
+            txtCountry = -1;
+        }
+        else {
+            $('#txtCountry').removeClass('validateClass');
+            txtCountry = 0;
+        }
+
+        if (txtName == 0 && txtCode == 0 && txtLanguage == 0 && txtCountry == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+
+    }
+
+    function Clear() {
+        $('#txtName').val('');
+        $('#txtCode').val('');
+        $('#txtLanguage').val('');
+        $('#txtCountry').val('');
+    }
+</script>

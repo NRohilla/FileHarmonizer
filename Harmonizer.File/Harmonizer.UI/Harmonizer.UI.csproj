@@ -46,19 +46,61 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Harmonizer.Core">
-      <HintPath>..\Harmonizer.Core\bin\Debug\netstandard2.0\Harmonizer.Core.dll</HintPath>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.8.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.8.1\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
-    <Reference Include="Harmonizer.Data">
-      <HintPath>..\Harmonizer.Data\bin\Debug\netstandard2.0\Harmonizer.Data.dll</HintPath>
+    <Reference Include="Harmonizer.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Harmonizer.Core\bin\Debug\Harmonizer.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Harmonizer.DB">
+      <HintPath>..\Harmonizer.DB\bin\Debug\Harmonizer.DB.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.PowerPoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.PowerPoint.15.0.4420.1017\lib\net20\Microsoft.Office.Interop.PowerPoint.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OFFICE, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>bin\OFFICE.DLL</HintPath>
+    </Reference>
+    <Reference Include="OpenXmlPowerTools, Version=4.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenXmlPowerTools.4.5.3.2\lib\net45\OpenXmlPowerTools.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net45\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Management.Automation.dll.10.0.10586.0\lib\net40\System.Management.Automation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -117,11 +159,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.ApplicationInsights">
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
@@ -148,13 +188,36 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SessionTimeoutFilter.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\FHFileController.cs" />
+    <Compile Include="Controllers\FHManageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\SchemeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DefaultFolderLocation.cs" />
+    <Compile Include="Models\ExtensionMethods.cs" />
     <Compile Include="Models\ForgotPassword.cs" />
+    <Compile Include="Models\HarmonizerModel.cs" />
+    <Compile Include="Models\Individual.cs" />
+    <Compile Include="Models\ItemEqualityComparer.cs" />
+    <Compile Include="Models\Logger.cs" />
+    <Compile Include="Models\ManageFilterTemplateModel.cs" />
+    <Compile Include="Models\myLocationTextExtractionStrategy.cs" />
+    <Compile Include="Models\NoDuplicateFilter.cs" />
+    <Compile Include="Models\OfficeAppManager.cs" />
+    <Compile Include="Models\OrderItem.cs" />
+    <Compile Include="Models\PaypalConfiguration.cs" />
     <Compile Include="Models\RegisterUser.cs" />
+    <Compile Include="Models\SchemeDetails.cs" />
+    <Compile Include="Models\SearchAndReplacer.cs" />
+    <Compile Include="Models\SendEmail.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -163,14 +226,42 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap_Old.css" />
     <Content Include="Content\bootstrap.min_Old.css" />
+    <Content Include="Content\mainStyle_v_1.0.css" />
+    <Content Include="Content\select2.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Site_Old_10_4_2019.css" />
+    <Content Include="Content\Site_old_8_3_2019.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site_Old.css" />
+    <Content Include="images\aboutus.jpg" />
+    <Content Include="images\about_us.jpg" />
     <Content Include="images\banner-tall.jpg" />
     <Content Include="images\banner.png" />
+    <Content Include="images\banner2.jpg" />
+    <Content Include="images\canstockphoto4746764.jpg" />
+    <Content Include="images\Capture.png" />
+    <Content Include="images\contact.jpg" />
+    <Content Include="images\customexp.jpg" />
+    <Content Include="images\divider.png" />
+    <Content Include="images\FH_About_43193414_M.jpg" />
+    <Content Include="images\FH_Home_26991991_M.jpg" />
+    <Content Include="images\File-Harmonizer_v006_04-05-2019.mp4" />
+    <Content Include="images\how-it-works.jpg" />
+    <Content Include="images\lock.png" />
+    <Content Include="images\NewLogo.png" />
+    <Content Include="images\Improvedataquality.jpg" />
+    <Content Include="images\Instruction.png" />
     <Content Include="images\logo.png" />
+    <Content Include="images\more-less.jpg" />
+    <Content Include="images\re-do.jpg" />
+    <Content Include="images\sa.gif" />
+    <Content Include="images\shadow.png" />
+    <Content Include="images\trail.png" />
+    <Content Include="images\Under Construction.PNG" />
+    <Content Include="images\video-thumb.jpg" />
+    <Content Include="images\video_image.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap_Old.js" />
@@ -178,6 +269,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -189,7 +281,10 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Scripts\select2.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -199,15 +294,101 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_10_4_2019.cshtml" />
+    <Content Include="Views\Home\About_10_4_2019.cshtml" />
+    <Content Include="Views\Home\Contact_10_4_2019.cshtml" />
+    <Content Include="Views\Home\Index_10_4_2019.cshtml" />
     <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\SignUp.cshtml" />
+    <Content Include="Views\User\Dashboard.cshtml" />
+    <Content Include="Views\User\StartMyFreeMonth.cshtml" />
+    <Content Include="Views\User\Reactivate.cshtml" />
+    <Content Include="Views\FHFile\SearchReplace_back.cshtml" />
+    <Content Include="Views\FHFile\Individual.cshtml" />
+    <Content Include="Views\FHFile\SearchReplace_back_8_3_2019.cshtml" />
+    <Content Include="Views\Home\IndustrySector.cshtml" />
+    <Content Include="Views\Admin\Country.cshtml" />
+    <Content Include="Views\FHFile\Harmonizer.cshtml" />
+    <Content Include="Views\FHFile\_PartialRepository.cshtml" />
+    <Content Include="Views\FHFile\Repository.cshtml" />
+    <Content Include="Views\FHFile\_CreateTemplate.cshtml" />
+    <Content Include="Views\FHFile\_CreateHarmonizer.cshtml" />
+    <Content Include="Views\Shared\UserHeader.cshtml" />
+    <Content Include="Views\Home\TermAndCondition.cshtml" />
+    <Content Include="Views\Admin\Sector.cshtml" />
+    <Content Include="Views\Admin\Industry.cshtml" />
+    <Content Include="Views\Admin\Category.cshtml" />
+    <Content Include="Views\Home\PrivacyPolicy.cshtml" />
+    <Content Include="Views\FHFile\TestUploadFile.cshtml" />
+    <Content Include="Views\FHFile\_FileStatusSettingInfo.cshtml" />
+    <Content Include="Views\FHManage\ManageFilter.cshtml" />
+    <Content Include="Views\FHManage\ExportFilter.cshtml" />
+    <Content Include="Views\FHManage\HarmonizeTemplate.cshtml" />
+    <Content Include="Views\FHManage\ManageTemplate.cshtml" />
+    <Content Include="Views\FHManage\ExportTemplate.cshtml" />
+    <Content Include="Views\FHManage\ConvertFileFormat.cshtml" />
+    <Content Include="Views\User\UserProfile.cshtml" />
+    <Content Include="Views\User\Archive.cshtml" />
+    <Content Include="Views\User\FHAccountSetting.cshtml" />
+    <Content Include="Views\User\ManageUser.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\FHManage\_FilterFileDetails.cshtml" />
+    <Content Include="Views\FHManage\_TemplateFileDetails.cshtml" />
+    <Content Include="Views\FHManage\_ManageHarmonizeTemplate.cshtml" />
+    <Content Include="Views\FHManage\_GetOrignalFileteTagDetails.cshtml" />
+    <Content Include="Views\FHManage\_RenameFilter.cshtml" />
+    <Content Include="Views\FHManage\_ViewFile.cshtml" />
+    <Content Include="Views\FHManage\_RenameTemplate.cshtml" />
+    <Content Include="Views\Shared\_PrintFile.cshtml" />
+    <Content Include="Views\FHManage\_ArchiveTemplate.cshtml" />
+    <Content Include="Views\User\_FolderSetting.cshtml" />
+    <Content Include="Views\User\_GeneralSetting.cshtml" />
+    <Content Include="Views\User\_NamingSetting.cshtml" />
+    <Content Include="Views\User\_RegistrationSetting.cshtml" />
+    <Content Include="Views\User\_ViewLog.cshtml" />
+    <Content Include="Views\User\_CreateTeamUser.cshtml" />
+    <Content Include="Views\Admin\StandardGlobalTag.cshtml" />
+    <Content Include="Views\Shared\_ViewAllTeamMember.cshtml" />
+    <Content Include="Views\FHFile\_GetTemplateDataForFinalTemplate.cshtml" />
+    <Content Include="Views\Admin\ManageAdminUser.cshtml" />
+    <Content Include="Views\Admin\ManageAllUser.cshtml" />
+    <Content Include="Views\Shared\_PreviewFile.cshtml" />
+    <Content Include="Views\Shared\_ViewAllUserForAdmin.cshtml" />
+    <Content Include="Views\Admin\_CreateAdminUser.cshtml" />
+    <Content Include="Views\User\ManageTag.cshtml" />
+    <Content Include="Views\User\_ViewPrivateTag.cshtml" />
+    <Content Include="Views\FHFile\ManageUserTag.cshtml" />
+    <Content Include="Views\FHFile\_ViewAllUserTag.cshtml" />
+    <Content Include="Views\Admin\GetAllPlan.cshtml" />
+    <Content Include="Views\Scheme\CreateScheme.cshtml" />
+    <Content Include="Views\Scheme\MaintainScheme.cshtml" />
+    <Content Include="Views\Scheme\_MaintainSchemeData.cshtml" />
+    <Content Include="Views\Scheme\Archive.cshtml" />
+    <Content Include="Views\Scheme\_ArchiveSchemeData.cshtml" />
+    <Content Include="Views\Scheme\_ViewScheme.cshtml" />
+    <Content Include="Views\FHFile\SearchReplace.cshtml" />
+    <Content Include="Views\Payment\PaymetFailure.cshtml" />
+    <Content Include="Views\Payment\PaymentSuccess.cshtml" />
+    <Content Include="Views\User\MaintainCustomTag.cshtml" />
+    <Content Include="Views\User\_viewCustomTag.cshtml" />
+    <Content Include="Views\Admin\Language.cshtml" />
+    <Content Include="Views\Admin\_GetLanguage.cshtml" />
+    <Content Include="Views\Shared\_UserActivationMessage.cshtml" />
+    <Content Include="Views\Admin\GetPaymentDetails.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index_8_5_2019.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DataError\" />
+    <Folder Include="Harmonized\" />
+    <Folder Include="Log\" />
+    <Folder Include="Source\" />
+    <Folder Include="Target\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -219,7 +400,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <PropertyGroup>

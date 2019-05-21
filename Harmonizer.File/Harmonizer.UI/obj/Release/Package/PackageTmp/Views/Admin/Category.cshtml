@@ -1,0 +1,499 @@
+﻿
+@{
+    ViewBag.Title = "File Harmonizer - Category";
+}
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div class="blink_heading">
+            <h4>Category</h4>
+            <blink>
+                <span style="color:red;font-size:18px;" id="messageData" class="blink ml-4">
+                </span>
+            </blink>
+        </div>
+       
+        <hr />
+        <div class="bg-white p-3 border">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("Sector Id", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control" id="ddSecId">
+                        </select>
+                    </div>
+                    <div class="col-md-2 ">
+                        @Html.Label("Industry", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control" id="ddIndId">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("Category Id", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="CATID" class="form-control" id="txtCatId" />
+                        <input type="hidden" name="ID" id="hiddenID" value="0"/>
+                    </div>
+                    <div class="col-md-2 ">
+                        @Html.Label("Category Name", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="Category" class="form-control" id="txtCategory" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="text-left col-md-7">
+                   
+                </div>
+                <div class="text-right col-md-5">
+                    <input type="button" id="btnsave" name="Create" class="btn btn-info" value="Create" />
+                    <input type="button" id="btncancle" name="Cancel" class="btn btn-info" value="Cancel" />
+                </div>
+            </div>
+        </div>
+
+        <div class="my-2">
+           
+            <h4 class="fll_wdth_xs">
+                <span class="fll_wdth_xs">
+                    Category List
+                </span>
+                <span class="float-right mr-2 fll_wdth_xs ml-xs-2">
+                    <input type="button" class="btn-danger btn" value="Mass Delete" id="btnMassDeleteCategory" />
+                    @*<input type="button" class="btn-success btn" value="Mass Upload" id="btnMassUploadCategory" />*@
+                    <label for="fileupload" class="btn-success btn">Mass Upload</label>
+                </span>
+            </h4>
+            <hr class="hidden-divider" />
+            <div class="bg-white  border fll_wdth_xs">
+                <div class="table-responsive scrollable-table" style="max-height:500px;">
+                    <table id="tblCategory" class="table table-bordered table-sm table-striped search-replace-table w-100 mb-0">
+                        <thead>
+                            <tr>
+                                <th>SL.No. </th>
+                                <th>ID</th>
+                                <th>Sector Id</th>
+                                <th>Industry</th>
+                                <th>Category Id</th>
+                                <th>Share</th>
+                                <th>Category Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblCategoryBody"></tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<input type="file" id="fileupload" name="fileupload" class="hidden" style="visibility: hidden;" />
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var formData = new FormData();
+        GetCategoryList();
+        GetSectorFromCategory();
+        GetIndustry();
+
+        $('#btnMassDeleteCategory').click(function (e) {
+            if (confirm('Mass delete all record from system and it will impect on operation, Are you want to delete?') == true) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteMassData", "Admin")',
+                    data: '{"op":"category"}',
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                        //alert(msg);
+                        //window.location.reload(true);
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            window.location.reload(true);
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        //alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+            }
+        });
+
+        $('#btnMassUploadCategory').click(function (e) {
+            if (confirm('Are you want to upload mass data?') == true) {
+                //alert('Upload mass data');
+                $('#fileupload').click();
+            }
+        });
+
+        $('#fileupload').change(function (e) {
+
+            formData.append("FileUpload", document.getElementById("fileupload").files[0])
+            $("#wait").css("display", "block");
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("MassUploadDataCategory", "Admin")',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                enctype: 'multipart/form-data',
+                success: function (msg) {
+                    debugger;
+                    $("#wait").css("display", "none");
+                    formData = new FormData();
+                    //alert(msg);
+                    //window.location.reload(true);
+                    $('#messageData').text(msg);
+                    $('#messageData').css('color', 'green');
+                    setTimeout(function () {
+                        window.location.reload(true);
+                    }, 2000);
+                },
+                error: function (error) {
+                    $("#wait").css("display", "none");
+                    formData = new FormData();
+                    //alert("error");
+                    $('#messageData').text("Error! Please try again.");
+                    $('#messageData').css('color', 'red');
+                    setTimeout(function () {
+                        $('#messageData').text('');
+                    }, 2000);
+                }
+            });
+        });
+    });
+
+    function GetCategoryList() {
+        $.ajax({
+            type: "POST",
+            url: "/Admin/GetCategoryList",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                $('#tblCategory tbody').empty();
+                var sno = 1;
+                $.each(response, function (i, e) {
+                    bindData(sno, response[i].ID, response[i].SECID, response[i].INDID, response[i].CATID, response[i].Share, response[i].CategoryName);
+                    sno++;
+                });
+                clear_form_elements();
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+    function GetSectorFromCategory() {
+        $.ajax({
+            type: "POST",
+            url: "/Admin/GetSectorFromCategory",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                $("#ddSecId").append($("<option></option>").val("").html("Select"));
+                $.each(response, function (i, e) {
+                    $("#ddSecId").append($("<option></option>").val(e.SECCode).html(e.SECID));
+                });
+                clear_form_elements();
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+    function GetIndustry() {
+        $.ajax({
+            type: "POST",
+            url: "/Admin/GetIndustry",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                $("#ddIndId").append($("<option></option>").val("").html("Select"));
+                $.each(response, function (i, e) {
+                    $("#ddIndId").append($("<option></option>").val(e.INDID).html(e.IndustryName));
+                });
+                clear_form_elements();
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+    function bindData(sno,ID, SECID, INDID, CATID, Share, CategoryName) {
+
+        var tBody = document.getElementById("tblCategory").getElementsByTagName("TBODY")[0];
+
+        row = tBody.insertRow(-1);
+
+        var cell = row.insertCell(-1);
+        cell.innerHTML = sno;
+
+        var cell = row.insertCell(-1);
+        cell.innerHTML = ID;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = SECID;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = INDID;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = CATID;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = Share;
+
+        var cell = row.insertCell(-1);
+        cell.innerHTML = CategoryName;
+
+        cell = row.insertCell(-1);
+        var btnRemove = document.createElement("INPUT");
+        btnRemove.type = "button";
+        btnRemove.value = "Delete";
+        btnRemove.className = "btn-info";
+        btnRemove.setAttribute("onclick", "Remove(this);");
+        cell.appendChild(btnRemove);
+
+
+        var btnEdit = document.createElement("INPUT");
+        btnEdit.type = "button";
+        btnEdit.value = "Edit";
+        btnEdit.className = "btn-info";
+        btnEdit.style = "margin-left:10px";
+        btnEdit.setAttribute("onclick", "Edit(this);");
+        cell.appendChild(btnEdit);
+    }
+
+    function Edit(button) {
+        var Default = 'Select';
+        var row = button.parentNode.parentNode;
+        if (row.getElementsByTagName("TD")[2].innerHTML != '') {
+            $("#ddSecId option:contains(" + row.getElementsByTagName("TD")[2].innerHTML + ")").prop("selected", true);
+        }
+        else {
+            $("#ddSecId option:contains(" + Default + ")").prop("selected", true);
+        }
+        if (row.getElementsByTagName("TD")[3].innerHTML != '') {
+            $("#ddIndId option:contains(" + row.getElementsByTagName("TD")[3].innerHTML + ")").prop("selected", true);
+        }
+        else {
+            $("#ddIndId option:contains(" + Default + ")").prop("selected", true);
+        }
+        
+        $('#txtCatId').val(row.getElementsByTagName("TD")[4].innerHTML);
+        $('#txtCategory').val(row.getElementsByTagName("TD")[6].innerHTML);
+        $('#hiddenID').val(row.getElementsByTagName("TD")[1].innerHTML);
+        $('#btnsave').val("Update");
+        $('#txtCatId').attr("disabled", "disabled");
+        $(window).scrollTop(0);
+    }
+
+    function Remove(button) {
+        var r = confirm("They will effect on operation. Are you sure you want to delete?");
+        if (r == false) {
+            return;
+        } 
+        var row = button.parentNode.parentNode;
+        var Category = {};
+        Category.Action = "Delete";
+        Category.CATID = row.getElementsByTagName("TD")[4].innerHTML;
+        Category.ID = row.getElementsByTagName("TD")[1].innerHTML;
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("DeleteCategory", "Admin")',
+            data: JSON.stringify(Category),
+            dataType: "json",
+            contentType: 'application/json; charset=utf-8',
+            success: function (msg) {
+                GetCategoryList();
+                //alert(msg);
+                $('#messageData').text(msg);
+                $('#messageData').css('color', 'green');
+                setTimeout(function () {
+                    $('#messageData').text('');
+                }, 2000);
+            },
+            error: function (error) {
+                //alert("Error! Please try again.");
+                $('#messageData').text("Error! Please try again.");
+                $('#messageData').css('color', 'red');
+                setTimeout(function () {
+                    $('#messageData').text('');
+                }, 2000);
+            }
+        });
+    }
+
+    $('#btnsave').click(function () {
+        if (ValidateUserData() == true) {
+            var Category = {};
+            Category.SECID = $('#ddSecId option:selected').html();
+            Category.INDID = $('#ddIndId').val();
+            Category.CATID = $('#txtCatId').val();
+            Category.CategoryName = $('#txtCategory').val();
+            Category.ID = $('#hiddenID').val();
+            if ($('#btnsave').val() == "Create") {
+                Category.Action = "Insert";
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddCategoryDetails", "Admin")',
+                    data: JSON.stringify(Category),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                        GetCategoryList();
+                        //alert(msg);
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        //alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+            }
+            else {
+                Category.Action = "Update";
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateCategoryDetails", "Admin")',
+                    data: JSON.stringify(Category),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                        GetCategoryList();
+                        //alert(msg);
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        //alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+            }
+            Category = null;
+            ClearForm();
+        }
+        else {
+            //alert("Please fill correct data!");
+            $('#messageData').text("Please fill correct data!");
+            $('#messageData').css('color', 'red');
+            setTimeout(function () {
+                $('#messageData').text('');
+            }, 2000);
+            return false;
+        }
+    })
+
+    $('#btncancle').click(function () {
+        ClearForm();
+    })
+
+    function ClearForm() {
+        $('#ddSecId').val("");
+        $('#ddIndId').val("");
+        $('#txtCatId').val("");
+        $('#txtCategory').val("");
+        $('#btnsave').val("Create");
+        $('#ddSecId').removeAttr("disabled");
+    }
+
+    function ValidateUserData() {
+        IsValide = false;
+        var vddSecId = 0, vddIndId = 0, vtxtCatId = 0, vtxtCategory=0;
+
+        if ($('#ddSecId').val() == "") {
+            vddSecId = -1;
+            $('#ddSecId').addClass("validateClass");
+        }
+        else {
+            vddSecId = 0;
+            $('#ddSecId').removeClass("validateClass");
+        }
+
+        if ($('#ddIndId').val() == "") {
+            vddIndId = -1;
+            $('#ddIndId').addClass("validateClass");
+        }
+        else {
+            $('#ddIndId').removeClass("validateClass");
+        }
+
+        if ($('#txtCatId').val() == "") {
+            vtxtCatId = -1;
+            $('#txtCatId').addClass("validateClass");
+        }
+        else {
+
+            vtxtCatId = 0;
+            $('#txtCatId').removeClass("validateClass");
+        }
+
+        if ($('#txtCategory').val() == "") {
+            vtxtCategory = -1;
+            $('#txtCategory').addClass("validateClass");
+        }
+        else {
+
+            vtxtCategory = 0;
+            $('#txtCategory').removeClass("validateClass");
+        }
+
+        if (vddSecId == 0 && vddIndId == 0 && vtxtCatId == 0 && vtxtCategory==0) {
+            IsValide = true;
+        }
+
+        return IsValide;
+    }
+
+    function clear_form_elements() {
+        $('input').each(function (e, index) {
+            switch (this.type) {
+                case 'text':
+                    $(this).val('');
+                    break;
+
+            }
+        });
+    }
+
+</script>

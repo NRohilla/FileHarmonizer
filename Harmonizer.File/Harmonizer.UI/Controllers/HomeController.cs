@@ -41,5 +41,20 @@ namespace Harmonizer.UI.Controllers
         {
             return View();
         }
+
+        public ActionResult IndustrySector()
+        {
+            return View();
+        }
+
+        public ActionResult TermAndCondition()
+        {
+            return View();
+
+        }
+        public ActionResult PrivacyPolicy()
+        {
+            return View();
+        }
     }
 }

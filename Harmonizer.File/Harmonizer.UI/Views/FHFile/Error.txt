@@ -1,0 +1,14 @@
+12/12/2018 5:04:43 AM : BP ID : 1002 :- this is an errror!
+12/12/2018 8:23:26 AM : BP ID : 1002 :-    at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 402
+12/12/2018 9:57:40 AM : BP ID : 1002 :- Value cannot be null.
+Parameter name: type--   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at Harmonizer.UI.Models.OfficeAppManager.ExcelApp() in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Models\OfficeAppManager.cs:line 36
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 469
+   at Harmonizer.UI.Controllers.FHFileController.UploadFileData() in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 174
+12/12/2018 9:59:38 AM : BP ID : 1002 :- Value cannot be null.
+Parameter name: type--   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at Harmonizer.UI.Models.OfficeAppManager.WordApp() in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Models\OfficeAppManager.cs:line 68
+   at Harmonizer.UI.Controllers.FHFileController.ReplaceDataWithList(List`1 lstSearchData, String TargetFilePath, String FileExt, String SourceFilePath) in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 0
+   at Harmonizer.UI.Controllers.FHFileController.UploadFileData() in D:\Client Projects\Joe Simmons\Code\FileHarmonizer\Harmonizer.File\Harmonizer.UI\Controllers\FHFileController.cs:line 174

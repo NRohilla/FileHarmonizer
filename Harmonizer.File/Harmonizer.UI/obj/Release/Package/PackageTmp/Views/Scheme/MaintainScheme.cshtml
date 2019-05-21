@@ -1,0 +1,191 @@
+﻿
+@{
+    ViewBag.Title = "File Harmonizer - Maintain Scheme";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<style>
+
+    .ui-datepicker table {
+        table-layout: fixed !important;
+    }
+
+    .ui-datepicker {
+        width: 337px; /*what ever width you want*/
+    }
+</style>
+
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Maintain Scheme</h4></div>
+            <hr />
+            <div class="bg-white p-3 border w-100 float-left">
+                <div id="divSchemeData">
+                    @Html.Action("_MaintainSchemeData", "Scheme")
+                </div>
+            </div>
+        </div>
+</div>
+<!-- The Modal -->
+<input type="button" id="btnShowData" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModal" />
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Scheme Details</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modelbodydata">
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.edit').hide();
+
+        // Delete
+        $(document).on('click', '.btn-delete', function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            //alert('clicked btn-delete');
+            var ID = tr.find('#hiddenID').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteScheme", "Scheme")',
+                data: '{ID: "' + ID + '"}',
+                dataType: "json",
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    // Nothing
+                    debugger;
+                    if (data > 0) {
+                        window.location.reload(true);
+                    }
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+        // View
+        $(document).on('click', '.btn-view', function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            var ID = tr.find('#hiddenID').val();
+            //alert('clicked view');
+             $.ajax({
+                type: "POST",
+                url: '@Url.Action("ViewScheme", "Scheme")',
+                data: '{ID: "' + ID + '" }',
+                 dataType: "html",
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    // Nothing
+                    debugger;
+                    $('.modal-dialog').addClass('modal-lg');
+                    $('#modelbodydata').html('');
+                    $('#modelbodydata').html(data);
+                    $('#btnShowData').click();
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+        // Edit
+        $(document).on('click', '.btn-edit',function (e) {
+            //alert('clicked btn-edit');
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            tr.find('.edit, .read').toggle();
+        });
+        //Update
+        $(document).on('click', '.btn-Update', function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            //alert('clicked btn-Update');
+            var ID = tr.find('#hiddenID').val();
+            var newComment = tr.find('#txtComment').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateSchemeCommnet", "Scheme")',
+                data: '{ID: "' + ID + '",Comment:"' + newComment + '" }',
+                dataType: "json",
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    // Nothing
+                    debugger;
+                    if (data > 0) {
+                        window.location.reload(true);
+                    }
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+        //
+        //cancel
+        $(document).on('click', '.btn-cancel', function (e) {
+            e.preventDefault();
+            var tr = $(this).parents('tr:first');
+            tr.find('.edit, .read').toggle();
+        });
+
+
+        //Archive
+        $(document).on('click', '#btnArchive',function (e) {
+            //alert('clicked btnArchive');
+
+            var SchemeId = new Array();
+            $("#SchemeManageDetails input[type='checkbox']:checked").each(
+                function () {
+                    var tr = $(this).parents('tr:first');
+                    var ID = tr.find('#lblSchemeNum').text().trim(); //tr.find('#hiddenID').val();
+                    SchemeId.push(ID);
+                }
+            );
+            if (SchemeId.length == 0) {
+                alert('Please select scheme.');
+                return;
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ArchiveScheme", "Scheme")',
+                    data: JSON.stringify(SchemeId),
+                    dataType: "json",
+                    async: false,
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        // Nothing
+                        debugger;
+                        if (data > 0) {
+                            window.location.reload(true);
+                        }
+                    },
+                    error: function (error) {
+                        alert("Error! Please try again.");
+                    }
+                });
+            }
+
+        });
+
+    });
+</script>

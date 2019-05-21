@@ -1,0 +1,32 @@
+TFS URL: https://marketingpunch.visualstudio.com/MP
+
+TFS LOGIN:
+UserName: gulrez.ansari@marketingpunch.co.uk
+Password: l0d0r32002
+
+SQL SERVER LOGIN
+=====================
+Username: OfferX_Dev
+Pass: l0d0r32002
+
+
+Shared Location
+=====================
+\\192.168.1.240\TeamArvind\
+user:dotnet
+pass:pass@123
+
+
+POST /oauth/token HTTP/1.1
+Host: localhost:62140
+Content-Type: application/x-www-form-urlencoded
+Cache-Control: no-cache
+Postman-Token: 2b22183f-6a07-2789-116e-771620f046f9
+
+client_id=9b0c8cd0-c3fd-45d3-9c04-139147784668&client_secret=passwordissecret&username=craig.cooke@impelus.com&password=passwordissecret&grant_type=password
+that should help with the auth request
+
+
+{"access_token":"0nuOTaZD9GL_Z0A8wtVECs5I_v7u2299SMJG31SkIXlpomAGACptSsZk8nWud-uvJYQyIYnx_qixIiA1_IEBI_11Mzmx3_4wwW4Yq9le7xp6f9e801_l82hBN7c6FY3fRGRlSYAtISoERJWEeMj2wyeFC5Es172trErbLbIsSmd_a0-gZOKnueYnRUmUOA0gQvBdvjfvV7YnFGwKwWUi-Sn5WjnvmQ3PCHYbO6eirJ4USyQvUEj-1Ww5k7fMgZDtvaD-Oj5NHpRM_MDNLKYdF9HoIckCIxd52sdW_22cgHKtuAbR","token_type":"bearer","expires_in":86399,"refresh_token":"ac9oxGrkSyUQNSoIBkH8Bba2BFq67ymhHf2SJH8iaQUmvyrkDdxHjqcn4TvMu6GC3Uw3uRkE-qdcpFYrNl8j7mRcyn_rvrgXY2f7eob8XnY6daN3UOsNE2B_4hEYjPnWOY4s03-FhFpwpJaaJJ8I-duyb9uAY8KFg0CxcFxBdRjxCwbwB-uHqOqVgu98u2_criuH3vhxyCZkygfLsw57Q58e2xgjb1M0_a1K-qoxjkyvYgun6P8MTSXF9sg2Ej-bPa0jUsrI2jKKXCYHUuOjY8n2nhHKGaUPcMJYVC_C-7PTbI6M"}
+
+

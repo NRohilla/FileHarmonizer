@@ -1,0 +1,69 @@
+﻿@model Harmonizer.Core.Model.FolderLocation
+<div class="col-md-8">
+    <fieldset style="border:1px solid #e1e1e1;">
+        <legend style="width: initial;      font-size: 1.3rem;  background: #fff;    padding: 0 10px;    margin-left: 15px;">Folder Location</legend>
+        <div class="col-sm-12">
+            <div class="row mt-2">
+                <div class="col-md-2"><label class="text-right">Source:</label> </div>
+                <div class="col-md-8"><input id="txtSource" type="text" class="form-control  " value="@ViewBag.source"   /> </div>
+                <div class="col-md-2"><input type="button" value="..." id="btnsource" class="btn-info  " /> </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-2"><label class="text-right">Target:</label> </div>
+                <div class="col-md-8"><input  id="txtTarget" type="text" class="form-control  " value="@ViewBag.target"   /> </div>
+                <div class="col-md-2"><input type="button" value="..." id="btntarget" class="btn-info  " /> </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-2"><label class="text-right">Conversion:</label> </div>
+                <div class="col-md-8"><input  id="txtConversion" type="text" class="form-control  " value="@ViewBag.convertion"   /> </div>
+                <div class="col-md-2"><input type="button" value="..." id="btnConversion" class="btn-info  " /> </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-2"><label class="text-right">Filter:</label> </div>
+                <div class="col-md-8"><input id="txtFilter" type="text" class="form-control  " value="@ViewBag.filter"   /> </div>
+                <div class="col-md-2"><input type="button" value="..." id="btnFilter" class="btn-info  " /> </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-2"><label class="text-right">Archive:</label> </div>
+                <div class="col-md-8"><input  id="txtArchive" type="text" class="form-control  " value="@ViewBag.archive"   /> </div>
+                <div class="col-md-2"><input type="button" value="..." id="btnArchive" class="btn-info  " /> </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-2"><label class="text-right">Template:</label> </div>
+                <div class="col-md-8"><input id="txtTemplate" type="text" class="form-control  " value="@ViewBag.template"   /> </div>
+                <div class="col-md-2"><input type="button" value="..." id="btnTemplate" class="btn-info  " /> </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-2"><label class="text-right">Report:</label> </div>
+                <div class="col-md-8"><input id="txtReport" type="text" class="form-control  " value="@ViewBag.report"   /> </div>
+                <div class="col-md-2"><input type="button" value="..." id="btnReport" class="btn-info  " /> </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-2"><label class="text-right">Changelog:</label> </div>
+                <div class="col-md-8"><input id="txtChangelog" type="text" class="form-control  " value="@ViewBag.changelog"   /> </div>
+                <div class="col-md-2"><input type="button" value="..." id="btnChangelog" class="btn-info  " /> </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-2"><label class="text-right">Error Log:</label> </div>
+                <div class="col-md-8"><input id="txtErrorLog" type="text" class="form-control  " value="@ViewBag.errorlog"   /> </div>
+                <div class="col-md-2"><input type="button" value="..." id="btnErrorLog" class="btn-info  " /> </div>
+            </div>
+
+
+            <br />
+            <div class="row mt-2">
+                <div class="col-md-2"></div>
+                <div class="col-md-8"></div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </fieldset>
+    <div class=" mt-2 ">
+        <div class="float-left  float-md-none">
+            <a href="#" class="btn btn-info"  id="btnRestoreFolderLocation">Restore Defaults</a>
+            <a href="#" class="btn btn-info ml-2" id="btnApplyFolderLocation">Apply</a>
+            <a href="#" class="btn btn-info ml-2"  id="btnOKFolderLocation">Ok</a>
+            <a href="#" class="btn btn-info ml-2" id="btnCancelFolderLocation">Cancel</a>
+        </div>
+    </div>
+</div>

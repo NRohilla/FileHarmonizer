@@ -1,0 +1,760 @@
+﻿@using System.Collections
+@model Harmonizer.UI.Models.RegisterUser
+@{
+    ViewBag.Title = "User Profile";
+    string divPersonalInfo = "block";
+    string lblBPInfo = "none";
+    if (Convert.ToInt32(Session["Role"]) == 5)
+    {
+        divPersonalInfo = "none";
+        lblBPInfo = "block";
+    }
+}
+<link href="~/Content/select2.css" rel="stylesheet" />
+<script src="~/Scripts/select2.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<style>
+
+    .ui-datepicker table {
+        table-layout: fixed !important;
+    }
+
+    .ui-datepicker {
+        width: 337px; /*what ever width you want*/
+    }
+</style>
+
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>My Profile</h4>
+            </div>
+            <hr />
+
+            <div class="accordion" id="accordionExample">
+                <div class="card" style="display:@divPersonalInfo">
+                    <div class="card-header p-0 pl-3 pr-3" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link w-100 text-left p-0" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <h4 style="font-size:1.2em;">
+                                    <span id="lblAddress">Personal information</span>
+                                    <span class=" float-right">
+                                        <i class="fa fa-angle-down"></i>
+                                    </span>
+                                </h4>
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="my-2" id="divPersonalInfo" style="display:@divPersonalInfo">
+                                <div class="">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-1 ">
+                                                <input type="hidden" id="hiddendPersonaID" value="@Model.PersonalInfo.PersonalID" />
+                                                @Html.Label("Title", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-1">
+                                                <select class="form-control" id="txtTitle" name="txtTitle" style="padding:0;">
+                                                    <option value="Mr.">Mr.</option>
+                                                    <option value="Miss.">Miss.</option>
+                                                    <option value="Mrs.">Mrs.</option>
+                                                    <option value="Ms.">Ms.</option>
+                                                    <option value="Dr.">Dr.</option>
+                                                </select>
+                                                @Html.HiddenFor(model => model.PersonalInfo.Title)
+                                            </div>
+                                            <div class="col-md-1 ">
+                                                @Html.Label("First Name", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-2">
+                                                @Html.TextBoxFor(model => model.PersonalInfo.FirstName, new { @class = "form-control", @ID = "txtPesonalFirstName" })
+                                            </div>
+                                            <div class="col-md-1 ">
+                                                @Html.Label("Last Name", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                @Html.TextBoxFor(model => model.PersonalInfo.LastName, new { @class = "form-control", @ID = "txtPersonalLastName" })
+                                            </div>
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Middle Name", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-2">
+                                                @Html.TextBoxFor(model => model.PersonalInfo.MiddleName, new { @class = "form-control", @ID = "txtPersonalMiddleName" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("2nd First Name", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.PersonalInfo.Name2, new { @class = "form-control", @ID = "txtPesonalName2" })
+                                            </div>
+
+                                            <div class="col-md-2 ">
+                                                @Html.Label("2nd Last Name", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.PersonalInfo.LastName2, new { @class = "form-control", @ID = "txtPesonalLastName2" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("AKA", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.PersonalInfo.AKA, new { @class = "form-control", @ID = "txtPesonalAKA" })
+                                            </div>
+
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Gender", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select class="form-control" id="txtGender" name="txtGender" style="padding:0;">
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                                @Html.HiddenFor(model => model.PersonalInfo.Gender)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Date Born", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input autocomplete="off" placeholder="mm/dd/yyyy" value="@String.Format("{0:d}",Model.PersonalInfo.DateOfBorn)" name=x size=10 maxlength=10 id="txtPesonalDateOfBorn" class="form-control" onkeyup="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2').replace(/^(\d\d\/\d\d)(\d+)$/g,'$1/$2').replace(/[^\d\/]/g,'')">
+                                                @*@Html.TextBoxFor(model => model.PersonalInfo.DateOfBorn, new { @class = "form-control", @ID = "txtPesonalDateOfBorn", @type = "Date", @value = @DateTime.Now.ToShortDateString() })*@
+                                                <i style="position: absolute; right: 25px; top: 12px;" class="fa fa-calendar ui-datepicker-trigger"></i>
+                                            </div>
+
+
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Preferred Language", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.DropDownList("ddlPersonalLanguage", new SelectList((IEnumerable)ViewData["Languagelst"], "Language", "LanguageDescription", Model.PersonalInfo.Language), new { @class = "form-control" })
+                                                @*@Html.TextBoxFor(model => model.PersonalInfo.Language, new { @class = "form-control", @ID = "txtLanguage" })*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Birth Country", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.DropDownList("ddlPersonalBirthCountry", new SelectList((IEnumerable)ViewData["Countrylst"], "Alpha3", "CountryName", Model.PersonalInfo.BirthCountry), new { @class = "form-control js-example-basic-single" })
+                                            </div>
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Occupation", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.PersonalInfo.Profession, new { @class = "form-control", @ID = "txtProfessionOccuption" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- Last update-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Country\\Default", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @*@Html.TextBoxFor(model => model.PersonalInfo.Country, new { @class = "form-control", @ID = "txtCountry" })*@
+                                                @Html.DropDownList("ddlPersonalDefaulCountry", new SelectList((IEnumerable)ViewData["Countrylst"], "Alpha3", "CountryName", Model.PersonalInfo.Country), new { @class = "form-control js-example-basic-single" })
+                                            </div>
+
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Mobile Phone", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.MobilePhone, new { @class = "form-control", @ID = "txtPersonalMobilePhone", @maxlength = "15" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Work Phone", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.WorkPhone, new { @class = "form-control", @ID = "txtPersonalWorkPhone", @maxlength = "15" })
+                                            </div>
+
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Fax", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.Fax, new { @class = "form-control", @ID = "txtPersonalFax", @maxlength = "15" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Phone", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.Phone, new { @class = "form-control", @ID = "txtPesonalPhone", @maxlength = "15" })
+                                            </div>
+
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Email", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.PersonalInfo.Email, new { @class = "form-control", @ID = "txtPersonalEmail" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Web site", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.PersonalInfo.Website, new { @class = "form-control", @ID = "txtPesonalWebsite" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="text-right">
+                                            <input type="button" id="btnUpdatePersonalInfo" name="Create" class="btn btn-info" value="Update Personal Info" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="display:@lblBPInfo">
+                    <div class="card-header p-0 pl-3 pr-3" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed  w-100 text-left p-0" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <h4 style="font-size:1.2em;">
+                                    <span id="lblAddress">Business information</span>
+                                    <span class=" float-right">
+                                        <i class="fa fa-angle-down"></i>
+                                    </span>
+                                </h4>
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <!-- For BP Info-->
+                            <div class="my-2" id="lblBPInfo" style="display:@lblBPInfo">
+                                <div class="">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Company Name", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.BPinfo.CompName, new { @class = "form-control", @ID = "txtBPCompName" })
+                                            </div>
+
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Contact Name First", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.BPinfo.ContactNameFirst, new { @class = "form-control", @ID = "txtBPContactNameFirst" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Contact Name Last", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.BPinfo.ContactNameLast, new { @class = "form-control", @ID = "txtBPContactNameLast" })
+                                            </div>
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Company EIN\\TIN", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.BPinfo.CompanyEIN, new { @class = "form-control", @ID = "txtBPCompanyEIN" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Company Date", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @*<input type="text" value='@Model.BPinfo.CompanyDate' />*@
+                                                @*@Html.TextBoxFor(model => model.BPinfo.CompanyDate, new { @class = "form-control", @ID = "txtBPCompanyDate", @type = "Date" })*@
+                                                <input autocomplete="off" placeholder="mm/dd/yyyy" value="@String.Format("{0:d}",Model.BPinfo.CompanyDate)" name=x size=10 maxlength=10 id="txtBPCompanyDate" class="form-control" onkeyup="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2').replace(/^(\d\d\/\d\d)(\d+)$/g,'$1/$2').replace(/[^\d\/]/g,'')">
+                                                <i style="position: absolute; right: 25px; top: 12px;" class="fa fa-calendar componycal ui-datepicker-trigger"></i>
+                                            </div>
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Default Language", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.DropDownList("ddlBPDefaultLanguage", new SelectList((IEnumerable)ViewData["Languagelst"], "Language", "LanguageDescription", Model.BPinfo.Language), new { @class = "form-control" })
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Inception Country", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.DropDownList("ddlInceptionCountry", new SelectList((IEnumerable)ViewData["Countrylst"], "Alpha3", "CountryName", Model.BPinfo.Country), new { @class = "form-control js-example-basic-single" })
+                                            </div>
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Email", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.BPinfo.Email, new { @class = "form-control", @ID = "txtBPEmail" })
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Website", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.BPinfo.Website, new { @class = "form-control", @ID = "txtBPWebsite" })
+                                            </div>
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Division\\Department", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.BPinfo.Department, new { @class = "form-control", @ID = "txtBPDepartment" })
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Toll Free Phone", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.BPinfo.TollFreePhone, new { @class = "form-control", @ID = "txtBPTollFreePhone", @maxlength = "15" })
+
+                                            </div>
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Main Phone", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.WorkPhone, new { @class = "form-control", @ID = "txtBPMainPhone", @maxlength = "15" })
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Second Phone", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.Phone, new { @class = "form-control", @ID = "txtBPSecondPhone", @maxlength = "15" })
+                                            </div>
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Fax", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.Fax, new { @class = "form-control", @ID = "txtBPFax", @maxlength = "15" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="text-right">
+                                            <input type="button" id="btnUpdateBPInfo" name="Create" class="btn btn-info" value="Update Business Info" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header p-0 pl-3 pr-3" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed w-100 text-left p-0" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <h4 style="font-size:1.2em;">
+                                    <span id="lblAddress">Address information</span>
+                                    <span class=" float-right">
+                                        <i class="fa fa-angle-down"></i>
+                                    </span>
+                                </h4>
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="my-2" id="divAddress">
+                                <div class="">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                <input type="hidden" id="hiddenAddressID" value='@Model.AddInfo.AddressID' />
+                                                @Html.Label("Address 1", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.Address1, new { @class = "form-control", @ID = "txtAddress1" })
+                                            </div>
+
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Address 2", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.Address2, new { @class = "form-control", @ID = "txtAddress2" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("City", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.City, new { @class = "form-control", @ID = "txtAddressCity" })
+                                            </div>
+
+                                            <div class="col-md-2 ">
+                                                @Html.Label("State", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.State, new { @class = "form-control", @ID = "txtAddressState" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Zip", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.Zip, new { @class = "form-control", @ID = "txtAddressZip", @maxlength = "12" })
+                                            </div>
+
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Country", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.DropDownList("AddressCountry", new SelectList((IEnumerable)ViewData["Countrylst"], "Alpha3", "CountryName", Model.AddInfo.CountryKey), new { @class = "form-control js-example-basic-single" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("PO Box", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.POBox, new { @class = "form-control", @ID = "txtAddressPOBox" })
+                                            </div>
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Timezone", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.TimeZone, new { @class = "form-control", @ID = "txtAddressTimezone" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Location", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.Location, new { @class = "form-control", @ID = "txtAddressLocation" })
+                                            </div>
+
+                                            <div class="col-md-2 ">
+                                                @Html.Label("District Postal Code", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.DistrictPostalCode, new { @class = "form-control", @ID = "txtAddressDistrictPostalCode", @maxlength = "10" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("County", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.AddInfo.county, new { @class = "form-control", @ID = "txtAddressCounty" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*set the value of usertype in hidden field*@
+                                    @Html.HiddenFor(model => model.User.RegistrationType, new { @Id = "RegistrationTypeId" })
+                                    <div class="form-group">
+                                        <div class="text-right">
+                                            <input type="button" id="btnUpdateAddress" name="Create" class="btn btn-info" value="Update Address" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    <div id="wait" style="display:none;width:100%;height:100%;position:fixed;top:0px;left:0px;bottom:0px;right:0px;padding:20%;z-index: 99999;background-color:rgba(0,0,0,0.3);text-align:center;">
+        <img src='~/images/sa.gif' width="150" height="150" /><br>Loading..
+    </div>
+</div>
+<!-- The Modal -->
+<input type="button" id="btnShowData" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModal" />
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+
+            <div class="modal-body" id="modelbodydata">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('.js-example-basic-single').select2();
+
+        //calendar
+        $("#txtPesonalDateOfBorn").datepicker({
+
+            dateFormat: "mm/dd/yy",
+            //yyyy/mm/dd
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-100:+0" 
+
+        });
+        $('.fa-calendar').click(function () {
+            $("#txtPesonalDateOfBorn").focus();
+
+        });
+        $("#txtBPCompanyDate").datepicker({
+
+            dateFormat: "mm/dd/yy",
+            //yyyy/mm/dd
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-100:+0" 
+
+        });
+        $('.componycal').click(function () {
+            $("#txtBPCompanyDate").focus();
+
+        });
+        //end
+
+
+        var GValue = $('#PersonalInfo_Gender').val();
+        var TValue = $('#PersonalInfo_Title').val();
+        $('#txtGender option[value="' + GValue + '"]').attr("selected", true);
+        $('#txtTitle option[value="' + TValue + '"]').attr("selected", true);
+        //SetGender();
+        $('#txtTitle').change(function (e) {
+            SetGender();
+        });
+
+        $('#txtGender').change(function (e) {
+            setTitle();
+        });
+
+        $('#btnUpdateAddress').click(function () {
+            //alert('Update Address');
+            var Address = {};
+            Address.AddressID = $('#hiddenAddressID').val();
+            Address.Address1 = $('#txtAddress1').val();
+            Address.Address2 = $('#txtAddress2').val();
+            Address.City = $('#txtAddressCity').val();
+            Address.State = $('#txtAddressState').val();
+            Address.Zip = $('#txtAddressZip').val();
+            Address.Country = $('#AddressCountry :selected').text();
+            Address.POBox = $('#txtAddressPOBox').val();
+            Address.TimeZone = $('#txtAddressTimezone').val();
+            Address.Location = $('#txtAddressLocation').val();
+            Address.DistrictPostalCode = $('#txtAddressDistrictPostalCode').val();
+            Address.county = $('#txtAddressCounty').val();
+            Address.CountryKey = $('#AddressCountry').val();
+            // ajax call to Update data
+            $("#wait").show();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateUserAddress", "User")',
+                data: JSON.stringify(Address),
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $("#wait").hide();
+                    //alert(data);
+                },
+                error: function (error) {
+                    $("#wait").hide();
+                    alert("Error! Please try again.");
+                }
+            });
+
+        });
+        $('#btnUpdateBPInfo').click(function () {
+            // alert('Update Business info');
+            var BPInfo = {};
+            BPInfo.BPID = "";
+            BPInfo.CompName = $('#txtBPCompName').val();
+            BPInfo.ContactNameFirst = $('#txtBPContactNameFirst').val();
+            BPInfo.ContactNameLast = $('#txtBPContactNameLast').val();
+            BPInfo.CompanyEIN = $('#txtBPCompanyEIN').val();
+            BPInfo.CompanyDate = $('#txtBPCompanyDate').val();
+            BPInfo.Language = $('#ddlBPDefaultLanguage').val();
+            BPInfo.Country = $('#ddlInceptionCountry').val();
+            BPInfo.Email = $('#txtBPEmail').val();
+            BPInfo.Website = $('#txtBPWebsite').val();
+            BPInfo.Department = $('#txtBPDepartment').val();
+            BPInfo.TollFreePhone = $('#txtBPTollFreePhone').val();
+            BPInfo.MainPhone = $('#txtBPMainPhone').val();
+            BPInfo.SecondPhone = $('#txtBPSecondPhone').val();
+            BPInfo.Fax = $('#txtBPFax').val();
+            // call ajax
+            $("#wait").show();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateUserBPInfo", "User")',
+                data: JSON.stringify(BPInfo),
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $("#wait").hide();
+                    //alert(data);
+                },
+                error: function (error) {
+                    $("#wait").hide();
+                    alert("Error! Please try again.");
+                }
+            });
+
+        });
+
+
+        $('#btnUpdatePersonalInfo').click(function () {
+            debugger;
+            //alert('Update Personal info');
+            var PersonalInformation = {};
+            PersonalInformation.PersonalID = $('#hiddendPersonaID').val();
+            PersonalInformation.Title = $('#txtTitle').val();
+            PersonalInformation.FirstName = $('#txtPesonalFirstName').val();
+            PersonalInformation.LastName = $('#txtPersonalLastName').val();
+            PersonalInformation.MiddleName = $('#txtPersonalMiddleName').val();
+            PersonalInformation.Name2 = $('#txtPesonalName2').val();
+            PersonalInformation.LastName2 = $('#txtPesonalLastName2').val();
+            PersonalInformation.AKA = $('#txtPesonalAKA').val();
+            PersonalInformation.Gender = $('#txtGender').val();
+            PersonalInformation.DateOfBorn = $('#txtPesonalDateOfBorn').val();
+            PersonalInformation.Language = $('#ddlPersonalLanguage').val();
+            PersonalInformation.BirthCountry = $('#ddlPersonalBirthCountry').val();
+            PersonalInformation.Profession = $('#txtProfessionOccuption').val();
+            PersonalInformation.DefaulCountry = $('#ddlPersonalDefaulCountry').val();
+            PersonalInformation.Mobile = $('#txtPersonalMobilePhone').val();
+            PersonalInformation.WorkPhone = $('#txtPersonalWorkPhone').val();
+            PersonalInformation.Fax = $('#txtPersonalFax').val();
+            PersonalInformation.Phone = $('#txtPesonalPhone').val();
+            PersonalInformation.Email = $('#txtPersonalEmail').val();
+            PersonalInformation.Website = $('#txtPesonalWebsite').val();
+            // call ajax call
+            // call ajax
+            $("#wait").show();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateUserPersonalInfo", "User")',
+                data: JSON.stringify(PersonalInformation),
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $("#wait").hide();
+                    //alert(data);
+                },
+                error: function (error) {
+                    debugger;
+                    $("#wait").hide();
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+
+        // Modele popup to show your paln is expire
+        var edate = '@ViewBag.ExpireDate';
+        var cdate = '@DateTime.Today.Date.ToShortDateString()';
+        if (edate != "") {
+            if (compare_dates(new Date(edate), new Date(cdate)) == true) {
+                $('#modelbodydata').load('@Url.Action("ExipreActivation","User",new {token=Request.QueryString["token"] })');
+                $('#btnShowData').click();
+            }
+        }
+    });
+
+    var compare_dates = function (edate1, cdate2) {
+        if (edate1 < cdate2)
+            return true;
+        else  {
+            return false;
+        }
+    }
+
+        function SetGender() {
+            if ($('#txtTitle').children("option:selected").val() == 'Mr.') {
+                $('#txtGender').val('Male');
+            }
+            if ($('#txtTitle').children("option:selected").val() == 'Miss.') {
+                $('#txtGender').val('Female');
+            }
+            $('#PersonalInfo_Title').val($('#txtTitle').children("option:selected").val().trim());
+            $('#PersonalInfo_Gender').val($('#txtGender').children("option:selected").val().trim());
+        }
+
+        function setTitle() {
+            if ($('#txtGender').children("option:selected").val() == 'Male') {
+                $('#txtTitle').val('Mr.');
+            }
+            if ($('#txtGender').children("option:selected").val() == 'Female') {
+                $('#txtTitle').val('Miss.');
+            }
+            $('#PersonalInfo_Title').val($('#txtTitle').children("option:selected").val().trim());
+            $('#PersonalInfo_Gender').val($('#txtGender').children("option:selected").val().trim());
+        }
+</script>

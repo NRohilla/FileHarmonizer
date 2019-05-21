@@ -15,5 +15,6 @@ namespace Harmonizer.UI.Models
         [Required(ErrorMessage = "Password must be entered")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
     }
 }

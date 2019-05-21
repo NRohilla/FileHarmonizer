@@ -1,0 +1,34 @@
+UTAGID;User ID;Tag;Orig;Glob\Pri;Description
+1000001;FH;F<TEMPLATE>H;S;G;Template:
+1000002;FH;F<PROJNAME>H;S;G;Project Name:
+1000003;FH;F<CUST>H;S;G;Customer:
+1000004;FH;F<OBJID>H;S;G;OBJID:
+1000005;FH;F<MODULE>H;S;G;Module:
+1000006;FH;F<SPECNAME>H;S;G;Specification Name:
+1000007;FH;F<BDESC>H;S;G;OBJID Description
+1000008;FH;F<CREATEBY>H;S;G;Created By
+1000009;FH;F<DOCDATE>H;S;G;Document Date:
+1000010;FH;F<DOCTYPE>H;S;G;*Document Type:
+1000011;FH;F<COMPDATE>H;S;G;Target Completion Date:
+1000012;FH;F<PRIORITY>H;S;G;Priority Level (Low, Medium, High):
+1000013;FH;F<REUSEFLAG>H  ;S;G;Reusable Object(Yes/No):
+1000014;FH;F<DOCSTATUS>H;S;G;Document Status:
+1000015;FH;F<BPONAME>H;S;G;Client Owner (BPO) - Name
+1000016;FH;F<FLNAME>H;S;G;Functional Owner (Consultant) - Name
+1000017;FH;F<TLNAME>H;S;G;Technical Owner (Consultant) - Name
+1000018;FH;F<DEVNAME>H;S;G;<1000002> - Name
+1000019;FH;F<BPOROLE>H;S;G;Client Owner (BPO) - Role
+1000020;FH;F<FLROLE>H;S;G;Functional Owner (Consultant) - Role
+1000021;FH;F<TLROLE>H;S;G;Technical Owner (Consultant) - Role
+1000022;FH;F<DEVROLE>H;S;G;<1000002> - Role
+1000023;FH;F<BPOEMAIL>H;S;G;Client Owner (BPO) - Email
+1000024;FH;F<FLEMAIL>H;S;G;Functional Owner (Consultant) - Email
+1000025;FH;F<TLEMAIL>H;S;G;Technical Owner (Consultant) - Email
+1000026;FH;F<DEVEMAIL>H;S;G;<1000002> - Email
+1000027;FH;F<BPOPHONE>H;S;G;Client Owner (BPO) - Phone
+1000028;FH;F<FLPHONE>H;S;G;Functional Owner (Consultant) - Phone
+1000029;FH;F<TLPHONE>H;S;G;Technical Owner (Consultant) - Phone
+1000030;FH;F<DEVPHONE>H;S;G;<1000002> - Phone
+1000031;FH;F<Fname>H;S;P;First Name
+1000032;FH;F<Mname>H;S;P;Middle Name
+1000033;FH;F<Minitial>H;S;P;Middle Initial
