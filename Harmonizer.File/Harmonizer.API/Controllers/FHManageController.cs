@@ -50,6 +50,32 @@ namespace Harmonizer.API.Controllers
 
             }
         }
+        // ManageHarmonizeTemplateDetails
+
+        [HttpGet]
+        [Route("GetManageHarmonizeTemplateDetails")]
+        public async Task<IHttpActionResult> ManageHarmonizeTemplateDetails()
+        {
+            string HostName = ConfigurationManager.AppSettings["HostName"];
+            string PortNo = ConfigurationManager.AppSettings["PortNo"];
+            string FHNumber = "";// This is for filter template which is generate from other Fhnumber data
+            HttpResponseMessage response = new HttpResponseMessage();
+            try
+            {
+                var retValue = await Task.Run(() => _fHManageService.ManageHarmonizeTemplateDetails(UserID, BPID, HostName, PortNo,FHNumber));
+                return Ok(retValue);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return ResponseMessage(response);
+            }
+            finally
+            {
+
+            }
+        }
+
 
         [HttpPost]
         [Route("ArchiveTemplate")]
@@ -121,7 +147,7 @@ namespace Harmonizer.API.Controllers
             HttpResponseMessage response = new HttpResponseMessage();
             try
             {
-                var retValue = await Task.Run(() => _fHManageService.RenameTemplate(FileID, TemplateText, Description, HFLTRID, IE, op));
+                var retValue = await Task.Run(() => _fHManageService.RenameTemplate(FileID, TemplateText, Description, HFLTRID, IE==null?"":IE, op));
                 return Ok(retValue);
             }
             catch (Exception ex)
@@ -134,6 +160,29 @@ namespace Harmonizer.API.Controllers
 
             }
         }
+
+
+        [HttpPost]
+        [Route("UpdateHarmonizeComment")]
+        public async Task<IHttpActionResult> UpdateHarmonizeComment(int ID, string Comment)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            try
+            {
+                var retValue = await Task.Run(() => _fHManageService.UpdateHarmonizeCommnet(ID, Comment));
+                return Ok(retValue);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return ResponseMessage(response);
+            }
+            finally
+            {
+
+            }
+        }
+
 
 
 

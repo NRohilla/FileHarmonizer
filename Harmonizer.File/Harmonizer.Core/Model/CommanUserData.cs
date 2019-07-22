@@ -15,5 +15,6 @@ namespace Harmonizer.Core.Model
         public string HarmonizerValue { get; set; }
         public string Sector { get; set; }
         public string SECID { get; set; }
+        public DateTime ActiveDate { get; set; }
     }
 }

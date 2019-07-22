@@ -163,5 +163,9 @@ namespace Harmonizer.API.Service
         {
             return _userData.ResetPassword(user);
         }
+        public int PaymentHistory(PaymentModel paymentModel, string op)
+        {
+            return _userData.PaymentHistory(paymentModel, op);
+        }
     }
 }

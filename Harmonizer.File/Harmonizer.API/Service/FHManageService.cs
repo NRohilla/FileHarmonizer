@@ -21,6 +21,23 @@ namespace Harmonizer.API.Service
             lstFilterTemplate = lstFilterTemplateNew.Distinct(new NoDuplicateTemplate()).ToList(); ;
             return lstFilterTemplate;
         }
+
+        public List<ManageFilterTemplateModel> ManageHarmonizeTemplateDetails(string UserID, string BPID, string HostName, string ProtNo,string FHNumber)
+        {
+            List<ManageFilterTemplateModel> lstFilterTemplate = new List<ManageFilterTemplateModel>();
+            var lstFilterTemplateNew = GetFiletTemplateManageData(BPID, HostName, ProtNo);
+            if (FHNumber == "")
+            {
+                lstFilterTemplate = lstFilterTemplateNew.Where(x => x.HarmonizeTemplate.TemplatePath != "" && !string.IsNullOrWhiteSpace(x.HarmonizeTemplate.TemplatePath) && x.HarmonizeTemplate.ID != 0 && x.HarmonizeTemplate.IsArchive == false).ToList();
+            }
+            else
+            {
+                lstFilterTemplate = lstFilterTemplateNew.Where(x => x.HarmonizeTemplate.TemplatePath != "" && !string.IsNullOrWhiteSpace(x.HarmonizeTemplate.TemplatePath) && x.HarmonizeTemplate.ID != 0).ToList();
+                lstFilterTemplate = lstFilterTemplate.Where(x => x.HarmonizeTemplate.HTFHNumber == FHNumber && x.HarmonizeTemplate.IsArchive == false).ToList();
+            }
+            return lstFilterTemplate;
+        }
+
         public List<ManageFilterTemplateModel> GetFiletTemplateManageData(string BPID, string HostName, string ProtNo)
         {
             string fullPathUrlTemplate = "";
@@ -151,7 +168,6 @@ namespace Harmonizer.API.Service
             {
                 // Update Template
                 retValue = _fhManage.UpdateTemplateComment(_template);
-                retValue = 1;
                 return retValue;
             }
             else
@@ -159,5 +175,21 @@ namespace Harmonizer.API.Service
                 return retValue;
             }
         }
+
+        public int UpdateHarmonizeCommnet(int ID, string Comment)
+        {
+            int retValue = -1;
+            try
+            {
+                retValue = _fhManage.UpdateHarmonizeCommnet(ID, Comment);
+            }
+            catch
+            {
+                retValue = -1;
+            }
+            return retValue;
+        }
+
+
     }
 }

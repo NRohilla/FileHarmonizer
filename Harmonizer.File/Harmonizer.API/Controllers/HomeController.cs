@@ -16,6 +16,7 @@ namespace Harmonizer.API.Controllers
     {
         MiscellaneousService _miscellaneousService = new MiscellaneousService();
         UserService _userService = new UserService();
+       
         [HttpPost]
         [Route("Feedback")]
         public async Task<IHttpActionResult> SendFeeback([FromBody]FeedbackModel feedbackModel)
@@ -61,5 +62,48 @@ namespace Harmonizer.API.Controllers
 
             }
         }
+
+        [HttpGet]
+        [Route("StartFreeTrail")]
+        public async Task<IHttpActionResult> StartFreeTrail()
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            try
+            {
+                var PlanDetails = await Task.Run(() => _userService.StartMyFreeMonth());
+                return Ok(PlanDetails);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return ResponseMessage(response);
+            }
+            finally
+            {
+
+            }
+        }
+
+        [HttpPost]
+        [Route("PaymentHistory")]
+        public async Task<IHttpActionResult> PaymentHistory([FromBody]PaymentModel paymentModel)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            try
+            {
+                var PaymentHistoryValue = await Task.Run(() => _userService.PaymentHistory(paymentModel, "insert"));
+                return Ok(PaymentHistoryValue);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return ResponseMessage(response);
+            }
+            finally
+            {
+
+            }
+        }
+
     }
 }

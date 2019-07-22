@@ -30,26 +30,26 @@ namespace Harmonizer.API.Controllers
             BPID = claims.FirstOrDefault(x => x.type == "BPID").value;
         }
 
-        [HttpGet]
-        [Route("StartFreeTrail")]
-        public async Task<IHttpActionResult> StartFreeTrail()
-        {
-            HttpResponseMessage response = new HttpResponseMessage();
-            try
-            {
-                var PlanDetails = await Task.Run(() => userService.StartMyFreeMonth());
-                return Ok(PlanDetails);
-            }
-            catch (Exception ex)
-            {
-                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-                return ResponseMessage(response);
-            }
-            finally
-            {
+        //[HttpGet]
+        //[Route("StartFreeTrail")]
+        //public async Task<IHttpActionResult> StartFreeTrail()
+        //{
+        //    HttpResponseMessage response = new HttpResponseMessage();
+        //    try
+        //    {
+        //        var PlanDetails = await Task.Run(() => userService.StartMyFreeMonth());
+        //        return Ok(PlanDetails);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+        //        return ResponseMessage(response);
+        //    }
+        //    finally
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
         [HttpGet]
         [Route("UserProfile")]
@@ -184,70 +184,136 @@ namespace Harmonizer.API.Controllers
             }
         }
 
+        //[HttpGet]
+        //[Route("GetIndustry")]
+        //public async Task<IHttpActionResult> Industry()
+        //{
+        //    HttpResponseMessage response = new HttpResponseMessage();
+        //    try
+        //    {
+        //        var retValue = await Task.Run(() => miscellaneousService.GetIndustries());
+        //        return Ok(retValue);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+        //        return ResponseMessage(response);
+        //    }
+        //    finally
+        //    {
+
+        //    }
+
+        //}
+
         [HttpGet]
         [Route("GetIndustry")]
-        public async Task<IHttpActionResult> Industry()
+        public IEnumerable<Models.SelectListItem> Industry()
         {
-            HttpResponseMessage response = new HttpResponseMessage();
+            List<Models.SelectListItem> lstData = new List<Models.SelectListItem>();
             try
             {
-                var retValue = await Task.Run(() => miscellaneousService.GetIndustries());
-                return Ok(retValue);
+                lstData= miscellaneousService.GetIndustries();
+              
             }
             catch (Exception ex)
             {
-                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-                return ResponseMessage(response);
+                
             }
             finally
             {
 
             }
+            return lstData;
 
         }
+
+
+
+        //[HttpGet]
+        //[Route("GetCountry")]
+        //public async Task<IHttpActionResult> Country()
+        //{
+        //    HttpResponseMessage response = new HttpResponseMessage();
+        //    try
+        //    {
+        //        var retValue = await Task.Run(() => miscellaneousService.GetCountry());
+        //        return Ok(retValue);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+        //        return ResponseMessage(response);
+        //    }
+        //    finally
+        //    {
+
+        //    }
+
+        //}
 
 
         [HttpGet]
         [Route("GetCountry")]
-        public async Task<IHttpActionResult> Country()
+        public List<Country> Country()
         {
-            HttpResponseMessage response = new HttpResponseMessage();
+            List<Country> lstData = new List<Country>();
             try
             {
-                var retValue = await Task.Run(() => miscellaneousService.GetCountry());
-                return Ok(retValue);
+                lstData = miscellaneousService.GetCountry();
+              
             }
             catch (Exception ex)
             {
-                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-                return ResponseMessage(response);
+              
             }
             finally
             {
 
             }
-
+            return lstData;
         }
+
+        //[HttpGet]
+        //[Route("GetLanguage")]
+        //public async Task<IHttpActionResult> Language()
+        //{
+        //    HttpResponseMessage response = new HttpResponseMessage();
+        //    try
+        //    {
+        //        var retValue = await Task.Run(() => miscellaneousService.GetLanguage());
+        //        return Ok(retValue);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+        //        return ResponseMessage(response);
+        //    }
+        //    finally
+        //    {
+
+        //    }
+
+        //}
         [HttpGet]
         [Route("GetLanguage")]
-        public async Task<IHttpActionResult> Language()
+        public List<LanguageTimeZone> Language()
         {
-            HttpResponseMessage response = new HttpResponseMessage();
+            List<LanguageTimeZone> lstData = new List<LanguageTimeZone>();
+           
             try
             {
-                var retValue = await Task.Run(() => miscellaneousService.GetLanguage());
-                return Ok(retValue);
+                lstData =  miscellaneousService.GetLanguage();
             }
             catch (Exception ex)
             {
-                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-                return ResponseMessage(response);
+              
             }
             finally
             {
 
             }
-
+            return lstData;
         }
 
 
