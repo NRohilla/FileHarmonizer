@@ -90,7 +90,20 @@
     }
 </style>
 <script>
+    function MaskForDate() {
+        if ($('#UserTagDetails >tbody >tr').length != 0) {
+            $('#UserTagDetails >tbody >tr').each(function () {
+                var tr = $(this).parents('tr:first');
+                if ($(this).closest('tr').find('#txtShareValue').val() == "MM/DD/YYYY") {
+                    $(this).closest('tr').find('#txtShareValue').val("");
+                    $(this).closest('tr').find('#txtShareValue').attr("placeholder", "00/00/0000");
+                }
+            });
+        }
+    }
     $(document).ready(function () {
+        debugger;
+        MaskForDate();
         $('#filterTempateFileinfo').hide();
 
         $('.js-example-basic-single').select2();
@@ -168,6 +181,7 @@
                         $("#wait").css("display", "none");
                         $('#divUserDetails').html('');
                         $('#divUserDetails').html(data);
+                        MaskForDate();
                     },
                     error: function (errMsg) {
                         $("#wait").css("display", "none");

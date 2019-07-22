@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "QRCode";
+}
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div class="blink_heading">
+            <h4>QR Code</h4>
+            </div>
+            <div style="text-align:center">
+                @if (ViewBag.QRCodeImage != null)
+                {
+                    <img src="@ViewBag.QRCodeImage" alt="" style="height:200px;width:200px" />
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+

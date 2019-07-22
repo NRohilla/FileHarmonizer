@@ -45,7 +45,7 @@
                         @Html.TextBoxFor(model => model.User.UserID, new { @class = "form-control", @ID = "txtUserID" })
                     </div>
                     <div class="col-md-2 ">
-                        @Html.Label("Email ID", htmlAttributes: new { @class = "control-label form-label" }) <span class="text-danger font-weight-bold">*</span>
+                        @Html.Label("Email Address", htmlAttributes: new { @class = "control-label form-label" }) <span class="text-danger font-weight-bold">*</span>
                     </div>
                     <div class="col-md-4">
                         @Html.TextBoxFor(model => model.User.EmailID, new { @class = "form-control", @ID = "txtEmailID" })
@@ -245,7 +245,7 @@
                             @Html.Label("Mobile Phone", htmlAttributes: new { @class = "control-label form-label" })
                         </div>
                         <div class="col-md-4">
-                            @Html.TextBoxFor(model => model.PersonalInfo.Mobile, new { @class = "form-control", @ID = "txtPersonalMobilePhone", @maxlength = "15" })
+                            @Html.TextBoxFor(model => model.PersonalInfo.Mobile, new { @class = "form-control", @ID = "txtPersonalMobilePhone", @maxlength = "15", @placeholder = "(000) 000-0000" })
                         </div>
                     </div>
                 </div>
@@ -255,14 +255,14 @@
                             @Html.Label("Work Phone", htmlAttributes: new { @class = "control-label form-label" })
                         </div>
                         <div class="col-md-4">
-                            @Html.TextBoxFor(model => model.PersonalInfo.WorkPhone, new { @class = "form-control", @ID = "txtPersonalWorkPhone", @maxlength = "15" })
+                            @Html.TextBoxFor(model => model.PersonalInfo.WorkPhone, new { @class = "form-control", @ID = "txtPersonalWorkPhone", @maxlength = "15", @placeholder = "(000) 000-0000" })
                         </div>
 
                         <div class="col-md-2 ">
                             @Html.Label("Fax", htmlAttributes: new { @class = "control-label form-label" })
                         </div>
                         <div class="col-md-4">
-                            @Html.TextBoxFor(model => model.PersonalInfo.Fax, new { @class = "form-control", @ID = "txtPersonalFax", @maxlength = "15" })
+                            @Html.TextBoxFor(model => model.PersonalInfo.Fax, new { @class = "form-control", @ID = "txtPersonalFax", @maxlength = "15", @placeholder = "(000) 000-0000" })
                         </div>
                     </div>
                 </div>
@@ -273,7 +273,7 @@
                             @Html.Label("Phone", htmlAttributes: new { @class = "control-label form-label" }) <span class="text-danger font-weight-bold">*</span>
                         </div>
                         <div class="col-md-4">
-                            @Html.TextBoxFor(model => model.PersonalInfo.Phone, new { @class = "form-control", @ID = "txtPesonalPhone", @maxlength = "15" })
+                            @Html.TextBoxFor(model => model.PersonalInfo.Phone, new { @class = "form-control", @ID = "txtPesonalPhone", @maxlength = "15",@placeholder="(000) 000-0000" })
                         </div>
 
                         <div class="col-md-2 ">
@@ -399,14 +399,14 @@
                             @Html.Label("Toll Free Phone", htmlAttributes: new { @class = "control-label form-label" })
                         </div>
                         <div class="col-md-4">
-                            @Html.TextBoxFor(model => model.BPinfo.TollFreePhone, new { @class = "form-control", @ID = "txtBPTollFreePhone", @maxlength = "15" })
+                            @Html.TextBoxFor(model => model.BPinfo.TollFreePhone, new { @class = "form-control", @ID = "txtBPTollFreePhone", @maxlength = "15", @placeholder = "(000) 000-0000" })
 
                         </div>
                         <div class="col-md-2 ">
                             @Html.Label("Main Phone", htmlAttributes: new { @class = "control-label form-label" }) <span class="text-danger font-weight-bold">*</span>
                         </div>
                         <div class="col-md-4">
-                            @Html.TextBoxFor(model => model.BPinfo.MainPhone, new { @class = "form-control", @ID = "txtBPMainPhone", @maxlength = "15" })
+                            @Html.TextBoxFor(model => model.BPinfo.MainPhone, new { @class = "form-control", @ID = "txtBPMainPhone", @maxlength = "15", @placeholder = "(000) 000-0000" })
                         </div>
 
 
@@ -418,13 +418,13 @@
                             @Html.Label("Second Phone", htmlAttributes: new { @class = "control-label form-label" })
                         </div>
                         <div class="col-md-4">
-                            @Html.TextBoxFor(model => model.BPinfo.SecondPhone, new { @class = "form-control", @ID = "txtBPSecondPhone", @maxlength = "15" })
+                            @Html.TextBoxFor(model => model.BPinfo.SecondPhone, new { @class = "form-control", @ID = "txtBPSecondPhone", @maxlength = "15", @placeholder = "(000) 000-0000" })
                         </div>
                         <div class="col-md-2 ">
                             @Html.Label("Fax", htmlAttributes: new { @class = "control-label form-label" })
                         </div>
                         <div class="col-md-4">
-                            @Html.TextBoxFor(model => model.BPinfo.Fax, new { @class = "form-control", @ID = "txtBPFax", @maxlength = "15" })
+                            @Html.TextBoxFor(model => model.BPinfo.Fax, new { @class = "form-control", @ID = "txtBPFax", @maxlength = "15", @placeholder = "(000) 000-0000" })
                         </div>
 
                     </div>
@@ -581,6 +581,11 @@
                 @*set the value of usertype in hidden field*@
                 @Html.HiddenFor(model => model.User.RegistrationType, new { @Id = "RegistrationTypeId" })
                 <div class="form-group">
+                    <div class="text-center">
+                        <input type="checkbox" id="chkcondition" />Check here to indicate that you have read and agree to the terms of the <a href='@Url.Action("PrivacyPolicy","Home",new { token = Request.QueryString["token"] })' target="_blank">Service Agreement</a> .
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="text-right">
                         <input type="button" id="btnsave" name="Create" class="btn btn-info" value="Create" />
                     </div>
@@ -668,8 +673,14 @@
 
         $('#btnsave').click(function () {
 
+            if (!$('#chkcondition').is(":checked")) {
+                alert("Please accept term and condition.");
+                return;
+            }
+
             if (ValidateUserData() == true)
             {
+                
                 // Initalize data object
                 var User = {};
                 var PersonalInformation = {};
@@ -715,10 +726,10 @@
                 PersonalInformation.BirthCountry= $('#ddlPersonalBirthCountry').val().trim();
                 PersonalInformation.Profession = $('#txtProfessionOccuption').val().trim();
                 PersonalInformation.DefaulCountry = $('#ddlPersonalDefaulCountry').val().trim();
-                PersonalInformation.Mobile = $('#txtPersonalMobilePhone').val().trim();
-                PersonalInformation.WorkPhone = $('#txtPersonalWorkPhone').val().trim();
-                PersonalInformation.Fax = $('#txtPersonalFax').val().trim();
-                PersonalInformation.Phone = $('#txtPesonalPhone').val().trim();
+                PersonalInformation.Mobile = RemeoveUnexpectedSymbole( $('#txtPersonalMobilePhone').val().trim());
+                PersonalInformation.WorkPhone = RemeoveUnexpectedSymbole( $('#txtPersonalWorkPhone').val().trim());
+                PersonalInformation.Fax = RemeoveUnexpectedSymbole( $('#txtPersonalFax').val().trim());
+                PersonalInformation.Phone = RemeoveUnexpectedSymbole( $('#txtPesonalPhone').val().trim());
                 PersonalInformation.Email = $('#txtPersonalEmail').val().trim();
                 PersonalInformation.Website = $('#txtPesonalWebsite').val().trim();
 
@@ -751,10 +762,10 @@
                 BusinessInformation.Email = $('#txtBPEmail').val().trim();
                 BusinessInformation.Website = $('#txtBPWebsite').val().trim();
                 BusinessInformation.Department = $('#txtBPDepartment').val().trim();
-                BusinessInformation.TollFreePhone = $('#txtBPTollFreePhone').val().trim();
-                BusinessInformation.MainPhone = $('#txtBPMainPhone').val().trim();
-                BusinessInformation.SecondPhone = $('#txtBPSecondPhone').val().trim();
-                BusinessInformation.Fax = $('#txtBPFax').val().trim();txtBPFax
+                BusinessInformation.TollFreePhone = RemeoveUnexpectedSymbole( $('#txtBPTollFreePhone').val().trim());
+                BusinessInformation.MainPhone = RemeoveUnexpectedSymbole( $('#txtBPMainPhone').val().trim());
+                BusinessInformation.SecondPhone = RemeoveUnexpectedSymbole( $('#txtBPSecondPhone').val().trim());
+                BusinessInformation.Fax = RemeoveUnexpectedSymbole( $('#txtBPFax').val().trim());
 
                 var registerUserData = {
                     "User": User,
@@ -1002,7 +1013,7 @@
             // Mobile
             if ($('#txtPersonalMobilePhone').val() != "") {
 
-                vtxtMobilePhone = allnumeric($('#txtPersonalMobilePhone').val());
+                vtxtMobilePhone = allnumeric(RemeoveUnexpectedSymbole($('#txtPersonalMobilePhone').val()));
                 if (vtxtMobilePhone == 0) {
                     $('#txtPersonalMobilePhone').removeClass("validateClass");
                 }
@@ -1013,7 +1024,7 @@
 
             // work phond
             if ($('#txtPersonalWorkPhone').val() != "") {
-                vtxtWorkPhone = allnumeric($('#txtPersonalWorkPhone').val());// check all numeric
+                vtxtWorkPhone = allnumeric(RemeoveUnexpectedSymbole($('#txtPersonalWorkPhone').val()));// check all numeric
                 if (vtxtWorkPhone == 0) {
                     $('#txtPersonalWorkPhone').removeClass("validateClass");
                 }
@@ -1024,7 +1035,7 @@
 
             // check other numeric field if fill wrong data
             if ($('#txtPersonalFax').val() != "") {
-                if (allnumeric($('#txtPersonalFax').val()) == -1) {
+                if (allnumeric(RemeoveUnexpectedSymbole($('#txtPersonalFax').val())) == -1) {
                     $('#txtPersonalFax').addClass("validateClass");
                     vtxtFax = -1;
                 }
@@ -1039,7 +1050,7 @@
             }
             else {
                 if ($('#txtPesonalPhone').val() != "") {
-                    if (allnumeric($('#txtPesonalPhone').val()) == -1) {
+                    if (allnumeric(RemeoveUnexpectedSymbole($('#txtPesonalPhone').val())) == -1) {
                         $('#txtPesonalPhone').addClass("validateClass");
                         vtxtPhone = -1;
                     }
@@ -1111,7 +1122,7 @@
                 $('#txtBPMainPhone').addClass("validateClass");
             }
             else {
-                if (allnumeric($('#txtBPMainPhone').val()) == -1) {
+                if (allnumeric(RemeoveUnexpectedSymbole($('#txtBPMainPhone').val())) == -1) {
                     $('#txtBPMainPhone').addClass("validateClass");
                     vtxtBPMainPhone = -1;
                 }
@@ -1343,7 +1354,13 @@
 
     }
 
-
+    function RemeoveUnexpectedSymbole(stringData) {
+        var retValue = stringData;
+        if (stringData != null && stringData.length > 0) {
+            retValue = stringData.replace(/[^a-z0-9\s]/gi, '').replace(/[-\s]/g, '');
+        }
+        return retValue;
+    }
 
 </script>
 

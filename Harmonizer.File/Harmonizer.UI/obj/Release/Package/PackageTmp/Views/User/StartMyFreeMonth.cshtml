@@ -31,7 +31,7 @@
                                 <div class="text-center " style="margin-top:5px !important;">
                                     @if (Session["UserID"] != null)
                                     {
-                                        <a href='@Url.Action("PaymentWithPaypal", "Payment", new { planid = item.ID, token = Request.QueryString["token"] })' class="btn btn-info">Try for free</a>
+                                        <a href='@Url.Action("PaymentWithPaypal", "Payment", new { planid = item.ID, token = Request.QueryString["token"] })' class="btn btn-info">Renew</a>
                                     }
                                     else
                                     {

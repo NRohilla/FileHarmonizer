@@ -1,10 +1,10 @@
 ﻿<div class="row ml-5">
     <div class="col-md-8">
         <div class="row mb-3">
-            Activation Code:<span class="ml-2"> FHESUN3EMP11111111</span>
+            Activation Code:<span class="ml-2">@ViewBag.FHnumber</span>
         </div>
         <div  class="row">
-            Activation Date: <span class="ml-2"> 10/7/2018</span>
+            Activation Date: <span class="ml-2">@ViewBag.Activedate</span>
         </div>
     </div>
     <div class="col-md-4">
@@ -12,7 +12,7 @@
             <input type="button" class="btn btn-info" value="Deactivate" />
         </div>
         <div class="row">
-            <input type="button" class="btn btn-info" value="Forgot Password" />
+            <input type="button" onclick="location.href='@Url.Action("ForgotPassword","Account",new { token = Request.QueryString["token"] })'"   class="btn btn-info" value="Forgot Password" />
         </div>
     </div>
 </div>

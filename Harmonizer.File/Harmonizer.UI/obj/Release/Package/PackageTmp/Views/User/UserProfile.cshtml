@@ -148,7 +148,7 @@
                                                 @Html.Label("Preferred Language", htmlAttributes: new { @class = "control-label form-label" })
                                             </div>
                                             <div class="col-md-4">
-                                                @Html.DropDownList("ddlPersonalLanguage", new SelectList((IEnumerable)ViewData["Languagelst"], "Language", "LanguageDescription", Model.PersonalInfo.Language), new { @class = "form-control" })
+                                                @Html.DropDownList("ddlPersonalLanguage", new SelectList((IEnumerable)ViewData["Languagelst"], "Language", "LanguageDescription", Model.PersonalInfo.Language), new { @class = "form-control js-example-basic-single" })
                                                 @*@Html.TextBoxFor(model => model.PersonalInfo.Language, new { @class = "form-control", @ID = "txtLanguage" })*@
                                             </div>
                                         </div>
@@ -312,7 +312,7 @@
                                                 @Html.Label("Default Language", htmlAttributes: new { @class = "control-label form-label" })
                                             </div>
                                             <div class="col-md-4">
-                                                @Html.DropDownList("ddlBPDefaultLanguage", new SelectList((IEnumerable)ViewData["Languagelst"], "Language", "LanguageDescription", Model.BPinfo.Language), new { @class = "form-control" })
+                                                @Html.DropDownList("ddlBPDefaultLanguage", new SelectList((IEnumerable)ViewData["Languagelst"], "Language", "LanguageDescription", Model.BPinfo.Language), new { @class = "form-control js-example-basic-single" })
                                             </div>
 
 

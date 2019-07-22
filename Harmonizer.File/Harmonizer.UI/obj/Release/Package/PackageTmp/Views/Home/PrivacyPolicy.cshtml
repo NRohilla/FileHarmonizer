@@ -4,23 +4,34 @@
 }
 <style>
     .privacy-policy {
-        font-size: 16px;        
+        font-size: 16px;
         color: #545454;
     }
 
-    .privacy-policy a{
-        color:#ff6a00;
-    }
+        .privacy-policy a {
+            color: #ff6a00;
+        }
 
-    .privacy-policy h5{
-        color:#000000;
-        font-weight:700;
-      
-    }
+        .privacy-policy h5 {
+            color: #000000;
+            font-weight: 700;
+        }
 </style>
+<script type="text/javascript">
+    (function (d, s, id) {
+        var js, tjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://app.termly.io/embed-policy.min.js";
+        tjs.parentNode.insertBefore(js, tjs);
+    }(document, 'script', 'termly-jssdk'));</script>
 <div class="form-horizontal my-3">
     <div class="container">
-        <div class="blink_heading">
+        <div name="termly-embed" data-id="33ce92b3-4c74-4644-8723-f739c246b078" data-type="iframe"></div>
+
+
+
+        @*<div class="blink_heading">
             <h4 class="page-title">Privacy Policy</h4></div>
 
             <div class="bg-white p-3 border privacy-policy">
@@ -187,7 +198,7 @@
                 </p>
 
 
-            </div>
-        </div>
+            </div>*@
     </div>
+</div>
 
