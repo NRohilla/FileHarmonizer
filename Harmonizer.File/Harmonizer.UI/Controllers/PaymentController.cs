@@ -272,6 +272,13 @@ namespace Harmonizer.UI.Controllers
             paymentModel.TokenId = Request.Params["usertoken"];
             return View("PaymetFailure", paymentModel);
         }
-       
+        public ActionResult MPaymentsuccess()
+        {
+            return View();
+        }
+        public ActionResult MPaymentCanceled()
+        {
+            return View();
+        }
     }
 }

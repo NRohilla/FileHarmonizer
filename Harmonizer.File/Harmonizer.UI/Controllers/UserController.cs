@@ -396,6 +396,10 @@ namespace Harmonizer.UI.Controllers
         }
         public ActionResult _RegistrationSetting()
         {
+            CommanUserData commanUserData = new CommanUserData();
+            commanUserData = _userData.GetCommanData(Session["UserID"].ToString());
+            ViewBag.FHnumber = commanUserData.HarmonizerValue;
+            ViewBag.Activedate = string.Format("{0:MM/dd/yyyy}", commanUserData.ActiveDate);
             return PartialView("_RegistrationSetting");
         }
         public ActionResult _ViewLog()

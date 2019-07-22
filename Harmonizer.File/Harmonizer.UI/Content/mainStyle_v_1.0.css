@@ -236,7 +236,7 @@ a {
 }
 
 .c_heading {
-    font-size: 38px;
+    font-size: 32px; /*38px;*/
     color: #9370db;
     font-weight: 300;
     text-transform: uppercase;

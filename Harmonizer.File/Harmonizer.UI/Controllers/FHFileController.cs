@@ -34,6 +34,9 @@ using System.Configuration;
 using iTextSharp.text.pdf.parser;
 using iTextSharp.text.pdf;
 using System.Text;
+using QRCoder;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Harmonizer.UI.Controllers
 {
@@ -1658,6 +1661,11 @@ namespace Harmonizer.UI.Controllers
 
         public ActionResult TestUploadFile()
         {
+            //string jdata = "{\"id\":\"PAYID-LUA7CPY3YB24344CC126645A\",\"intent\":\"sale\",\"state\":\"approved\",\"cart\":\"2KC35886P30044945\",\"payer\":{\"payment_method\":\"paypal\",\"status\":\"VERIFIED\",\"payer_info\":{\"email\":\"piyushshrm-buyer@gmail.com\",\"first_name\":\"Piyush\",\"last_name\":\"Sharma\",\"payer_id\":\"JBYEK8KK58M32\",\"shipping_address\":{\"recipient_name\":\"Piyush Sharma\",\"line1\":\"1 Main St\",\"city\":\"San Jose\",\"state\":\"CA\",\"postal_code\":\"95131\",\"country_code\":\"US\"},\"country_code\":\"US\"}},\"transactions\":[{\"amount\":{\"total\":\"50.00\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"40.00\",\"tax\":\"5.00\",\"shipping\":\"5.00\"}},\"payee\":{\"merchant_id\":\"CJ762SUCB87XN\",\"email\":\"fh-facilitator@fileharmonizer.com\"},\"item_list\":{\"items\":[{\"name\":\"Booking reservation\",\"description\":\"Booking reservation at ABC hotel at 24/03/2015 from 1pm to 4pm.\",\"price\":\"40.00\",\"currency\":\"USD\",\"tax\":\"5.00\",\"quantity\":1}],\"shipping_address\":{\"recipient_name\":\"Piyush Sharma\",\"line1\":\"1 Main St\",\"city\":\"San Jose\",\"state\":\"CA\",\"postal_code\":\"95131\",\"country_code\":\"US\"},\"shipping_options\":[null]},\"related_resources\":[{\"sale\":{\"id\":\"99X6863523779681T\",\"state\":\"completed\",\"amount\":{\"total\":\"50.00\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"40.00\",\"tax\":\"5.00\",\"shipping\":\"5.00\"}},\"payment_mode\":\"INSTANT_TRANSFER\",\"protection_eligibility\":\"ELIGIBLE\",\"protection_eligibility_type\":\"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE\",\"transaction_fee\":{\"value\":\"1.75\",\"currency\":\"USD\"},\"parent_payment\":\"PAYID-LUA7CPY3YB24344CC126645A\",\"create_time\":\"2019-06-13T06:54:25Z\",\"update_time\":\"2019-06-13T06:54:25Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/99X6863523779681T\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/99X6863523779681T/refund\",\"rel\":\"refund\",\"method\":\"POST\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LUA7CPY3YB24344CC126645A\",\"rel\":\"parent_payment\",\"method\":\"GET\"}],\"soft_descriptor\":\"PAYPAL *TESTFACILIT\"}}]}],\"create_time\":\"2019-06-13T06:54:26Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LUA7CPY3YB24344CC126645A\",\"rel\":\"self\",\"method\":\"GET\"}]}";
+            //dynamic jsonconvertedData = JsonConvert.DeserializeObject<dynamic>(jdata);
+            //var data= JsonConvert.DeserializeObject<dynamic>(jdata);// work
+            //dynamic data1 = Newtonsoft.Json.Linq.JObject.Parse(jdata);
+            //string d = "";
             // suceess to implemented
             //byte[] byteArray =System.IO.File.ReadAllBytes(@"D:\MVCCore\Source\New folder\Form Specification v7_1.docx");
             //using (MemoryStream memoryStream = new MemoryStream())
@@ -2773,6 +2781,27 @@ namespace Harmonizer.UI.Controllers
                 }
             }
             return texts;
+        }
+
+        [SessionTimeoutFilter]
+        public ActionResult QRCode()
+        {
+            CommanUserData commanUserData = new CommanUserData();
+            commanUserData = _userData.GetCommanData(Session["UserID"].ToString());
+            using (MemoryStream ms = new MemoryStream())
+            {
+                QRCodeGenerator qrGenerator = new QRCodeGenerator();
+
+                // var  qrCode = qrGenerator.CreateQrCode(qrcode, QRCodeGenerator.ECCLevel.Q);
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(commanUserData.HarmonizerValue, QRCodeGenerator.ECCLevel.Q);
+                QRCode qrCode = new QRCode(qrCodeData);
+                using (Bitmap bitMap = qrCode.GetGraphic(20))
+                {
+                    bitMap.Save(ms, ImageFormat.Png);
+                    ViewBag.QRCodeImage = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
+                }
+            }
+            return View();
         }
 
     }

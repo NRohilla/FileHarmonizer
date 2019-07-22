@@ -547,6 +547,35 @@ namespace Harmonizer.DB.Data
             return ds;
         }
 
+        public string DayMonthYear(DateTime date,string returnType)
+        {
+           
+            string retValue = "";
+            try
+            {
+                if (returnType.ToLower() == "d")
+                {
+                    //Return day
+                    retValue =String.Format("{0}, {1}",date.Day, date.ToString("dddd"));
+                }
+                else if (returnType.ToLower() == "m")
+                {
+                    //Return Month
+                    retValue = date.ToString("MMMM");
+                }
+                else if (returnType.ToLower() == "y")
+                {
+                    // Return Year
+                    retValue = date.ToString("yyyy");
+                }
+            }
+            catch(Exception ex)
+            {
+                //TODO:
+            }
+            return retValue;
+        }
+
         public List<Repository> AutoFillValueForShareData(List<Repository> tagList)
         {
             List<Repository> lstTag = new List<Repository>();
@@ -596,7 +625,80 @@ namespace Harmonizer.DB.Data
                             UserID = UserID
                         });
                     }
+                    // BDay
+                    if (lstTag.Where(x => x.Tag.ToLower() == "F<Bday>H".ToLower()).FirstOrDefault() != null)
+                    {
+                        lstTag.Where(x => x.Tag.ToLower() == "F<Bday>H".ToLower()).FirstOrDefault().Share = DayMonthYear(Convert.ToDateTime(lstTag.Where(x => x.Tag.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share), "d").ToString();
+                    }
+                    else
+                    {
+                        lstTag.Add(new Repository
+                        {
+                            ID = 1,
+                            UTAGID = 1000042.ToString(),
+                            Tag = "F<Bday>H",
+                            GlobPri = "G",
+                            Description = "Birth Day (Auto calc: Birth Day)",
+                            Share = DayMonthYear(Convert.ToDateTime(lstTag.Where(x => x.Tag.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share), "d").ToString(),
+                            Org = "S",
+                            BPID = BPID,
+                            UserID = UserID
+                        });
+                    }
+                    // BMonth
+                    if (lstTag.Where(x => x.Tag.ToLower() == "F<Bmonth>H".ToLower()).FirstOrDefault() != null)
+                    {
+                        lstTag.Where(x => x.Tag.ToLower() == "F<Bmonth>H".ToLower()).FirstOrDefault().Share = DayMonthYear(Convert.ToDateTime(lstTag.Where(x => x.Tag.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share), "m").ToString();
+                    }
+                    else
+                    {
+                        lstTag.Add(new Repository
+                        {
+                            ID = 1,
+                            UTAGID = 1000041.ToString(),
+                            Tag = "F<Bmonth>H",
+                            GlobPri = "G",
+                            Description = "Birth Month (Auto calc: Birth Month)",
+                            Share = DayMonthYear(Convert.ToDateTime(lstTag.Where(x => x.Tag.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share), "m").ToString(),
+                            Org = "S",
+                            BPID = BPID,
+                            UserID = UserID
+                        });
+                    }
+                    //BYear
+                    if (lstTag.Where(x => x.Tag.ToLower() == "F<Byear>H".ToLower()).FirstOrDefault() != null)
+                    {
+                        lstTag.Where(x => x.Tag.ToLower() == "F<Byear>H".ToLower()).FirstOrDefault().Share = DayMonthYear(Convert.ToDateTime(lstTag.Where(x => x.Tag.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share), "y").ToString();
+                    }
+                    else
+                    {
+                        lstTag.Add(new Repository
+                        {
+                            ID = 1,
+                            UTAGID = 1000043.ToString(),
+                            Tag = "F<Byear>H",
+                            GlobPri = "G",
+                            Description = "Birth Year (Auto calc: Birth Year)",
+                            Share = DayMonthYear(Convert.ToDateTime(lstTag.Where(x => x.Tag.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share), "y").ToString(),
+                            Org = "S",
+                            BPID = BPID,
+                            UserID = UserID
+                        });
+                    }
                 }
+                else if (lstTag.Where(x => x.Tag.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault() != null && lstTag.Where(x => x.Tag.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share == "")
+                {
+                    lstTag.Where(x => x.Tag.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share = "MM/DD/YYYY";
+                    lstTag.Where(x => x.Tag.ToLower() == "F<Age>H".ToLower()).FirstOrDefault().Share = "";
+
+                    if (lstTag.Where(x => x.Tag.ToLower() == "F<Byear>H".ToLower()).FirstOrDefault() != null)
+                        lstTag.Where(x => x.Tag.ToLower() == "F<Byear>H".ToLower()).FirstOrDefault().Share = "";
+                    if (lstTag.Where(x => x.Tag.ToLower() == "F<Bmonth>H".ToLower()).FirstOrDefault() != null)
+                        lstTag.Where(x => x.Tag.ToLower() == "F<Bmonth>H".ToLower()).FirstOrDefault().Share = "";
+                    if (lstTag.Where(x => x.Tag.ToLower() == "F<Bday>H".ToLower()).FirstOrDefault() != null)
+                        lstTag.Where(x => x.Tag.ToLower() == "F<Bday>H".ToLower()).FirstOrDefault().Share = "";
+                }
+
 
                 // system day
                 if (lstTag.Where(x => x.Tag.ToLower() == "F<sysday>H".ToLower()).FirstOrDefault() != null)
@@ -738,8 +840,81 @@ namespace Harmonizer.DB.Data
                                 UserID = UserID
                             });
                     }
+                   
+                    // BDay
+                    if (lstTag.Where(x => x.TagName.ToLower() == "F<Bday>H".ToLower()).FirstOrDefault() != null)
+                    {
+                        lstTag.Where(x => x.TagName.ToLower() == "F<Bday>H".ToLower()).FirstOrDefault().Share = DayMonthYear(Convert.ToDateTime(lstTag.Where(x => x.TagName.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share),"d").ToString();
+                    }
+                    else
+                    {
+                        lstTag.Add(new Tag
+                        {
+                            ID = 1,
+                            UTAGID = 1000042,
+                            TagName = "F<Bday>H",
+                            GlobPri = "G",
+                            Description = "Birth Day (Auto calc: Birth Day)",
+                            Share = DayMonthYear(Convert.ToDateTime(lstTag.Where(x => x.TagName.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share),"d").ToString(),
+                            Orig = "S",
+                            BPID = BPID,
+                            UserID = UserID
+                        });
+                    }
+                    // BMonth
+                    if (lstTag.Where(x => x.TagName.ToLower() == "F<Bmonth>H".ToLower()).FirstOrDefault() != null)
+                    {
+                        lstTag.Where(x => x.TagName.ToLower() == "F<Bmonth>H".ToLower()).FirstOrDefault().Share = DayMonthYear(Convert.ToDateTime(lstTag.Where(x => x.TagName.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share), "m").ToString();
+                    }
+                    else
+                    {
+                        lstTag.Add(new Tag
+                        {
+                            ID = 1,
+                            UTAGID = 1000041,
+                            TagName = "F<Bmonth>H",
+                            GlobPri = "G",
+                            Description = "Birth Month (Auto calc: Birth Month)",
+                            Share = DayMonthYear(Convert.ToDateTime(lstTag.Where(x => x.TagName.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share), "m").ToString(),
+                            Orig = "S",
+                            BPID = BPID,
+                            UserID = UserID
+                        });
+                    }
+                    //BYear
+                    if (lstTag.Where(x => x.TagName.ToLower() == "F<Byear>H".ToLower()).FirstOrDefault() != null)
+                    {
+                        lstTag.Where(x => x.TagName.ToLower() == "F<Byear>H".ToLower()).FirstOrDefault().Share = DayMonthYear(Convert.ToDateTime(lstTag.Where(x => x.TagName.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share), "y").ToString();
+                    }
+                    else
+                    {
+                        lstTag.Add(new Tag
+                        {
+                            ID = 1,
+                            UTAGID = 1000043,
+                            TagName = "F<Byear>H",
+                            GlobPri = "G",
+                            Description = "Birth Year (Auto calc: Birth Year)",
+                            Share = DayMonthYear(Convert.ToDateTime(lstTag.Where(x => x.TagName.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share), "y").ToString(),
+                            Orig = "S",
+                            BPID = BPID,
+                            UserID = UserID
+                        });
+                    }
                 }
-                
+                else if (lstTag.Where(x => x.TagName.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault() != null && lstTag.Where(x => x.TagName.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share == "")
+                {
+                    lstTag.Where(x => x.TagName.ToLower() == "F<Bdate>H".ToLower()).FirstOrDefault().Share = "MM/DD/YYYY";
+                    lstTag.Where(x => x.TagName.ToLower() == "F<Age>H".ToLower()).FirstOrDefault().Share = "";
+
+                    if (lstTag.Where(x => x.TagName.ToLower() == "F<Byear>H".ToLower()).FirstOrDefault() != null)
+                        lstTag.Where(x => x.TagName.ToLower() == "F<Byear>H".ToLower()).FirstOrDefault().Share = "";
+                    if (lstTag.Where(x => x.TagName.ToLower() == "F<Bmonth>H".ToLower()).FirstOrDefault() != null)
+                        lstTag.Where(x => x.TagName.ToLower() == "F<Bmonth>H".ToLower()).FirstOrDefault().Share = "";
+                    if (lstTag.Where(x => x.TagName.ToLower() == "F<Bday>H".ToLower()).FirstOrDefault() != null)
+                        lstTag.Where(x => x.TagName.ToLower() == "F<Bday>H".ToLower()).FirstOrDefault().Share = "";
+                }
+
                 // system day
                 if (lstTag.Where(x => x.TagName.ToLower() == "F<sysday>H".ToLower()).FirstOrDefault() != null)
                 {
@@ -747,7 +922,8 @@ namespace Harmonizer.DB.Data
                 }
                 else
                 {
-                    lstTag.Add(new Tag {
+                    lstTag.Add(new Tag
+                    {
                         ID = 1,
                         UTAGID = 1000173,
                         TagName = "F<sysday>H",
@@ -2125,6 +2301,8 @@ namespace Harmonizer.DB.Data
                         objComman.BPType = Convert.ToString(ds.Tables[0].Rows[i]["BPType"]);
                         objComman.Sector = Convert.ToString(ds.Tables[0].Rows[i]["Sector"]);
                         objComman.HarmonizerValue = Convert.ToString(ds.Tables[0].Rows[i]["HarmonizerValue"]);
+                        objComman.ActiveDate = Convert.ToDateTime(ds.Tables[0].Rows[i]["ActiveDate"]);
+
                     }
 
 
