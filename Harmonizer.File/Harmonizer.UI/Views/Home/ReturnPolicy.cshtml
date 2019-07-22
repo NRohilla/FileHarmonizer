@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "ReturnPolicy";
+}
+
+<style>
+    .termsnconditions {
+        font-size: 16px;
+        color: #545454;
+    }
+
+        .termsnconditions a {
+            color: #ff6a00;
+        }
+
+        .termsnconditions h5 {
+            color: #000000;
+            font-weight: 700;
+        }
+</style>
+
+<script type="text/javascript">
+    (function (d, s, id) {
+        var js, tjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://app.termly.io/embed-policy.min.js";
+        tjs.parentNode.insertBefore(js, tjs);
+    }(document, 'script', 'termly-jssdk'));</script>
+
+<div class="form-horizontal my-3">
+    <div class="container">
+
+        <div name="termly-embed" data-id="04c65984-48fd-4bdc-9ceb-25c6e2911fc8" data-type="iframe"></div>
+        
+    </div>
+ </div>
