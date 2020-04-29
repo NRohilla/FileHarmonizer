@@ -78,20 +78,7 @@ namespace Harmonizer.UI.Controllers
         public ActionResult SearchReplace()
         {
             List<SelectListItem> lstSectore = new List<SelectListItem>();
-            //List<SelectListItem> lstStandardGTag = new List<SelectListItem>();
-            //DataSet ds = _fileData.GetStandardGlobalTag();
-            //lstStandardGTag.Add(new SelectListItem { Text = "Select Tag", Value = "0" });
-            //if (ds.Tables[0].Rows.Count > 0)
-            //{
-
-            //    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            //    {
-            //        lstStandardGTag.Add(new SelectListItem { Text = ds.Tables[0].Rows[i]["Tag"].ToString()+"_"+ ds.Tables[0].Rows[i]["Description"].ToString(), Value ="<"+ ds.Tables[0].Rows[i]["UTAGID"].ToString()+">" });
-            //    }
-            //}
-
-            //ViewData["lstStandardGlobalTag"] = lstStandardGTag;
-
+           
             // for sector
             DataSet dsSectore = _userData.GetSector();
             lstSectore.Add(new SelectListItem { Text = "Select Template Type", Value = "0" });
@@ -109,6 +96,7 @@ namespace Harmonizer.UI.Controllers
 
             ViewBag.message = TempData["Message"] != null ? TempData["Message"].ToString() : "";
 
+            ////-Nitin Check for expiry of account
             if (TempData["expiredate"]!= null)
                 ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
 
@@ -274,10 +262,12 @@ namespace Harmonizer.UI.Controllers
             lst = lstSword.Distinct(new ItemEqualityComparer()).ToList();
             return lst;
         }
+
+
         [SessionTimeoutFilter]
         public ActionResult Individual()
         {
-
+            ////-Nitin Check for expiry of account
             if (TempData["expiredate"] != null)
                 ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
 
@@ -2152,7 +2142,7 @@ namespace Harmonizer.UI.Controllers
 
             ViewData["lstSectore"] = lstSectore;
 
-            /////Changed by Nitin 28042020
+            ////-Nitin Check for expiry of account
             if (TempData["expiredate"] != null)
                 ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
 
@@ -2818,10 +2808,17 @@ namespace Harmonizer.UI.Controllers
                     ViewBag.QRCodeImage = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
                 }
             }
+
+            ////-Nitin Check for expiry of account
+            if (TempData["expiredate"] != null)
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+
+            TempData.Keep();
+
             return View();
         }
 
-        ////Changed by Nitin 28042020
+        ////-Nitin Check for expiry of account
         public ActionResult ExipreActivation()
         {
             ViewBag.token = Request.QueryString["token"];
