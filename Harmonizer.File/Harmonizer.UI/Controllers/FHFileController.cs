@@ -34,9 +34,10 @@ using System.Configuration;
 using iTextSharp.text.pdf.parser;
 using iTextSharp.text.pdf;
 using System.Text;
-using QRCoder;
+
 using System.Drawing;
 using System.Drawing.Imaging;
+using QRCoder;
 
 namespace Harmonizer.UI.Controllers
 {
@@ -107,6 +108,11 @@ namespace Harmonizer.UI.Controllers
             ViewData["lstSectore"] = lstSectore;
 
             ViewBag.message = TempData["Message"] != null ? TempData["Message"].ToString() : "";
+
+            if (TempData["expiredate"]!= null)
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+
+            TempData.Keep();
             return View("SearchReplace");
         }
 
@@ -271,6 +277,11 @@ namespace Harmonizer.UI.Controllers
         [SessionTimeoutFilter]
         public ActionResult Individual()
         {
+
+            if (TempData["expiredate"] != null)
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+
+            TempData.Keep();
             return View();
         }
 
@@ -2141,6 +2152,12 @@ namespace Harmonizer.UI.Controllers
 
             ViewData["lstSectore"] = lstSectore;
 
+            /////Changed by Nitin 28042020
+            if (TempData["expiredate"] != null)
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+
+            TempData.Keep();
+
             return View("ManageUserTag");
         }
 
@@ -2804,6 +2821,12 @@ namespace Harmonizer.UI.Controllers
             return View();
         }
 
+        ////Changed by Nitin 28042020
+        public ActionResult ExipreActivation()
+        {
+            ViewBag.token = Request.QueryString["token"];
+            return PartialView("_UserActivationMessage");
+        }
     }
     
 }

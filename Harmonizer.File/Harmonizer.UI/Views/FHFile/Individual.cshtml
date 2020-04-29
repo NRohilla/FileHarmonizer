@@ -23,14 +23,14 @@
         <div class="bg-white p-3 border w-100 float-left">
             <div class="col-lg-5 col-md-5 col-sm-12 col-12 float-left pl-0 search-replace-table">
                 @*<table class="table table-bordered table-sm table-striped search-replace-table" id="tbltemp">
-                    <thead>
-                        <tr>
-                            <th class="w-75" id="tempHeader"></th>
-                            <th class="w-25">Sector</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>*@
+                        <thead>
+                            <tr>
+                                <th class="w-75" id="tempHeader"></th>
+                                <th class="w-25">Sector</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>*@
                 @Html.Action("GetTemplateDataForFinalTemplate", "FHFile")
             </div>
 
@@ -103,7 +103,7 @@
                     <div class="col-md-6">
                         <input type="text" class="form-control" id="txtNewTemplateName" />
                     </div>
-                    </div>
+                </div>
                 <div class="row mt-1">
                     <div class="col-md-12">
                         <input type="button" value="Copy template" id="btnCreateCopyTemplate" name="btnCreateCopyTemplate" class="btn btn-info" />
@@ -118,6 +118,19 @@
 <div id="wait" style="display:none;width:100%;height:100%;position:fixed;top:0px;left:0px;bottom:0px;right:0px;padding:20%;z-index: 99999;background-color:rgba(0,0,0,0.3);text-align:center;">
     <img src='~/images/sa.gif' width="150" height="150" /><br>Loading..
 </div>
+
+<!-- The Modal ---- To show the Pop Up on page load -->
+<input type="button" id="btnShowDataActivation" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModalActivation" />
+<div class="modal" id="myModalActivation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-body" id="modelbodydataActivation">
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
     .active {
         background-color: gold !important;
@@ -125,8 +138,27 @@
 </style>
 
 <script type="text/javascript">
+    var compare_dates = function (edate1, cdate2) {
+        if (edate1 < cdate2)
+            return true;
+        else {
+            return false;
+        }
+    }
+
     $(document).ready(function () {
-        //DefaultBindData();
+
+        /////To show the Pop Up on page load
+         var edate = '@ViewBag.ExpireDate';
+        var cdate = '@DateTime.Today.Date.ToShortDateString()';
+        if (edate != "") {
+        	if (compare_dates(new Date(edate), new Date(cdate)) == true) {
+        		$('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "FHFile", new { token = Request.QueryString["token"] })');
+        		$('#btnShowDataActivation').click();
+        	}
+        }
+
+
         validateTableRows();
         setTimeout(function () {
             $('#lblFHNumber').text($('#lblHarmonizerId').text());

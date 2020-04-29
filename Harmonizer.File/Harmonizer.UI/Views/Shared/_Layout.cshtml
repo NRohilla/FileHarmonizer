@@ -103,7 +103,10 @@
                                                     Filter
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    @Html.ActionLink("Create Filter", "FilterTemplate", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                    @if (TempData["expiredate"] != null && Convert.ToDateTime(TempData["expiredate"]) > DateTime.Now)
+                                                    {
+                                                        @Html.ActionLink("Create Filter", "FilterTemplate", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                    }
                                                     @Html.ActionLink("Maintain Filters", "ManageFilter", "FHManage", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                     @Html.ActionLink("Maintain Tag", "ManageTag", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                 </div>
@@ -114,7 +117,11 @@
                                                     Template
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    @Html.ActionLink("Create Template", "Individual", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                    @if (TempData["expiredate"] != null && Convert.ToDateTime(TempData["expiredate"]) > DateTime.Now)
+                                                    {
+                                                        @Html.ActionLink("Create Template", "Individual", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                    }
+
                                                     @Html.ActionLink("Maintain Templates", "ManageTemplate", "FHManage", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                     @Html.ActionLink("Harmonize Templates", "HarmonizeTemplate", "FHManage", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                 </div>
@@ -135,7 +142,11 @@
                                                     Mannage Scheme
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    @Html.ActionLink("Create Scheme", "CreateScheme", "Scheme", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                    @if (TempData["expiredate"] != null && Convert.ToDateTime(TempData["expiredate"]) > DateTime.Now)
+                                                    {
+                                                        @Html.ActionLink("Create Scheme", "CreateScheme", "Scheme", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                    }
+
                                                     @Html.ActionLink("Maintaine Scheme", "MaintainScheme", "Scheme", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                     @Html.ActionLink("Archives", "Archive", "Scheme", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                 </div>
@@ -253,8 +264,12 @@
                         </div>
                         <div class="col-md-6 footer_link">
                             <ul>
-                                <li>@Html.ActionLink("Create Filter", "FilterTemplate", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "" })</li>
-                                <li>@Html.ActionLink("Create Template", "Individual", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "" })</li>
+                                @if (TempData["expiredate"] != null && Convert.ToDateTime(TempData["expiredate"]) > DateTime.Now)
+                                {
+                                    <li>@Html.ActionLink("Create Filter", "FilterTemplate", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "" })</li>
+                                    <li>@Html.ActionLink("Create Template", "Individual", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "" })</li>
+                                }
+
                                 <li>@Html.ActionLink("Maintaine Scheme", "MaintainScheme", "Scheme", new { token = Request.QueryString["token"] }, new { @class = "" }) </li>
                                 <li>@Html.ActionLink("Harmonize Templates", "HarmonizeTemplate", "FHManage", new { token = Request.QueryString["token"] }, new { @class = "" })</li>
                                 <li>@Html.ActionLink("Archives", "Archive", "Scheme", new { token = Request.QueryString["token"] }, new { @class = "" })</li>
@@ -410,7 +425,7 @@
         ajax.send(null);
     }
 
-   
+
 
 </script>
 

@@ -30,20 +30,20 @@ namespace Harmonizer.UI.Controllers
 
         public ActionResult SignUp()
         {
-            
+
 
             List<SelectListItem> lstIndustry = new List<SelectListItem>();
-            DataSet ds =_userData.GetIndustry();
+            DataSet ds = _userData.GetIndustry();
             lstIndustry.Add(new SelectListItem { Text = "Select Industry", Value = "0" });
             if (ds.Tables[0].Rows.Count > 0)
             {
-               
-                for (int i= 0;i<ds.Tables[0].Rows.Count;i++)
+
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                 {
                     lstIndustry.Add(new SelectListItem { Text = ds.Tables[0].Rows[i]["Industry"].ToString(), Value = ds.Tables[0].Rows[i]["Share"].ToString() });
                 }
             }
-            
+
             ViewData["lstIndustry"] = lstIndustry;
 
             ViewData["Countrylst"] = GetCountry();
@@ -60,7 +60,7 @@ namespace Harmonizer.UI.Controllers
                 {
                     LanguageTimeZone lstLang = new LanguageTimeZone();
                     lstLang.Language = ds.Tables[0].Rows[i]["Language"].ToString();
-                    lstLang.LanguageDescription = ds.Tables[0].Rows[i]["Language"].ToString()+"-"+ ds.Tables[0].Rows[i]["LanguageDescription"].ToString();
+                    lstLang.LanguageDescription = ds.Tables[0].Rows[i]["Language"].ToString() + "-" + ds.Tables[0].Rows[i]["LanguageDescription"].ToString();
                     lst.Add(lstLang);
                 }
             }
@@ -78,7 +78,7 @@ namespace Harmonizer.UI.Controllers
         }
 
 
-        public  ActionResult ForgotPassword()
+        public ActionResult ForgotPassword()
         {
             return View();
         }
@@ -90,36 +90,36 @@ namespace Harmonizer.UI.Controllers
             string msg = "Please fill correct user id and password.";
             Core.Model.LoginHistory logHist = new LoginHistory();
             Core.Model.User userData = new Core.Model.User();
-           
+
             userData = _userData.GetUserDetailByUserIDAndPassword(userLogin.UserID, userLogin.Password);
             if (userData != null)
             {
 
                 // data found
-               
-                    // Redirect to Dashboard with active
-                    msg = "";
-                    // store data in session
-                    Session["UserID"] = userData.UserID;
-                    Session["Role"] = userData.Role;
-                    Session["Email"] = userData.EmailID;
-                    Session["SECID"] = userData.SECID;
-                    Session["BPID"] = userData.BPID;
-                    Session["Partner"] = userData.Partner;
-                    Session["BPType"] = userData.BPType;
-                   
-                    FormsAuthentication.SetAuthCookie(userData.UserID, true);
-                    logHist.UserID = userData.UserID;
-                    logHist.Server = "";
-                    _userData.LoginHistory(logHist);
-                 // check and create directory
-                   checkFolder=CreateFolder();
-                    // Set custom session data
-                    userData.UserIPAddress = Request.UserHostAddress;
-                    userData.UserBrowserName = Request.Browser.Browser.ToLower().Trim();
-                    userData.SessionToken = Guid.NewGuid().ToString();
-                    _userData.InsertUpdateCustomSessionData(userData,"insert");
-                   TempData["expiredate"] = userData.ExpireDate.Date;
+
+                // Redirect to Dashboard with active
+                msg = "";
+                // store data in session
+                Session["UserID"] = userData.UserID;
+                Session["Role"] = userData.Role;
+                Session["Email"] = userData.EmailID;
+                Session["SECID"] = userData.SECID;
+                Session["BPID"] = userData.BPID;
+                Session["Partner"] = userData.Partner;
+                Session["BPType"] = userData.BPType;
+
+                FormsAuthentication.SetAuthCookie(userData.UserID, true);
+                logHist.UserID = userData.UserID;
+                logHist.Server = "";
+                _userData.LoginHistory(logHist);
+                // check and create directory
+                checkFolder = CreateFolder();
+                // Set custom session data
+                userData.UserIPAddress = Request.UserHostAddress;
+                userData.UserBrowserName = Request.Browser.Browser.ToLower().Trim();
+                userData.SessionToken = Guid.NewGuid().ToString();
+                _userData.InsertUpdateCustomSessionData(userData, "insert");
+                TempData["expiredate"] = userData.ExpireDate.Date;
                 if (userData.ExpireDate.Date >= DateTime.Today.Date && userData.IsActive && userData.ValidFrom.Date <= DateTime.Today.Date)
                 {
                     if (!string.IsNullOrWhiteSpace(checkFolder))
@@ -165,6 +165,7 @@ namespace Harmonizer.UI.Controllers
 
             }
             TempData["message"] = msg;
+            TempData.Keep();
             return RedirectToAction("SignIn");//, JsonRequestBehavior.AllowGet);
         }
 
@@ -199,9 +200,9 @@ namespace Harmonizer.UI.Controllers
                     Directory.CreateDirectory(lPath);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                returnValue = ex.StackTrace+ "-------"+ex.Message;
+                returnValue = ex.StackTrace + "-------" + ex.Message;
 
             }
             return returnValue;
@@ -295,10 +296,10 @@ namespace Harmonizer.UI.Controllers
 
             }
 
-            return Json(new { operationValue = optValue, responseText = response, loginInfo = logInfo,roleId=Session["Role"]!=null? Session["Role"].ToString(): registerUserData.User.Role.ToString(), tokenValue= token }, JsonRequestBehavior.AllowGet);
+            return Json(new { operationValue = optValue, responseText = response, loginInfo = logInfo, roleId = Session["Role"] != null ? Session["Role"].ToString() : registerUserData.User.Role.ToString(), tokenValue = token }, JsonRequestBehavior.AllowGet);
         }
 
-        public void DefaultSetSessionOnFirstLogin(UserLogin userLogin,string token)
+        public void DefaultSetSessionOnFirstLogin(UserLogin userLogin, string token)
         {
             Core.Model.LoginHistory logHist = new LoginHistory();
             Core.Model.User userData = new Core.Model.User();
@@ -344,7 +345,7 @@ namespace Harmonizer.UI.Controllers
                 userData.SessionToken = token;
                 _userData.InsertUpdateCustomSessionData(userData, "delete");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 DataLogger.Write("Account-Logout", ex.Message);
             }
@@ -355,7 +356,7 @@ namespace Harmonizer.UI.Controllers
             return RedirectToAction("SignIn", "Account");
         }
 
-        
+
         public ActionResult CommanUserData()
         {
             CommanUserData obj = new CommanUserData();
@@ -365,7 +366,7 @@ namespace Harmonizer.UI.Controllers
             }
             catch (Exception ex)
             {
-                DataLogger.Write("Account-CommanUserData" , ex.Message);
+                DataLogger.Write("Account-CommanUserData", ex.Message);
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
 
@@ -374,7 +375,7 @@ namespace Harmonizer.UI.Controllers
         {
             List<Country> objCountrylst = new List<Country>();
             objCountrylst = _admindata.GetCountryList();
-            objCountrylst.Insert(0, new Country { ID = 0,Alpha3="0",Alpha2="0", CountryName = "Select Country" });
+            objCountrylst.Insert(0, new Country { ID = 0, Alpha3 = "0", Alpha2 = "0", CountryName = "Select Country" });
             return objCountrylst;
 
         }
@@ -391,7 +392,7 @@ namespace Harmonizer.UI.Controllers
                 }
             }
 
-            return Json(lstBusinessType,JsonRequestBehavior.AllowGet);
+            return Json(lstBusinessType, JsonRequestBehavior.AllowGet);
 
         }
 

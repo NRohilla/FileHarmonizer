@@ -66,7 +66,12 @@
             <div class="clearfix"></div>
             <div class="row text-right mx-0" id="actionUpdateFilterButton">
                 <div class="col-md-12">
-                    <input type="button" value="Update Value" id="bntsave" class="btn btn-info" />
+                    @{
+                        if (ViewBag.ExpireDate != null && Convert.ToDateTime(ViewBag.ExpireDate) > DateTime.Now)
+                        {
+                            <input type="button" value="Update Value" id="bntsave" class="btn btn-info" />
+                        }
+                    }
                 </div>
 
             </div>
@@ -84,6 +89,20 @@
 <div id="wait" style="display:none;width:100%;height:100%;position:fixed;top:0px;left:0px;bottom:0px;right:0px;padding:20%;z-index: 99999;background-color:rgba(0,0,0,0.3);text-align:center;">
     <img src='~/images/sa.gif' width="150" height="150" /><br>Loading..
 </div>
+
+
+<!-- The Modal ---- To show the Pop Up on page load -->
+<input type="button" id="btnShowDataActivation" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModalActivation" />
+<div class="modal" id="myModalActivation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-body" id="modelbodydataActivation">
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
     .active {
         background-color: gold !important;
@@ -101,8 +120,31 @@
             });
         }
     }
+
+    var compare_dates = function (edate1, cdate2) {
+        if (edate1 < cdate2)
+            return true;
+        else {
+            return false;
+        }
+    }
+
     $(document).ready(function () {
         debugger;
+
+
+            /////To show the Pop Up on page load
+         var edate = '@ViewBag.ExpireDate';
+        var cdate = '@DateTime.Today.Date.ToShortDateString()';
+
+        if (edate != "") {
+            if (compare_dates(new Date(edate), new Date(cdate)) == true) {
+                $('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "FHFile", new { token = Request.QueryString["token"] })');
+                $('#btnShowDataActivation').click();
+                }
+        }
+
+
         MaskForDate();
         $('#filterTempateFileinfo').hide();
 
@@ -210,7 +252,7 @@
                         $('#actionUpdateFilterButton').hide();
                         $('#actionHarmonizeButton').hide();
                         $('#divBusinessTemplate').html(data);
-                       
+
                     },
                     error: function (errMsg) {
                         $("#wait").css("display", "none");

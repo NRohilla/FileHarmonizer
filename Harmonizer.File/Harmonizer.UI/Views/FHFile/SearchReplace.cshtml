@@ -120,7 +120,7 @@
                     </div>
                     <div class="row mt-1">
                         <div class="col-md-12">
-                           
+
                         </div>
 
                     </div>
@@ -239,7 +239,11 @@
     <img src='~/images/sa.gif' width="150" height="150" /><br>Loading..
 </div>
 
+
 <input type="file" id="fileuploadSearchTagList" name="fileuploadSearchTagList" class="hidden" style="visibility: hidden;" />
+
+
+
 @*</form>*@
 <style>
     .filectrl {
@@ -253,7 +257,15 @@
     var formData = new FormData();
     var filearr = [];
 
+
+
     $(document).ready(function () {
+
+
+
+
+
+
         $("#fileupload").on("change", function () {
             debugger;
             formDataViewFile.append("ViewFile", document.getElementById("fileupload").files[0])
