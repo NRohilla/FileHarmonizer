@@ -487,5 +487,12 @@ namespace Harmonizer.UI.Controllers
             retValue = _fhManage.UpdateAssignScheme(schemenum, FLTRID,Session["BPID"].ToString());
             return Json(retValue, JsonRequestBehavior.AllowGet);
         }
+
+        ////-Nitin Check for expiry of account
+        public ActionResult ExipreActivation()
+        {
+            ViewBag.token = Request.QueryString["token"];
+            return PartialView("_UserActivationMessage");
+        }
     }
 }
