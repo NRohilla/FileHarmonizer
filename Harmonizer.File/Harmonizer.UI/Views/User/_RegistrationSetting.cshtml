@@ -9,10 +9,10 @@
     </div>
     <div class="col-md-4">
         <div class="row mb-3">
-            <input type="button" class="btn btn-info" value="Deactivate" />
+            <input type="button"  id="btnDeactivateRegistration" class="btn btn-info" value="Deactivate" />
         </div>
         <div class="row">
-            <input type="button" onclick="location.href='@Url.Action("ForgotPassword","Account",new { token = Request.QueryString["token"] })'"   class="btn btn-info" value="Forgot Password" />
+            <input type="button" onclick="location.href='@Url.Action("ForgotPassword","Account",new { token = Request.QueryString["token"] })'" id="btnForgetPasswordRegistration"  class="btn btn-info" value="Forgot Password" />
         </div>
     </div>
 </div>

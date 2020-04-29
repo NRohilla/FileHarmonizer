@@ -168,6 +168,8 @@
                                                         @Html.ActionLink("Maintain Users", "ManageUser", "User", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                     }
                                                     @Html.ActionLink("Maintain Custom Tag", "MaintainCustomTag", "User", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                    @Html.ActionLink("Reactivate", "StartMyFreeMonth", "User", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+
                                                 </div>
                                             </li>
                                             @if (Convert.ToInt32(Session["Role"]) == 1 || Convert.ToInt32(Session["Role"]) == 4 || Convert.ToInt32(Session["Role"]) == 3 || Convert.ToInt32(Session["Role"]) == 7)

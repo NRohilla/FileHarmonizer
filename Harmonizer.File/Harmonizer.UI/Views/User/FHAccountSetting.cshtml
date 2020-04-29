@@ -99,7 +99,18 @@
         if (edate != "") {
         	if (compare_dates(new Date(edate), new Date(cdate)) == true) {
         		$('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "FHFile", new { token = Request.QueryString["token"] })');
-        		$('#btnShowDataActivation').click();
+                $('#btnShowDataActivation').click();
+                $('#btnRestoreFolderLocation').hide();
+                $('#btnApplyFolderLocation').hide();
+                $('#btnOKFolderLocation').hide();
+                $('#btnRestoreNaming').hide();
+                $('#btnApplyNaming').hide();
+                $('#btnOKNaming').hide();
+                $('#btnRestoreDefaultGenral').hide();
+                $('#btnApplyGenral').hide();
+                $('#btnOkGenral').hide();
+                $('#btnDeactivateRegistration').hide();
+                $('#btnForgetPasswordRegistration').hide();
         	}
         }
 
