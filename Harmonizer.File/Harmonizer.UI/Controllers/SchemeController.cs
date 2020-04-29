@@ -35,10 +35,17 @@ namespace Harmonizer.UI.Controllers
             retvalue=_scheme.CreateScheme(userScheme, "insert");
             return Json(retvalue, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult MaintainScheme()
         {
+            ////-Nitin Check for expiry of account
+            if (TempData["expiredate"] != null)
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+
+            TempData.Keep();
             return View();
         }
+
         public ActionResult _MaintainSchemeData()
         {
             UserScheme userScheme = new UserScheme();
@@ -184,8 +191,14 @@ namespace Harmonizer.UI.Controllers
             retvalue = _scheme.CreateScheme(userScheme, "updatescheme");
             return Json(retvalue, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult Archive()
         {
+            ////-Nitin Check for expiry of account
+            if (TempData["expiredate"] != null)
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+
+            TempData.Keep();
             return View();
         }
         public ActionResult _ArchiveSchemeData()
@@ -244,5 +257,11 @@ namespace Harmonizer.UI.Controllers
             return Json(retValue, JsonRequestBehavior.AllowGet);
         }
 
+        ////-Nitin Check for expiry of account
+        public ActionResult ExipreActivation()
+        {
+            ViewBag.token = Request.QueryString["token"];
+            return PartialView("_UserActivationMessage");
+        }
     }
 }

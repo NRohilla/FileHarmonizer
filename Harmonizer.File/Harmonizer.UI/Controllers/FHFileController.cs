@@ -78,7 +78,7 @@ namespace Harmonizer.UI.Controllers
         public ActionResult SearchReplace()
         {
             List<SelectListItem> lstSectore = new List<SelectListItem>();
-           
+
             // for sector
             DataSet dsSectore = _userData.GetSector();
             lstSectore.Add(new SelectListItem { Text = "Select Template Type", Value = "0" });
@@ -97,10 +97,12 @@ namespace Harmonizer.UI.Controllers
             ViewBag.message = TempData["Message"] != null ? TempData["Message"].ToString() : "";
 
             ////-Nitin Check for expiry of account
-            if (TempData["expiredate"]!= null)
+            if (TempData["expiredate"] != null)
+            {
                 ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                TempData.Keep();
+            }
 
-            TempData.Keep();
             return View("SearchReplace");
         }
 
@@ -269,9 +271,10 @@ namespace Harmonizer.UI.Controllers
         {
             ////-Nitin Check for expiry of account
             if (TempData["expiredate"] != null)
+            {
                 ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
-
-            TempData.Keep();
+                TempData.Keep();
+            }
             return View();
         }
 
@@ -311,7 +314,7 @@ namespace Harmonizer.UI.Controllers
                 {
                     ID = item.ID,
                     SearchWord = item.SearchWord.Replace("&lt;", "<").Replace("&gt;", ">"),
-                    TagName =string.IsNullOrEmpty(item.TagName)==true?"...": item.TagName,
+                    TagName = string.IsNullOrEmpty(item.TagName) == true ? "..." : item.TagName,
                     Instruction = item.Instruction
                 });
             }
@@ -320,7 +323,7 @@ namespace Harmonizer.UI.Controllers
 
         }
 
-        public List<SwordAndTagReplace> GetTagForSearchWithWT(List<SwordAndTagReplace> lstSearch,string op="")
+        public List<SwordAndTagReplace> GetTagForSearchWithWT(List<SwordAndTagReplace> lstSearch, string op = "")
         {
             List<SwordAndTagReplace> lst = new List<SwordAndTagReplace>();
             if (op.ToLower() == "both".ToLower())
@@ -337,7 +340,7 @@ namespace Harmonizer.UI.Controllers
                     });
                 }
             }
-            else if(op.ToLower() == "greater".ToLower())
+            else if (op.ToLower() == "greater".ToLower())
             {
                 foreach (var item in lstSearch)
                 {
@@ -345,13 +348,13 @@ namespace Harmonizer.UI.Controllers
                     {
                         //<w:t>1000003&gt;</w:t>
                         ID = item.ID,
-                        SearchWord ="<w:t>"+item.SearchWord.Replace("&lt;", "").Replace("&gt;", "")+"&gt;</w:t>",
+                        SearchWord = "<w:t>" + item.SearchWord.Replace("&lt;", "").Replace("&gt;", "") + "&gt;</w:t>",
                         TagName = "<w:t>" + item.TagName + "</w:t>",
                         Instruction = item.Instruction
                     });
                 }
             }
-            else if(op.ToLower() == "less".ToLower())
+            else if (op.ToLower() == "less".ToLower())
             {
                 foreach (var item in lstSearch)
                 {
@@ -631,7 +634,7 @@ namespace Harmonizer.UI.Controllers
                         }
                     }
 
-                    else if(IsHarmonized)
+                    else if (IsHarmonized)
                     {
                         using (oDocP.WordprocessingDocument wordDoc = oDocP.WordprocessingDocument.Open(TargetFilePath, true))
                         {
@@ -1254,8 +1257,8 @@ namespace Harmonizer.UI.Controllers
         {
             string Result = string.Empty;
             string msg = "Data update";
-            Result=_adminData.UpdateTagDetails(obj);
-            if(Result=="0")
+            Result = _adminData.UpdateTagDetails(obj);
+            if (Result == "0")
                 msg = "Data not updated.";
 
             return Json(msg, JsonRequestBehavior.AllowGet);
@@ -1362,7 +1365,7 @@ namespace Harmonizer.UI.Controllers
         public ActionResult GetTemplateDetail(string FileId)
         {
             string BPID = Convert.ToString(Session["BPID"]);
-            string UserID= Convert.ToString(Session["UserID"]);
+            string UserID = Convert.ToString(Session["UserID"]);
             List<Tag> lstTag = new List<Tag>();
             Tag objtag = new Tag();
             string TemplateName = "FH001 Project status Rpt";
@@ -1389,7 +1392,7 @@ namespace Harmonizer.UI.Controllers
                 FilterName = ds.Tables[0].Rows[0]["CFLTRID"].ToString() + " " + ds.Tables[0].Rows[0]["TemplateDesc"].ToString();
             }
 
-            return Json(new { lst =_userData.AutoCalculateValue(lstTag), template = TemplateName, filter = FilterName }, JsonRequestBehavior.AllowGet);
+            return Json(new { lst = _userData.AutoCalculateValue(lstTag), template = TemplateName, filter = FilterName }, JsonRequestBehavior.AllowGet);
 
         }
 
@@ -2144,9 +2147,10 @@ namespace Harmonizer.UI.Controllers
 
             ////-Nitin Check for expiry of account
             if (TempData["expiredate"] != null)
+            {
                 ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
-
-            TempData.Keep();
+                TempData.Keep();
+            }
 
             return View("ManageUserTag");
         }
@@ -2178,8 +2182,8 @@ namespace Harmonizer.UI.Controllers
                         Description = row["Description"].ToString(),
                         Share = row["Share"].ToString(),
                         Orig = row["Org"].ToString(),
-                        UserID=UserID,
-                        BPID=BPID
+                        UserID = UserID,
+                        BPID = BPID
                     };
                     lstTag.Add(_tag);
                 }
@@ -2261,14 +2265,14 @@ namespace Harmonizer.UI.Controllers
 
         [SessionTimeoutFilter]
         [HttpPost]
-        public ActionResult CopyTemplate(int fileID,string oldName,string newName)
+        public ActionResult CopyTemplate(int fileID, string oldName, string newName)
         {
             int retValue = -1;
             string msg = "";
             string BPID = Session["BPID"].ToString();
             string userId = Session["UserID"].ToString();
             retValue = _fileData.CopyTemplate(fileID, oldName, newName, userId, BPID);
-            if(retValue >= 1)
+            if (retValue >= 1)
             {
                 msg = "Template copy successfully";
             }
@@ -2459,8 +2463,8 @@ namespace Harmonizer.UI.Controllers
                             }
                             else
                             {
-                                 IdentificationPath = Session["UserID"].ToString() + "_" + Request.Form[2].ToString() + "_Temp_" + DateTime.Now.ToString("MMddyyyy_HHmmss") + "_";
-                                 SourceFilePath = Server.MapPath("~").TrimEnd('\\') + "\\Source\\" + Session["BPID"].ToString() + "\\" + IdentificationPath + System.IO.Path.GetFileName(Fileupload.FileName);
+                                IdentificationPath = Session["UserID"].ToString() + "_" + Request.Form[2].ToString() + "_Temp_" + DateTime.Now.ToString("MMddyyyy_HHmmss") + "_";
+                                SourceFilePath = Server.MapPath("~").TrimEnd('\\') + "\\Source\\" + Session["BPID"].ToString() + "\\" + IdentificationPath + System.IO.Path.GetFileName(Fileupload.FileName);
                                 Fileupload.SaveAs(SourceFilePath);
                                 if (FileExt == ".doc" || FileExt == ".docx" || FileExt == "doc" || FileExt == "docx")
                                 {
@@ -2489,7 +2493,7 @@ namespace Harmonizer.UI.Controllers
                                             // For Header part
                                             foreach (var hPart in doc.MainDocumentPart.HeaderParts)
                                             {
-                                                var hData = SearchAndReplacer.GetXmlDocument(hPart); 
+                                                var hData = SearchAndReplacer.GetXmlDocument(hPart);
                                                 int[] hDataAngularBracketStart = hData.InnerText.AllIndexesOf("<").ToArray();
                                                 int[] hDataAngularBracketClose = hData.InnerText.AllIndexesOf(">").ToArray();
 
@@ -2508,7 +2512,7 @@ namespace Harmonizer.UI.Controllers
                                             // For Footer part
                                             foreach (var fPart in doc.MainDocumentPart.FooterParts)
                                             {
-                                                var fData = SearchAndReplacer.GetXmlDocument(fPart); 
+                                                var fData = SearchAndReplacer.GetXmlDocument(fPart);
                                                 int[] fDataAngularBracketStart = fData.InnerText.AllIndexesOf("<").ToArray();
                                                 int[] fDataAngularBracketClose = fData.InnerText.AllIndexesOf(">").ToArray();
 
@@ -2523,11 +2527,11 @@ namespace Harmonizer.UI.Controllers
                                                     });
                                                 }
                                             }
-                                           
+
                                             // EndNote
-                                            if (doc.MainDocumentPart.EndnotesPart!=null)
+                                            if (doc.MainDocumentPart.EndnotesPart != null)
                                             {
-                                                var endNoteData= SearchAndReplacer.GetXmlDocument(doc.MainDocumentPart.EndnotesPart);
+                                                var endNoteData = SearchAndReplacer.GetXmlDocument(doc.MainDocumentPart.EndnotesPart);
                                                 int[] endNoteDataAngularBracketStart = endNoteData.InnerText.AllIndexesOf("<").ToArray();
                                                 int[] endNoteDataAngularBracketClose = endNoteData.InnerText.AllIndexesOf(">").ToArray();
 
@@ -2811,12 +2815,14 @@ namespace Harmonizer.UI.Controllers
 
             ////-Nitin Check for expiry of account
             if (TempData["expiredate"] != null)
+            {
                 ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
-
-            TempData.Keep();
+                TempData.Keep();
+            }
 
             return View();
         }
+
 
         ////-Nitin Check for expiry of account
         public ActionResult ExipreActivation()
@@ -2825,5 +2831,5 @@ namespace Harmonizer.UI.Controllers
             return PartialView("_UserActivationMessage");
         }
     }
-    
+
 }
