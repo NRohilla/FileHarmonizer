@@ -35,6 +35,13 @@ namespace Harmonizer.UI.Controllers
         // GET: FHManage
         public ActionResult ManageFilter()
         {
+            ////-Nitin Check for expiry of account
+            if (TempData["expiredate"] != null)
+            {
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                TempData.Keep();
+            }
+
             return View();
         }
 
@@ -110,6 +117,13 @@ namespace Harmonizer.UI.Controllers
 
         public  ActionResult HarmonizeTemplate()
         {
+            ////-Nitin Check for expiry of account
+            if (TempData["expiredate"] != null)
+            {
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                TempData.Keep();
+            }
+
             return View();
         }
 
@@ -147,6 +161,13 @@ namespace Harmonizer.UI.Controllers
 
         public ActionResult ManageTemplate()
         {
+            ////-Nitin Check for expiry of account
+            if (TempData["expiredate"] != null)
+            {
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                TempData.Keep();
+            }
+
             return View();
         }
 

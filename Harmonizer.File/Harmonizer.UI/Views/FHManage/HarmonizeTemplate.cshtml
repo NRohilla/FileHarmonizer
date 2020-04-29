@@ -9,36 +9,37 @@
             @Html.Action("UserHeader", "FHFile")
         </div>
         <div class="blink_heading">
-            <h4>Harmonize Template</h4></div>
-            <hr />
-            <div class="bg-white p-3 border w-100 float-left">
-                <div class="row mb-2">
-                    <div class="col-md-12">
-                        <div class="w-100 float-left">
-                            <div class="float-left mr-2"><label> Source Folder:</label></div>
-                            <div class="float-left col-md-5"><label class="form-control">@Session["BPID"]\Target</label></div>
-                            <div class="float-left col-md-1">
-                                <input type="button" value="..." name="..." class="btn btn-info disabled" id="btnSelectTarerFolder" />
-                            </div>
-                        </div>
-                        <div class="w-100 float-left">
-                            <div class="float-left mr-2"><label>Output Folder:</label></div>
-                            <div class="float-left col-md-5">
-                                <input class="form-control" type="text" value="C:\User\Downloads" />
-                            </div>
-                            <div class="float-left col-md-1">
-                                <input type="button" value="..." name="..." class="btn btn-info" id="btnSelectSourceFolder" />
-                            </div>
-                            <input type="file" value="..." class="d-none" id="openFolder" />
+            <h4>Harmonize Template</h4>
+        </div>
+        <hr />
+        <div class="bg-white p-3 border w-100 float-left">
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    <div class="w-100 float-left">
+                        <div class="float-left mr-2"><label> Source Folder:</label></div>
+                        <div class="float-left col-md-5"><label class="form-control">@Session["BPID"]\Target</label></div>
+                        <div class="float-left col-md-1">
+                            <input type="button" value="..." name="..." class="btn btn-info disabled" id="btnSelectTarerFolder" />
                         </div>
                     </div>
-                </div>
-
-                <div id="divHarmonizeTemplateDetails">
-                    @Html.Action("_ManageHarmonizeTemplate", "FHManage")
+                    <div class="w-100 float-left">
+                        <div class="float-left mr-2"><label>Output Folder:</label></div>
+                        <div class="float-left col-md-5">
+                            <input class="form-control" type="text" value="C:\User\Downloads" />
+                        </div>
+                        <div class="float-left col-md-1">
+                            <input type="button" value="..." name="..." class="btn btn-info" id="btnSelectSourceFolder" />
+                        </div>
+                        <input type="file" value="..." class="d-none" id="openFolder" />
+                    </div>
                 </div>
             </div>
+
+            <div id="divHarmonizeTemplateDetails">
+                @Html.Action("_ManageHarmonizeTemplate", "FHManage")
+            </div>
         </div>
+    </div>
 </div>
 
 <!-- The Modal -->
@@ -65,25 +66,47 @@
 </div>
 
 
+
+<!-- The Modal ----  ////-Nitin Check for expiry of account-->
+<input type="button" id="btnShowDataActivation" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModalActivation" />
+<div class="modal" id="myModalActivation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-body" id="modelbodydataActivation">
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
-    //function downloadFile(filePath) {
-    //    var link = document.createElement('a');
-    //    link.href = filePath;
-    //    link.download = filePath.substr(filePath.lastIndexOf('/') + 1);
-    //    link.click();
-    //}
-    //function print(doc) {
-    //    //var objFra = document.createElement('iframe');   // CREATE AN IFRAME.
-    //    //objFra.style.visibility = "hidden";    // HIDE THE FRAME.
-    //    //objFra.src = doc;                      // SET SOURCE.
-    //    //document.body.appendChild(objFra);  // APPEND THE FRAME TO THE PAGE.
-    //    var objFra = document.getElementById("xcc");
-    //    $('viewer-pdf-toolbar').print().click();
-    //    //objFra.src = doc;
-    //    objFra.contentWindow.focus();       // SET FOCUS.
-    //    objFra.contentWindow.print();      // PRINT IT.
-    //}
+
+
+ ////-Nitin Check for expiry of account
+    var compare_dates = function (edate1, cdate2) {
+        if (edate1 < cdate2)
+            return true;
+        else {
+            return false;
+        }
+    }
+
+
     $(document).ready(function () {
+         ////-Nitin Check for expiry of account
+/////To show the Pop Up on page load
+         var edate = '@ViewBag.ExpireDate';
+        var cdate = '@DateTime.Today.Date.ToShortDateString()';
+        if (edate != "") {
+        	if (compare_dates(new Date(edate), new Date(cdate)) == true) {
+        		$('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "FHFile", new { token = Request.QueryString["token"] })');
+        		$('#btnShowDataActivation').click();
+        	}
+        }
+
+
+
         $('.edit').hide();
         $(document).on('click','#btnPrintHTemplate',function (e) {
             //alert('i am clicked for print template on printer');
@@ -189,7 +212,7 @@
             tr.find('.edit, .read').toggle();
 
         });
-      
+
         // cancel
         $(document).on('click','.btn-cancel',function (e) {
             //window.location.reload(true);
@@ -233,7 +256,7 @@
         var FltrID = fltrId;
         //alert('change data:' + currentSelectedvalue + "-------" + FltrID);
 
-        // Ajax update scheme assing value 
+        // Ajax update scheme assing value
 
         $.ajax({
             type: "POST",

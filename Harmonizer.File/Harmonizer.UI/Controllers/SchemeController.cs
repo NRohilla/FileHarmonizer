@@ -40,9 +40,10 @@ namespace Harmonizer.UI.Controllers
         {
             ////-Nitin Check for expiry of account
             if (TempData["expiredate"] != null)
+            {
                 ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
-
-            TempData.Keep();
+                TempData.Keep();
+            }
             return View();
         }
 
@@ -196,9 +197,10 @@ namespace Harmonizer.UI.Controllers
         {
             ////-Nitin Check for expiry of account
             if (TempData["expiredate"] != null)
+            {
                 ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
-
-            TempData.Keep();
+                TempData.Keep();
+            }
             return View();
         }
         public ActionResult _ArchiveSchemeData()
