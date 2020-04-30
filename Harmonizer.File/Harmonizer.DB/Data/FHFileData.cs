@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Harmonizer.Core.Model;
 using System.ComponentModel;
+using Harmonizer.UI.Models;
 
 namespace Harmonizer.DB.Data
 {
@@ -346,6 +347,40 @@ namespace Harmonizer.DB.Data
             }
             return Result;
            
+        }
+
+        public int CreateAssociation(Association Association)
+        {
+            int Result = 0;
+            try
+            {
+                con = ConnectionClass.getConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "sp_InsertUpdateAssociation";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@FHnumber", SqlDbType.NVarChar).Value = Association.FHnumber;
+                cmd.Parameters.Add("@Associate", SqlDbType.NVarChar).Value = Association.Associate;
+                cmd.Parameters.Add("@OriginalDateofAssoc", SqlDbType.DateTime).Value = Association.OriginalDateofAssoc;
+                cmd.Parameters.Add("@AssocStatus", SqlDbType.Bit).Value = Association.AssocStatus;
+                cmd.Parameters.Add("@AssocCanceledDate", SqlDbType.DateTime).Value = Association.AssocCanceledDate;
+                cmd.Parameters.Add("@AssocCanceledBy", SqlDbType.NVarChar).Value = Association.AssocCanceledBy;
+                cmd.Parameters.Add("@Operation", SqlDbType.NVarChar).Value = "Insert";
+                Result = cmd.ExecuteNonQuery();
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                Result = 0;
+                DataLogger.Write("FHFile-CreateAssociation", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return Result;
+
         }
 
         public string CreateFilter(CHFilter Filter)
