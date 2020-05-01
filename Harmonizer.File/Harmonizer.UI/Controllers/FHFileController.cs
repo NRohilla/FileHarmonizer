@@ -1790,6 +1790,7 @@ namespace Harmonizer.UI.Controllers
             try
             {
                 obj = _userData.GetCommanData(Convert.ToString(Session["UserID"]));
+                Session["FHnumber"] = obj.HarmonizerValue;
             }
             catch (Exception ex)
             {
@@ -2197,15 +2198,21 @@ namespace Harmonizer.UI.Controllers
         [SessionTimeoutFilter]
         public ActionResult GetBusinessTemplateByBPIDOrFH(string BPIDOrFH, string SecID)
         {
+            Association association = new Association();
             string BPID = Session["BPID"].ToString();
             string UserID = Session["UserID"].ToString();
+            string FHnumber = Session["FHnumber"].ToString();
             List<CreateListTemplate> lstTemp = new List<CreateListTemplate>();
             try
             {
                 DataSet ds = _fileData.GetBusinessTemplateBPIDOrFH(BPIDOrFH, SecID, 0, "Template", BPID);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-
+                    association.FHnumber = FHnumber;
+                    association.Associate = BPIDOrFH;
+                    association.AssocStatus = true;
+                    association.AssocCanceledBy = UserID;
+                    int createAssociation = _fileData.CreateAssociation(association);
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
                         CreateListTemplate objtemp = new CreateListTemplate();

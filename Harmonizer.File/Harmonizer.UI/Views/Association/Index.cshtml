@@ -1,0 +1,103 @@
+﻿@model Harmonizer.Core.Model.Association
+@{
+    ViewBag.Title = "Association";
+}
+
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Association</h4>
+        </div>
+        <hr />
+        <div class="form-group">
+            @*<div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("Select FH#", htmlAttributes: new { @class = "control-label form-label" }) <span class="text-danger font-weight-bold">*</span>
+                    </div>
+                    <div class="col-md-3">
+                        <select id="ddlFHnumber" class="form-control"></select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("Select Associate", htmlAttributes: new { @class = "control-label form-label" }) <span class="text-danger font-weight-bold">*</span>
+                    </div>
+                    <div class="col-md-3">
+                        <select id="ddlAssociate" class="form-control"></select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.Label("Association Status", htmlAttributes: new { @class = "control-label form-label" }) <span class="text-danger font-weight-bold">*</span>
+                    </div>
+                    <div class="col-md-3">
+                        <select id="ddlAssocStatus" class="form-control"></select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="text-right">
+                        <input type="button" id="btnAddAssociation" name="AddAssociation" class="btn btn-info" value="Add Association" />
+                    </div>
+                </div>
+                <br />
+                <br />*@
+
+            <div class="bg-white p-3 border w-100 float-left">
+                <div class="text-center">
+                    <div id="divUserList">
+                        @Html.Action("UserList", "Association")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<input type="button" id="btnShowData" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModal" />
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Update Association Details</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modelbodydata">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+     $('.btn-rename').click(function (e) {
+           // alert('clicked rename');
+             e.preventDefault();
+           var tr = $(this).parents('tr:first');
+           var Status = tr.find('#lblAssocStatus').val();
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("RenameTemplate", "Association")',
+                data: '{Status:"' + Status + '" }',
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $('.modal-dialog').removeClass('modal-lg');
+                    $('#modelbodydata').html('');
+                    $('#modelbodydata').html(data);
+                    $('#btnShowData').click();
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+</script>

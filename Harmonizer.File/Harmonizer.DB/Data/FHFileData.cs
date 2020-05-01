@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using Harmonizer.Core.Model;
 using System.ComponentModel;
 
+
 namespace Harmonizer.DB.Data
 {
     public class FHFileData
@@ -714,6 +715,118 @@ namespace Harmonizer.DB.Data
             }
             return Result;
         }
+
+        //Association Page finctions
+        public int CreateAssociation(Association Association)
+        {
+            int Result = 0;
+            try
+            {
+                con = ConnectionClass.getConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "sp_InsertUpdateAssociation";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@FHnumber", SqlDbType.NVarChar).Value = Association.FHnumber;
+                cmd.Parameters.Add("@Associate", SqlDbType.NVarChar).Value = Association.Associate;
+                //cmd.Parameters.Add("@OriginalDateofAssoc", SqlDbType.DateTime).Value = Association.OriginalDateofAssoc;
+                cmd.Parameters.Add("@AssocStatus", SqlDbType.Bit).Value = Association.AssocStatus;
+                //cmd.Parameters.Add("@AssocCanceledDate", SqlDbType.DateTime).Value = Association.AssocCanceledDate;
+                cmd.Parameters.Add("@AssocCanceledBy", SqlDbType.NVarChar).Value = Association.AssocCanceledBy;
+                cmd.Parameters.Add("@Action", SqlDbType.NVarChar).Value = "Insert";
+                Result = cmd.ExecuteNonQuery();
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                Result = 0;
+                DataLogger.Write("FHFile-CreateAssociation", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return Result;
+
+        }
+
+        public List<Association> GetAssociation(string FHnumber)
+        {
+            List<Association> lstAssociation = new List<Association>();
+            con = ConnectionClass.getConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                cmd.Connection = con;
+                cmd.CommandText = "sp_InsertUpdateAssociation";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@FHnumber", SqlDbType.NVarChar).Value = FHnumber;
+                cmd.Parameters.Add("@Action", SqlDbType.NVarChar).Value = "Select";
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        Association association = new Association();
+                        association.FHnumber = Convert.ToString(ds.Tables[0].Rows[i]["FHnumber"]);
+                        association.Associate = Convert.ToString(ds.Tables[0].Rows[i]["Associate"]);
+                        association.AssocCanceledBy = Convert.ToString(ds.Tables[0].Rows[i]["AssocCanceledBy"]);
+                        association.OriginalDateofAssoc = Convert.ToDateTime(ds.Tables[0].Rows[i]["OriginalDateofAssoc"]);
+                        association.AssocCanceledDate = Convert.ToDateTime(ds.Tables[0].Rows[i]["AssocCanceledDate"]);
+                        association.AssocStatus = Convert.ToBoolean(ds.Tables[0].Rows[i]["AssocStatus"]);
+                        lstAssociation.Add(association);
+                    }
+                }
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                DataLogger.Write("Admin-GetAssociationList", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return lstAssociation;
+
+        }
+
+
+        public int UpdateAssociation(Association _association)
+        {
+            int retValue = -1;
+            try
+            {
+                con = ConnectionClass.getConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "sp_InsertUpdateAssociation";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@FHnumber", _association.FHnumber);
+                cmd.Parameters.AddWithValue("@Associate", _association.Associate);
+                cmd.Parameters.AddWithValue("@AssocStatus", _association.AssocStatus);
+                cmd.Parameters.Add("@Action", SqlDbType.NVarChar).Value = "Update";
+                retValue = cmd.ExecuteNonQuery();
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                retValue = -1;
+                DataLogger.Write("Association-UpdateAssociation", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return retValue;
+        }
+
+
 
     }
 }

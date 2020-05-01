@@ -129,12 +129,19 @@ namespace Harmonizer.UI.Controllers
 
         public ActionResult _ManageHarmonizeTemplate(string FHNumber = "")
         {
+            Association association = new Association();
+            string UserID = Session["UserID"].ToString();
+            string FHnumb = Session["FHnumber"].ToString();
             List<SelectListItem> lstSchme = new List<SelectListItem>();
             DataSet dsScheme = _scheme.GetAllSchemeByBPID(Session["BPID"].ToString(), "selectall");
             lstSchme.Add(new SelectListItem { Text = "-Scheme-", Value = "0" });
             if (dsScheme.Tables[0].Rows.Count > 0)
             {
-
+                association.FHnumber = FHnumb;
+                association.Associate = FHNumber;
+                association.AssocStatus = true;
+                association.AssocCanceledBy = UserID;
+                int createAssociation = _fhFileData.CreateAssociation(association);
                 for (int i = 0; i < dsScheme.Tables[0].Rows.Count; i++)
                 {
                     lstSchme.Add(new SelectListItem { Text = dsScheme.Tables[0].Rows[i]["SchemeNum"].ToString() + "-" + dsScheme.Tables[0].Rows[i]["SchemeName"].ToString(), Value = dsScheme.Tables[0].Rows[i]["SchemeNum"].ToString() });
@@ -144,7 +151,6 @@ namespace Harmonizer.UI.Controllers
             ViewData["lstSchme"] = lstSchme;
 
             List<ManageFilterTemplateModel> lstFilterTemplate = new List<ManageFilterTemplateModel>();
-            string UserID = Session["UserID"].ToString();
             string BPID = Session["BPID"].ToString();
             if (FHNumber == "")
             {
