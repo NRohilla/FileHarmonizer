@@ -1,0 +1,36 @@
+﻿<div>
+    <div class="mt-1 mb-4">
+        Do you really wish to remove this association
+    </div>
+    <div>
+        <input type="button" name="btnRemove" id="btnRemove" value="Remove" class="btn btn-info" />
+        <input type="button" id="btnCancel" class="btn btn-info" data-dismiss="modal" value="Cancel" />
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#btnRemove').click(function (e) {
+            e.preventDefault();
+            var RecordID = $('#SelectedRecordForUpdate').val();
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateAssociation", "Association")',
+                data: '{AssociationToRemove:"' + RecordID+'"}',
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    debugger;
+                    if (data.indexOf("Removed") >= 0) {
+                        $('#btnAssociation_' + RecordID).parent().parent().remove();
+                        $('#btnCancel').click();
+                    }
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+    });
+</script>

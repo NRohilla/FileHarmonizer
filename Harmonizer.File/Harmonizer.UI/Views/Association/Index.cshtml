@@ -3,7 +3,6 @@
     ViewBag.Title = "Association";
 }
 
-
 <div class="form-horizontal my-3">
     <div class="container">
         <div id="divPartial">
@@ -14,41 +13,6 @@
         </div>
         <hr />
         <div class="form-group">
-            @*<div class="row">
-                    <div class="col-md-2 ">
-                        @Html.Label("Select FH#", htmlAttributes: new { @class = "control-label form-label" }) <span class="text-danger font-weight-bold">*</span>
-                    </div>
-                    <div class="col-md-3">
-                        <select id="ddlFHnumber" class="form-control"></select>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-md-2 ">
-                        @Html.Label("Select Associate", htmlAttributes: new { @class = "control-label form-label" }) <span class="text-danger font-weight-bold">*</span>
-                    </div>
-                    <div class="col-md-3">
-                        <select id="ddlAssociate" class="form-control"></select>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-md-2">
-                        @Html.Label("Association Status", htmlAttributes: new { @class = "control-label form-label" }) <span class="text-danger font-weight-bold">*</span>
-                    </div>
-                    <div class="col-md-3">
-                        <select id="ddlAssocStatus" class="form-control"></select>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="text-right">
-                        <input type="button" id="btnAddAssociation" name="AddAssociation" class="btn btn-info" value="Add Association" />
-                    </div>
-                </div>
-                <br />
-                <br />*@
-
             <div class="bg-white p-3 border w-100 float-left">
                 <div class="text-center">
                     <div id="divUserList">
@@ -57,7 +21,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -73,31 +36,15 @@
             </div>
         </div>
     </div>
-
 </div>
 
+<input type="hidden" id="SelectedRecordForUpdate" />
 <script>
-     $('.btn-rename').click(function (e) {
-           // alert('clicked rename');
-             e.preventDefault();
-           var tr = $(this).parents('tr:first');
-           var Status = tr.find('#lblAssocStatus').val();
-            debugger;
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("RenameTemplate", "Association")',
-                data: '{Status:"' + Status + '" }',
-                dataType: "html",
-                contentType: 'application/json; charset=utf-8',
-                success: function (data) {
-                    $('.modal-dialog').removeClass('modal-lg');
-                    $('#modelbodydata').html('');
-                    $('#modelbodydata').html(data);
-                    $('#btnShowData').click();
-                },
-                error: function (error) {
-                    alert("Error! Please try again.");
-                }
-            });
+    $('.btn-rename').click(function (e) {
+         e.preventDefault();
+         var RecordID = $(this).attr('attr-Id');
+         $('#SelectedRecordForUpdate').val(RecordID);
+         $('#modelbodydata').load('@Url.Action("DeactivateAssociation", "Association")');
+         $('#btnShowData').click();
         });
 </script>

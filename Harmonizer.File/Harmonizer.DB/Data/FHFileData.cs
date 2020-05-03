@@ -152,7 +152,7 @@ namespace Harmonizer.DB.Data
             return ds;
         }
 
-        public DataSet GetBusinessTemplateBPIDOrFH(string BPIDOrFH, string SECID,int FileId,string op,string CurrentBPID)
+        public DataSet GetBusinessTemplateBPIDOrFH(string BPIDOrFH, string SECID, int FileId, string op, string CurrentBPID)
         {
             DataSet ds = new DataSet();
             try
@@ -266,7 +266,7 @@ namespace Harmonizer.DB.Data
                             data[i].FilterType="C",
                            });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 // close 
                 DataLogger.Write("FHFile-ConvertToDataTable", ex.Message);
@@ -346,7 +346,7 @@ namespace Harmonizer.DB.Data
                 ConnectionClass.closeconnection(con);
             }
             return Result;
-           
+
         }
 
         public string CreateFilter(CHFilter Filter)
@@ -541,10 +541,10 @@ namespace Harmonizer.DB.Data
             {
                 ConnectionClass.closeconnection(con);
             }
-            
+
         }
 
-        public void CreateUpdateShareValue(DataTable repoTable,string BPID,string op)
+        public void CreateUpdateShareValue(DataTable repoTable, string BPID, string op)
         {
             int Result = 0;
             try
@@ -619,7 +619,7 @@ namespace Harmonizer.DB.Data
             return ds;
         }
 
-        public int SaveHarmonizerTeamplateInfo(int TemplateID,string BPID,string UserID,string TemplateName,string TemplatePath, string comment="")
+        public int SaveHarmonizerTeamplateInfo(int TemplateID, string BPID, string UserID, string TemplateName, string TemplatePath, string comment = "")
         {
             int Result = 0;
             try
@@ -655,7 +655,7 @@ namespace Harmonizer.DB.Data
 
         }
 
-        public DataSet GetTagWithShareData(string BPID,int FileID,string PersonalID,string op)
+        public DataSet GetTagWithShareData(string BPID, int FileID, string PersonalID, string op)
         {
             DataSet ds = new DataSet();
             try
@@ -685,7 +685,7 @@ namespace Harmonizer.DB.Data
             return ds;
         }
 
-        public int CopyTemplate(int oldFileID,string oldName, string newName, string userId, string BPID)
+        public int CopyTemplate(int oldFileID, string oldName, string newName, string userId, string BPID)
         {
             int Result = 0;
             try
@@ -766,11 +766,13 @@ namespace Harmonizer.DB.Data
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
-                if (ds.Tables[0].Rows.Count > 0)
+                if (ds.Tables.Count > 0 &&
+                    ds.Tables[0].Rows.Count > 0)
                 {
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
                         Association association = new Association();
+                        association.ID = Convert.ToInt32(ds.Tables[0].Rows[i]["ID"]);
                         association.FHnumber = Convert.ToString(ds.Tables[0].Rows[i]["FHnumber"]);
                         association.Associate = Convert.ToString(ds.Tables[0].Rows[i]["Associate"]);
                         association.AssocCanceledBy = Convert.ToString(ds.Tables[0].Rows[i]["AssocCanceledBy"]);
@@ -826,7 +828,29 @@ namespace Harmonizer.DB.Data
             return retValue;
         }
 
-
+        public int RemoveAssociation(int RecordID)
+        {
+            int retValue = -1;
+            try
+            {
+                con = ConnectionClass.getConnection();
+                SqlCommand cmd = new SqlCommand("update tbl_Association set assocStatus=0 where ID=" + Convert.ToInt32(RecordID));
+                cmd.Connection = con;
+                retValue = cmd.ExecuteNonQuery();
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                retValue = -1;
+                DataLogger.Write("Association-UpdateAssociation", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return retValue;
+        }
 
     }
 }

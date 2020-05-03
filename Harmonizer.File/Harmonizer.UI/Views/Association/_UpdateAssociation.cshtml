@@ -13,8 +13,7 @@
 
 <div class="row mb-2">
     <div class="col-md-3">
-       
-        <input type="hidden" value="@Model.AssocStatus" id="hiddenStatus" />
+        <input type="hidden" value="@Model.AssocStatus.ToString()" id="hiddenStatus" />
     </div>
     <div class="col-md-9 text-right">
         <input type="button" value="Update" name="update" class="btn btn-info" id="bntUpdateTemplateComment" />
@@ -23,7 +22,10 @@
 
 <script>
     $(document).ready(function () {
-        $('#ddlAssocStatus').val($('#hiddenStatus').val());
+        debugger;
+        var associationStatus = $('#hiddenStatus').val() == "True" ? 1 : 0;
+        $('#ddlAssocStatus').val(associationStatus);
+
         $('#bntUpdateTemplateComment').click(function () {
             var Status = $('#ddlAssocStatus').val();
             debugger

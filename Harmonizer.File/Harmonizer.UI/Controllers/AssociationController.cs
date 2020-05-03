@@ -24,10 +24,32 @@ namespace Harmonizer.UI.Controllers
             return PartialView("_GetAssociationList", lstassociations);
         }
 
-        public ActionResult RenameTemplate(string FHnumber, string Associate, bool Status, int op = 0)
+        public ActionResult UpdateAssociation(string AssociationToRemove)
         {
-           
-            return PartialView("_UpdateAssociation");
+            int UpdateAssocaition = _fhFileData.RemoveAssociation(Convert.ToInt32(AssociationToRemove));
+            string message = "Some issue occured";
+
+            if (UpdateAssocaition > 0)
+                message = "Removed";
+
+            return Json(message, JsonRequestBehavior.AllowGet); ;
+        }
+
+
+
+        public ActionResult RenameTemplate(string FHnumber, string Associate, string Status, int op = 0)
+        {
+            Association objModel = new Association();
+            objModel.FHnumber = FHnumber;
+            objModel.Associate = Associate;
+            objModel.AssocStatus = (Status == "True" ? true : false);
+            return PartialView("_UpdateAssociation", objModel);
+        }
+
+        public ActionResult DeactivateAssociation()
+        {
+            ViewBag.token = Request.QueryString["token"];
+            return PartialView("_DeactivateAssociation");
         }
     }
 }
