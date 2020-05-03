@@ -8,6 +8,7 @@ namespace Harmonizer.Core.Model
 {
     public class Association
     {
+        public int ID { get; set; }
         public string FHnumber { get; set; }
         public string Associate { get; set; }
         public string AssocCanceledBy { get; set; }
