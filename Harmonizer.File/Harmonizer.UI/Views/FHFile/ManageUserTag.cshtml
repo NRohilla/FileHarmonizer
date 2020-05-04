@@ -115,12 +115,12 @@
     </div>
 </div>
 
-    <style>
-        .active {
-            background-color: gold !important;
-        }
-    </style>
-    <script>
+<style>
+    .active {
+        background-color: gold !important;
+    }
+</style>
+<script>
     function MaskForDate() {
         if ($('#UserTagDetails >tbody >tr').length != 0) {
             $('#UserTagDetails >tbody >tr').each(function () {
@@ -157,7 +157,7 @@
                 }
         }
 
-       
+
 
         MaskForDate();
         $('#filterTempateFileinfo').hide();
@@ -247,11 +247,30 @@
 
         });
 
+         $('#txtBPFHNumber').keyup(function () {
+            debugger
+            var BPFHID = $(this).val();
+             jQuery.ajax({
+                 type: "Get",
+                 url: '@Url.Action("GetAssociationID", "FHFile")?BPIDOrFH=' + BPFHID,
+                   dataType: "JSON",
+                   contentType: "application/json; charset=utf-8",
+                 success: function (data) {
+                       debugger
+                    var recordID = data.ID;
+                     if (recordID != "") {
+                            $('#modelbodydata').load('@Url.Action("ActiveAssociation", "Association")');
+                            $('#btnShowAssociation').click();
+                           }
+                    }
+            });
+        });
+
         $('#txtBPFHNumber').change(function () {
             //alert('Hi i am change');
             var bpIdOrHN = $('#txtBPFHNumber').val().trim();
             var sectorId = $('#Sectore').val().trim();
-             var recordID = '@Session["RecordId"]';
+            debugger
             $("#wait").css("display", "block");
                 jQuery.ajax({
                     type: "POST",
@@ -260,17 +279,32 @@
                     contentType: "application/json; charset=utf-8",
                     data: '{BPIDOrFH:"' + bpIdOrHN + '", SecID: "' + sectorId+'" }',
                     success: function (data) {
+                        debugger
+                        @*$('#txtBPFHNumber').keyup(function () {
+                            $.ajax({
+                                type: "Get",
+                                url: '@Url.Action("GetAssociationID", "FHFile")?BPIDOrFH=' + bpIdOrHN,
+                                dataType: "JSON",
+                                contentType: "application/json; charset=utf-8",
+                                success: function (data) {
+                                    debugger
+                                    var recordID = data.ID;
+                                    if (recordID != "") {
+
+                                        $('#modelbodydata').load('@Url.Action("ActiveAssociation", "Association")');
+                                        $('#btnShowAssociation').click();
+
+                                    }
+                                }
+                            });
+                        });*@
                         $("#wait").css("display", "none");
                         $('#divUserDetails').html('');
                         $('#divBusinessTemplate').html('');
                         $('#actionUpdateFilterButton').hide();
                         $('#actionHarmonizeButton').hide();
                         $('#divBusinessTemplate').html(data);
-                            debugger
-                            if (recordID != "") {
-                                $('#modelbodydata').load('@Url.Action("ActiveAssociation", "Association")');
-                                $('#btnShowAssociation').click();
-                         }
+                      
                     },
                     error: function (errMsg) {
                         $("#wait").css("display", "none");
@@ -279,14 +313,17 @@
             });
         });
 
-        
+       
+
+
+
         // --Create H.template
         $('#bntHarmonize').click(function () {
             alert('I am click for harmonize template');
         });
     });
-    </script>
-    <script>
+</script>
+<script>
     $(document).on('click', '#tbltemp tbody > tr', function (e) {
          e.preventDefault();
         debugger;
@@ -321,4 +358,4 @@
 
     }
 
-    </script>
+</script>

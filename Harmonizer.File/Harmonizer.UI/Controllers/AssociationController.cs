@@ -23,6 +23,7 @@ namespace Harmonizer.UI.Controllers
             }
             return View();
         }
+
         public ActionResult UserList()
         {
             string FHNumber = Session["FHnumber"].ToString();
@@ -48,6 +49,7 @@ namespace Harmonizer.UI.Controllers
 
             if (UpdateAssocaition > 0)
                 message = "Removed";
+            Session.Remove("RecordId");
             return Json(message, JsonRequestBehavior.AllowGet);
         }
 
