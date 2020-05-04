@@ -12,7 +12,7 @@
             <input type="button" id="btnUnChkAll" class="btn btn-info" name="uncheck all" value="UnCheck All" />
         </div>
         <div class="col-md-3">
-            <input type="text" class="form-control" id="txtFHNumberFilterData" value="" style="background-color:yellow;" placeholder="Personal ID# Or FH#" />
+            <input type="text" class="form-control" id="txtFHNumberFilterData" value="" style="background-color:yellow;"  placeholder="Personal ID# Or FH#" />
         </div>
         <div class="col-md-5 text-right">
             @*<input type="button" class="btn btn-info" name="Print" id="btnMerge" value="Merge" />*@
@@ -20,40 +20,41 @@
             <input type="button" class="btn btn-info" name="Print" id="btnPrintHTemplate" value="Print" />
         </div>
     </div>
-    <div class="row scrollable-table" >
+    <div class="row scrollable-table">
         <div class="col-md-12">
             @webGrid.GetHtml(
                          htmlAttributes: new { @id = "HrmonizeTemplateManageDetails", @class = "table table-bordered table-sm table-striped search-replace-table sticky-header" },
                          columns: webGrid.Columns(
                          webGrid.Column("*", format: @<text> <input type="hidden" name='hiddenHarmonizedTempalteFileName' id="hiddenHarmonizedTempalteFileName" value="@item.HarmonizeTemplate.TemplatePath" />
-                            <input type="hidden" name='hiddenHarmonizedTempalteFileName' id="hiddenHarmonizedTempalteID" value="@item.HarmonizeTemplate.ID" />
-                            <input type="checkbox" class="check" id="chk" name="chk" />
+                                <input type="hidden" name='hiddenHarmonizedTempalteFileName' id="hiddenHarmonizedTempalteID" value="@item.HarmonizeTemplate.ID" />
+                                <input type="checkbox" class="check" id="chk" name="chk" />
                         </text> ),
 
-                                             webGrid.Column("File", format: @<text>
-                                                @if (item.HarmonizeTemplate.HTFHNumber == "0")
-                                                         {
-                                                    @Html.Label("lblFileName", String.Format("{0}-{1}", (string)item.Template.TEMPID, (string)item.Template.TemplateDesc))
-                                                         }
-                                                         else
-                                                         {
-                                                    @Html.Label("lblFileName", String.Format("{0}-{1} FH#-{2}", (string)item.Template.TEMPID, (string)item.Template.TemplateDesc, (string)item.HarmonizeTemplate.HTFHNumber), new { @style = "color:red;" })
-                                                         }
-                                            </text>),
-                                                            webGrid.Column("Ext", format: @<span>@Html.Label("lblTemplateExt", (string)item.Template.DocExt)</span>),
-                                                                 webGrid.Column("Template", format: @<span>@Html.Label("lblTemplate", (string)item.Template.TemplateDesc)</span>),
-                                                                     webGrid.Column("Comments", format: @<text>
-                                                                        @Html.Label("lblTemplate", (string)item.HarmonizeTemplate.Comment, new { @class = "read" })
-                                                                        @Html.TextBox("txtComment", (string)item.HarmonizeTemplate.Comment, new { @class = "edit" })
-                                                                    </text>),
-                                                                         webGrid.Column("Sector", format: @<span>@Html.Label("lblTemplageSector", (string)item.Filter.SECID)</span>),
-                                                      webGrid.Column("Assign Scheme", format: @<text>@Html.DropDownList("ddlFilterSchme", new SelectList((IEnumerable)ViewData["lstSchme"], "Value", "Text", item.Filter.AssignScheme), new { onchange = "GetSchemeValue(this, '" + @item.Filter.FLTRID + "');", @id = "ddlFilterSchme" })</text>),
-                                                                                webGrid.Column("Update Comment", format: @<text>
-                                                                                    <input type="button" name='btnComment' value="Comment" class="btn-info btn-comment read" />
-                                                                                    <input type="button" name='btnUpdateComment' value="Update" class="btn-info btn-Update edit" />
-                                                                                    <input type="button" name='btnCancelComment' value="Cancel" class="btn-info btn-cancel edit" /></text>),
-                                                                                   webGrid.Column("View", format: @<input type="button" name='btnView' value="View" class="btn-info btn-view" />)
-                                                                                                                                                                         ))
+                                                 webGrid.Column("File", format: @<text>
+                                                    @if (item.HarmonizeTemplate.HTFHNumber == "0")
+                                                             {
+                                                        @Html.Label("lblFileName", String.Format("{0}-{1}", (string)item.Template.TEMPID, (string)item.Template.TemplateDesc))
+                                                             }
+                                                             else
+                                                             {
+                                                        @Html.Label("lblFileName", String.Format("{0}-{1} FH#-{2}", (string)item.Template.TEMPID, (string)item.Template.TemplateDesc, (string)item.HarmonizeTemplate.HTFHNumber), new { @style = "color:red;" })
+                                                             }
+                                                    /**/
+                                                </text>),
+                                                                    webGrid.Column("Ext", format: @<span>@Html.Label("lblTemplateExt", (string)item.Template.DocExt)</span>),
+                                                                              webGrid.Column("Template", format: @<span>@Html.Label("lblTemplate", (string)item.Template.TemplateDesc)</span>),
+                                                                                     webGrid.Column("Comments", format: @<text>
+                                                                                        @Html.Label("lblTemplate", (string)item.HarmonizeTemplate.Comment, new { @class = "read" })
+                                                                                        @Html.TextBox("txtComment", (string)item.HarmonizeTemplate.Comment, new { @class = "edit" })
+                                                                                    </text>),
+                                                                                             webGrid.Column("Sector", format: @<span>@Html.Label("lblTemplageSector", (string)item.Filter.SECID)</span>),
+                                                                              webGrid.Column("Assign Scheme", format: @<text>@Html.DropDownList("ddlFilterSchme", new SelectList((IEnumerable)ViewData["lstSchme"], "Value", "Text", item.Filter.AssignScheme), new { onchange = "GetSchemeValue(this, '" + @item.Filter.FLTRID + "');", @id = "ddlFilterSchme" })</text>),
+                                                                                                           webGrid.Column("Update Comment", format: @<text>
+                                                                                                            <input type="button" name='btnComment' value="Comment" class="btn-info btn-comment read" />
+                                                                                                            <input type="button" name='btnUpdateComment' value="Update" class="btn-info btn-Update edit" />
+                                                                                                            <input type="button" name='btnCancelComment' value="Cancel" class="btn-info btn-cancel edit" /></text>),
+                                                                                                                webGrid.Column("View", format: @<input type="button" name='btnView' value="View" class="btn-info btn-view" />)
+                                                                                                                                                                                                           ))
 
         </div>
     </div>
@@ -66,6 +67,16 @@ else
         </div>
     </div>
 }
+<input type="button" id="btnShowAssociation" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModal" />
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-body" id="modelbodydata">
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     $(document).ready(function () {
 
@@ -78,10 +89,12 @@ else
         });
 
 
+
           $('#txtFHNumberFilterData').change(function () {
              //alert('i am change');
             //$('#divHarmonizeTemplateDetails').html('');
-            var FHNumber = $('#txtFHNumberFilterData').val();
+              var FHNumber = $('#txtFHNumberFilterData').val();
+              var recordID = '@Session["RecordId"]';
             $("#wait").show();
             $.ajax({
                 type: "POST",
@@ -96,6 +109,11 @@ else
                     $('#divHarmonizeTemplateDetails').html(data);
                     $('#txtFHNumberFilterData').val(FHNumber);
                     $('.edit').hide();
+                    debugger
+                     if (recordID != "") {
+                             $('#modelbodydata').load('@Url.Action("ActiveAssociation", "Association")');
+                             $('#btnShowAssociation').click();
+                         }
                 },
                 error: function (error) {
                     $("#wait").hide();

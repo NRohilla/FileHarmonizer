@@ -32,18 +32,23 @@ namespace Harmonizer.UI.Controllers
             if (UpdateAssocaition > 0)
                 message = "Removed";
 
-            return Json(message, JsonRequestBehavior.AllowGet); ;
+            return Json(message, JsonRequestBehavior.AllowGet); 
         }
 
-
-
-        public ActionResult RenameTemplate(string FHnumber, string Associate, string Status, int op = 0)
+        public ActionResult UpdateInActiveAssociation(string RecordId)
         {
-            Association objModel = new Association();
-            objModel.FHnumber = FHnumber;
-            objModel.Associate = Associate;
-            objModel.AssocStatus = (Status == "True" ? true : false);
-            return PartialView("_UpdateAssociation", objModel);
+            int UpdateAssocaition = _fhFileData.UpdateAssociation(Convert.ToInt32(RecordId));
+            string message = "Some issue occured";
+
+            if (UpdateAssocaition > 0)
+                message = "Removed";
+            return Json(message, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ActiveAssociation()
+        {
+            ViewBag.token = Request.QueryString["token"];
+            return PartialView("_UpdateAssociation");
         }
 
         public ActionResult DeactivateAssociation()
