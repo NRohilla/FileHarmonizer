@@ -2197,10 +2197,8 @@ namespace Harmonizer.UI.Controllers
         [SessionTimeoutFilter]
         public ActionResult GetBusinessTemplateByBPIDOrFH(string BPIDOrFH, string SecID)
         {
-            Association association = new Association();
             string BPID = Session["BPID"].ToString();
             string UserID = Session["UserID"].ToString();
-            //String FHnumber = Session["FHnumber"].ToString();
             List<CreateListTemplate> lstTemp = new List<CreateListTemplate>();
             try
             {
