@@ -11,7 +11,19 @@ namespace Harmonizer.UI.Controllers
         // GET: Report
         public ActionResult Index()
         {
+            ////-Nitin Check for expiry of account
+            if (TempData["expiredate"] != null)
+            {
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                TempData.Keep();
+            }
             return View();
+        }
+
+        public ActionResult ExipreActivation()
+        {
+            ViewBag.token = Request.QueryString["token"];
+            return PartialView("_UserActivationMessage");
         }
     }
 }

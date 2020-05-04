@@ -15,6 +15,12 @@ namespace Harmonizer.UI.Controllers
         // GET: Association
         public ActionResult Index()
         {
+            ////-Nitin Check for expiry of account
+            if (TempData["expiredate"] != null)
+            {
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                TempData.Keep();
+            }
             return View();
         }
         public ActionResult UserList()
@@ -55,6 +61,12 @@ namespace Harmonizer.UI.Controllers
         {
             ViewBag.token = Request.QueryString["token"];
             return PartialView("_DeactivateAssociation");
+        }
+
+        public ActionResult ExipreActivation()
+        {
+            ViewBag.token = Request.QueryString["token"];
+            return PartialView("_UserActivationMessage");
         }
     }
 }
