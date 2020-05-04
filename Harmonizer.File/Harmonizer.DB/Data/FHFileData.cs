@@ -798,20 +798,14 @@ namespace Harmonizer.DB.Data
         }
 
 
-        public int UpdateAssociation(Association _association)
+        public int UpdateAssociation(int RecordID)
         {
             int retValue = -1;
             try
             {
                 con = ConnectionClass.getConnection();
-                SqlCommand cmd = new SqlCommand();
+                SqlCommand cmd = new SqlCommand("update tbl_Association set assocStatus=1 where ID=" + Convert.ToInt32(RecordID));
                 cmd.Connection = con;
-                cmd.CommandText = "sp_InsertUpdateAssociation";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@FHnumber", _association.FHnumber);
-                cmd.Parameters.AddWithValue("@Associate", _association.Associate);
-                cmd.Parameters.AddWithValue("@AssocStatus", _association.AssocStatus);
-                cmd.Parameters.Add("@Action", SqlDbType.NVarChar).Value = "Update";
                 retValue = cmd.ExecuteNonQuery();
                 ConnectionClass.closeconnection(con);
             }
@@ -851,6 +845,30 @@ namespace Harmonizer.DB.Data
             }
             return retValue;
         }
-
+        public string GetAssociationInActiveId(string FHnumber,string Associate)
+        {
+            string RecordID = "";
+            try
+            {
+                con = ConnectionClass.getConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT Convert(varchar,ID) FROM tbl_association where AssocStatus=0 and FHnumber='" + FHnumber + "' and Associate='" + Associate + "'";
+                cmd.CommandType = CommandType.Text;
+                RecordID = (string)(cmd.ExecuteScalar());
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                RecordID = "";
+                DataLogger.Write("FHFile-GetTAGSECCode", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return RecordID;
+        }
     }
 }
