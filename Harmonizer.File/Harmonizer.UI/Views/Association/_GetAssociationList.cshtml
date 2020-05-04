@@ -1,0 +1,32 @@
+﻿
+@model IEnumerable<Harmonizer.Core.Model.Association>
+@{
+    WebGrid webGrid = new WebGrid(source: Model, canPage: false, canSort: false);
+}
+@if (Model.Count() > 0)
+{
+    <div class="row scrollable-table">
+        <div class="col-md-12">
+            @webGrid.GetHtml(
+                   htmlAttributes: new { @id = "AssociationDetails", @class = "table table-bordered table-sm table-striped search-replace-table sticky-header" },
+                   columns: webGrid.Columns(
+                                            webGrid.Column("FH#", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHnumber), new { @id = "lblFHnumber_"+ item.ID })</span>),
+                                            webGrid.Column("Associate", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.Associate), new { @id = "lblAssociate_" + item.ID })</span>),
+                                            webGrid.Column("Association Date",  format: (item) => string.Format("{0:dd-MMM-yyyy}", item.OriginalDateofAssoc)),
+                                            webGrid.Column("Association Cancel On", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.AssocCanceledDate)),
+                                            webGrid.Column("Canceled By", format: @<span>@Html.Label("lblAssocCanceledBy", String.Format("{0}", (string)item.AssocCanceledBy))</span>),
+                                            webGrid.Column("Status", format: @<span>@Html.Label("lblAssocStatus", item.AssocStatus ? "Active" : "In-Active", new { @id = "lblAssocStatus_" + item.ID })</span>),
+                                            webGrid.Column("", format: @<input type="button" name='btnRename' value="Remove Association" id="btnAssociation_@item.ID" attr-Id="@item.ID" class="btn-info btn-rename" />))
+                                                         )
+
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <span class="text-danger">No Active Association</span>
+        </div>
+    </div>
+}

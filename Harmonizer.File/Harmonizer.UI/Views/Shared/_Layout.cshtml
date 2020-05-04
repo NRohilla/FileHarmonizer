@@ -151,9 +151,14 @@
                                                     @Html.ActionLink("Archives", "Archive", "Scheme", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                 </div>
                                             </li>
-                                            @*<li class="nav-item d-none">
-                                                    @Html.ActionLink("Report", "Index", "Report", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
-                                                </li>*@
+                                            <li class="nav-item dropdown d-none">
+                                                <a class="nav-link dropdown-toggle d-block py-1 px-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Report
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    @Html.ActionLink("Cost Of OwnerShip", "Index", "Report", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                </div>
+                                            </li>
                                             <li class="nav-item dropdown d-none">
                                                 <a class="nav-link dropdown-toggle d-block py-1 px-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Mannage Account
@@ -162,6 +167,7 @@
                                                     @Html.ActionLink("Profile", "UserProfile", "User", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                     @Html.ActionLink("QR Code", "QRCode", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                     @Html.ActionLink("Archives", "Archive", "User", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                    @Html.ActionLink("Association", "Index", "Association", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                     @Html.ActionLink("Account Settings", "FHAccountSetting", "User", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                     @if (Convert.ToInt32(Session["Role"]) == 5)
                                                     {

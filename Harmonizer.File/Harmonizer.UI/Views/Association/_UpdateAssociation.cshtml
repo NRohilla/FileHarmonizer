@@ -1,0 +1,53 @@
+﻿@model Harmonizer.Core.Model.Association
+<div class="row mb-2">
+    <div class="col-md-3">
+        <label>Association Status</label>
+    </div>
+    <div class="col-md-9">
+        <select id="ddlAssocStatus" class="form-control">
+            <option value="1">Active</option>
+            <option value="0">In-Active</option>
+        </select>
+    </div>
+</div>
+
+<div class="row mb-2">
+    <div class="col-md-3">
+        <input type="hidden" value="@Model.AssocStatus.ToString()" id="hiddenStatus" />
+    </div>
+    <div class="col-md-9 text-right">
+        <input type="button" value="Update" name="update" class="btn btn-info" id="bntUpdateTemplateComment" />
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        debugger;
+        var associationStatus = $('#hiddenStatus').val() == "True" ? 1 : 0;
+        $('#ddlAssocStatus').val(associationStatus);
+
+        $('#bntUpdateTemplateComment').click(function () {
+            var Status = $('#ddlAssocStatus').val();
+            debugger
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("RenameTemplate", "Association")',
+                data: '{Status:"' + Status + '", op:"1" }',
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data >= 1) {
+                        location.reload(true);
+                    }
+                    else {
+                        alert('Error! Please try it again.');
+                    }
+                },
+                error: function (error) {
+                    alert("Error! Please try again.");
+                }
+            });
+        });
+
+    });
+</script>

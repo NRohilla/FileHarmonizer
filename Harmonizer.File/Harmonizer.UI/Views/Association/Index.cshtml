@@ -1,0 +1,50 @@
+﻿@model Harmonizer.Core.Model.Association
+@{
+    ViewBag.Title = "Association";
+}
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Association</h4>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="bg-white p-3 border w-100 float-left">
+                <div class="text-center">
+                    <div id="divUserList">
+                        @Html.Action("UserList", "Association")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="button" id="btnShowData" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModal" />
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Update Association Details</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modelbodydata">
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="SelectedRecordForUpdate" />
+<script>
+    $('.btn-rename').click(function (e) {
+         e.preventDefault();
+         var RecordID = $(this).attr('attr-Id');
+         $('#SelectedRecordForUpdate').val(RecordID);
+         $('#modelbodydata').load('@Url.Action("DeactivateAssociation", "Association")');
+         $('#btnShowData').click();
+        });
+</script>
