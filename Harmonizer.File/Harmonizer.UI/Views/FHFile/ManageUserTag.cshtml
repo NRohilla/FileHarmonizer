@@ -248,7 +248,7 @@
         });
 
          $('#txtBPFHNumber').keyup(function () {
-            debugger
+           
             var BPFHID = $(this).val();
              jQuery.ajax({
                  type: "Get",
@@ -256,7 +256,7 @@
                    dataType: "JSON",
                    contentType: "application/json; charset=utf-8",
                  success: function (data) {
-                       debugger
+                       
                     var recordID = data.ID;
                      if (recordID != "") {
                             $('#modelbodydata').load('@Url.Action("ActiveAssociation", "Association")');

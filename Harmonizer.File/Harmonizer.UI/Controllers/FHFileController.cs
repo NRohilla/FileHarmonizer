@@ -2214,6 +2214,7 @@ namespace Harmonizer.UI.Controllers
                     association.AssocStatus = true;
                     association.AssocCanceledBy = UserID;
                     int createAssociation = _fileData.CreateAssociation(association);
+                    
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
                         CreateListTemplate objtemp = new CreateListTemplate();
