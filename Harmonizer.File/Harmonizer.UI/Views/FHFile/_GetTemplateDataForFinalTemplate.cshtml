@@ -12,11 +12,7 @@
 
 @if (Model.Count() > 0)
 {
-    if (Session["RecordId"] != null)
-    {
-
-        <script>OpenPopup()</script>
-    }
+     
     <div class="row scrollable-table" style="max-height:380px;">
         <div class="col-md-12">
             @webGrid.GetHtml(
@@ -43,9 +39,14 @@ else
     </table>
 }
 
+<input type="hidden" value="@Convert.ToString(Session["RecordId"])" id="SessionRecordID" />
 <script>
-    function OpenPopup(){
-          $('#modelbodydata').load('@Url.Action("ActiveAssociation", "Association")');
-                             $('#btnShowAssociation').click();
-    } 
+    $(document).ready(function () {
+        debugger;
+        if ($('#SessionRecordID').val().trim() != "") {
+         $('#modelbodydata').load('@Url.Action("ActiveAssociation", "Association")');
+            $('#btnShowAssociation').click();
+        }
+    });
+     
 </script>
