@@ -247,7 +247,7 @@
 
         });
 
-         $('#txtBPFHNumber').keyup(function () {
+         @*$('#txtBPFHNumber').keyup(function () {
            
             var BPFHID = $(this).val();
              jQuery.ajax({
@@ -264,9 +264,9 @@
                            }
                     }
             });
-        });
+        });*@
 
-        $('#txtBPFHNumber').change(function () {
+        $('#txtBPFHNumber').blur(function () {
             //alert('Hi i am change');
             var bpIdOrHN = $('#txtBPFHNumber').val().trim();
             var sectorId = $('#Sectore').val().trim();
