@@ -72,10 +72,11 @@
                 $('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "Association", new { token = Request.QueryString["token"] })');
                 $('#btnShowDataActivation').click();
                 $('#btnsave').hide();
+                $('.btn-rename').hide();
             }
         }
 
-            $('.btn-rename').click(function (e) {
+        $('.btn-rename').click(function (e) {
          e.preventDefault();
          var RecordID = $(this).attr('attr-Id');
          $('#SelectedRecordForUpdate').val(RecordID);
