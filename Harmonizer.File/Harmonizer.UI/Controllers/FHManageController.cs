@@ -142,6 +142,11 @@ namespace Harmonizer.UI.Controllers
                 association.AssocStatus = true;
                 association.AssocCanceledBy = UserID;
                 int createAssociation = _fhFileData.CreateAssociation(association);
+                string recordId1 = _fhFileData.GetAssociationInActiveId(FHnumb, FHNumber);
+                if (recordId1 != "")
+                {
+                    Session["RecordId"] = recordId1;
+                }
                 for (int i = 0; i < dsScheme.Tables[0].Rows.Count; i++)
                 {
                     lstSchme.Add(new SelectListItem { Text = dsScheme.Tables[0].Rows[i]["SchemeNum"].ToString() + "-" + dsScheme.Tables[0].Rows[i]["SchemeName"].ToString(), Value = dsScheme.Tables[0].Rows[i]["SchemeNum"].ToString() });

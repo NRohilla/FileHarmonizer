@@ -69,8 +69,9 @@ namespace Harmonizer.UI.App_Start
                             {
                                 if (_userData.GetExpiredate(HttpContext.Current.Session["UserID"].ToString()) < DateTime.Today.Date)
                                 {
+                                    DateTime ExpiryDate = _userData.GetExpiredate(HttpContext.Current.Session["UserID"].ToString());
                                     ////Changed by Nitin 28042020
-                                    filterContext.Controller.TempData["expireddate"] = _userData.GetExpiredate(HttpContext.Current.Session["UserID"].ToString());
+                                    filterContext.Controller.TempData["expireddate"] = ExpiryDate;
                                     filterContext.Controller.TempData.Keep();
                                     ////this will stop the page from going to User Profile 
                                     //filterContext.Result = new RedirectResult("~/User/UserProfile?token=" + token);
@@ -105,8 +106,9 @@ namespace Harmonizer.UI.App_Start
                         {
                             if (_userData.GetExpiredate(HttpContext.Current.Session["UserID"].ToString()) < DateTime.Today.Date)
                             {
+                                DateTime ExpiryDate = _userData.GetExpiredate(HttpContext.Current.Session["UserID"].ToString());
                                 ////Changed by Nitin 28042020
-                                filterContext.Controller.TempData["expireddate"] = _userData.GetExpiredate(HttpContext.Current.Session["UserID"].ToString());
+                                filterContext.Controller.TempData["expireddate"] = ExpiryDate;
                                 filterContext.Controller.TempData.Keep();
                                 ////this will stop the page from going to User Profile 
                                 //filterContext.Result = new RedirectResult("~/User/UserProfile?token=" + token);

@@ -2202,6 +2202,7 @@ namespace Harmonizer.UI.Controllers
             string BPID = Session["BPID"].ToString();
             string UserID = Session["UserID"].ToString();
             string FHnumber = Session["FHnumber"].ToString();
+            Session["BPIDOrFH"] = BPIDOrFH;
             List<CreateListTemplate> lstTemp = new List<CreateListTemplate>();
             try
             {
@@ -2837,6 +2838,20 @@ namespace Harmonizer.UI.Controllers
             ViewBag.token = Request.QueryString["token"];
             return PartialView("_UserActivationMessage");
         }
+
+
+        public string GetAssociationID(string BPIDOrFH = "")
+        {
+            string FHnumber = Session["FHnumber"].ToString();
+            string recordId = _fileData.GetAssociationInActiveId(FHnumber, BPIDOrFH);
+            if (recordId != "")
+            {
+                Session["RecordId"] = recordId;
+                return recordId;
+            }
+            return null;
+        }
+      
     }
 
 }

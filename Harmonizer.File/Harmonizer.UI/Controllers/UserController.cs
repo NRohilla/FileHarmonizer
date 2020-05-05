@@ -55,6 +55,13 @@ namespace Harmonizer.UI.Controllers
             if(Session["BPType"]!=null)
                 lst = lst.Where(x => x.Group.ToLower().Trim() == Session["BPType"].ToString().ToLower().Trim() || x.Cost==0).ToList();
 
+            ////-Nitin Check for expiry of account
+            if (TempData["expiredate"] != null)
+            {
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                TempData.Keep();
+            }
+
             return View(lst);
         }
       

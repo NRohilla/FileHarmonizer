@@ -1,46 +1,29 @@
-﻿@model Harmonizer.Core.Model.Association
-<div class="row mb-2">
-    <div class="col-md-3">
-        <label>Association Status</label>
+﻿<div>
+    <div class="mt-1 mb-4">
+        Association exist, do you really want to reactivate this assocation ?
     </div>
-    <div class="col-md-9">
-        <select id="ddlAssocStatus" class="form-control">
-            <option value="1">Active</option>
-            <option value="0">In-Active</option>
-        </select>
-    </div>
-</div>
-
-<div class="row mb-2">
-    <div class="col-md-3">
-        <input type="hidden" value="@Model.AssocStatus.ToString()" id="hiddenStatus" />
-    </div>
-    <div class="col-md-9 text-right">
-        <input type="button" value="Update" name="update" class="btn btn-info" id="bntUpdateTemplateComment" />
+    <div>
+        <input type="button" name="btnYes" id="btnYes" value="Yes" data-dismiss="modal" class="btn btn-info" />
+        <input type="button" id="btnNo" class="btn btn-info" data-dismiss="modal" value="No" />
     </div>
 </div>
 
 <script>
     $(document).ready(function () {
-        debugger;
-        var associationStatus = $('#hiddenStatus').val() == "True" ? 1 : 0;
-        $('#ddlAssocStatus').val(associationStatus);
-
-        $('#bntUpdateTemplateComment').click(function () {
-            var Status = $('#ddlAssocStatus').val();
+        $('#btnYes').click(function (e) {
+            e.preventDefault();
+            var RecordID = '@Session["RecordId"]';
             debugger
             $.ajax({
                 type: "POST",
-                url: '@Url.Action("RenameTemplate", "Association")',
-                data: '{Status:"' + Status + '", op:"1" }',
-                dataType: "json",
+                url: '@Url.Action("UpdateInActiveAssociation", "Association")',
+                data: '{RecordId:"' + RecordID +'"}',
+                dataType: "html",
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
-                    if (data >= 1) {
-                        location.reload(true);
-                    }
-                    else {
-                        alert('Error! Please try it again.');
+                    if (data.indexOf("Removed") >= 0) {
+                        $('#btnAssociation_' + RecordID).parent().parent().remove();
+                        $('#btnNo').click();
                     }
                 },
                 error: function (error) {
@@ -48,6 +31,5 @@
                 }
             });
         });
-
     });
 </script>

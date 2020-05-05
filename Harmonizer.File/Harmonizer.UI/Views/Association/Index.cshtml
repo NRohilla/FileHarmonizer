@@ -38,13 +38,52 @@
     </div>
 </div>
 
+<!-- The Modal ---- To show the Pop Up on page load -->
+<input type="button" id="btnShowDataActivation" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModalActivation" />
+<div class="modal" id="myModalActivation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-body" id="modelbodydataActivation">
+            </div>
+        </div>
+    </div>
+</div>
+
 <input type="hidden" id="SelectedRecordForUpdate" />
 <script>
-    $('.btn-rename').click(function (e) {
+     var compare_dates = function (edate1, cdate2) {
+        if (edate1 < cdate2)
+            return true;
+        else {
+            return false;
+        }
+    }
+
+    $(document).ready(function () {
+        debugger;
+
+        /////To show the Pop Up on page load
+        var edate = '@ViewBag.ExpireDate';
+        var cdate = '@DateTime.Today.Date.ToShortDateString()';
+
+        if (edate != "") {
+            if (compare_dates(new Date(edate), new Date(cdate)) == true) {
+                $('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "Association", new { token = Request.QueryString["token"] })');
+                $('#btnShowDataActivation').click();
+                $('#btnsave').hide();
+                $('.btn-rename').hide();
+            }
+        }
+
+        $('.btn-rename').click(function (e) {
          e.preventDefault();
          var RecordID = $(this).attr('attr-Id');
          $('#SelectedRecordForUpdate').val(RecordID);
          $('#modelbodydata').load('@Url.Action("DeactivateAssociation", "Association")');
          $('#btnShowData').click();
         });
+    });
+
+
 </script>

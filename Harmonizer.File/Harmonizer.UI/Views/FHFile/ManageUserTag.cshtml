@@ -104,6 +104,17 @@
     </div>
 </div>
 
+<input type="button" id="btnShowAssociation" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModal" />
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-body" id="modelbodydata">
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
     .active {
         background-color: gold !important;
@@ -145,6 +156,7 @@
                 $('#btnsave').hide();
                 }
         }
+
 
 
         MaskForDate();
@@ -235,11 +247,30 @@
 
         });
 
+         $('#txtBPFHNumber').keyup(function () {
+            debugger
+            var BPFHID = $(this).val();
+             jQuery.ajax({
+                 type: "Get",
+                 url: '@Url.Action("GetAssociationID", "FHFile")?BPIDOrFH=' + BPFHID,
+                   dataType: "JSON",
+                   contentType: "application/json; charset=utf-8",
+                 success: function (data) {
+                       debugger
+                    var recordID = data.ID;
+                     if (recordID != "") {
+                            $('#modelbodydata').load('@Url.Action("ActiveAssociation", "Association")');
+                            $('#btnShowAssociation').click();
+                           }
+                    }
+            });
+        });
+
         $('#txtBPFHNumber').change(function () {
             //alert('Hi i am change');
             var bpIdOrHN = $('#txtBPFHNumber').val().trim();
             var sectorId = $('#Sectore').val().trim();
-
+            debugger
             $("#wait").css("display", "block");
                 jQuery.ajax({
                     type: "POST",
@@ -248,13 +279,32 @@
                     contentType: "application/json; charset=utf-8",
                     data: '{BPIDOrFH:"' + bpIdOrHN + '", SecID: "' + sectorId+'" }',
                     success: function (data) {
+                        debugger
+                        @*$('#txtBPFHNumber').keyup(function () {
+                            $.ajax({
+                                type: "Get",
+                                url: '@Url.Action("GetAssociationID", "FHFile")?BPIDOrFH=' + bpIdOrHN,
+                                dataType: "JSON",
+                                contentType: "application/json; charset=utf-8",
+                                success: function (data) {
+                                    debugger
+                                    var recordID = data.ID;
+                                    if (recordID != "") {
+
+                                        $('#modelbodydata').load('@Url.Action("ActiveAssociation", "Association")');
+                                        $('#btnShowAssociation').click();
+
+                                    }
+                                }
+                            });
+                        });*@
                         $("#wait").css("display", "none");
                         $('#divUserDetails').html('');
                         $('#divBusinessTemplate').html('');
                         $('#actionUpdateFilterButton').hide();
                         $('#actionHarmonizeButton').hide();
                         $('#divBusinessTemplate').html(data);
-
+                      
                     },
                     error: function (errMsg) {
                         $("#wait").css("display", "none");
@@ -262,6 +312,10 @@
                     }
             });
         });
+
+       
+
+
 
         // --Create H.template
         $('#bntHarmonize').click(function () {
