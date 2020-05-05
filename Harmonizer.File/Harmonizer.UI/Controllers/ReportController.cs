@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Harmonizer.Core.Model;
+using Harmonizer.DB.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,7 @@ namespace Harmonizer.UI.Controllers
 {
     public class ReportController : Controller
     {
+        FHFileData _fhFileData = new FHFileData();
         // GET: Report
         public ActionResult Index()
         {
@@ -18,6 +21,13 @@ namespace Harmonizer.UI.Controllers
                 TempData.Keep();
             }
             return View();
+        }
+
+        public ActionResult CostOfOwnershipList()
+        {
+            string FHNumber = Session["FHnumber"].ToString();
+            List<CostOfOwnership> lstCostOfOwnership = _fhFileData.GetCostOfOwnershipDetails(FHNumber);
+            return PartialView("_GetCostOfOwnershipList", lstCostOfOwnership);
         }
 
         public ActionResult ExipreActivation()

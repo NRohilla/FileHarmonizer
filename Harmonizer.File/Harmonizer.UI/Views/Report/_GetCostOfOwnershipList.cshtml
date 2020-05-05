@@ -1,0 +1,35 @@
+﻿
+@model IEnumerable<Harmonizer.Core.Model.CostOfOwnership>
+@{
+    WebGrid webGrid = new WebGrid(source: Model, canPage: false, canSort: false);
+}
+@if (Model.Count() > 0)
+{
+    <div class="row scrollable-table">
+        <div class="col-md-12">
+            @webGrid.GetHtml(
+                   htmlAttributes: new { @id = "CostOfOwnershipDetails", @class = "table table-bordered table-sm table-striped search-replace-table sticky-header" },
+                   columns: webGrid.Columns(
+                            webGrid.Column("FH#", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHnumber))</span>),
+                                 webGrid.Column("Assoc#", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.Associate))</span>),
+                                     webGrid.Column("Date Processed", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.DateProcessed)),
+                                      webGrid.Column("Time Processed", format: @<span>@Html.Label("lblTimeProcessed", String.Format("{0}", (TimeSpan)item.TimeProcessed))</span>),
+                                        webGrid.Column("Transaction Name", format: @<span>@Html.Label("lblTransactionName", String.Format("{0}", (string)item.TransactionName))</span>),
+                                              webGrid.Column("Message", format: @<span>@Html.Label("lblMsg", String.Format("{0}", (string)item.Msg))</span>),
+                                                webGrid.Column("Count", format: @<span>@Html.Label("lblTransactionCount", String.Format("{0}", (Int32)item.TransactionCount))</span>)
+                                                                                           )
+                                                               )
+
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <span class="text-danger">CostOfOwnership Data Not Found</span>
+        </div>
+    </div>
+}
+
+
