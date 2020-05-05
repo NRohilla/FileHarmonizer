@@ -27,7 +27,9 @@ namespace Harmonizer.UI.Controllers
         public ActionResult UserList()
         {
             string FHNumber = Session["FHnumber"].ToString();
-            List<Association> lstassociations = _fhFileData.GetAssociation(FHNumber);
+            List<Association> lstassociations =
+                _fhFileData.GetAssociation(FHNumber)
+                .Where(p => p.FHnumber == FHNumber).ToList();
             return PartialView("_GetAssociationList", lstassociations);
         }
 
@@ -39,7 +41,7 @@ namespace Harmonizer.UI.Controllers
             if (UpdateAssocaition > 0)
                 message = "Removed";
 
-            return Json(message, JsonRequestBehavior.AllowGet); 
+            return Json(message, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult UpdateInActiveAssociation(string RecordId)

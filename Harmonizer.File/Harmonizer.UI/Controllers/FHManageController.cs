@@ -129,24 +129,14 @@ namespace Harmonizer.UI.Controllers
 
         public ActionResult _ManageHarmonizeTemplate(string FHNumber = "")
         {
-            Association association = new Association();
+			//added smit
+			Session["Associate"] = FHNumber;
             string UserID = Session["UserID"].ToString();
-            string FHnumb = Session["FHnumber"].ToString();
             List<SelectListItem> lstSchme = new List<SelectListItem>();
             DataSet dsScheme = _scheme.GetAllSchemeByBPID(Session["BPID"].ToString(), "selectall");
             lstSchme.Add(new SelectListItem { Text = "-Scheme-", Value = "0" });
             if (dsScheme.Tables[0].Rows.Count > 0)
             {
-                association.FHnumber = FHnumb;
-                association.Associate = FHNumber;
-                association.AssocStatus = true;
-                association.AssocCanceledBy = UserID;
-                int createAssociation = _fhFileData.CreateAssociation(association);
-                string recordId1 = _fhFileData.GetAssociationInActiveId(FHnumb, FHNumber);
-                if (recordId1 != "")
-                {
-                    Session["RecordId"] = recordId1;
-                }
                 for (int i = 0; i < dsScheme.Tables[0].Rows.Count; i++)
                 {
                     lstSchme.Add(new SelectListItem { Text = dsScheme.Tables[0].Rows[i]["SchemeNum"].ToString() + "-" + dsScheme.Tables[0].Rows[i]["SchemeName"].ToString(), Value = dsScheme.Tables[0].Rows[i]["SchemeNum"].ToString() });
@@ -389,6 +379,10 @@ namespace Harmonizer.UI.Controllers
 
         public List<ManageFilterTemplateModel> GetFiletTemplateManageData(string BPID)
         {
+			//added Smit userid,Fhnumb,associate
+            string UserID = Session["UserID"].ToString();
+            string FHnumb = Session["FHnumber"].ToString();
+            string Associate = Session["Associate"].ToString();
             string fullPathUrlTemplate = "";
             string fullPathUrlHarmonized = "";
             string host = Request.Url.Host;
@@ -404,6 +398,8 @@ namespace Harmonizer.UI.Controllers
                 fullPathUrlTemplate = rootDomain + host.TrimEnd('/') +"/Target/" + Session["BPID"] + "/";
                 fullPathUrlHarmonized = rootDomain + host.TrimEnd('/') + "/Harmonized/" + Session["BPID"] + "/";
             }
+			//added Smit
+			Association association = new Association();
             Template _template = new Template();
             CHFilter _chFilter = new CHFilter();
             HarmonizeTemplate _harmonizeTemplate = new HarmonizeTemplate();
@@ -412,6 +408,17 @@ namespace Harmonizer.UI.Controllers
             DataSet ds =_fhManage.GetFilterTemplateDetailsByBPID(BPID);
             if (ds.Tables[0].Rows.Count > 0)
             {
+				//added smit 
+				association.FHnumber = FHnumb;
+                association.Associate = Associate;
+                association.AssocStatus = true;
+                association.AssocCanceledBy = UserID;
+                int createAssociation = _fhFileData.CreateAssociation(association);
+                string recordId1 = _fhFileData.GetAssociationInActiveId(FHnumb, Associate);
+                if (recordId1 != "")
+                {
+                    Session["RecordId"] = recordId1;
+                }
                 foreach(DataRow row in ds.Tables[0].Rows)
                 {
                     // Add template data

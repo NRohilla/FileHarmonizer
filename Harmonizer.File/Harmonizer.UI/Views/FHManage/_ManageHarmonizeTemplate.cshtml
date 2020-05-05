@@ -6,13 +6,19 @@
 
 @if (Model.Count() > 0)
 {
+    @*if (Session["RecordId"] != null)
+        {
+
+            <script>OpenPopup()</script>
+        }*@
+
     <div class="row mb-2">
         <div class="col-md-4 float-left">
             <input type="button" id="btnChkAll" class="btn btn-info" name="check all" value="Check All" />
             <input type="button" id="btnUnChkAll" class="btn btn-info" name="uncheck all" value="UnCheck All" />
         </div>
         <div class="col-md-3">
-            <input type="text" class="form-control" id="txtFHNumberFilterData" value="" style="background-color:yellow;"  placeholder="Personal ID# Or FH#" />
+            <input type="text" class="form-control" id="txtFHNumberFilterData" value="" style="background-color:yellow;" placeholder="Personal ID# Or FH#" />
         </div>
         <div class="col-md-5 text-right">
             @*<input type="button" class="btn btn-info" name="Print" id="btnMerge" value="Merge" />*@
@@ -30,31 +36,34 @@
                                 <input type="checkbox" class="check" id="chk" name="chk" />
                         </text> ),
 
-                                                 webGrid.Column("File", format: @<text>
-                                                    @if (item.HarmonizeTemplate.HTFHNumber == "0")
-                                                             {
-                                                        @Html.Label("lblFileName", String.Format("{0}-{1}", (string)item.Template.TEMPID, (string)item.Template.TemplateDesc))
-                                                             }
-                                                             else
-                                                             {
-                                                        @Html.Label("lblFileName", String.Format("{0}-{1} FH#-{2}", (string)item.Template.TEMPID, (string)item.Template.TemplateDesc, (string)item.HarmonizeTemplate.HTFHNumber), new { @style = "color:red;" })
-                                                             }
-                                                    /**/
-                                                </text>),
-                                                                    webGrid.Column("Ext", format: @<span>@Html.Label("lblTemplateExt", (string)item.Template.DocExt)</span>),
-                                                                              webGrid.Column("Template", format: @<span>@Html.Label("lblTemplate", (string)item.Template.TemplateDesc)</span>),
-                                                                                     webGrid.Column("Comments", format: @<text>
-                                                                                        @Html.Label("lblTemplate", (string)item.HarmonizeTemplate.Comment, new { @class = "read" })
-                                                                                        @Html.TextBox("txtComment", (string)item.HarmonizeTemplate.Comment, new { @class = "edit" })
-                                                                                    </text>),
-                                                                                             webGrid.Column("Sector", format: @<span>@Html.Label("lblTemplageSector", (string)item.Filter.SECID)</span>),
-                                                                              webGrid.Column("Assign Scheme", format: @<text>@Html.DropDownList("ddlFilterSchme", new SelectList((IEnumerable)ViewData["lstSchme"], "Value", "Text", item.Filter.AssignScheme), new { onchange = "GetSchemeValue(this, '" + @item.Filter.FLTRID + "');", @id = "ddlFilterSchme" })</text>),
-                                                                                                           webGrid.Column("Update Comment", format: @<text>
-                                                                                                            <input type="button" name='btnComment' value="Comment" class="btn-info btn-comment read" />
-                                                                                                            <input type="button" name='btnUpdateComment' value="Update" class="btn-info btn-Update edit" />
-                                                                                                            <input type="button" name='btnCancelComment' value="Cancel" class="btn-info btn-cancel edit" /></text>),
-                                                                                                                webGrid.Column("View", format: @<input type="button" name='btnView' value="View" class="btn-info btn-view" />)
-                                                                                                                                                                                                           ))
+                                                             webGrid.Column("File", format: @<text>
+                                                                @if (item.HarmonizeTemplate.HTFHNumber == "0")
+                                                                         {
+                                                                    @Html.Label("lblFileName", String.Format("{0}-{1}", (string)item.Template.TEMPID, (string)item.Template.TemplateDesc))
+                                                                         }
+                                                                         else
+                                                                         {
+                                                                    @Html.Label("lblFileName", String.Format("{0}-{1} FH#-{2}", (string)item.Template.TEMPID, (string)item.Template.TemplateDesc, (string)item.HarmonizeTemplate.HTFHNumber), new { @style = "color:red;" })
+                                                                         }
+                                                                /**/
+                                                                /**/
+                                                                /**/
+                                                                /**/
+                                                            </text>),
+                                                                                            webGrid.Column("Ext", format: @<span>@Html.Label("lblTemplateExt", (string)item.Template.DocExt)</span>),
+                                                                                                                     webGrid.Column("Template", format: @<span>@Html.Label("lblTemplate", (string)item.Template.TemplateDesc)</span>),
+                                                                                                                                       webGrid.Column("Comments", format: @<text>
+                                                                                                                                        @Html.Label("lblTemplate", (string)item.HarmonizeTemplate.Comment, new { @class = "read" })
+                                                                                                                                        @Html.TextBox("txtComment", (string)item.HarmonizeTemplate.Comment, new { @class = "edit" })
+                                                                                                                                    </text>),
+                                                                                                                                                         webGrid.Column("Sector", format: @<span>@Html.Label("lblTemplageSector", (string)item.Filter.SECID)</span>),
+                                                                                                                                                     webGrid.Column("Assign Scheme", format: @<text>@Html.DropDownList("ddlFilterSchme", new SelectList((IEnumerable)ViewData["lstSchme"], "Value", "Text", item.Filter.AssignScheme), new { onchange = "GetSchemeValue(this, '" + @item.Filter.FLTRID + "');", @id = "ddlFilterSchme" })</text>),
+                                                                                                                                                                                            webGrid.Column("Update Comment", format: @<text>
+                                                                                                                                                                                                <input type="button" name='btnComment' value="Comment" class="btn-info btn-comment read" />
+                                                                                                                                                                                                <input type="button" name='btnUpdateComment' value="Update" class="btn-info btn-Update edit" />
+                                                                                                                                                                                                <input type="button" name='btnCancelComment' value="Cancel" class="btn-info btn-cancel edit" /></text>),
+                                                                                                                                                                                                             webGrid.Column("View", format: @<input type="button" name='btnView' value="View" class="btn-info btn-view" />)
+                                                                                                                                                                                                                                                                                                                   ))
 
         </div>
     </div>
@@ -77,8 +86,20 @@ else
         </div>
     </div>
 </div>
+<input type="hidden" value="@Convert.ToString(Session["RecordId"])" id="SessionRecordID" />
+
+
 <script>
+    @*function OpenPopup(){
+          $('#modelbodydata').load('@Url.Action("ActiveAssociation", "Association")');
+                             $('#btnShowAssociation').click();
+    }*@
     $(document).ready(function () {
+
+        if ($('#SessionRecordID').val().trim() != "") {
+                $('#modelbodydata').load('@Url.Action("ActiveAssociation", "Association")');
+                $('#btnShowAssociation').click();
+        }
 
         $('#btnChkAll').click(function () {
             $("#HrmonizeTemplateManageDetails td input[type=checkBox]").prop("checked", true) ;
@@ -94,7 +115,7 @@ else
              //alert('i am change');
             //$('#divHarmonizeTemplateDetails').html('');
               var FHNumber = $('#txtFHNumberFilterData').val();
-              var recordID = '@Session["RecordId"]';
+             // var recordID = '@Session["RecordId"]';
             $("#wait").show();
             $.ajax({
                 type: "POST",
@@ -104,6 +125,10 @@ else
                 contentType: 'application/json; charset=utf-8',
                 async: false,
                 success: function (data) {
+                    debugger;
+                    var recordID = '@Session["RecordId"]';
+
+                    var recordID1 = sessionStorage.getItem('RecordId');
                     $("#wait").hide();
                     $('#divHarmonizeTemplateDetails').html('');
                     $('#divHarmonizeTemplateDetails').html(data);
