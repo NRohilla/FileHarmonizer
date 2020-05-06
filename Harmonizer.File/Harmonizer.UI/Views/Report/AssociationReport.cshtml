@@ -1,0 +1,111 @@
+﻿@model Harmonizer.Core.Model.Association
+@{
+    ViewBag.Title = "Association Report";
+}
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <div class="blink_heading">
+            <h4>Association Report</h4>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="bg-white p-3 border w-100 float-left">
+                <div class="text-center">
+                    <div id="divUserList">
+                        @Html.Action("UserList", "Report")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="button" id="btnShowData" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModal" />
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Association Details</h4><button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modelbodydata">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- The Modal ---- To show the Pop Up on page load -->
+<input type="button" id="btnShowDataActivation" style="width: 100px;" value="" class="d-none" data-toggle="modal" data-target="#myModalActivation" />
+<div class="modal" id="myModalActivation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-body" id="modelbodydataActivation">
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="SelectedRecordForUpdate"
+       attr-Id="x"
+       attr-FHNum="x"
+       attr-FHName="x"
+       attr-AssocNum="x"
+       attr-Assocname="x"
+       attr-DateOfAssoc="x"
+       attr-AssocCancelDate="x"
+       attr-AssocCancelBy="x"
+       attr-AssocStatus="x" />
+<script>
+     var compare_dates = function (edate1, cdate2) {
+        if (edate1 < cdate2)
+            return true;
+        else {
+            return false;
+        }
+    }
+
+    $(document).ready(function () {
+
+        /////To show the Pop Up on page load
+        var edate = '@ViewBag.ExpireDate';
+        var cdate = '@DateTime.Today.Date.ToShortDateString()';
+
+        if (edate != "") {
+            if (compare_dates(new Date(edate), new Date(cdate)) == true) {
+                $('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "Report", new { token = Request.QueryString["token"] })');
+                $('#btnShowDataActivation').click();
+                $('#btnsave').hide();
+                $('.btn-rename').hide();
+            }
+        }
+
+        $('.btn-rename').click(function (e) {
+            debugger;
+            e.preventDefault();
+            var RecordID = $(this).attr('attr-Id');
+
+            $('#SelectedRecordForUpdate').val(RecordID)
+                .attr('attr-Id', $(this).attr('attr-Id'))
+                .attr('attr-FHNum', $(this).attr('attr-FHNum'))
+                .attr('attr-FHName', $(this).attr('attr-FHName'))
+                .attr('attr-AssocNum', $(this).attr('attr-AssocNum'))
+                .attr('attr-Assocname', $(this).attr('attr-Assocname'))
+                .attr('attr-DateOfAssoc', $(this).attr('attr-DateOfAssoc'))
+                .attr('attr-AssocCancelDate', $(this).attr('attr-AssocCancelDate'))
+                .attr('attr-AssocCancelBy', $(this).attr('attr-AssocCancelBy'))
+                .attr('attr-AssocStatus', $('#lblAssocStatus_' + RecordID).text())
+                ;
+
+
+         $('#modelbodydata').load('@Url.Action("ViewDetailsAssociation", "Report")');
+         $('#btnShowData').click();
+        });
+    });
+
+
+</script>

@@ -159,6 +159,7 @@
 
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                                     @Html.ActionLink("Cost Of OwnerShip", "Index", "Report", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                    @Html.ActionLink("Association", "AssociationReport", "Report", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                 </div>
                                             </li>
 

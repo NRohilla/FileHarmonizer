@@ -35,5 +35,31 @@ namespace Harmonizer.UI.Controllers
             ViewBag.token = Request.QueryString["token"];
             return PartialView("_UserActivationMessage");
         }
+
+        public ActionResult AssociationReport()
+        {
+            ////-Nitin Check for expiry of account
+            if (TempData["expiredate"] != null)
+            {
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                TempData.Keep();
+            }
+            return View();
+        }
+
+        public ActionResult UserList()
+        {
+            string FHNumber = Session["FHnumber"].ToString();
+            List<Association> lstassociations = _fhFileData.GetAssociation(FHNumber);
+
+            return PartialView("_GetAssociationList", lstassociations);
+        }
+
+        public ActionResult  ViewDetailsAssociation()
+        {
+            ViewBag.token = Request.QueryString["token"];
+            return PartialView("_ViewDetailsAssociation");
+        }
+         
     }
 }
