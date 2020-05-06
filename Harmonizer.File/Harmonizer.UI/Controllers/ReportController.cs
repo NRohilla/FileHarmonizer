@@ -10,7 +10,9 @@ namespace Harmonizer.UI.Controllers
 {
     public class ReportController : Controller
     {
+        Report _ReportData = new Report();
         FHFileData _fhFileData = new FHFileData();
+
         // GET: Report
         public ActionResult Index()
         {
@@ -26,7 +28,7 @@ namespace Harmonizer.UI.Controllers
         public ActionResult CostOfOwnershipList()
         {
             string FHNumber = Session["FHnumber"].ToString();
-            List<CostOfOwnership> lstCostOfOwnership = _fhFileData.GetCostOfOwnershipDetails(FHNumber);
+            List<CostOfOwnership> lstCostOfOwnership = _ReportData.GetCostOfOwnershipDetails(FHNumber);
             return PartialView("_GetCostOfOwnershipList", lstCostOfOwnership);
         }
 
@@ -50,7 +52,7 @@ namespace Harmonizer.UI.Controllers
         public ActionResult UserList()
         {
             string FHNumber = Session["FHnumber"].ToString();
-            List<Association> lstassociations = _fhFileData.GetAssociation(FHNumber);
+            List<Association> lstassociations = _ReportData.GetAssociation(FHNumber);
 
             return PartialView("_GetAssociationList", lstassociations);
         }

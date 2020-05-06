@@ -10,7 +10,9 @@ namespace Harmonizer.Core.Model
     {
         public int ID { get; set; }
         public string FHnumber { get; set; }
+        public string FHName { get; set; }
         public string Associate { get; set; }
+        public string AssociateName { get; set; }
         public string AssocCanceledBy { get; set; }
         public bool AssocStatus { get; set; }
         public DateTime OriginalDateofAssoc { get; set; }
