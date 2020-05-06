@@ -871,7 +871,44 @@ namespace Harmonizer.DB.Data
             return RecordID;
         }
 
-       
+        public string GetUserid(string FHnumber)
+        {
+            //  List<Association> lstAssociation = new List<Association>();
+            string userid = "";
+            con = ConnectionClass.getConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                cmd.Connection = con;
+                cmd.CommandText = "sp_GetUserId";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@FHnumber", SqlDbType.NVarChar).Value = FHnumber;
+
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                if (ds.Tables.Count > 0 &&
+                    ds.Tables[0].Rows.Count > 0)
+                {
+
+                    userid = ds.Tables[0].Rows[0]["userid"].ToString();
+                }
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                DataLogger.Write("Report-GetUserID", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return userid;
+
+        }
+
+
 
     }
 }

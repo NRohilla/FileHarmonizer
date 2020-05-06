@@ -11,17 +11,17 @@
                    htmlAttributes: new { @id = "AssociationDetails", @class = "table table-bordered table-sm table-striped search-replace-table sticky-header" },
                    columns: webGrid.Columns(
                                               webGrid.Column("FH#", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHnumber), new { @id = "lblFHnumber_" + item.ID })</span>),
-                                                    webGrid.Column("FH Name", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHnumber), new { @id = "lblFHName_" + item.ID })</span>),
+                                                    webGrid.Column("FH Name", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHName), new { @id = "lblFHName_" + item.ID })</span>),
                                                              webGrid.Column("Associate", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.Associate), new { @id = "lblAssociate_" + item.ID })</span>),
-                                                                     webGrid.Column("Associate Name", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.Associate), new { @id = "lblAssociateName_" + item.ID })</span>),
+                                                                     webGrid.Column("Associate Name", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.AssociateName), new { @id = "lblAssociateName_" + item.ID })</span>),
                                                                              webGrid.Column("Association Date", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.OriginalDateofAssoc)),
                                                                              webGrid.Column("Status", format: @<span>@Html.Label("lblAssocStatus", item.AssocStatus ? "Active" : "In-Active", new { @id = "lblAssocStatus_" + item.ID })</span>),
                                                                                      webGrid.Column("", format: @<input type="button" name='btnViewDetails_' value="View Details" id="btnViewDetails_@item.ID"
                                                                                                                         attr-Id="@item.ID"
                                                                                                                         attr-FHNum="@item.FHnumber"
-                                                                                                                        attr-FHName="@item.FHnumber"
+                                                                                                                        attr-FHName="@item.FHName"
                                                                                                                         attr-AssocNum="@item.Associate"
-                                                                                                                        attr-Assocname="@item.Associate"
+                                                                                                                        attr-Assocname="@item.AssociateName"
                                                                                                                         attr-DateOfAssoc="@item.OriginalDateofAssoc"
                                                                                                                         attr-AssocCancelDate="@item.AssocCanceledDate"
                                                                                                                         attr-AssocCancelBy="@item.AssocCanceledBy"

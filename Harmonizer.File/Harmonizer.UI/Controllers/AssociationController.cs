@@ -27,9 +27,22 @@ namespace Harmonizer.UI.Controllers
         public ActionResult UserList()
         {
             string FHNumber = Session["FHnumber"].ToString();
-            List<Association> lstassociations =
-                _fhFileData.GetAssociation(FHNumber)
-                .Where(p => p.FHnumber == FHNumber).ToList();
+            List<Association> lstassociations = new List<Association>();
+            if (FHNumber != "None")
+            {
+               lstassociations =
+                 _fhFileData.GetAssociation(FHNumber)
+                 .Where(p => p.FHnumber == FHNumber).ToList();
+
+            }
+            else
+            {
+                 lstassociations =
+                 _fhFileData.GetAssociation(FHNumber);
+                
+
+            }
+          
             return PartialView("_GetAssociationList", lstassociations);
         }
 
