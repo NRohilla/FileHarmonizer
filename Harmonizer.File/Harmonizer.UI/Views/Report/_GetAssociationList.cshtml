@@ -1,41 +1,208 @@
 ﻿
 @model IEnumerable<Harmonizer.Core.Model.Association>
-@{
+    @{
     WebGrid webGrid = new WebGrid(source: Model, canPage: false, canSort: false);
-}
-@if (Model.Count() > 0)
-{
+    }
+    @if (Model.Count() > 0)
+    {
+    <style>
+        .ui-autocomplete {
+            max-height: 100px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+        }
+    </style>
+    <div class="row mb-2">
+        @if (Session["FHnumber"].ToString() == "None")
+        {
+        <div class="col-md-3">
+            <input type="text" class="form-control" id="txtSearchByName" value="" style="background-color:yellow;" placeholder="Name" />
+        </div>
+        }
+        <div class="col-md-3">
+            <input type="text" class="form-control" id="txtSearchByAssociateName" value="" style="background-color:yellow;" placeholder="Associate Name" />
+        </div>
+
+    </div>
+    <hr />
     <div class="row scrollable-table">
         <div class="col-md-12">
+            @if (Session["FHnumber"].ToString() !="None")
+            {
             @webGrid.GetHtml(
-                   htmlAttributes: new { @id = "AssociationDetails", @class = "table table-bordered table-sm table-striped search-replace-table sticky-header" },
-                   columns: webGrid.Columns(
-                                              webGrid.Column("FH#", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHnumber), new { @id = "lblFHnumber_" + item.ID })</span>),
-                                                    webGrid.Column("FH Name", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHName), new { @id = "lblFHName_" + item.ID })</span>),
-                                                             webGrid.Column("Associate", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.Associate), new { @id = "lblAssociate_" + item.ID })</span>),
-                                                                     webGrid.Column("Associate Name", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.AssociateName), new { @id = "lblAssociateName_" + item.ID })</span>),
-                                                                             webGrid.Column("Association Date", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.OriginalDateofAssoc)),
-                                                                             webGrid.Column("Status", format: @<span>@Html.Label("lblAssocStatus", item.AssocStatus ? "Active" : "In-Active", new { @id = "lblAssocStatus_" + item.ID })</span>),
-                                                                                     webGrid.Column("", format: @<input type="button" name='btnViewDetails_' value="View Details" id="btnViewDetails_@item.ID"
-                                                                                                                        attr-Id="@item.ID"
-                                                                                                                        attr-FHNum="@item.FHnumber"
-                                                                                                                        attr-FHName="@item.FHName"
-                                                                                                                        attr-AssocNum="@item.Associate"
-                                                                                                                        attr-Assocname="@item.AssociateName"
-                                                                                                                        attr-DateOfAssoc="@item.OriginalDateofAssoc"
-                                                                                                                        attr-AssocCancelDate="@item.AssocCanceledDate"
-                                                                                                                        attr-AssocCancelBy="@item.AssocCanceledBy"
-                                                                                                                        class="btn-info btn-rename" />)))
+            htmlAttributes: new { @id = "AssociationDetails", @class = "table table-bordered table-sm table-striped search-replace-table sticky-header" },
+            columns: webGrid.Columns(
+            //webGrid.Column("FH#", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHnumber), new { @id = "lblFHnumber_" + item.ID })</span>),
+            //webGrid.Column("FH Name", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHName), new { @id = "lblFHName_" + item.ID })</span>),
+            webGrid.Column("Associate", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.Associate), new { @id = "lblAssociate_" + item.ID })</span>),
+            webGrid.Column("Associate Name", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.AssociateName), new { @id = "lblAssociateName_" + item.ID })</span>),
+            webGrid.Column("Association Date", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.OriginalDateofAssoc)),
+            webGrid.Column("Status", format: @<span>@Html.Label("lblAssocStatus", item.AssocStatus ? "Active" : "In-Active", new { @id = "lblAssocStatus_" + item.ID })</span>),
+            webGrid.Column("", format: @<input type="button" name='btnViewDetails_' value="View Details" id="btnViewDetails_@item.ID"
+                                               attr-Id="@item.ID"
+                                               attr-FHNum="@item.FHnumber"
+                                               attr-FHName="@item.FHName"
+                                               attr-AssocNum="@item.Associate"
+                                               attr-Assocname="@item.AssociateName"
+                                               attr-DateOfAssoc="@item.OriginalDateofAssoc"
+                                               attr-AssocCancelDate="@item.AssocCanceledDate"
+                                               attr-AssocCancelBy="@item.AssocCanceledBy"
+                                               class="btn-info btn-rename" />)))
+            }
+            else
+            {
+            @webGrid.GetHtml(
+            htmlAttributes: new { @id = "AssociationDetails", @class = "table table-bordered table-sm table-striped search-replace-table sticky-header" },
+            columns: webGrid.Columns(
+            webGrid.Column("FH#", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHnumber), new { @id = "lblFHnumber_" + item.ID })</span>),
+            webGrid.Column("FH Name", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHName), new { @id = "lblFHName_" + item.ID })</span>),
+            webGrid.Column("Associate", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.Associate), new { @id = "lblAssociate_" + item.ID })</span>),
+            webGrid.Column("Associate Name", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.AssociateName), new { @id = "lblAssociateName_" + item.ID })</span>),
+            webGrid.Column("Association Date", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.OriginalDateofAssoc)),
+            webGrid.Column("Status", format: @<span>@Html.Label("lblAssocStatus", item.AssocStatus ? "Active" : "In-Active", new { @id = "lblAssocStatus_" + item.ID })</span>),
+            webGrid.Column("", format: @<input type="button" name='btnViewDetails_' value="View Details" id="btnViewDetails_@item.ID"
+                                               attr-Id="@item.ID"
+                                               attr-FHNum="@item.FHnumber"
+                                               attr-FHName="@item.FHName"
+                                               attr-AssocNum="@item.Associate"
+                                               attr-Assocname="@item.AssociateName"
+                                               attr-DateOfAssoc="@item.OriginalDateofAssoc"
+                                               attr-AssocCancelDate="@item.AssocCanceledDate"
+                                               attr-AssocCancelBy="@item.AssocCanceledBy"
+                                               class="btn-info btn-rename" />)))
+            }
 
         </div>
     </div>
-}
-else
-{
+    }
+    else
+    {
     <div class="row">
         <div class="col-md-12">
             <span class="text-danger">No Active Association</span>
         </div>
     </div>
-}
+    }
+
+   
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
+  
+       <link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css"
+       rel="Stylesheet" type="text/css" / >
+  
+    
+      
+    
+    <script>
+
+                $(document).ready(function () {
+
+                    /////To show the Pop Up on page load
+                    $(function () {
+                        $("#txtSearchByAssociateName").autocomplete({
+                            source: function (request, response) {
+                                $.ajax({
+                                    url: '@Url.Action("AutoComplete", "Report")',
+                                    data: "{ 'prefix': '" + request.term + "'}",
+                                    dataType: "json",
+                                    type: "POST",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (data) {
+                                     
+                                        response($.map(data, function (item) {
+                                            return item;
+                                        }))
+                                    },
+                                    error: function (response) {
+                                        alert(response.responseText);
+                                    },
+                                    failure: function (response) {
+                                        alert(response.responseText);
+                                    }
+                                });
+                            },
+                            select: function (e, i) {
+                                debugger;
+                                Filter(i.item.value, "AssociateName");
+                              //  $("#hfCustomer").val(i.item.val);
+                            },
+                            minLength: 0
+                        }).focus(function () {
+                            $(this).autocomplete("search");
+                        });
+                    });
+
+                    $(function () {
+                        $("#txtSearchByName").autocomplete({
+                          
+                            source: function (request, response) {
+                                $.ajax({
+                                    url: '@Url.Action("AutoComplete", "Report")',
+                                    data: "{ 'prefix': '" + request.term + "'}",
+                                    dataType: "json",
+                                    type: "POST",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (data) {
+
+                                        response($.map(data, function (item) {
+                                            return item;
+                                        }))
+                                    },
+                                    error: function (response) {
+                                        alert(response.responseText);
+                                    },
+                                    failure: function (response) {
+                                        alert(response.responseText);
+                                    }
+                                });
+                            },
+                            select: function (e, i) {
+                                debugger;
+                                Filter(i.item.value, "FHname");
+                                //  $("#hfCustomer").val(i.item.val);
+                            },
+                            minLength: 0
+                        }).focus(function () {
+                            $(this).autocomplete("search");
+                        });
+                    });
+                //      $('#txtSearchByAssociateName').change(function () {
+                    //    debugger;
+                    //    var filterdata = $('#txtSearchByAssociateName').val();
+                    //    Filter(filterdata,"AssociateName");
+
+                    //});
+                    //      $('#txtSearchByName').change(function () {
+                    //    debugger;
+                    //    var filterdata = $('#txtSearchByName').val();
+
+                    //    Filter(filterdata,"FHName");
+                    //});
+                });
+
+
+
+
+            function Filter(data,filterBy) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("UserList", "Report")',
+                        data: '{filterKeyword:"' + data + '",filterBy:"' + filterBy + '"}',
+                        dataType: "html",
+                        contentType: 'application/json; charset=utf-8',
+                        async: false,
+                        success: function (data) {
+                            // $('#divUserList').html(data);
+                        },
+                        error: function (error) {
+                            $("#wait").hide();
+                            alert("Error! Please try again.");
+                        }
+                    });
+            }
+
+
+    </script>
 
