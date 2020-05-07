@@ -110,5 +110,42 @@ namespace Harmonizer.DB.Data
             return lstCostOfOwnership;
 
         }
+
+        public List<string> GetUsers()
+        {
+            List<string> lstuser = new List<string>();
+            con = ConnectionClass.getConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                cmd.Connection = con;
+                cmd.CommandText = "sp_GetUsers";
+                 DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                if (ds.Tables.Count > 0 &&
+                    ds.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+
+                   
+                        lstuser.Add(ds.Tables[0].Rows[i]["userid"].ToString());
+                    }
+                }
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                DataLogger.Write("Admin-GetAssociationList", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return lstuser;
+
+        }
     }
 }
