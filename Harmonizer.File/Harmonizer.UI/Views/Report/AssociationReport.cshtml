@@ -13,7 +13,7 @@
             <h4>Association Report</h4>
         </div>
         <hr />
-        <div class="row mb-2">
+        @*<div class="row mb-2">
             @if (Session["FHnumber"].ToString() == "None")
             {
                 <div class="col-md-3">
@@ -24,7 +24,7 @@
                 <input type="text" class="form-control" id="txtSearchByAssociateName" value="" style="background-color:yellow;" placeholder="Associate Name" />
             </div>
 
-        </div>
+        </div>*@
         <div class="form-group">
             <div class="bg-white p-3 border w-100 float-left">
                 <div class="text-center">
@@ -119,18 +119,7 @@
          $('#btnShowData').click();
         });
 
-        $('#txtSearchByAssociateName').blur(function () {
-            debugger;
-            var filterdata = $('#txtSearchByAssociateName').val();
-            Filter(filterdata,"AssociateName");
-          
-        });
-        $('#txtSearchByName').blur(function () {
-            debugger;
-            var filterdata = $('#txtSearchByName').val();
-
-            Filter(filterdata,"FHName");
-        });
+      
     });
    
 
@@ -145,7 +134,7 @@
                 contentType: 'application/json; charset=utf-8',
                 async: false,
                 success: function (data) {
-                    
+                    $('#divUserList').html(data);
                 },
                 error: function (error) {
                     $("#wait").hide();

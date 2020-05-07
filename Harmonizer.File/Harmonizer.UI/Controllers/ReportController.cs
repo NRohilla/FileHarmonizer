@@ -13,6 +13,7 @@ namespace Harmonizer.UI.Controllers
     {
         Report _ReportData = new Report();
         FHFileData _fhFileData = new FHFileData();
+        List<string> lstUsers = new List<string>();
 
         // GET: Report
         public ActionResult Index()
@@ -71,8 +72,12 @@ namespace Harmonizer.UI.Controllers
             {
                 item.FHName = _fhFileData.GetUserid(item.FHnumber);
                 item.AssociateName = _fhFileData.GetUserid(item.Associate);
+                if (!lstUsers.Contains(item.FHName))
+                    lstUsers.Add(item.FHName);
+                else if (!lstUsers.Contains(item.AssociateName))
+                    lstUsers.Add(item.AssociateName);
             }
-            
+            ViewData["user"] = lstUsers;
             return PartialView("_GetAssociationList", lstassociations);
         }
 
@@ -99,7 +104,7 @@ namespace Harmonizer.UI.Controllers
                 item.AssociateName = _fhFileData.GetUserid(item.Associate);
             }
             List<Association> filtredListassociations = new List<Association>();
-            if (model.filterBy== "AssociateName")
+            if (model.filterBy== "AssociateName" && model.filterKeyword!=null && model.filterKeyword!="")
             {
                 foreach (var item in lstassociations)
                 {
@@ -110,7 +115,7 @@ namespace Harmonizer.UI.Controllers
                 }
                
             }
-            else
+            else if(model.filterKeyword != null && model.filterKeyword != "")
             {
                 foreach (var item in lstassociations)
                 {
@@ -120,6 +125,7 @@ namespace Harmonizer.UI.Controllers
                     }
                 }
             }
+          //  return filtredListassociations;
             return PartialView("_GetAssociationList", filtredListassociations);
         }
 
@@ -128,6 +134,39 @@ namespace Harmonizer.UI.Controllers
             ViewBag.token = Request.QueryString["token"];
             return PartialView("_ViewDetailsAssociation");
         }
-         
+
+        [HttpPost]
+        public JsonResult AutoComplete(string prefix)
+        {
+            List<string> filtredUsers = new List<string>();
+            var users = _ReportData.GetUsers();
+           
+            if (prefix != "")
+            {
+
+                foreach (var user in users){
+                    if (user.StartsWith(prefix))
+                        filtredUsers.Add(user);
+                }
+                return Json(filtredUsers);
+                //   foreach (var item in lstassociations)
+                //{
+
+                //    if (item.StartsWith(prefix) )
+                //        associateNames.Add(item);
+                //}
+
+
+
+
+
+
+            }
+            else
+            {
+                return Json(users);
+            }
+          
+        }
     }
 }
