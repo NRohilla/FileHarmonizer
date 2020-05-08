@@ -39,9 +39,9 @@ namespace Harmonizer.UI.Controllers
         public ActionResult MaintainScheme()
         {
             ////-Nitin Check for expiry of account
-            if (TempData["expiredate"] != null)
+            if (Session["expiredate"] != null)
             {
-                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                ViewBag.ExpireDate = Convert.ToDateTime(Session["expiredate"]).ToShortDateString();
                 TempData.Keep();
             }
             return View();
@@ -196,9 +196,9 @@ namespace Harmonizer.UI.Controllers
         public ActionResult Archive()
         {
             ////-Nitin Check for expiry of account
-            if (TempData["expiredate"] != null)
+            if (Session["expiredate"] != null)
             {
-                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                ViewBag.ExpireDate = Convert.ToDateTime(Session["expiredate"]).ToShortDateString();
                 TempData.Keep();
             }
             return View();

@@ -56,9 +56,9 @@ namespace Harmonizer.UI.Controllers
                 lst = lst.Where(x => x.Group.ToLower().Trim() == Session["BPType"].ToString().ToLower().Trim() || x.Cost==0).ToList();
 
             ////-Nitin Check for expiry of account
-            if (TempData["expiredate"] != null)
+            if (Session["expiredate"] != null)
             {
-                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                ViewBag.ExpireDate = Convert.ToDateTime(Session["expiredate"]).ToShortDateString();
                 TempData.Keep();
             }
 
@@ -170,14 +170,14 @@ namespace Harmonizer.UI.Controllers
             registerUser.AddInfo = addressIinformation;
             registerUser.BPinfo = bPInfo;
 
-            if (TempData["expiredate"] == null)
-                TempData["expiredate"] = Convert.ToDateTime(dsProfile.Tables[0].Rows[0]["ExpireDate"]);
-            else if (Convert.ToDateTime(TempData["expiredate"]) != Convert.ToDateTime(dsProfile.Tables[0].Rows[0]["ExpireDate"]))
-                TempData["expiredate"] = Convert.ToDateTime(dsProfile.Tables[0].Rows[0]["ExpireDate"]);
+            if (Session["expiredate"] == null)
+                Session["expiredate"] = Convert.ToDateTime(dsProfile.Tables[0].Rows[0]["ExpireDate"]);
+            else if (Convert.ToDateTime(Session["expiredate"]) != Convert.ToDateTime(dsProfile.Tables[0].Rows[0]["ExpireDate"]))
+                Session["expiredate"] = Convert.ToDateTime(dsProfile.Tables[0].Rows[0]["ExpireDate"]);
 
 
 
-            ViewBag.ExpireDate =Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+            ViewBag.ExpireDate =Convert.ToDateTime(Session["expiredate"]).ToShortDateString();
 
             TempData.Keep();
             return View(registerUser);
@@ -186,9 +186,9 @@ namespace Harmonizer.UI.Controllers
         public ActionResult Archive()
         {
             ////-Nitin Check for expiry of account
-            if (TempData["expiredate"] != null)
+            if (Session["expiredate"] != null)
             {
-                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                ViewBag.ExpireDate = Convert.ToDateTime(Session["expiredate"]).ToShortDateString();
                 TempData.Keep();
             }
             return View();
@@ -198,9 +198,9 @@ namespace Harmonizer.UI.Controllers
         public ActionResult FHAccountSetting()
         {
             ////-Nitin Check for expiry of account
-            if (TempData["expiredate"] != null)
+            if (Session["expiredate"] != null)
             {
-                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                ViewBag.ExpireDate = Convert.ToDateTime(Session["expiredate"]).ToShortDateString();
                 TempData.Keep();
             }
             return View();
@@ -210,9 +210,9 @@ namespace Harmonizer.UI.Controllers
         public ActionResult ManageUser()
         {
             ////-Nitin Check for expiry of account
-            if (TempData["expiredate"] != null)
+            if (Session["expiredate"] != null)
             {
-                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                ViewBag.ExpireDate = Convert.ToDateTime(Session["expiredate"]).ToShortDateString();
                 TempData.Keep();
             }
             return View();
@@ -514,9 +514,9 @@ namespace Harmonizer.UI.Controllers
         public ActionResult MaintainCustomTag()
         {
             ////-Nitin Check for expiry of account
-            if (TempData["expiredate"] != null)
+            if (Session["expiredate"] != null)
             {
-                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                ViewBag.ExpireDate = Convert.ToDateTime(Session["expiredate"]).ToShortDateString();
                 TempData.Keep();
             }
             return View();

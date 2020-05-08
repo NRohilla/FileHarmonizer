@@ -60,6 +60,9 @@ namespace Harmonizer.UI.App_Start
                         HttpContext.Current.Session["BPID"] = ds.Tables[0].Rows[0]["BPID"];
                         HttpContext.Current.Session["Partner"] = ds.Tables[0].Rows[0]["Partner"];
                         HttpContext.Current.Session["BPType"] = ds.Tables[0].Rows[0]["BPType"];
+                        HttpContext.Current.Session["expiredate"] = ds.Tables[0].Rows[0]["Expiredate"];
+                        filterContext.Controller.TempData["expireddate"] = ds.Tables[0].Rows[0]["Expiredate"];
+                        //TempData["expiredate"] = ds.Tables[0].Rows[0]["Expiredate"];
                         DataLogger.Write("session filter" + contolername + "-" + actioname, "Session Refilled at: " + DateTime.Now.ToString() + " for token:" + token);
                         
                             // Check Expire date
