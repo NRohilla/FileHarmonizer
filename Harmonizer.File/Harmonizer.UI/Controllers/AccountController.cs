@@ -120,6 +120,7 @@ namespace Harmonizer.UI.Controllers
                 userData.SessionToken = Guid.NewGuid().ToString();
                 _userData.InsertUpdateCustomSessionData(userData, "insert");
                 TempData["expiredate"] = userData.ExpireDate.Date;
+                Session["expiredate"] = userData.ExpireDate.Date; 
                 if (userData.ExpireDate.Date >= DateTime.Today.Date && userData.IsActive && userData.ValidFrom.Date <= DateTime.Today.Date)
                 {
                     if (!string.IsNullOrWhiteSpace(checkFolder))
@@ -322,6 +323,7 @@ namespace Harmonizer.UI.Controllers
             userData.UserBrowserName = Request.Browser.Browser.ToLower().Trim();
             userData.SessionToken = token;
             TempData["expiredate"] = DateTime.Today.Date.AddMonths(1);
+            Session["expiredate"] = DateTime.Today.Date.AddMonths(1);
             _userData.InsertUpdateCustomSessionData(userData, "insert");
         }
 
