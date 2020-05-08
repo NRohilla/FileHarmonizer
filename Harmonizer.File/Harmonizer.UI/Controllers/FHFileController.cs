@@ -49,6 +49,8 @@ namespace Harmonizer.UI.Controllers
         UserData _userData = new UserData();
         FHManage _fhManage = new FHManage();
         AdminData _adminData = new AdminData();
+        COOData _cooData = new COOData(); 
+        
         // GET: FHFile
         public ActionResult Index()
         {
@@ -127,12 +129,14 @@ namespace Harmonizer.UI.Controllers
             string ReturnHFLTRID = "";
             string UnquicSECTAGCODE = "";
             string FileSucessToProcessed = "";
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
             List<SwordAndTagReplace> lstSearch = new List<SwordAndTagReplace>();
             try
             {
                 lstSearch = RemoveDuplicateSearchText(JsonConvert.DeserializeObject<List<SwordAndTagReplace>>(Request.Form[0].ToString()));
                 //RemoveDuplicateSearchText(lstSearch);
-
+                int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber,null, "Add to List", "Add to List Successfully", 1, date);
                 UnquicSECTAGCODE = _fileData.GetTAGSECCode(Request.Form[2].ToString() == "0" ? "H" : Request.Form[2].ToString());
                 template.TemplateType = Request.Form[1].ToString();
                 // template.TemplateName = Request.Form[2].ToString();
@@ -239,9 +243,14 @@ namespace Harmonizer.UI.Controllers
 
                                 }
                                 if (FileSucessToProcessed == "")
+                                {
                                     msg = "File uploaded successfully";
+                                    int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, fileUploadData.NewFileName, "Create New Filter Successfully", 1, date);
+                                }
                                 else
+                                {
                                     msg = FileSucessToProcessed;
+                                }
                             }
                         }
                     }
@@ -262,6 +271,7 @@ namespace Harmonizer.UI.Controllers
             List<SwordAndTagReplace> lst = new List<SwordAndTagReplace>();
             //lst = lstSword.Distinct().ToList();// not working for collection as class
             lst = lstSword.Distinct(new ItemEqualityComparer()).ToList();
+
             return lst;
         }
 
@@ -1248,8 +1258,12 @@ namespace Harmonizer.UI.Controllers
 
             Result = _fileData.AddTagNameDetails(_tag);
             if (Result != 1 && Result != 2)
+            {
                 msg = "Error! Please try again";
-
+            }
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, _tag.TagName + ""+ _tag.Description, "Custom Tag Created Successfully", 1, date);
             return Json(msg, JsonRequestBehavior.AllowGet);
         }
 
@@ -1805,6 +1819,7 @@ namespace Harmonizer.UI.Controllers
         }
         public ActionResult MassUploadSearchData()
         {
+            string FHnumber = Session["FHnumber"].ToString();
             int r = 0;
             List<Tag> _lstTag = new List<Tag>();
             string result = "File not found to upload data";
@@ -1824,9 +1839,11 @@ namespace Harmonizer.UI.Controllers
                         // Start process to store in DB
                         _lstTag = GetAllRowDataSearch(sourcePathToWrite);
                         if (_lstTag.Count() > 0)
-                        {
+                        {  
                             //start process
                             result = "";
+                            var date = DateTime.Now.ToString("yyyy-MM-dd");
+                            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber,null, Fileupload.FileName, "Upload Filter Successfully", 1, date);
                         }
                         else
                         {
@@ -2431,9 +2448,16 @@ namespace Harmonizer.UI.Controllers
 
                                     }
                                     if (FileSucessToProcessed == "")
+                                    {
                                         msg = "File uploaded successfully";
+                                        string FHnumber = Session["FHnumber"].ToString();
+                                        var date = DateTime.Now.ToString("yyyy-MM-dd");
+                                        int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, fileUploadData.NewFileName, "Upload Created Template Successfully", 1, date);
+                                    }
                                     else
+                                    {
                                         msg = FileSucessToProcessed;
+                                    }
                                 }
                             }
                         }

@@ -30,7 +30,17 @@ namespace Harmonizer.UI.Controllers
         public ActionResult CostOfOwnershipList()
         {
             string FHNumber = Session["FHnumber"].ToString();
-            List<CostOfOwnership> lstCostOfOwnership = _ReportData.GetCostOfOwnershipDetails(FHNumber);
+            List<CostOfOwnership> lstCostOfOwnership = new List<CostOfOwnership>();
+            if (FHNumber != "None")
+            {
+                lstCostOfOwnership = _ReportData.GetCostOfOwnershipDetails(FHNumber).Where(p => p.FHnumber == FHNumber).ToList();
+
+            }
+            else
+            {
+                lstCostOfOwnership = _ReportData.GetCostOfOwnershipDetails(FHNumber);
+
+            }
             return PartialView("_GetCostOfOwnershipList", lstCostOfOwnership);
         }
 

@@ -32,6 +32,7 @@ namespace Harmonizer.UI.Controllers
         FHManage _fhManage = new FHManage();
         FHFileData _fhFileData = new FHFileData();
         Scheme _scheme = new Scheme();
+        COOData _cooData = new COOData();
         // GET: FHManage
         public ActionResult ManageFilter()
         {
@@ -279,6 +280,8 @@ namespace Harmonizer.UI.Controllers
         public ActionResult RenameFilter(int FileID, string Comment,string Description,string FLTRID, int op=0)
         {
             int retValue = -1;
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
             CHFilter _chFilter = new CHFilter();
             _chFilter.FileID = FileID;
             _chFilter.FilterDesc = Description;
@@ -288,6 +291,7 @@ namespace Harmonizer.UI.Controllers
             {
                 // Update Filter
                 retValue = _fhManage.UpdateFilterComment(_chFilter);
+                int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, FLTRID+"-"+Description, "Update Filter Successfully", 1, date);
                 return Json(retValue, JsonRequestBehavior.AllowGet);
             }
             else
