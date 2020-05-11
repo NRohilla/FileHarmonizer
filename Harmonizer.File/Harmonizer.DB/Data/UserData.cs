@@ -2780,6 +2780,7 @@ namespace Harmonizer.DB.Data
                 cmd.Parameters.Add("@UserIPAddress", SqlDbType.NVarChar).Value = userdata.UserIPAddress;
                 cmd.Parameters.Add("@UserBrowserName", SqlDbType.NVarChar).Value = userdata.UserBrowserName;
                 cmd.Parameters.Add("@SessionToken", SqlDbType.NVarChar).Value = userdata.SessionToken;
+           
                 cmd.Parameters.Add("@op", SqlDbType.NVarChar).Value = op;
                 // update data
                 rValue = cmd.ExecuteNonQuery();

@@ -25,9 +25,9 @@ namespace Harmonizer.UI.App_Start
             string actioname = filterContext.RouteData.Values["action"].ToString();
 
             //for get request
-           
+
             if (contolername.ToLower() == "Payment".ToLower() && (actioname.ToLower() == "PaymentSucess".ToLower() || actioname.ToLower() == "PaymentCancel".ToLower()))
-            { 
+            {
                 if (HttpContext.Current.Request.QueryString["usertoken"] != null)
                     token = HttpContext.Current.Request.QueryString["usertoken"];
                 else if (HttpContext.Current.Request.UrlReferrer != null && HttpUtility.ParseQueryString(HttpContext.Current.Request.UrlReferrer.Query)["usertoken"] != null)
@@ -49,7 +49,7 @@ namespace Harmonizer.UI.App_Start
                 {
                     DataLogger.Write("session filter" + contolername + "-" + actioname, "Session ended at: " + DateTime.Now.ToString());
                     // Check and fill session data
-                    DataLogger.Write("session filter" + contolername + "-" + actioname, "Select token: " + DateTime.Now.ToString() + "::"+ token);
+                    DataLogger.Write("session filter" + contolername + "-" + actioname, "Select token: " + DateTime.Now.ToString() + "::" + token);
                     DataSet ds = _userData.GetCustomSessionData(UserIPAddrss, UserBrowserName, token, "select");
                     if (ds.Tables[0].Rows.Count > 0)
                     {
@@ -60,9 +60,10 @@ namespace Harmonizer.UI.App_Start
                         HttpContext.Current.Session["BPID"] = ds.Tables[0].Rows[0]["BPID"];
                         HttpContext.Current.Session["Partner"] = ds.Tables[0].Rows[0]["Partner"];
                         HttpContext.Current.Session["BPType"] = ds.Tables[0].Rows[0]["BPType"];
+                        HttpContext.Current.Session["expiredate"] = _userData.GetExpiredate(HttpContext.Current.Session["UserID"].ToString());
                         DataLogger.Write("session filter" + contolername + "-" + actioname, "Session Refilled at: " + DateTime.Now.ToString() + " for token:" + token);
-                        
-                            // Check Expire date
+
+                        // Check Expire date
                         if (actioname.ToLower() != "UserProfile".ToLower() && actioname.ToLower() != "StartMyFreeMonth".ToLower())
                         {
                             if (actioname.ToLower() != "PaymentSucess".ToLower() && actioname.ToLower() != "PaymentCancel".ToLower())
@@ -79,13 +80,13 @@ namespace Harmonizer.UI.App_Start
                             }
                         }
                         // check role
-                        if(contolername.ToLower() == "Admin".ToLower())
+                        if (contolername.ToLower() == "Admin".ToLower())
                         {
-                            if(Convert.ToInt32(HttpContext.Current.Session["Role"]) != 1 && Convert.ToInt32(HttpContext.Current.Session["Role"]) != 7)
-                                filterContext.Result = new RedirectResult("~/Home/Index?token="+token);
+                            if (Convert.ToInt32(HttpContext.Current.Session["Role"]) != 1 && Convert.ToInt32(HttpContext.Current.Session["Role"]) != 7)
+                                filterContext.Result = new RedirectResult("~/Home/Index?token=" + token);
                         }
                     }
-                    else if(actioname.ToLower() == "StartMyFreeMonth".ToLower())
+                    else if (actioname.ToLower() == "StartMyFreeMonth".ToLower())
                     {
 
                     }
@@ -99,6 +100,7 @@ namespace Harmonizer.UI.App_Start
                 }
                 else
                 {
+                    HttpContext.Current.Session["expiredate"] = _userData.GetExpiredate(HttpContext.Current.Session["UserID"].ToString());
                     // Check Expire date
                     if (actioname.ToLower() != "UserProfile".ToLower() && actioname.ToLower() != "StartMyFreeMonth".ToLower())
                     {
@@ -118,7 +120,7 @@ namespace Harmonizer.UI.App_Start
 
                     if (contolername.ToLower() == "Admin".ToLower())
                     {
-                        if (Convert.ToInt32(HttpContext.Current.Session["Role"]) != 1 && Convert.ToInt32(HttpContext.Current.Session["Role"]) !=7)
+                        if (Convert.ToInt32(HttpContext.Current.Session["Role"]) != 1 && Convert.ToInt32(HttpContext.Current.Session["Role"]) != 7)
                             filterContext.Result = new RedirectResult("~/Home/Index?token=" + token);
                     }
 
