@@ -97,28 +97,7 @@
             }
         }
 
-        $('.btn-rename').click(function (e) {
-            debugger;
-            e.preventDefault();
-            var RecordID = $(this).attr('attr-Id');
-
-            $('#SelectedRecordForUpdate').val(RecordID)
-                .attr('attr-Id', $(this).attr('attr-Id'))
-                .attr('attr-FHNum', $(this).attr('attr-FHNum'))
-                .attr('attr-FHName', $(this).attr('attr-FHName'))
-                .attr('attr-AssocNum', $(this).attr('attr-AssocNum'))
-                .attr('attr-Assocname', $(this).attr('attr-Assocname'))
-                .attr('attr-DateOfAssoc', $(this).attr('attr-DateOfAssoc'))
-                .attr('attr-AssocCancelDate', $(this).attr('attr-AssocCancelDate'))
-                .attr('attr-AssocCancelBy', $(this).attr('attr-AssocCancelBy'))
-                .attr('attr-AssocStatus', $('#lblAssocStatus_' + RecordID).text())
-                ;
-
-
-         $('#modelbodydata').load('@Url.Action("ViewDetailsAssociation", "Report")');
-         $('#btnShowData').click();
-        });
-
+       
       
     });
    
