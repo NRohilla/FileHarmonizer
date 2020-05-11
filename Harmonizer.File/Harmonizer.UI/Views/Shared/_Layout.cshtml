@@ -109,7 +109,7 @@
                                                     Filter
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    @if (TempData["expiredate"] != null && Convert.ToDateTime(TempData["expiredate"]) > DateTime.Now)
+                                                    @if (Session["expiredate"] != null && Convert.ToDateTime(Session["expiredate"]) > DateTime.Now)
                                                     {
                                                         @Html.ActionLink("Create Filter", "FilterTemplate", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                     }
@@ -123,7 +123,7 @@
                                                     Template
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    @if (TempData["expiredate"] != null && Convert.ToDateTime(TempData["expiredate"]) > DateTime.Now)
+                                                    @if (Session["expiredate"] != null && Convert.ToDateTime(Session["expiredate"]) > DateTime.Now)
                                                     {
                                                         @Html.ActionLink("Create Template", "Individual", "FHFile", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                     }
@@ -148,7 +148,7 @@
                                                     Mannage Scheme
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    @if (TempData["expiredate"] != null && Convert.ToDateTime(TempData["expiredate"]) > DateTime.Now)
+                                                    @if (Session["expiredate"] != null && Convert.ToDateTime(Session["expiredate"]) > DateTime.Now)
                                                     {
                                                         @Html.ActionLink("Create Scheme", "CreateScheme", "Scheme", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
                                                     }

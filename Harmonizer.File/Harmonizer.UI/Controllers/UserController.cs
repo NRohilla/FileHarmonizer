@@ -18,6 +18,7 @@ namespace Harmonizer.UI.Controllers
     {
         AdminData _admindata = new AdminData();
         UserData _userData = new UserData();
+        COOData _cooData = new COOData();
 
         [SessionTimeoutFilter]
         // GET: User
@@ -384,6 +385,9 @@ namespace Harmonizer.UI.Controllers
                 restoreFolder.Errorlog = folderLocation.Errorlog;
             }
             rValue = _userData.UpdateFolderLocation(restoreFolder, "insert");
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null,"Account Setting", "Folder Applied Successfully", 1, date);
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public ActionResult UpadateRestoreNaming(string op, string prostfix, string prefix)
@@ -484,6 +488,9 @@ namespace Harmonizer.UI.Controllers
             int RoleD = Convert.ToInt32(Session["Role"]);
             Address.UserID = Session["UserID"].ToString();
             int rValue = _userData.UpdateUserAddress(Address,RoleD);
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, "Update Address", "Address Updated Successfully", 1, date);
             return Json(ReturnValue, JsonRequestBehavior.AllowGet);
         }
         [SessionTimeoutFilter]
@@ -492,6 +499,9 @@ namespace Harmonizer.UI.Controllers
             string ReturnValue = "";
             personalInformation.UserID = Session["UserID"].ToString();
             int rValue = _userData.UpdateUserPersonalInfo(personalInformation);
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, "Update User Presonal Info", "Information Updated Successfully", 1, date);
             return Json(ReturnValue, JsonRequestBehavior.AllowGet);
         }
         [SessionTimeoutFilter]
@@ -501,6 +511,9 @@ namespace Harmonizer.UI.Controllers
             string BPID = Session["BPID"].ToString();
             bPInfo.UserID= Session["UserID"].ToString();
             int rValue = _userData.UpdateUserBPInfo(bPInfo,BPID);
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, "Update Business Info", "Information Updated Successfully", 1, date);
             return Json(ReturnValue, JsonRequestBehavior.AllowGet);
         }
 

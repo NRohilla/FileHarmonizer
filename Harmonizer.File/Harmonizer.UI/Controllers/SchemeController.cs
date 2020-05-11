@@ -17,6 +17,7 @@ namespace Harmonizer.UI.Controllers
     {
         Scheme _scheme = new Scheme();
         UserData _userData = new UserData();
+        COOData _cooData = new COOData();
         // GET: Scheme
         public ActionResult CreateScheme()
         {
@@ -33,6 +34,9 @@ namespace Harmonizer.UI.Controllers
         {
             int retvalue = -1;
             retvalue=_scheme.CreateScheme(userScheme, "insert");
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null,userScheme.SchemeName, "Scheme Created Successfully", 1, date);
             return Json(retvalue, JsonRequestBehavior.AllowGet);
         }
 
@@ -89,6 +93,9 @@ namespace Harmonizer.UI.Controllers
         {
             int retValue = -1;
             retValue = _scheme.UpdateComment(ID, Comment, "updatecommnet");
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null,ID+"-"+ Comment, "Scheme Comment Updated Successfully", 1, date);
             return Json(retValue, JsonRequestBehavior.AllowGet);
         }
 
@@ -97,6 +104,9 @@ namespace Harmonizer.UI.Controllers
         {
             int retValue = -1;
             retValue = _scheme.DeleteOrArchiveScheme(ID, "delete");
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null,"Delete Scheme", "Scheme Deleted Successfully", 1, date);
             return Json(retValue, JsonRequestBehavior.AllowGet);
         }
 
@@ -111,7 +121,9 @@ namespace Harmonizer.UI.Controllers
             // LstID=SchemeNum
             foreach (var d in LstID.ToList())
                 retValue = _scheme.ArchiveSchemeAndDependentFilter(d, Session["BPID"].ToString(), "archivescheme");
-
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, "Archive Scheme", "Scheme Archived Successfully", 1, date);
             return Json(retValue, JsonRequestBehavior.AllowGet);
         }
 
@@ -155,7 +167,9 @@ namespace Harmonizer.UI.Controllers
 
             lstScheme.SchemeInfo = userScheme;
             lstScheme.SchemeDetail =GetSchemeDetailsByID(ID,BPID);
-
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, "View Scheme", "Scheme Viewed Successfully", 1, date);
             return PartialView("_ViewScheme", lstScheme);
         }
 

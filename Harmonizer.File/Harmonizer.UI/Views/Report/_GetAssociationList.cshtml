@@ -16,10 +16,16 @@
     <div class="row mb-2">
         @if (Session["FHnumber"].ToString() == "None")
         {
-        <div class="col-md-3">
-            <input type="text" class="form-control" id="txtSearchByName" value="" style="background-color:yellow;" placeholder="Name" />
+        <div class="col-md-2">
+            @Html.Label("Select FH#", htmlAttributes: new { @class = "control-label form-label" })
         </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" id="txtSearchByName" value="" style="background-color:yellow;" placeholder="FH Name" />
+            </div>
         }
+            <div class="col-md-2">
+                @Html.Label("Select Associate#", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
         <div class="col-md-3">
             <input type="text" class="form-control" id="txtSearchByAssociateName" value="" style="background-color:yellow;" placeholder="Associate Name" />
         </div>

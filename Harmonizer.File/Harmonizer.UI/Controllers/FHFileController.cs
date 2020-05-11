@@ -49,6 +49,8 @@ namespace Harmonizer.UI.Controllers
         UserData _userData = new UserData();
         FHManage _fhManage = new FHManage();
         AdminData _adminData = new AdminData();
+        COOData _cooData = new COOData(); 
+        
         // GET: FHFile
         public ActionResult Index()
         {
@@ -127,12 +129,14 @@ namespace Harmonizer.UI.Controllers
             string ReturnHFLTRID = "";
             string UnquicSECTAGCODE = "";
             string FileSucessToProcessed = "";
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
             List<SwordAndTagReplace> lstSearch = new List<SwordAndTagReplace>();
             try
             {
                 lstSearch = RemoveDuplicateSearchText(JsonConvert.DeserializeObject<List<SwordAndTagReplace>>(Request.Form[0].ToString()));
                 //RemoveDuplicateSearchText(lstSearch);
-
+                int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber,null, "Create Filter", "List Added Successfully", 1, date);
                 UnquicSECTAGCODE = _fileData.GetTAGSECCode(Request.Form[2].ToString() == "0" ? "H" : Request.Form[2].ToString());
                 template.TemplateType = Request.Form[1].ToString();
                 // template.TemplateName = Request.Form[2].ToString();
@@ -239,9 +243,14 @@ namespace Harmonizer.UI.Controllers
 
                                 }
                                 if (FileSucessToProcessed == "")
+                                {
                                     msg = "File uploaded successfully";
+                                    int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, fileUploadData.NewFileName, "Filter Created Successfully", 1, date);
+                                }
                                 else
+                                {
                                     msg = FileSucessToProcessed;
+                                }
                             }
                         }
                     }
@@ -262,6 +271,7 @@ namespace Harmonizer.UI.Controllers
             List<SwordAndTagReplace> lst = new List<SwordAndTagReplace>();
             //lst = lstSword.Distinct().ToList();// not working for collection as class
             lst = lstSword.Distinct(new ItemEqualityComparer()).ToList();
+
             return lst;
         }
 
@@ -1248,8 +1258,12 @@ namespace Harmonizer.UI.Controllers
 
             Result = _fileData.AddTagNameDetails(_tag);
             if (Result != 1 && Result != 2)
+            {
                 msg = "Error! Please try again";
-
+            }
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, _tag.TagName + ""+ _tag.Description, "Custom Tag Created Successfully", 1, date);
             return Json(msg, JsonRequestBehavior.AllowGet);
         }
 
@@ -1478,6 +1492,9 @@ namespace Harmonizer.UI.Controllers
                 _fileData.UpdateTemplateShareValue(dt);// Update share as per template
                 _fileData.CreateRepository(dt);// Update in repository
                 _fileData.CreateUpdateShareValue(dt, BPID, "Update");// Update common share value
+                string FHnumber = Session["FHnumber"].ToString();
+                var date = DateTime.Now.ToString("yyyy-MM-dd");
+                int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, "Maintain Tag", "Values Updated Successfully", 1, date);
             }
             catch (Exception ex)
             {
@@ -1522,7 +1539,9 @@ namespace Harmonizer.UI.Controllers
                     _fileData.SaveHarmonizerTeamplateInfo(TemplateIdOrFileID, BPID, UserID, TemplateName, hTragetPath);
                     ReturnFileName = BPID + "/" + FileName + "/" + dFileName;
                 }
-
+                string FHnumber = Session["FHnumber"].ToString();
+                var date = DateTime.Now.ToString("yyyy-MM-dd");
+                int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null,TemplateName, "Harmonize Process Completed", 1, date);
             }
             catch (Exception ex)
             {
@@ -1805,6 +1824,7 @@ namespace Harmonizer.UI.Controllers
         }
         public ActionResult MassUploadSearchData()
         {
+            string FHnumber = Session["FHnumber"].ToString();
             int r = 0;
             List<Tag> _lstTag = new List<Tag>();
             string result = "File not found to upload data";
@@ -1824,9 +1844,11 @@ namespace Harmonizer.UI.Controllers
                         // Start process to store in DB
                         _lstTag = GetAllRowDataSearch(sourcePathToWrite);
                         if (_lstTag.Count() > 0)
-                        {
+                        {  
                             //start process
                             result = "";
+                            var date = DateTime.Now.ToString("yyyy-MM-dd");
+                            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber,null, Fileupload.FileName, "Upload Filter Successfully", 1, date);
                         }
                         else
                         {
@@ -1954,6 +1976,9 @@ namespace Harmonizer.UI.Controllers
                 {
                     _fileData.SaveHarmonizerTeamplateInfo(FileID, BPID, UserID, TemplateName, hTragetPath, PersonaID.ToString());
                     ReturnFileName = BPID + "/" + FileName + "/" + dFileName;
+                    string FHnumber = Session["FHnumber"].ToString();
+                    var date = DateTime.Now.ToString("yyyy-MM-dd");
+                    int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, FileName, "Template Harmonized Successfully", 1, date);
                 }
 
             }
@@ -2117,6 +2142,9 @@ namespace Harmonizer.UI.Controllers
                 PrintPath = "";
             }
             // PrintPath = PrintFilePath(FilePath, FileID, HTFileID, fullPathUrlTemplate, StroragePathForPrint, IdentificationPath, origanlPath);
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null,"View Print file", "File Printed Successfully", 1, date);
             return Json(PrintPath, JsonRequestBehavior.AllowGet);
         }
 
@@ -2203,6 +2231,7 @@ namespace Harmonizer.UI.Controllers
             string UserID = Session["UserID"].ToString();
             string FHnumber = Session["FHnumber"].ToString();
             Session["BPIDOrFH"] = BPIDOrFH;
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
             List<CreateListTemplate> lstTemp = new List<CreateListTemplate>();
             try
             {
@@ -2220,6 +2249,7 @@ namespace Harmonizer.UI.Controllers
                         Session["RecordId"] = recordId;
 
                     }
+                    int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, BPIDOrFH, "MaintainTag-TemplatePerBPID/FH# ", "Scan FHG# Successfully", 1, date);
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
                         CreateListTemplate objtemp = new CreateListTemplate();
@@ -2288,6 +2318,9 @@ namespace Harmonizer.UI.Controllers
             retValue = _fileData.CopyTemplate(fileID, oldName, newName, userId, BPID);
             if (retValue >= 1)
             {
+                string FHnumber = Session["FHnumber"].ToString();
+                var date = DateTime.Now.ToString("yyyy-MM-dd");
+                int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, oldName+"-"+newName, "Template copy successfully", 1, date);
                 msg = "Template copy successfully";
             }
             else
@@ -2431,9 +2464,16 @@ namespace Harmonizer.UI.Controllers
 
                                     }
                                     if (FileSucessToProcessed == "")
+                                    {
                                         msg = "File uploaded successfully";
+                                        string FHnumber = Session["FHnumber"].ToString();
+                                        var date = DateTime.Now.ToString("yyyy-MM-dd");
+                                        int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, fileUploadData.NewFileName, "Upload Created Template Successfully", 1, date);
+                                    }
                                     else
+                                    {
                                         msg = FileSucessToProcessed;
+                                    }
                                 }
                             }
                         }
