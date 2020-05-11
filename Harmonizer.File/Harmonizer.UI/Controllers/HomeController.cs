@@ -1,35 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 using Harmonizer.Core;
+using Harmonizer.DB.Data;
+using Harmonizer.UI.App_Start;
 using Ionic.Zip;
 
 namespace Harmonizer.UI.Controllers
 {
     public class HomeController : Controller
     {
+        UserData _userData = new UserData();
         public ActionResult Index()
         {
-           
-            // Home
-            return View();
+            if (Request.QueryString["token"] != null && Session["UserID"]==null)
+            {
+                CreateSessions();
+            }
+                // Home
+                return View();
         }
 
+        
         public ActionResult About()
         {
             // About
+            if (Request.QueryString["token"] != null && Session["UserID"] == null)
+            {
+                CreateSessions();
+            }
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
+       
         public ActionResult Contact()
         {
             //Contact
+            if (Request.QueryString["token"] != null && Session["UserID"] == null)
+            {
+                CreateSessions();
+            }
             ViewBag.Message = "Your contact page.";
 
             return View();
@@ -86,6 +103,27 @@ namespace Harmonizer.UI.Controllers
         {
             return View();
         }
+
+        public void CreateSessions()
+        {
+                var token = Request.QueryString["token"];
+                string UserIPAddrss = Request.UserHostAddress;
+                string UserBrowserName = Request.Browser.Browser.ToLower().Trim();
+                DataSet ds = _userData.GetCustomSessionData(UserIPAddrss, UserBrowserName, token, "select");
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    Session["UserID"] = ds.Tables[0].Rows[0]["UserID"];
+                    Session["Role"] = Convert.ToInt32(ds.Tables[0].Rows[0]["Role"]);
+                    Session["Email"] = ds.Tables[0].Rows[0]["EmailID"];
+                    Session["SECID"] = ds.Tables[0].Rows[0]["SECID"];
+                    Session["BPID"] = ds.Tables[0].Rows[0]["BPID"];
+                    Session["Partner"] = ds.Tables[0].Rows[0]["Partner"];
+                    Session["BPType"] = ds.Tables[0].Rows[0]["BPType"];
+                    Session["expiredate"] = _userData.GetExpiredate(ds.Tables[0].Rows[0]["UserID"].ToString());
+
+                }
+            }
+
 
 
 

@@ -99,9 +99,9 @@ namespace Harmonizer.UI.Controllers
             ViewBag.message = TempData["Message"] != null ? TempData["Message"].ToString() : "";
 
             ////-Nitin Check for expiry of account
-            if (Session["expiredate"] != null)
+            if (TempData["expiredate"] != null)
             {
-                ViewBag.ExpireDate = Convert.ToDateTime(Session["expiredate"]).ToShortDateString();
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
                 TempData.Keep();
             }
 
@@ -280,9 +280,9 @@ namespace Harmonizer.UI.Controllers
         public ActionResult Individual()
         {
             ////-Nitin Check for expiry of account
-            if (Session["expiredate"] != null)
+            if (TempData["expiredate"] != null)
             {
-                ViewBag.ExpireDate = Convert.ToDateTime(Session["expiredate"]).ToShortDateString();
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
                 TempData.Keep();
             }
             return View();
@@ -2164,9 +2164,9 @@ namespace Harmonizer.UI.Controllers
             ViewData["lstSectore"] = lstSectore;
 
             ////-Nitin Check for expiry of account
-            if (Session["expiredate"] != null)
+            if (TempData["expiredate"] != null)
             {
-                ViewBag.ExpireDate = Convert.ToDateTime(Session["expiredate"]).ToShortDateString();
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
                 TempData.Keep();
             }
 
@@ -2852,9 +2852,9 @@ namespace Harmonizer.UI.Controllers
             }
 
             ////-Nitin Check for expiry of account
-            if (Session["expiredate"] != null)
+            if (TempData["expiredate"] != null)
             {
-                ViewBag.ExpireDate = Convert.ToDateTime(Session["expiredate"]).ToShortDateString();
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
                 TempData.Keep();
             }
 
