@@ -1,10 +1,10 @@
 ﻿
 @model IEnumerable<Harmonizer.Core.Model.Association>
-    @{
+@{
     WebGrid webGrid = new WebGrid(source: Model, canPage: false, canSort: false);
-    }
-    @if (Model.Count() > 0)
-    {
+}
+@if (Model.Count() > 0)
+{
     <style>
         .ui-autocomplete {
             max-height: 100px;
@@ -16,16 +16,16 @@
     <div class="row mb-2">
         @if (Session["FHnumber"].ToString() == "None")
         {
-        <div class="col-md-2">
-            @Html.Label("Select FH#", htmlAttributes: new { @class = "control-label form-label" })
-        </div>
+            <div class="col-md-2">
+                @Html.Label("Select FH#", htmlAttributes: new { @class = "control-label form-label" })
+            </div>
             <div class="col-md-3">
                 <input type="text" class="form-control" id="txtSearchByName" value="" style="background-color:yellow;" placeholder="FH Name" />
             </div>
         }
-            <div class="col-md-2">
-                @Html.Label("Select Associate#", htmlAttributes: new { @class = "control-label form-label" })
-            </div>
+        <div class="col-md-2">
+            @Html.Label("Select Associate#", htmlAttributes: new { @class = "control-label form-label" })
+        </div>
         <div class="col-md-3">
             <input type="text" class="form-control" id="txtSearchByAssociateName" value="" style="background-color:yellow;" placeholder="Associate Name" />
         </div>
@@ -34,78 +34,99 @@
     <hr />
     <div class="row scrollable-table">
         <div class="col-md-12">
-            @if (Session["FHnumber"].ToString() !="None")
+            @if (Session["FHnumber"].ToString() != "None")
             {
-            @webGrid.GetHtml(
-            htmlAttributes: new { @id = "AssociationDetails", @class = "table table-bordered table-sm table-striped search-replace-table sticky-header" },
-            columns: webGrid.Columns(
-            //webGrid.Column("FH#", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHnumber), new { @id = "lblFHnumber_" + item.ID })</span>),
-            //webGrid.Column("FH Name", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHName), new { @id = "lblFHName_" + item.ID })</span>),
-            webGrid.Column("Associate", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.Associate), new { @id = "lblAssociate_" + item.ID })</span>),
-            webGrid.Column("Associate Name", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.AssociateName), new { @id = "lblAssociateName_" + item.ID })</span>),
-            webGrid.Column("Association Date", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.OriginalDateofAssoc)),
-            webGrid.Column("Status", format: @<span>@Html.Label("lblAssocStatus", item.AssocStatus ? "Active" : "In-Active", new { @id = "lblAssocStatus_" + item.ID })</span>),
-            webGrid.Column("", format: @<input type="button" name='btnViewDetails_' value="View Details" id="btnViewDetails_@item.ID"
-                                               attr-Id="@item.ID"
-                                               attr-FHNum="@item.FHnumber"
-                                               attr-FHName="@item.FHName"
-                                               attr-AssocNum="@item.Associate"
-                                               attr-Assocname="@item.AssociateName"
-                                               attr-DateOfAssoc="@item.OriginalDateofAssoc"
-                                               attr-AssocCancelDate="@item.AssocCanceledDate"
-                                               attr-AssocCancelBy="@item.AssocCanceledBy"
-                                               class="btn-info btn-rename" />)))
+                @webGrid.GetHtml(
+                htmlAttributes: new { @id = "AssociationDetails", @class = "table table-bordered table-sm table-striped search-replace-table sticky-header" },
+                columns: webGrid.Columns(
+                //webGrid.Column("FH#", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHnumber), new { @id = "lblFHnumber_" + item.ID })</span>),
+                //webGrid.Column("FH Name", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHName), new { @id = "lblFHName_" + item.ID })</span>),
+                webGrid.Column("Associate", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.Associate), new { @id = "lblAssociate_" + item.ID })</span>),
+                         webGrid.Column("Associate Name", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.AssociateName), new { @id = "lblAssociateName_" + item.ID })</span>),
+                                 webGrid.Column("Association Date", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.OriginalDateofAssoc)),
+                                 webGrid.Column("Status", format: @<span>@Html.Label("lblAssocStatus", item.AssocStatus ? "Active" : "In-Active", new { @id = "lblAssocStatus_" + item.ID })</span>),
+                                         webGrid.Column("", format: @<input type="button" name='btnViewDetails_' value="View Details" id="btnViewDetails_@item.ID"
+                                                                            attr-Id="@item.ID"
+                                                                            attr-FHNum="@item.FHnumber"
+                                                                            attr-FHName="@item.FHName"
+                                                                            attr-AssocNum="@item.Associate"
+                                                                            attr-Assocname="@item.AssociateName"
+                                                                            attr-DateOfAssoc="@item.OriginalDateofAssoc"
+                                                                            attr-AssocCancelDate="@item.AssocCanceledDate"
+                                                                            attr-AssocCancelBy="@item.AssocCanceledBy"
+                                                                            class="btn-info btn-rename" />)))
             }
             else
             {
-            @webGrid.GetHtml(
-            htmlAttributes: new { @id = "AssociationDetails", @class = "table table-bordered table-sm table-striped search-replace-table sticky-header" },
-            columns: webGrid.Columns(
-            webGrid.Column("FH#", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHnumber), new { @id = "lblFHnumber_" + item.ID })</span>),
-            webGrid.Column("FH Name", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHName), new { @id = "lblFHName_" + item.ID })</span>),
-            webGrid.Column("Associate", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.Associate), new { @id = "lblAssociate_" + item.ID })</span>),
-            webGrid.Column("Associate Name", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.AssociateName), new { @id = "lblAssociateName_" + item.ID })</span>),
-            webGrid.Column("Association Date", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.OriginalDateofAssoc)),
-            webGrid.Column("Status", format: @<span>@Html.Label("lblAssocStatus", item.AssocStatus ? "Active" : "In-Active", new { @id = "lblAssocStatus_" + item.ID })</span>),
-            webGrid.Column("", format: @<input type="button" name='btnViewDetails_' value="View Details" id="btnViewDetails_@item.ID"
-                                               attr-Id="@item.ID"
-                                               attr-FHNum="@item.FHnumber"
-                                               attr-FHName="@item.FHName"
-                                               attr-AssocNum="@item.Associate"
-                                               attr-Assocname="@item.AssociateName"
-                                               attr-DateOfAssoc="@item.OriginalDateofAssoc"
-                                               attr-AssocCancelDate="@item.AssocCanceledDate"
-                                               attr-AssocCancelBy="@item.AssocCanceledBy"
-                                               class="btn-info btn-rename" />)))
+                @webGrid.GetHtml(
+                htmlAttributes: new { @id = "AssociationDetails", @class = "table table-bordered table-sm table-striped search-replace-table sticky-header" },
+                columns: webGrid.Columns(
+                webGrid.Column("FH#", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHnumber), new { @id = "lblFHnumber_" + item.ID })</span>),
+                         webGrid.Column("FH Name", format: @<span>@Html.Label("lblFHnumber", String.Format("{0}", (string)item.FHName), new { @id = "lblFHName_" + item.ID })</span>),
+                                 webGrid.Column("Associate", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.Associate), new { @id = "lblAssociate_" + item.ID })</span>),
+                                         webGrid.Column("Associate Name", format: @<span>@Html.Label("lblAssociate", String.Format("{0}", (string)item.AssociateName), new { @id = "lblAssociateName_" + item.ID })</span>),
+                                                 webGrid.Column("Association Date", format: (item) => string.Format("{0:dd-MMM-yyyy}", item.OriginalDateofAssoc)),
+                                                 webGrid.Column("Status", format: @<span>@Html.Label("lblAssocStatus", item.AssocStatus ? "Active" : "In-Active", new { @id = "lblAssocStatus_" + item.ID })</span>),
+                                                         webGrid.Column("", format: @<input type="button" name='btnViewDetails_' value="View Details" id="btnViewDetails_@item.ID"
+                                                                                            attr-Id="@item.ID"
+                                                                                            attr-FHNum="@item.FHnumber"
+                                                                                            attr-FHName="@item.FHName"
+                                                                                            attr-AssocNum="@item.Associate"
+                                                                                            attr-Assocname="@item.AssociateName"
+                                                                                            attr-DateOfAssoc="@item.OriginalDateofAssoc"
+                                                                                            attr-AssocCancelDate="@item.AssocCanceledDate"
+                                                                                            attr-AssocCancelBy="@item.AssocCanceledBy"
+                                                                                            class="btn-info btn-rename" />)))
             }
 
         </div>
     </div>
-    }
-    else
-    {
+}
+else
+{
     <div class="row">
         <div class="col-md-12">
             <span class="text-danger">No Active Association</span>
         </div>
     </div>
-    }
+}
 
-   
-        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
-  
-       <link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css"
-       rel="Stylesheet" type="text/css" / >
-  
-    
-      
-    
-    <script>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
+
+<link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css"
+      rel="Stylesheet" type="text/css" / >
+
+
+
+
+<script>
 
                 $(document).ready(function () {
 
                     /////To show the Pop Up on page load
+                            $('.btn-rename').click(function (e) {
+            debugger;
+            e.preventDefault();
+            var RecordID = $(this).attr('attr-Id');
+
+            $('#SelectedRecordForUpdate').val(RecordID)
+                .attr('attr-Id', $(this).attr('attr-Id'))
+                .attr('attr-FHNum', $(this).attr('attr-FHNum'))
+                .attr('attr-FHName', $(this).attr('attr-FHName'))
+                .attr('attr-AssocNum', $(this).attr('attr-AssocNum'))
+                .attr('attr-Assocname', $(this).attr('attr-Assocname'))
+                .attr('attr-DateOfAssoc', $(this).attr('attr-DateOfAssoc'))
+                .attr('attr-AssocCancelDate', $(this).attr('attr-AssocCancelDate'))
+                .attr('attr-AssocCancelBy', $(this).attr('attr-AssocCancelBy'))
+                .attr('attr-AssocStatus', $('#lblAssocStatus_' + RecordID).text())
+                ;
+
+
+         $('#modelbodydata').load('@Url.Action("ViewDetailsAssociation", "Report")');
+         $('#btnShowData').click();
+        });
                     $(function () {
                         $("#txtSearchByAssociateName").autocomplete({
                             source: function (request, response) {
@@ -116,7 +137,7 @@
                                     type: "POST",
                                     contentType: "application/json; charset=utf-8",
                                     success: function (data) {
-                                     
+
                                         response($.map(data, function (item) {
                                             return item;
                                         }))
@@ -142,7 +163,7 @@
 
                     $(function () {
                         $("#txtSearchByName").autocomplete({
-                          
+
                             source: function (request, response) {
                                 $.ajax({
                                     url: '@Url.Action("AutoComplete", "Report")',
@@ -174,29 +195,6 @@
                             $(this).autocomplete("search");
                         });
                     });
-
-                     $('.btn-rename').click(function (e) {
-            debugger;
-            e.preventDefault();
-            var RecordID = $(this).attr('attr-Id');
-
-            $('#SelectedRecordForUpdate').val(RecordID)
-                .attr('attr-Id', $(this).attr('attr-Id'))
-                .attr('attr-FHNum', $(this).attr('attr-FHNum'))
-                .attr('attr-FHName', $(this).attr('attr-FHName'))
-                .attr('attr-AssocNum', $(this).attr('attr-AssocNum'))
-                .attr('attr-Assocname', $(this).attr('attr-Assocname'))
-                .attr('attr-DateOfAssoc', $(this).attr('attr-DateOfAssoc'))
-                .attr('attr-AssocCancelDate', $(this).attr('attr-AssocCancelDate'))
-                .attr('attr-AssocCancelBy', $(this).attr('attr-AssocCancelBy'))
-                .attr('attr-AssocStatus', $('#lblAssocStatus_' + RecordID).text())
-                ;
-
-
-         $('#modelbodydata').load('@Url.Action("ViewDetailsAssociation", "Report")');
-         $('#btnShowData').click();
-        });
-
                 //      $('#txtSearchByAssociateName').change(function () {
                     //    debugger;
                     //    var filterdata = $('#txtSearchByAssociateName').val();
@@ -231,9 +229,10 @@
                         }
                     });
 
-                
+
+
             }
 
 
-    </script>
+</script>
 
