@@ -176,6 +176,9 @@ namespace Harmonizer.UI.Controllers
         public ActionResult ViewFile(string FilePath)
         {
             ViewBag.FilePath = FilePath;
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, "Harmonize Template-View", "File View Successfully", 1, date);
             return PartialView("_ViewFile");
         }
 
@@ -195,6 +198,9 @@ namespace Harmonizer.UI.Controllers
                 // Update Template
                 retValue = _fhManage.UpdateTemplateComment(_template);
                 retValue = 1;
+                string FHnumber = Session["FHnumber"].ToString();
+                var date = DateTime.Now.ToString("yyyy-MM-dd");
+                int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, HFLTRID+"-"+Description, "Template Updated Successfully", 1, date);
                 return Json(retValue, JsonRequestBehavior.AllowGet);
             }
             else
@@ -223,6 +229,7 @@ namespace Harmonizer.UI.Controllers
             List<ManageFilterTemplateModel> lstFilterTemplate = new List<ManageFilterTemplateModel>();
             string UserID = Session["UserID"].ToString();
             string BPID = Session["BPID"].ToString();
+            Session["Associate"] = " ";
             var lstFilterTemplateNew = GetFiletTemplateManageData(BPID).Where(x=>x.Template.IsDeleted==false && x.Template.IsArchive==false).ToList();
             lstFilterTemplate = lstFilterTemplateNew.Distinct(new NoDuplicateTemplate()).ToList(); ;
             return PartialView(lstFilterTemplate);
@@ -235,6 +242,9 @@ namespace Harmonizer.UI.Controllers
             int retValue = 0;
             string FLTRID = "";
             retValue = _fhManage.DeleteFilter(FileID, BPID, FLTRID,"Template");
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, "Maintain Template-Delete", "Template Deleted Successfully", 1, date);
             return Json(retValue, JsonRequestBehavior.AllowGet);
         }
 
@@ -291,7 +301,7 @@ namespace Harmonizer.UI.Controllers
             {
                 // Update Filter
                 retValue = _fhManage.UpdateFilterComment(_chFilter);
-                int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, FLTRID+"-"+Description, "Update Filter Successfully", 1, date);
+                int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, FLTRID+"-"+Description, "Filter Updated Successfully", 1, date);
                 return Json(retValue, JsonRequestBehavior.AllowGet);
             }
             else
@@ -348,6 +358,9 @@ namespace Harmonizer.UI.Controllers
             string BPID = Session["BPID"].ToString(); 
             string Op = "ArchiveTemplate";
             retValue = _fhManage.ArchiveTemplateFileAll(lstFileID, BPID, Op);
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, "Maintain Template-Archive", "Template Archived Successfully", 1, date);
             return Json(retValue, JsonRequestBehavior.AllowGet);
         }
 
@@ -386,9 +399,9 @@ namespace Harmonizer.UI.Controllers
 			//added Smit userid,Fhnumb,associate
             string UserID = Session["UserID"].ToString();
             string FHnumb = Session["FHnumber"].ToString();
-            string Associate = Session["Associate"].ToString();
             string fullPathUrlTemplate = "";
             string fullPathUrlHarmonized = "";
+            string Associate = Session["Associate"].ToString();
             string host = Request.Url.Host;
             string port =Request.Url.Port.ToString();
             string rootDomain = ConfigurationManager.AppSettings["rootDomain"].ToString();
@@ -412,8 +425,8 @@ namespace Harmonizer.UI.Controllers
             DataSet ds =_fhManage.GetFilterTemplateDetailsByBPID(BPID);
             if (ds.Tables[0].Rows.Count > 0)
             {
-				//added smit 
-				association.FHnumber = FHnumb;
+                //added smit 
+                association.FHnumber = FHnumb;
                 association.Associate = Associate;
                 association.AssocStatus = true;
                 association.AssocCanceledBy = UserID;
@@ -500,6 +513,9 @@ namespace Harmonizer.UI.Controllers
         {
             int retValue = -1;
             retValue = _fhManage.UpdateHarmonizeCommnet(ID, Comment);
+            string FHnumber = Session["FHnumber"].ToString();
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null,"Harmonize Template-Comment", "Comment Updated Successfully", 1, date);
             return Json(retValue, JsonRequestBehavior.AllowGet);
         }
 
