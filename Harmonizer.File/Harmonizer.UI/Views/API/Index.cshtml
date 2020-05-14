@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "API Docs";
+}
+
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <h4>API Docs</h4>
+        <hr />
+        <div class="bg-white p-3 border w-100 float-left">
+            <div class="text-center">
+                <div class="col-md-12">
+                    <div class="col-md-3 text-right" style="padding:20px;">
+                        <p>
+                            <strong>Web Service Documentation </strong><br />
+                            Explore our available Web Services
+                        </p>
+                    </div>
+                    <div class="col-md-3 text-center" style="padding:20px;">
+                        <input type="button" id="btnRetrieveTagValues" name="retrieveTagValues" class="btn btn-info" value="Retrieve Tag Values" />
+
+                    </div>
+                    <div class="col-md-3 text-center" style="padding:20px;">
+
+                        <input type="button" id="btnRetriveHistoryData" name="retriveHistoryData" class="btn btn-info" value="Retrieve History Data" />
+                    </div>
+                    <div class="col-md-3 text-center" style="padding:20px;">
+
+
+                        <input type="button" id="btnRetrieveAssociates" name="retrieveAssociates" class="btn btn-info" value="Retrieve Associates" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

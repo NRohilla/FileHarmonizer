@@ -14,10 +14,11 @@ namespace Harmonizer.DB.Data
     {
         public static string constr = ConfigurationManager.AppSettings["FHConnStr"].ToString();
         SqlConnection con = new SqlConnection();
-        public TagModel GetTagInfo(TagModel tagModel)
+        public List<TagViewModel> GetTagInfo(TagModel tagModel)
         {
+            List<TagViewModel> lstTagModel = new List<TagViewModel>();
             DataSet ds = new DataSet();
-            for (int i= 0;i<tagModel.Tags.Count;i++)
+            for (int i = 0; i < tagModel.Tags.Count; i++)
             {
                 try
                 {
@@ -28,23 +29,26 @@ namespace Harmonizer.DB.Data
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@FHnumber", SqlDbType.NVarChar).Value = tagModel.FHnumber;
                     cmd.Parameters.Add("@Associate", SqlDbType.NVarChar).Value = tagModel.AssociateNumber;
-                    //cmd .Parameters.Add("@TimeProcessed", SqlDbType.Time).Value = costOfOwnership.TimeProcessed;
                     cmd.Parameters.Add("@TagID", SqlDbType.NVarChar).Value = tagModel.Tags[i];
-
                     cmd.Parameters.Add("@op", SqlDbType.NVarChar).Value = "Select";
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     da.Fill(ds);
                     if (ds.Tables.Count > 0 &&
                       ds.Tables[0].Rows.Count > 0)
                     {
-
-
-                        tagModel.FHnumber = ds.Tables[0].Rows[0]["FHNumber"].ToString();
-                        tagModel.Tags[i] = ds.Tables[0].Rows[0]["UTAGID"].ToString();
-                        tagModel.ShareValue.Add(ds.Tables[0].Rows[0]["Share"].ToString());
-
+                        for (int k = 0; k < ds.Tables[0].Rows.Count; k++)
+                        {
+                            TagViewModel tagModels = new TagViewModel();
+                            tagModels.FHnumber = ds.Tables[0].Rows[k]["FHNumber"].ToString();
+                            tagModels.TagID = ds.Tables[0].Rows[k]["UTAGID"].ToString();
+                            tagModels.ShareValue = ds.Tables[0].Rows[k]["Share"].ToString();
+                            var checkData = lstTagModel.FirstOrDefault(x => x.FHnumber == tagModels.FHnumber && x.TagID == tagModels.TagID);
+                            if (checkData == null)
+                                lstTagModel.Add(tagModels);
+                        }
                     }
                     ConnectionClass.closeconnection(con);
+
                 }
                 catch (Exception ex)
                 {
@@ -57,8 +61,8 @@ namespace Harmonizer.DB.Data
                     ConnectionClass.closeconnection(con);
                 }
             }
-          
-            return tagModel;
+
+            return lstTagModel;
         }
 
     }

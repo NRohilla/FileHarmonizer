@@ -11,7 +11,13 @@ namespace Harmonizer.Core
         public string FHnumber { get; set; }
         public string AssociateNumber { get; set; }
         public List<string> Tags { get; set; }
+    }
 
-        public List<string> ShareValue { get; set; }
+    public class TagViewModel
+    {
+        public string FHnumber { get; set; }
+        public string TagID { get; set; }
+        public string ShareValue { get; set; }
+
     }
 }

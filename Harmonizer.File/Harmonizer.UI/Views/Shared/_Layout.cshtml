@@ -217,6 +217,16 @@
                                                     </div>
                                                 </li>
                                             }
+                                            <li class="nav-item dropdown d-none">
+                                                <a class="nav-link dropdown-toggle d-block py-1 px-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    API
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    @Html.ActionLink("API Docs", "Index", "API", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                    @Html.ActionLink("API Key SignUp", "Signup", "API", new { token = Request.QueryString["token"] }, new { @class = "d-block py-1 px-2" })
+                                                </div>
+                                            </li>
+
                                         </ul>
                                     </div>
                                 }

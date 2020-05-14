@@ -1,0 +1,59 @@
+﻿@model Harmonizer.Core.Model.APIModel
+@{
+    ViewBag.Title = "API Key Signup";
+}
+
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div id="divPartial">
+            @Html.Action("UserHeader", "FHFile")
+        </div>
+        <h4>API Key Signup</h4>
+        <hr />
+        <div class="bg-white p-3 border w-100 float-left">
+            <div class="text-center">
+                <div class="form-group">
+                    <div>
+                        <h5><b>Signup for a single API key and use it across File Harmonizer Global API's</b></h5>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5><b>API Key</b></h5>
+                            Sign up to use our API's
+                        </div>
+                    </div>
+                    <div class="mt-4 row">
+                        <div class="col-md-4">
+                            <input type="button" id="btnsave" name="Get an API Key" class="btn btn-info btn-lg" style="width: 200px" value="Get an API Key" />
+                        </div>
+                    </div>
+                    <div class="mt-4 row">
+                        <div class="col-md-4">
+                            Generated APIKey: <span id="apikey"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#btnsave').click(function () {
+        $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetAPIkey", "API")',
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                debugger;
+                    $('#apikey').text(data);
+            },
+            error: function (error) {
+                alert("Error! Please try again.");
+            }
+            });
+
+        });
+</script>
