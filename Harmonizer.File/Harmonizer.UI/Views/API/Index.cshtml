@@ -14,27 +14,265 @@
         <div class="bg-white p-3 border w-100 float-left">
             <div class="text-center">
                 <div class="col-md-12">
-                    <div class="col-md-3 text-right" style="padding:20px;">
+                    <div class="col-md-12 text-center" style="padding:20px;">
                         <p>
                             <strong>Web Service Documentation </strong><br />
                             Explore our available Web Services
                         </p>
                     </div>
-                    <div class="col-md-3 text-center" style="padding:20px;">
-                        <input type="button" id="btnRetrieveTagValues" name="retrieveTagValues" class="btn btn-info" value="Retrieve Tag Values" />
+                    <div class="col-md-12 text-center">
+                        <input style="margin-right:30px;" type="button" id="btnRetrieveTagValues" name="retrieveTagValues" class="btn btn-info" value="Retrieve Tag Values" />
+                        <input style="margin-right:30px;" type="button" id="btnRetriveHistoryData" name="retriveHistoryData" class="btn btn-info" value="Retrieve History Data" />
+                        <input style="margin-right:30px;" type="button" id="btnRetrieveAssociates" name="retrieveAssociates" class="btn btn-info" value="Retrieve Associates" />
+                        <input style="margin-right:30px;" type="button" id="btnRetrieveTagValuesDoc" name="retrieveTagValuesDoc" class="btn btn-info" value="Retrieve Tag Values Doc" />
 
                     </div>
-                    <div class="col-md-3 text-center" style="padding:20px;">
+                    <hr />
+                    <div class="col-md-12 text-left" style="margin-top:20px;" id="paragraphRetrieveTagValues">
+                        <p>
+                            <strong>Retrieve Tag Values</strong><br />
+                            The Retrieve Tag Values request helps you access, retrieve and update values per FHG# and Associate FHG#<br /><br />
 
-                        <input type="button" id="btnRetriveHistoryData" name="retriveHistoryData" class="btn btn-info" value="Retrieve History Data" />
+                            <strong>Documentation</strong><br />
+                            Use this Web service documentation to access, retrieve and update data via Application Programming Interfaces (API's) for the retrieval of Tag Values.
+                            You'll need a key to use these API's. Sign up for an API Key.<br /><br />
+
+                            <strong>Device Type/Platform</strong><br />
+                            Software Identifier initiating the request for data: Software, Website, APP, etc<br /><br />
+
+                            <strong>FHG#</strong><br />
+                            Unique File Harmonization Number<br /><br />
+
+                            <strong>Associate FHG#</strong><br />
+                            Associate Unique File Harmonization Number<br /><br />
+
+                            <strong>Global/Private</strong><br />
+                            Allow data retrieval or not.  Global (G) allows field value to be retrieved; Private (P) does not allow field value to be retrieved <br /><br />
+
+                            <strong>License #</strong><br />
+                            Software Activation Number <br /><br />
+
+                            <strong>Tag ID</strong><br />
+                            File Harmonizer Tag Identifier Number <br /><br />
+
+                            <strong>Date Timestamp</strong><br />
+                            System Date Time Stamp for the data retrieval request <br /><br />
+
+                            <strong>Status/Msg Code</strong><br />
+                            Status of the call
+                            <br /><br />
+
+                            <strong>Tag Value</strong><br />
+                            File Harmonizer Tag value to be returned for the (FHG#) or combination of (FHG# & Associate FHG#) or (FHG# & Licenses#)
+                            <br /><br />
+
+                            <strong>General Information</strong><br />
+                            <a href="#">API Key Usage</a> - How to use your API key after signing up<br />
+                            <a href="#">Webservice Limits</a> - Daily and Hourly limits on accessing File Harmonizer Global Web Services<br />
+                            <a href="#">General Web Services Errors</a> - General error codes that can be returned by any File Harmonizer Web Service<br />
+
+
+
+
+
+                        </p>
+
                     </div>
-                    <div class="col-md-3 text-center" style="padding:20px;">
+
+                    <div class="col-md-12 text-left" style="margin-top:20px;" id="paragraghRetrieveTagValuesDoc">
+                        <h4>Documentation</h4>  <br />
+                        <p>
+                            <strong>Retrieve Tag Values</strong>
+                            (Get /api/tag_values/v1/tagval)<br />
+
+                            <strong>Return the values for tags provided</strong><br />
+                            Request URL<br />
+                            Request Parameters<br />
+                            Response Fields<br />
+                            Status
+                            <ul>
+                                <li>Tag</li>
+                                <li>Values</li>
+                            </ul>
+                            Examples
+                            <ul>
+                                <li>JSON Output Format</li>
+                                <li>XML Output Format</li>
+                                <li>CSV Output Format</li>
+                            </ul>
+                            Limits<br />
+                            Errors<br /><br />
+
+                            <strong>Request URL - </strong>Get /api/tag_values/v1/tagval.format?parameters <br /><br />
+
+                            <strong>Request Parameters</strong> <br />
+                            The following query parameters may be passed in the request to control the output:
+
+                            <table class="table table-bordered table-sm table-striped search-replace-table" id="tbltemp">
+                                <thead>
+                                    <tr>
+                                        <th>Parameter</th>
+                                        <th>Required</th>
+                                        <th>Value</th>
+                                        <th>Desription</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Format</td>
+                                        <td>yes</td>
+                                        <td>type String, Default None, Options: json, xml, csv</td>
+                                        <td>The output response format.  Given in the URL as the file extension</td>
+                                    </tr>
+                                    <tr>
+                                        <td>api_key</td>
+                                        <td>yes</td>
+                                        <td>type String, Default None</td>
+                                        <td>Your developer API key</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Device Type</td>
+                                        <td>yes</td>
+                                        <td>type String, Default None</td>
+                                        <td>APP, FH, Website</td>
+                                    </tr>
+                                    <tr>
+                                        <td>FHG#</td>
+                                        <td>yes</td>
+                                        <td>type String, Default None</td>
+                                        <td>File Harmonizer Number</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AFHG#</td>
+                                        <td>depends</td>
+                                        <td>type String, Default None</td>
+                                        <td>File Harmonizer Number</td>
+                                    </tr>
+                                    <tr>
+                                        <td>globpri</td>
+                                        <td>yes</td>
+                                        <td>type String, Default None</td>
+                                        <td>Value share indicator</td>
+                                    </tr>
+                                    <tr>
+                                        <td>License#</td>
+                                        <td>depends</td>
+                                        <td>type String, Default None</td>
+                                        <td>File Harmonizer Software Activation Number</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tag ID</td>
+                                        <td>yes</td>
+                                        <td>type String, Default None</td>
+                                        <td>Tag ID's</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Datetime</td>
+                                        <td>yes</td>
+                                        <td>type String, Default None</td>
+                                        <td>Date Timestamp</td>
+                                    </tr>
+                                    <tr>
+                                        <td>status_msg</td>
+                                        <td>yes</td>
+                                        <td>type String, all, Options: all, 201, 203,401, etc</td>
+                                        <td>Return the given Status & Error message (code). A singel status, or a comma-separated list of multiple statuses</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tag Value</td>
+                                        <td>yes</td>
+                                        <td>type String, Default None</td>
+                                        <td>List of return values</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <br />
+
+                            <strong>Response Fields</strong><br />
+                            The response is composed of the fuel stations matching the requested query.  For JSON or XML formats, additional metadata is supplied in the following  structure (need a list/table of values returned):
+                            <br />
+
+                            <table class="table table-bordered table-sm table-striped search-replace-table" id="tbltemp">
+                                <thead>
+                                    <tr>
+                                        <th>Field</th>
+                                        <th>Value</th>
+                                        <th>Desription</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>status_msg</td>
+
+                                        <td>Type: string</td>
+                                        <td>Return the given Status & Error message (code). A singel status, or a comma-separated list of multiple statuses</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tag ID</td>
+                                        <td>Type: string</td>
+                                        <td>Tag ID's</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tag Value</td>
+                                        <td>Type: string</td>
+                                        <td>List of return values</td>
+                                    </tr>
 
 
-                        <input type="button" id="btnRetrieveAssociates" name="retrieveAssociates" class="btn btn-info" value="Retrieve Associates" />
+                                </tbody>
+                            </table>
+
+                            <strong>
+                                Examples<br />
+                                Response Fields
+                            </strong><br />
+                            GET /api/tag_values/v1/tagval.json?api_key=DEMO_KEY&….<br />
+                            [
+                            {
+                            "FHnumber":"",
+                            "TagID":"",
+                            "ShareValue":""
+                            }
+                            ]
+
+
+
+
+                        </p>
+
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+
+
+    $(document).ready(function () {
+        $("#paragraghRetrieveTagValuesDoc").hide();
+        $("#btnRetrieveTagValues").addClass("tab-active");
+
+        $("#btnRetrieveTagValuesDoc").click(function () {
+            $("#btnRetrieveTagValues").removeClass("tab-active");
+            $("#btnRetrieveTagValuesDoc").addClass("tab-active");
+            $("#paragraphRetrieveTagValues").hide();
+            $("#paragraghRetrieveTagValuesDoc").show();
+        });
+
+        $("#btnRetrieveTagValues").click(function () {
+            $("#btnRetrieveTagValues").addClass("tab-active");
+            $("#btnRetrieveTagValuesDoc").removeClass("tab-active");
+            $("#paragraghRetrieveTagValuesDoc").hide();
+            $("#paragraphRetrieveTagValues").show();
+        });
+
+
+    });
+
+
+
+</script>

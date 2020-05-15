@@ -8,6 +8,10 @@ namespace Harmonizer.Core.Model
 {
    public class APIModel
     {
-        public string API_Key { get; set; }
+        
+        public string UserID { get; set; }
+        public string APIKey { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

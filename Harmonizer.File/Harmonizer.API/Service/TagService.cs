@@ -11,9 +11,9 @@ namespace Harmonizer.API.Service
     public class TagService
     {
         TagData _tagData = new TagData();
-        public TagModel GetTagInfo(TagModel tagModel)
+
+        public List<TagViewModel> GetTagInfo(TagModel tagModel)
         {
-          
             return _tagData.GetTagInfo(tagModel);
         }
     }

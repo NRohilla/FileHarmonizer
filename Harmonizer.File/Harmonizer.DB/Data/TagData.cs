@@ -65,5 +65,33 @@ namespace Harmonizer.DB.Data
             return lstTagModel;
         }
 
+        public bool CheckAPIByAPIKey(string APIkey)
+        {
+            bool retValue = false;
+            try
+            {
+                string strSql = "select * from tbl_APIkeyData where IsActive=1 and APIKey='" + APIkey + "' order by ID desc";
+                con = ConnectionClass.getConnection();
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(strSql, con);
+                da.Fill(ds);
+                ConnectionClass.closeconnection(con);
+                if (ds.Tables[0].Rows.Count > 0)
+                    retValue = true;
+                else
+                    retValue = false;
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                DataLogger.Write("TagData-CheckAPIByAPIKey", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return retValue;
+        }
+
     }
 }
