@@ -70,8 +70,12 @@
                     @{
                         if (ViewBag.ExpireDate != null && Convert.ToDateTime(ViewBag.ExpireDate) > DateTime.Now)
                         {
-                            <input type="button" value="Update Value" id="bntsave" class="btn btn-info" />
+                        <input type="button" value="Update Value" id="bntsave" class="btn btn-info" />
                         }
+                        @*if((bool)Session["UsageFee"] == true)
+                        {
+                         <input type="button" value="Update Value" id="bntsave" class="btn btn-info" />
+                        }*@
                     }
                 </div>
 

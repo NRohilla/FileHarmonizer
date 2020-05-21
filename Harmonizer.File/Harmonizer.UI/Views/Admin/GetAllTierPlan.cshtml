@@ -1,0 +1,671 @@
+﻿
+@{
+    ViewBag.Title = "File Harmonizer - Tier Plan";
+
+}
+
+<div class="form-horizontal my-3">
+    <div class="container">
+        <div class="blink_heading">
+            <h4>Tier Plan</h4>
+            <blink>
+                <span style="color:red;font-size:18px;" id="messageData" class="blink ml-4">
+                </span>
+            </blink>
+        </div>
+        <hr />
+        <div class="bg-white p-3 border">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("UserCount", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" name="UserCount" class="form-control" id="txtUserCount" />
+                    </div>
+                    <div class="col-md-2 ">
+                        @Html.Label("Tier", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" name="Tier" class="form-control" id="txtTier" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("PartnerType", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="PartnerType" class="form-control" id="txtPartnerType" />
+                    </div>
+
+                    <div class="col-md-2 ">
+                        @Html.Label("BusinessPartners", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="BusinessPartners" class="form-control" id="txtBusinessPartners" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("Title", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="Title" class="form-control" id="txtTitle" />
+                    </div>
+
+                    <div class="col-md-2 ">
+                        @Html.Label("Description", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="Description" class="form-control" id="txtDescription" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("MonthlyCost", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="MonthlyCost" class="form-control" id="txtMonthlyCost" />
+                    </div>
+
+                    <div class="col-md-2 ">
+                        @Html.Label("AnnualCost", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="AnnualCost" class="form-control" id="txtAnnualCost" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("PerUserCost", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="PerUserCost" class="form-control" id="txtPerUserCost" />
+                    </div>
+
+                    <div class="col-md-2 ">
+                        @Html.Label("UserCareFlag", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="UserCareFlag" class="form-control" id="txtUserCareFlag" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("UserCareValue", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="UserCareValue" class="form-control" id="txtUserCareValue" />
+                    </div>
+
+                    <div class="col-md-2 ">
+                        @Html.Label("PerUserCostwithCareValue", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="PerUserCostwithCareValue" class="form-control" id="txtPerUserCostwithCareValue" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 ">
+                        @Html.Label("MonthlyCostWithCare", htmlAttributes: new { @class = "control-label form-label" })
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="MonthlyCostWithCare" class="form-control" id="txtMonthlyCostWithCare" />
+                    </div>
+                    <div class="col-md-2 ">
+                        <input type="hidden" id="hdnId" />
+                        @*@Html.Label("ID", htmlAttributes: new { @class = "control-label form-label" })*@
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" name="ID" class="form-control" style="display:none" id="txtID" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-left col-md-7">
+
+                </div>
+                <div class="text-right col-md-5">
+                    <input type="button" id="btnsave" name="Create" class="btn btn-info" value="Create" />
+                    <input type="button" id="btncancel" name="Cancel" class="btn btn-info" value="Cancel" />
+                </div>
+            </div>
+        </div>
+        <div class="my-2">
+            <h4 class="fll_wdth_xs">
+                <span class="fll_wdth_xs">
+                    Tier Plan List
+                </span>
+                <span class="float-right mr-2 fll_wdth_xs ml-xs-2">
+                    <input type="button" class="btn-danger btn" value="Mass Delete" id="btnMassDeleteTier" />
+                    <label for="fileupload" class="btn-success btn">Mass Upload</label>
+                </span>
+            </h4>
+            <hr class="hidden-divider" />
+
+            <div class="bg-white  border fll_wdth_xs">
+                <div class="table-responsive scrollable-table" style="max-height:500px;">
+                    <table id="tblTierPlan" class="table table-bordered table-sm table-striped search-replace-table w-100 mb-0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>UserCount</th>
+                                <th>Tier</th>
+                                <th>PartnerType</th>
+                                <th>BusinessPartners</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>MonthlyCost</th>
+                                <th>AnnualCost</th>
+                                <th>PerUserCost</th>
+                                <th>UserCareFlag</th>
+                                <th>UserCareValue</th>
+                                <th>PerUserCostwithCareValue</th>
+                                <th>MonthlyCostWithCare</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<input type="file" id="fileupload" name="fileupload" class="hidden" style="visibility: hidden;" />
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var formData = new FormData();
+        debugger;
+        Gettierdata(); 
+
+         $('#btnMassDeleteTier').click(function (e) {
+            if (confirm('Mass delete all record from system and it will impect on operation, Are you want to delete?') == true) {
+
+                //alert('Delete mass data');
+                  $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteMassData", "Admin")',
+                    data: '{"op":"Tier"}',
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {                     
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            window.location.reload(true);
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+            }
+        });
+
+        
+          $('#fileupload').change(function (e) {
+
+            formData.append("FileUpload", document.getElementById("fileupload").files[0])
+            $("#wait").css("display", "block");
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("MassUploadDataTier", "Admin")',
+                    data: formData,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    enctype: 'multipart/form-data',
+                    success: function (msg) {
+                        debugger;
+                        $("#wait").css("display", "none");
+                        formData = new FormData();
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            window.location.reload(true);
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        $("#wait").css("display", "none");
+                        formData = new FormData();
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+        });
+
+    });
+
+     $('#btnsave').click(function () {
+        if (ValidateUserData() == true) {
+            var Tier = {};
+            Tier.UserCount = $('#txtUserCount').val();
+            Tier.Tier = $('#txtTier').val();
+            Tier.PartnerType = $('#txtPartnerType').val();
+            Tier.BusinessPartners = $('#txtBusinessPartners').val();
+            Tier.Title = $('#txtTitle').val();
+            Tier.Description = $('#txtDescription').val();
+            Tier.MonthlyCost = $('#txtMonthlyCost').val();
+            Tier.AnnualCost = $('#txtAnnualCost').val();
+            Tier.PerUserCost = $('#txtPerUserCost').val();
+            Tier.UserCareFlag = $('#txtUserCareFlag').val();
+            Tier.UserCareValue = $('#txtUserCareValue').val();
+            Tier.PerUserCostwithCareValue = $('#txtPerUserCostwithCareValue').val();
+            Tier.MonthlyCostWithCare = $('#txtMonthlyCostWithCare').val();
+
+            if ($('#btnsave').val() == "Create") {
+                //Sector.ActionId = 0; // Action Id 0 for insert.
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddTierDetails", "Admin")',
+                    data: JSON.stringify(Tier),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                     //alert(msg);
+                        clear_form_elements();
+                        Gettierdata();
+
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+
+                    },
+                    error: function (error) {
+                        //alert("Error! Please try again.");
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+            }
+            else {
+                Tier.ID = $('#txtID').val();
+                //Tier.ActionId = 1; // Action Id 0 for insert.
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateTierDetails", "Admin")',
+                    data: JSON.stringify(Tier),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg) {
+                        Gettierdata();
+                        $('#messageData').text(msg);
+                        $('#messageData').css('color', 'green');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    },
+                    error: function (error) {
+                        $('#messageData').text("Error! Please try again.");
+                        $('#messageData').css('color', 'red');
+                        setTimeout(function () {
+                            $('#messageData').text('');
+                        }, 2000);
+                    }
+                });
+            }
+            Country = null;
+            ClearForm();
+        }
+        else {
+            $('#messageData').text("Please fill correct data!");
+            $('#messageData').css('color', 'red');
+            setTimeout(function () {
+                $('#messageData').text('');
+            }, 2000);
+            return false;
+        }
+    })
+    
+    function clear_form_elements() {
+        $('input').each(function (e, index) {
+            switch (this.type) {
+                case 'text':
+                    $(this).val('');
+                    break;
+                case 'textarea':
+                    $(this).val('');
+                    break;
+
+            }
+        });
+    }
+   
+
+    function Gettierdata()
+    {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/GetTierPlanList",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                $('#tblTierPlan tbody').empty();
+                $.each(response, function (i, e) {
+                    bindData(response[i].ID, response[i].UserCount, response[i].Tier, response[i].PartnerType, response[i].BusinessPartners, response[i].Title, response[i].Description, response[i].MonthlyCost, response[i].AnnualCost, response[i].PerUserCost, response[i].UserCareFlag, response[i].UserCareValue, response[i].PerUserCostwithCareValue, response[i].MonthlyCostWithCare);
+                });
+                clear_form_elements();
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+    function bindData(ID, UserCount, Tier, PartnerType, BusinessPartners, Title, Description, MonthlyCost, AnnualCost, PerUserCost, UserCareFlag, UserCareValue, PerUserCostwithCareValue, MonthlyCostWithCare) {
+        debugger;
+        var tBody = document.getElementById("tblTierPlan").getElementsByTagName("TBODY")[0];
+
+        row = tBody.insertRow(-1);
+
+        var cell = row.insertCell(-1);
+        cell.innerHTML = ID;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = UserCount;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = Tier;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = PartnerType;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = BusinessPartners;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = Title;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = Description;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = MonthlyCost;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = AnnualCost;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = PerUserCost;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = UserCareFlag;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = UserCareValue;
+
+        cell = row.insertCell(-1);
+        cell.innerHTML = PerUserCostwithCareValue;
+
+        var cell = row.insertCell(-1);
+        cell.innerHTML = MonthlyCostWithCare
+
+        cell = row.insertCell(-1);
+        var btnRemove = document.createElement("INPUT");
+        btnRemove.type = "button";
+        btnRemove.value = "Delete";
+        btnRemove.className = "btn-info";
+        btnRemove.setAttribute("onclick", "Remove(this);");
+        cell.appendChild(btnRemove);
+
+
+        var btnEdit = document.createElement("INPUT");
+        btnEdit.type = "button";
+        btnEdit.value = "Edit";
+        btnEdit.className = "btn-info";
+        btnEdit.style = "margin-left:10px";
+        btnEdit.setAttribute("onclick", "Edit(this);");
+        cell.appendChild(btnEdit);
+
+    }
+
+   function Remove(button) {
+        var r = confirm("They will effect on operation. Are you sure you want to delete?");
+        if (r == false) {
+            return;
+        } 
+        var row = button.parentNode.parentNode;
+        var Tier = {};
+        Tier.ActionId = -1;
+        Tier.ID = row.getElementsByTagName("TD")[0].innerHTML;
+        $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteTier", "Admin")',
+            data: JSON.stringify(Tier),
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (msg) {
+                    Getsectordata();
+                    //alert(msg);
+                    $('#messageData').text(msg);
+                    $('#messageData').css('color', 'green');
+                    setTimeout(function () {
+                        $('#messageData').text('');
+                    }, 2000);
+                },
+                error: function (error) {
+                    //alert("Error! Please try again.");
+                    $('#messageData').text("Error! Please try again.");
+                    $('#messageData').css('color', 'red');
+                    setTimeout(function () {
+                        $('#messageData').text('');
+                    }, 2000);
+                }
+            });
+    }
+
+    function Edit(button) {
+        var row = button.parentNode.parentNode;
+        debugger;
+        $('#hdnId').val(row.getElementsByTagName("TD")[0].innerHTML);
+        $('#txtID').val(row.getElementsByTagName("TD")[0].innerHTML);
+        $('#txtUserCount').val(row.getElementsByTagName("TD")[1].innerHTML);
+        $('#txtTier').val(row.getElementsByTagName("TD")[2].innerHTML);
+        $('#txtPartnerType').val(row.getElementsByTagName("TD")[3].innerHTML);
+        $('#txtBusinessPartners').val(row.getElementsByTagName("TD")[4].innerHTML);
+        $('#txtTitle').val(row.getElementsByTagName("TD")[5].innerHTML);
+        $('#txtDescription').val(row.getElementsByTagName("TD")[6].innerHTML);
+        $('#txtMonthlyCost').val(row.getElementsByTagName("TD")[7].innerHTML);
+        $('#txtAnnualCost').val(row.getElementsByTagName("TD")[8].innerHTML);
+        $('#txtPerUserCost').val(row.getElementsByTagName("TD")[9].innerHTML);
+        $('#txtUserCareFlag').val(row.getElementsByTagName("TD")[10].innerHTML);
+        $('#txtUserCareValue').val(row.getElementsByTagName("TD")[11].innerHTML);
+        $('#txtPerUserCostwithCareValue').val(row.getElementsByTagName("TD")[12].innerHTML);
+        $('#txtMonthlyCostWithCare').val(row.getElementsByTagName("TD")[13].innerHTML);
+        $('#btnsave').val("Update");
+        $('#txtID').attr("disabled", "disabled");
+        $(window).scrollTop(0);
+    }
+
+
+    $('#btncancel').click(function () {
+        ClearForm();
+    })
+
+    function ClearForm() {
+        $('#txtID').val("");
+        $('#txtUserCount').val("");
+        $('#txtTier').val("");
+        $('#txtPartnerType').val("");
+        $('#txtBusinessPartners').val("");
+        $('#txtTitle').val("");
+        $('#txtDescription').val("");
+        $('#txtMonthlyCost').val("");
+        $('#txtAnnualCost').val("");
+        $('#txtPerUserCost').val("");
+        $('#txtUserCareFlag').val("");
+        $('#txtUserCareValue').val("");
+        $('#txtPerUserCostwithCareValue').val("");
+        $('#txtMonthlyCostWithCare').val("");
+        $('#btnsave').val("Create");
+        //$('#txtID').removeClass("validateClass");
+        $('#txtUserCount').removeClass("validateClass");
+        $('#txtTier').removeClass("validateClass");
+        $('#txtPartnerType').removeClass("validateClass");
+        $('#txtBusinessPartners').removeClass("validateClass");
+        $('#txtTitle').removeClass("validateClass");
+        $('#txtDescription').removeClass("validateClass");
+        $('#txtMonthlyCost').removeClass("validateClass");
+        $('#txtAnnualCost').removeClass("validateClass");
+        $('#txtPerUserCost').removeClass("validateClass");
+        $('#txtUserCareFlag').removeClass("validateClass");
+        $('#txtUserCareValue').removeClass("validateClass");
+        $('#txtPerUserCostwithCareValue').removeClass("validateClass");
+        $('#txtMonthlyCostWithCare').removeClass("validateClass");
+        //$('#txtID').removeAttr("disabled");
+    }
+       
+    function ValidateUserData() {
+        IsValide = false;
+        var vtxtUserCount = 0, vtxtTier = 0, vtxtPartnerType = 0, vtxtBusinessPartners = 0, vtxtTitle = 0, vtxtDescription = 0, vtxtMonthlyCost = 0, vtxtAnnualCost = 0, vtxtPerUserCost = 0, vtxtUserCareFlag = 0, vtxtUserCareValue = 0, vtxtPerUserCostwithCareValue = 0, vtxtMonthlyCostWithCare = 0;
+
+        if ($('#txtUserCount').val() == "") {
+            vtxtUserCount = -1;
+            $('#txtUserCount').addClass("validateClass");
+        }
+        else {
+            $('#txtUserCount').removeClass("validateClass");
+        }
+
+        if ($('#txtTier').val() == "") {
+            vtxtTier = -1;
+            $('#txtTier').addClass("validateClass");
+        }
+        else {
+            $('#txtTier').removeClass("validateClass");
+        }
+
+        if ($('#txtPartnerType').val() == "") {
+            vtxtPartnerType = -1;
+            $('#txtPartnerType').addClass("validateClass");
+        }
+        else {
+            $('#txtPartnerType').removeClass("validateClass");
+        }
+
+        if ($('#txtBusinessPartners').val() == "") {
+            vtxtBusinessPartners = -1;
+            $('#txtBusinessPartners').addClass("validateClass");
+        }
+        else {
+            $('#txtBusinessPartners').removeClass("validateClass");
+        }
+
+        if ($('#txtTitle').val() == "") {
+            vtxtTitle = -1;
+            $('#txtTitle').addClass("validateClass");
+        }
+        else {
+            $('#txtTitle').removeClass("validateClass");
+        }
+        if ($('#txtDescription').val() == "") {
+            vtxtDescription = -1;
+            $('#txtDescription').addClass("validateClass");
+        }
+        else {
+            $('#txtDescription').removeClass("validateClass");
+        }
+
+        if ($('#txtMonthlyCost').val() == "") {
+            vtxtMonthlyCost = -1;
+            $('#txtMonthlyCost').addClass("validateClass");
+        }
+        else {
+            $('#txtMonthlyCost').removeClass("validateClass");
+        }
+
+        if ($('#txtAnnualCost').val() == "") {
+            vtxtAnnualCost = -1;
+            $('#txtAnnualCost').addClass("validateClass");
+        }
+        else {
+            $('#txtAnnualCost').removeClass("validateClass");
+        }
+
+        if ($('#txtPerUserCost').val() == "") {
+            vtxtPerUserCost = -1;
+            $('#txtPerUserCost').addClass("validateClass");
+        }
+        else {
+            $('#txtPerUserCost').removeClass("validateClass");
+        }
+
+        if ($('#txtUserCareFlag').val() == "") {
+            vtxtUserCareFlag = -1;
+            $('#txtUserCareFlag').addClass("validateClass");
+        }
+        else {
+            $('#txtUserCareFlag').removeClass("validateClass");
+        }
+
+        if ($('#txtUserCareValue').val() == "") {
+            vtxtUserCareValue = -1;
+            $('#txtUserCareValue').addClass("validateClass");
+        }
+        else {
+            $('#txtUserCareValue').removeClass("validateClass");
+        }
+
+        if ($('#txtPerUserCostwithCareValue').val() == "") {
+            vtxtPerUserCostwithCareValue = -1;
+            $('#txtPerUserCostwithCareValue').addClass("validateClass");
+        }
+        else {
+            $('#txtPerUserCostwithCareValue').removeClass("validateClass");
+        }
+
+        if ($('#txtMonthlyCostWithCare').val() == "") {
+            vtxtMonthlyCostWithCare = -1;
+            $('#txtMonthlyCostWithCare').addClass("validateClass");
+        }
+        else {
+            $('#txtMonthlyCostWithCare').removeClass("validateClass");
+        }
+
+        if (vtxtUserCount == 0 && vtxtTier == 0 && vtxtPartnerType == 0 && vtxtBusinessPartners == 0 && vtxtTitle == 0 && vtxtDescription == 0 && vtxtMonthlyCost == 0 && vtxtAnnualCost == 0 && vtxtPerUserCost == 0 && vtxtUserCareFlag == 0 && vtxtUserCareValue == 0 && vtxtPerUserCostwithCareValue == 0 && vtxtMonthlyCostWithCare == 0) {
+            IsValide = true;
+        }
+
+        return IsValide;
+    }
+</script>
+
+
+

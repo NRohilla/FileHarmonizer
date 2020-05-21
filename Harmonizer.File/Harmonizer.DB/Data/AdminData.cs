@@ -1380,5 +1380,207 @@ namespace Harmonizer.DB.Data
 
             return objPayment;
         }
+
+        public List<TierDetails> GetTierList()
+        {
+            List<TierDetails> lstTierPlan = new List<TierDetails>();
+            try
+            {
+                con = ConnectionClass.getConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "sp_GetTierPlans";
+                cmd.CommandType = CommandType.StoredProcedure;
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        TierDetails lstTier = new TierDetails();
+                        lstTier.ID = Convert.ToInt32(ds.Tables[0].Rows[i]["ID"]);
+                        lstTier.UserCount = Convert.ToInt32(ds.Tables[0].Rows[i]["UserCount"]);
+                        lstTier.Tier = Convert.ToInt32(ds.Tables[0].Rows[i]["Tier"]);
+                        lstTier.PartnerType = Convert.ToString(ds.Tables[0].Rows[i]["PartnerType"]);
+                        lstTier.BusinessPartners = Convert.ToString(ds.Tables[0].Rows[i]["BusinessPartners"]);
+                        lstTier.Title = Convert.ToString(ds.Tables[0].Rows[i]["Title"]);
+                        lstTier.Description = Convert.ToString(ds.Tables[0].Rows[i]["Description"]);
+                        lstTier.MonthlyCost = Convert.ToDecimal(ds.Tables[0].Rows[i]["MonthlyCost"]);
+                        lstTier.AnnualCost = Convert.ToDecimal(ds.Tables[0].Rows[i]["AnnualCost"]);
+                        lstTier.PerUserCost = Convert.ToDecimal(ds.Tables[0].Rows[i]["PerUserCost"]);
+                        lstTier.UserCareFlag = Convert.ToBoolean(ds.Tables[0].Rows[i]["UserCareFlag"]);
+                        lstTier.UserCareValue = Convert.ToDecimal(ds.Tables[0].Rows[i]["UserCareValue"]);
+                        lstTier.PerUserCostwithCareValue = Convert.ToDecimal(ds.Tables[0].Rows[i]["PerUserCostwithCareValue"]);
+                        lstTier.MonthlyCostWithCare = Convert.ToDecimal(ds.Tables[0].Rows[i]["MonthlyCostWithCare"]);
+                        lstTierPlan.Add(lstTier);
+                    }   
+                }
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                DataLogger.Write("Admin-GetTierList", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return lstTierPlan;
+        }
+
+        public string DeleteTier(TierDetails objTier)
+        {
+            string Result = string.Empty;
+
+            try
+            {
+                con = ConnectionClass.getConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.Parameters.Clear();
+                cmd.CommandText = "sp_InsertUpdateDeleteTier";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = objTier.ID;
+                cmd.Parameters.Add("@ActionId", SqlDbType.Int).Value = -1; // ActionId -1 to tier delete
+                Result = Convert.ToString(cmd.ExecuteNonQuery());
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                Result = ex.Message;
+                DataLogger.Write("Admin-DeleteTier", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return Result;
+        }
+
+
+        public string InsertTierDetails(TierDetails objTier)
+        {
+            string Result = string.Empty;
+
+            try
+            {
+                con = ConnectionClass.getConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.Parameters.Clear();
+                cmd.CommandText = "sp_InsertUpdateDeleteTier";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = objTier.ID;
+                cmd.Parameters.Add("@UserCount", SqlDbType.Int).Value = objTier.UserCount;
+                cmd.Parameters.Add("@Tier", SqlDbType.Int).Value = objTier.Tier;
+                cmd.Parameters.Add("@PartnerType", SqlDbType.NVarChar).Value = objTier.PartnerType;
+                cmd.Parameters.Add("@BusinessPartners", SqlDbType.NVarChar).Value = objTier.BusinessPartners;
+                cmd.Parameters.Add("@Title", SqlDbType.NVarChar).Value = objTier.Title;
+                cmd.Parameters.Add("@Description", SqlDbType.NVarChar).Value = objTier.Description;
+                cmd.Parameters.Add("@MonthlyCost", SqlDbType.Decimal).Value = objTier.MonthlyCost;
+                cmd.Parameters.Add("@AnnualCost", SqlDbType.Decimal).Value = objTier.AnnualCost;
+                cmd.Parameters.Add("@PerUserCost", SqlDbType.Decimal).Value = objTier.PerUserCost;
+                cmd.Parameters.Add("@UserCareFlag", SqlDbType.Bit).Value = objTier.UserCareFlag;
+                cmd.Parameters.Add("@UserCareValue", SqlDbType.Decimal).Value = objTier.UserCareValue;
+                cmd.Parameters.Add("@PerUserCostwithCareValue", SqlDbType.Decimal).Value = objTier.PerUserCostwithCareValue;
+                cmd.Parameters.Add("@MonthlyCostWithCare", SqlDbType.Decimal).Value = objTier.MonthlyCostWithCare;
+                cmd.Parameters.Add("@ActionId", SqlDbType.Int).Value = 0;
+                Result = Convert.ToString(cmd.ExecuteNonQuery());
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                Result = ex.Message;
+                DataLogger.Write("Admin-InsertTierDetails", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return Result;
+        }
+        public string UpdateTierDetails(TierDetails objTier)
+        {
+            string Result = string.Empty;
+
+            try
+            {
+                con = ConnectionClass.getConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.Parameters.Clear();
+                cmd.CommandText = "sp_InsertUpdateDeleteTier";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = objTier.ID;
+                cmd.Parameters.Add("@UserCount", SqlDbType.Int).Value = objTier.UserCount;
+                cmd.Parameters.Add("@Tier", SqlDbType.Int).Value = objTier.Tier;
+                cmd.Parameters.Add("@PartnerType", SqlDbType.NVarChar).Value = objTier.PartnerType;
+                cmd.Parameters.Add("@BusinessPartners", SqlDbType.NVarChar).Value = objTier.BusinessPartners;
+                cmd.Parameters.Add("@Title", SqlDbType.NVarChar).Value = objTier.Title;
+                cmd.Parameters.Add("@Description", SqlDbType.NVarChar).Value = objTier.Description;
+                cmd.Parameters.Add("@MonthlyCost", SqlDbType.Decimal).Value = objTier.MonthlyCost;
+                cmd.Parameters.Add("@AnnualCost", SqlDbType.Decimal).Value = objTier.AnnualCost;
+                cmd.Parameters.Add("@PerUserCost", SqlDbType.Decimal).Value = objTier.PerUserCost;
+                cmd.Parameters.Add("@UserCareFlag", SqlDbType.Bit).Value = objTier.UserCareFlag;
+                cmd.Parameters.Add("@UserCareValue", SqlDbType.Decimal).Value = objTier.UserCareValue;
+                cmd.Parameters.Add("@PerUserCostwithCareValue", SqlDbType.Decimal).Value = objTier.PerUserCostwithCareValue;
+                cmd.Parameters.Add("@MonthlyCostWithCare", SqlDbType.Decimal).Value = objTier.MonthlyCostWithCare;
+                cmd.Parameters.Add("@ActionId", SqlDbType.Int).Value = 1;
+                Result = Convert.ToString(cmd.ExecuteNonQuery());
+
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                Result = ex.Message;
+                DataLogger.Write("Admin-UpdateTierDetails", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return Result;
+        }
+
+        public int UploadTier(DataTable dt)
+        {
+            try
+            {
+                int deleteDatabeforedUpload = DeleteMassData("Tier");
+            }
+            catch
+            {
+
+            }
+
+            int result = 0;
+            con = ConnectionClass.getConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                cmd.Connection = con;
+                cmd.CommandText = "sp_UploadMassDataTier";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@tblTier", dt);
+                result = cmd.ExecuteNonQuery();
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                DataLogger.Write("Admin-UploadTier", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return result;
+        }
+
     }
 }

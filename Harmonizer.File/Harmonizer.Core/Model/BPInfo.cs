@@ -47,7 +47,8 @@ namespace Harmonizer.Core.Model
         public string ContactNameFirst { get; set; }
         public string ContactNameLast { get; set; }
         public string CompanyEIN { get; set; }
-        
+        public int NoofUsers { get; set; }
+        public bool UsageFee { get; set; }
         //public string TollFreeNo { get; set; }
         //public string LastName { get; set; }
     }

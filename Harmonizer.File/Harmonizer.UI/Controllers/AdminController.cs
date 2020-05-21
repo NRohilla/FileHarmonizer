@@ -860,6 +860,103 @@ namespace Harmonizer.UI.Controllers
             return View("GetPaymentDetails", obj);
 
         }
+        public ActionResult GetAllTierPlan()
+        {
+            return View();
+        }
 
+        public ActionResult GetTierPlanList()
+        {
+            List<TierDetails> objTierlst = new List<TierDetails>();
+            objTierlst = _admindata.GetTierList();
+            return Json(objTierlst, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeleteTier(TierDetails objTier)
+        {
+            string Result = string.Empty;
+            Result = _admindata.DeleteTier(objTier);
+
+            if (Result == "2")
+            {
+                Result = "Tier plan deleted successfully";
+            }
+
+            return Json(Result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult AddTierDetails(TierDetails objTier)
+        {
+            string Result = string.Empty;
+            Result = _admindata.InsertTierDetails(objTier);
+
+            if (Result == "2")
+            {
+                Result = "Sector created successfully";
+            }
+
+
+            return Json(Result, JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult UpdateTierDetails(TierDetails objTier)
+        {
+            string Result = string.Empty;
+            Result = _admindata.UpdateTierDetails(objTier);
+
+            if (Result == "2")
+            {
+                Result = "Sector updated successfully";
+            }
+
+            return Json(Result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult MassUploadDataTier()
+        {
+            int r = 0;
+            string result = "File not found to upload data";
+            HttpPostedFileBase Fileupload = null;
+            if (Request.Files.Count > 0)
+            {
+                Fileupload = Request.Files[0];
+                var supportedTypes = new[] { "txt", "csv" };
+                var fileExt = System.IO.Path.GetExtension(Fileupload.FileName).Substring(1);
+                if (supportedTypes.Contains(fileExt))
+                {
+                    string IdentificationPath = Session["UserID"].ToString() + "_" + DateTime.Now.ToString("MMddyyyy_HHmmss") + "_";
+                    string sourcePathToWrite = Server.MapPath("~").TrimEnd('\\') + "\\Source\\" + Session["BPID"].ToString() + "\\" + IdentificationPath + Path.GetFileName(Fileupload.FileName);
+                    Fileupload.SaveAs(sourcePathToWrite);
+                    // Start process to store in DB
+                    DataTable dt = GetAllRowDataFoMassUplod(sourcePathToWrite);
+                    if (dt.Rows.Count > 0)
+                    {
+                        //start to save in DB
+                        r = _admindata.UploadTier(dt);
+                        if (r > 0)
+                            result = "Data Uploaded!";
+                        else
+                            result = "Data not uploaded, Something wrong with your data.";
+                    }
+                    else
+                    {
+                        result = "Data format not correct user semicolon(;) ";
+                    }
+
+                    // Delete File After process
+                    FileInfo file = new FileInfo(sourcePathToWrite);
+                    if (file.Exists)
+                    {
+                        file.Delete();
+                    }
+                }
+                else
+                {
+                    result = "Data format not correct user semicolon(;) ";
+                }
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -2250,6 +2250,8 @@ namespace Harmonizer.UI.Controllers
 
                     }
                     int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, BPIDOrFH, "MaintainTag-TemplatePerBPID/FH# ", "Scan FHG# Successfully", 1, date);
+                    bool UsageFee = _fileData.GetUsageFee(FHnumber, BPIDOrFH);
+                    Session["UsageFee"] = UsageFee;
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
                         CreateListTemplate objtemp = new CreateListTemplate();

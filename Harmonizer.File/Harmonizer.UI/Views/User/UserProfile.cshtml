@@ -392,13 +392,29 @@
                                         </div>
 
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="text-right">
-                                        <input type="button" id="btnUpdateBPInfo" name="Create" class="btn btn-info" value="Update Business Info" />
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Avg No of Users", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.BPinfo.NoofUsers, new { @class = "form-control", @ID = "txtBPNoofUsers", @maxlength = "15" })
+                                            </div>
+                                            <div class="col-md-2 ">
+                                                @Html.Label("Pay User Fees", htmlAttributes: new { @class = "control-label form-label" })
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.DropDownListFor(model => model.BPinfo.UsageFee, new List<SelectListItem>(){new SelectListItem() { Text = "Yes", Value = "True" },  new SelectListItem() { Text = "No", Value = "False" } }, new { @id = "ddlUsageFee", @class="form-control" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="text-right">
+                                            <input type="button" id="btnUpdateBPInfo" name="Create" class="btn btn-info" value="Update Business Info" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -667,7 +683,8 @@
             });
 
         });
-        $('#btnUpdateBPInfo').click(function () {
+     $('#btnUpdateBPInfo').click(function () {
+        debugger;
             // alert('Update Business info');
             var BPInfo = {};
             BPInfo.BPID = "";
@@ -685,6 +702,8 @@
             BPInfo.MainPhone = $('#txtBPMainPhone').val();
             BPInfo.SecondPhone = $('#txtBPSecondPhone').val();
             BPInfo.Fax = $('#txtBPFax').val();
+            BPInfo.NoofUsers = $('#txtBPNoofUsers').val();
+            BPInfo.UsageFee = $('#ddlUsageFee').val().trim();
             // call ajax
             $("#wait").show();
             $.ajax({

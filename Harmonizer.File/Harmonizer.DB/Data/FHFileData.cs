@@ -908,7 +908,33 @@ namespace Harmonizer.DB.Data
 
         }
 
-
+        public bool GetUsageFee(string FHnumber, string Associate)
+        {
+            bool UsageFee=false;
+            try
+            {
+                con = ConnectionClass.getConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "sp_GetUsageFee";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@FHnumber", SqlDbType.NVarChar).Value = FHnumber;
+                cmd.Parameters.Add("@Associate", SqlDbType.NVarChar).Value = Associate;
+                UsageFee = (bool)(cmd.ExecuteScalar());
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                UsageFee = false;
+                DataLogger.Write("FHFile-GetTAGSECCode", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return UsageFee;
+        }
 
     }
 }

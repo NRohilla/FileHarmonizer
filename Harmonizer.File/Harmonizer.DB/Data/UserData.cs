@@ -331,6 +331,8 @@ namespace Harmonizer.DB.Data
                 cmd.Parameters.Add("@BPWebsite", SqlDbType.NVarChar).Value = bpInfo.Website;
                 cmd.Parameters.Add("@BPDepartment", SqlDbType.NVarChar).Value = bpInfo.Department;
                 cmd.Parameters.Add("@BPTollFreePhone", SqlDbType.NVarChar).Value = bpInfo.TollFreePhone;
+                cmd.Parameters.Add("@BPNoofUsers", SqlDbType.Int).Value = bpInfo.NoofUsers;
+                cmd.Parameters.Add("@BPUsageFee", SqlDbType.Bit).Value = bpInfo.UsageFee;
                 cmd.Parameters.Add("@FHNumber", SqlDbType.NVarChar).Value = FHNumber;///FHNumner;
                 cmd.Parameters.Add("@FHIDValue", SqlDbType.NVarChar).Value = FHid;// FHIDValue;
                 cmd.Parameters.Add("@CheckDigit", SqlDbType.NVarChar).Value = CheckDigit;
@@ -2302,10 +2304,8 @@ namespace Harmonizer.DB.Data
                         objComman.Sector = Convert.ToString(ds.Tables[0].Rows[i]["Sector"]);
                         objComman.HarmonizerValue = Convert.ToString(ds.Tables[0].Rows[i]["HarmonizerValue"]);
                         objComman.ActiveDate = Convert.ToDateTime(ds.Tables[0].Rows[i]["ActiveDate"]);
-
+                        objComman.ExpireDate = Convert.ToDateTime(ds.Tables[0].Rows[i]["ExpireDate"]);
                     }
-
-
                 }
 
                 ConnectionClass.closeconnection(con);
@@ -2554,6 +2554,8 @@ namespace Harmonizer.DB.Data
                 cmd.Parameters.Add("@MainPhone", SqlDbType.NVarChar).Value = bPInfo.MainPhone;
                 cmd.Parameters.Add("@SecondPhone", SqlDbType.NVarChar).Value = bPInfo.SecondPhone;
                 cmd.Parameters.Add("@Fax", SqlDbType.NVarChar).Value = bPInfo.Fax;
+                cmd.Parameters.Add("@NoofUsers", SqlDbType.Int).Value = bPInfo.NoofUsers;
+                cmd.Parameters.Add("@UsageFee", SqlDbType.Bit).Value = bPInfo.UsageFee;
                 cmd.Parameters.Add("@Operation", SqlDbType.NVarChar).Value = "Update";
                 // update data
                 rValue = cmd.ExecuteNonQuery();
@@ -3031,6 +3033,67 @@ namespace Harmonizer.DB.Data
                 ConnectionClass.closeconnection(con);
             }
             return retValue;
+        }
+
+        public DataSet GetUserCount(string UserID)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                con = ConnectionClass.getConnection();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "sp_GetUserCountFeeByUserId";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@UserId", SqlDbType.NVarChar).Value = UserID;
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+                DataLogger.Write("UserData-GetUserCount", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return ds;
+        }
+
+        public DataSet GetCost(int userCount, bool usageFee,string Action)
+        {
+            con = ConnectionClass.getConnection();
+            SqlCommand cmd = new SqlCommand();
+            DataSet ds = new DataSet();
+            try
+            {
+
+                cmd.Connection = con;
+                cmd.CommandText = "sp_GetPriceUserCareValue";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@UserCount", SqlDbType.NVarChar).Value = userCount;
+                cmd.Parameters.Add("@UserCareValue", SqlDbType.NVarChar).Value = usageFee;
+                cmd.Parameters.Add("@Action", SqlDbType.NVarChar).Value = Action;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                da.Fill(ds);
+
+                ConnectionClass.closeconnection(con);
+            }
+            catch (Exception ex)
+            {
+                ConnectionClass.closeconnection(con);
+
+                DataLogger.Write("UserData-GetCost", ex.Message);
+            }
+            finally
+            {
+                ConnectionClass.closeconnection(con);
+            }
+            return ds;
         }
     }
 }

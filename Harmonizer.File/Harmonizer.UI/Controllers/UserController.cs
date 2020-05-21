@@ -53,19 +53,110 @@ namespace Harmonizer.UI.Controllers
                     lst.Add(planDetails);
                 }
             }
-            if(Session["BPType"]!=null)
-                lst = lst.Where(x => x.Group.ToLower().Trim() == Session["BPType"].ToString().ToLower().Trim() || x.Cost==0).ToList();
+            if (Session["BPType"] != null)
+                lst = lst.Where(x => x.Group.ToLower().Trim() == Session["BPType"].ToString().ToLower().Trim() || x.Cost == 0).ToList();
+
+            string BPtype = null;
+            if (Session["BPType"] != null)
+            {
+                BPtype = Session["BPType"].ToString();
+            }
 
             ////-Nitin Check for expiry of account
             if (TempData["expiredate"] != null)
             {
-                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
-                TempData.Keep();
-            }
+                if (BPtype == "PIND" || BPtype == "IND")
+                {
+                    ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                    TempData.Keep();
+                }
+                else if (BPtype == "CUST")
+                {
+                    if (Convert.ToDateTime(TempData["expiredate"]) < DateTime.Now)
+                    {
+                        ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                        TempData.Keep();
+                        ds = _userData.GetUserCount(Session["UserID"].ToString());
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            int userCount = Convert.ToInt32(ds.Tables[0].Rows[0]["NoofUsers"]);
+                            bool usageFee = Convert.ToBoolean(ds.Tables[0].Rows[0]["UsageFee"]);
+                            ds = _userData.GetCost(userCount, usageFee, "CUST");
+                            if (ds.Tables[0].Rows.Count > 0)
+                            {
+                                var cost = Convert.ToDecimal(ds.Tables[0].Rows[0]["Amount"]);
+                                foreach (var item in lst)
+                                {
+                                    if (item.Title == "Customer")
+                                        item.Cost = cost;
+                                }
 
+                            }
+                        }
+                    }
+
+                }
+                else if (BPtype == "VEND")
+                {
+                    if (Convert.ToDateTime(TempData["expiredate"]) < DateTime.Now)
+                    {
+                        ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                        TempData.Keep();
+                        ds = _userData.GetUserCount(Session["UserID"].ToString());
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            int userCount = Convert.ToInt32(ds.Tables[0].Rows[0]["NoofUsers"]);
+                            bool usageFee = Convert.ToBoolean(ds.Tables[0].Rows[0]["UsageFee"]);
+                            ds = _userData.GetCost(userCount, usageFee, "VEND");
+                            if (ds.Tables[0].Rows.Count > 0)
+                            {
+                                var cost = Convert.ToDecimal(ds.Tables[0].Rows[0]["Amount"]);
+                                foreach (var item in lst)
+                                {
+                                    if (item.Title == "Vendor")
+                                        item.Cost = cost;
+                                }
+
+                            }
+                        }
+                    }
+
+                }
+                else if (BPtype == "SPROV")
+                {
+                    if (Convert.ToDateTime(TempData["expiredate"]) < DateTime.Now)
+                    {
+                        ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                        TempData.Keep();
+                        ds = _userData.GetUserCount(Session["UserID"].ToString());
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            int userCount = Convert.ToInt32(ds.Tables[0].Rows[0]["NoofUsers"]);
+                            bool usageFee = Convert.ToBoolean(ds.Tables[0].Rows[0]["UsageFee"]);
+                            ds = _userData.GetCost(userCount, usageFee, "SPROV");
+                            if (ds.Tables[0].Rows.Count > 0)
+
+                            {
+                                var cost = Convert.ToDecimal(ds.Tables[0].Rows[0]["Amount"]);
+                                foreach (var item in lst)
+                                {
+                                    if (item.Title == "Service Provider")
+                                        item.Cost = cost;
+                                }
+
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                    TempData.Keep();
+                }
+            }
             return View(lst);
         }
-      
+
         public ActionResult Reactivate()
         {
             return View();
@@ -97,10 +188,10 @@ namespace Harmonizer.UI.Controllers
 
             ViewData["lstIndustry"] = lstIndustry;
 
-            ViewData["Countrylst"] =new AccountController().GetCountry();
+            ViewData["Countrylst"] = new AccountController().GetCountry();
             ViewData["Languagelst"] = new AccountController().GetLanguage();
 
-            DataSet dsProfile = _userData.GetProfileDetails(BPID,UserID,RollID,"GetData");
+            DataSet dsProfile = _userData.GetProfileDetails(BPID, UserID, RollID, "GetData");
             if (dsProfile.Tables[0].Rows.Count > 0)
             {
                 addressIinformation.AddressID = Convert.ToInt32(dsProfile.Tables[0].Rows[0]["AddressID"]);
@@ -126,15 +217,16 @@ namespace Harmonizer.UI.Controllers
                 addressIinformation.county = dsProfile.Tables[0].Rows[0]["County"].ToString();
 
 
-                if (RollID == 2 || RollID == 6) {
-                    personalInformation.PersonalID =Convert.ToInt32(dsProfile.Tables[0].Rows[0]["PersonalID"]);
+                if (RollID == 2 || RollID == 6)
+                {
+                    personalInformation.PersonalID = Convert.ToInt32(dsProfile.Tables[0].Rows[0]["PersonalID"]);
                     personalInformation.BirthCountry = dsProfile.Tables[0].Rows[0]["BirthCountry"].ToString();
-                    personalInformation.Country= dsProfile.Tables[0].Rows[0]["pCountry"].ToString();
-                    personalInformation.DateOfBorn= Convert.ToDateTime(dsProfile.Tables[0].Rows[0]["DateOfBorn"]);
-                    personalInformation.Email= dsProfile.Tables[0].Rows[0]["Email"].ToString();
-                    personalInformation.FirstName= dsProfile.Tables[0].Rows[0]["FirstName"].ToString();
-                    personalInformation.LastName= dsProfile.Tables[0].Rows[0]["LastName"].ToString();
-                    personalInformation.AKA= dsProfile.Tables[0].Rows[0]["AKA"].ToString();
+                    personalInformation.Country = dsProfile.Tables[0].Rows[0]["pCountry"].ToString();
+                    personalInformation.DateOfBorn = Convert.ToDateTime(dsProfile.Tables[0].Rows[0]["DateOfBorn"]);
+                    personalInformation.Email = dsProfile.Tables[0].Rows[0]["Email"].ToString();
+                    personalInformation.FirstName = dsProfile.Tables[0].Rows[0]["FirstName"].ToString();
+                    personalInformation.LastName = dsProfile.Tables[0].Rows[0]["LastName"].ToString();
+                    personalInformation.AKA = dsProfile.Tables[0].Rows[0]["AKA"].ToString();
                     personalInformation.Language = dsProfile.Tables[0].Rows[0]["pLanguage"].ToString();
                     personalInformation.LastName2 = dsProfile.Tables[0].Rows[0]["LastName2"].ToString();
                     personalInformation.Website = dsProfile.Tables[0].Rows[0]["Website"].ToString();
@@ -146,8 +238,8 @@ namespace Harmonizer.UI.Controllers
                 }
                 else if (RollID == 5)
                 {
-                   
-                    bPInfo.AddressID= Convert.ToInt32(dsProfile.Tables[0].Rows[0]["AddressID"]);
+
+                    bPInfo.AddressID = Convert.ToInt32(dsProfile.Tables[0].Rows[0]["AddressID"]);
                     bPInfo.Country = dsProfile.Tables[0].Rows[0]["bpCountry"].ToString();
                     bPInfo.ContactNameFirst = dsProfile.Tables[0].Rows[0]["bpName"].ToString();
                     bPInfo.City = dsProfile.Tables[0].Rows[0]["bpCity"].ToString();
@@ -164,6 +256,8 @@ namespace Harmonizer.UI.Controllers
                     bPInfo.Email = dsProfile.Tables[0].Rows[0]["bpEmail"].ToString();
                     bPInfo.Department = dsProfile.Tables[0].Rows[0]["bpDepartment"].ToString();
                     bPInfo.Website = dsProfile.Tables[0].Rows[0]["bpWebsite"].ToString();
+                    bPInfo.NoofUsers = Convert.ToInt32(dsProfile.Tables[0].Rows[0]["NoofUsers"]);
+                    bPInfo.UsageFee = Convert.ToBoolean(dsProfile.Tables[0].Rows[0]["UsageFee"]);
                 }
             }
             registerUser.User = user;
@@ -178,7 +272,7 @@ namespace Harmonizer.UI.Controllers
 
 
 
-            ViewBag.ExpireDate =Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+            ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
 
             TempData.Keep();
             return View(registerUser);
@@ -222,7 +316,7 @@ namespace Harmonizer.UI.Controllers
         public ActionResult _CreateTeamUser()
         {
             RegisterUser registerUser = new RegisterUser();
-            ViewData["Countrylst"] =new AccountController().GetCountry();
+            ViewData["Countrylst"] = new AccountController().GetCountry();
             ViewData["Languagelst"] = new AccountController().GetLanguage();
             return PartialView("_CreateTeamUser", registerUser);
         }
@@ -244,23 +338,23 @@ namespace Harmonizer.UI.Controllers
             DataSet ds = _userData.GetAllTeamMember(Session["BPID"].ToString());
             if (ds.Tables[0].Rows.Count > 0)
             {
-                foreach(DataRow row in ds.Tables[0].Rows)
+                foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     user = new User
                     {
                         UserID = row["UserID"].ToString(),
-                        ActiveDate=Convert.ToDateTime(row["ActiveDate"]),
+                        ActiveDate = Convert.ToDateTime(row["ActiveDate"]),
                         ExpireDate = Convert.ToDateTime(row["ExpireDate"]),
                         EmailID = row["RegisterEmal"].ToString(),
-                        IsActive=Convert.ToBoolean(row["IsActive"]),
+                        IsActive = Convert.ToBoolean(row["IsActive"]),
                     };
                     personalInfo = new PersonalInformation
                     {
-                        FirstName=row["FirstName"].ToString(),
-                        AKA= row["AKA"].ToString(),
+                        FirstName = row["FirstName"].ToString(),
+                        AKA = row["AKA"].ToString(),
                         TeamMemberRole = row["TeamMemberRole"].ToString(),
-                        Email= row["personalemail"].ToString(),
-                        LastName=row["LastName"].ToString()
+                        Email = row["personalemail"].ToString(),
+                        LastName = row["LastName"].ToString()
                     };
                     _registerUser = new RegisterUser();
                     _registerUser.User = user;
@@ -281,8 +375,8 @@ namespace Harmonizer.UI.Controllers
             if (registerUserData.User.UserID != "" && registerUserData.User.Password != "" && registerUserData.User.ConfirmPassword != "" && registerUserData.User.EmailID != "")
             {
                 // Concate Team user with BPID
-                if(registerUserData.User.RegistrationType.ToLower()== "TeamMember".ToLower())
-                       registerUserData.User.UserID = BPID + registerUserData.User.UserID;
+                if (registerUserData.User.RegistrationType.ToLower() == "TeamMember".ToLower())
+                    registerUserData.User.UserID = BPID + registerUserData.User.UserID;
 
                 bool IsUserExist = _userData.CheckUserByUserID(registerUserData.User.UserID);
                 bool IsEmailIDExist = _userData.CheckUserByEmailID(registerUserData.User.EmailID);
@@ -300,7 +394,7 @@ namespace Harmonizer.UI.Controllers
                     registerUserData.PersonalInfo.Language = registerUserData.PersonalInfo.Language.ToLower().Trim() != "Select Language".ToLower().Trim() ? registerUserData.PersonalInfo.Language.Trim() : "";
                     registerUserData.PersonalInfo.DateOfBorn = registerUserData.PersonalInfo.DateOfBorn.ToString().Trim().ToLower() != "mm/dd/yyyy" ? registerUserData.PersonalInfo.DateOfBorn : null;
 
-                    IsCreated= _userData.CreateTeamUser(registerUserData.User, registerUserData.AddInfo, registerUserData.PersonalInfo, registerUserData.BPinfo);
+                    IsCreated = _userData.CreateTeamUser(registerUserData.User, registerUserData.AddInfo, registerUserData.PersonalInfo, registerUserData.BPinfo);
                 }
                 else
                 {
@@ -311,7 +405,7 @@ namespace Harmonizer.UI.Controllers
                         response = "User email ID already in system";
                 }
             }
-            return Json(new{ operationValue = optValue, responseText = response }, JsonRequestBehavior.AllowGet);
+            return Json(new { operationValue = optValue, responseText = response }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult SaveTeamUser(RegisterUser registerUser)
@@ -387,7 +481,7 @@ namespace Harmonizer.UI.Controllers
             rValue = _userData.UpdateFolderLocation(restoreFolder, "insert");
             string FHnumber = Session["FHnumber"].ToString();
             var date = DateTime.Now.ToString("yyyy-MM-dd");
-            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null,"Account Setting", "Folder Applied Successfully", 1, date);
+            int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, "Account Setting", "Folder Applied Successfully", 1, date);
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public ActionResult UpadateRestoreNaming(string op, string prostfix, string prefix)
@@ -398,7 +492,7 @@ namespace Harmonizer.UI.Controllers
             if (op == "restore")
             {
                 // Restore from constant
-               
+
             }
             else
             {
@@ -414,7 +508,7 @@ namespace Harmonizer.UI.Controllers
         public ActionResult _NamingSetting()
         {
             string BPID = Session["BPID"].ToString();
-            DataSet ds= _userData.GetNaming(BPID,"select");
+            DataSet ds = _userData.GetNaming(BPID, "select");
             if (ds.Tables[0].Rows.Count > 0)
             {
                 ViewBag.Postfix = ds.Tables[0].Rows[0]["Postfix"].ToString();
@@ -433,6 +527,7 @@ namespace Harmonizer.UI.Controllers
             commanUserData = _userData.GetCommanData(Session["UserID"].ToString());
             ViewBag.FHnumber = commanUserData.HarmonizerValue;
             ViewBag.Activedate = string.Format("{0:MM/dd/yyyy}", commanUserData.ActiveDate);
+            ViewBag.ExpireDate = string.Format("{0:MM/dd/yyyy}", commanUserData.ExpireDate);
             return PartialView("_RegistrationSetting");
         }
         public ActionResult _ViewLog()
@@ -444,18 +539,18 @@ namespace Harmonizer.UI.Controllers
             if (!string.IsNullOrEmpty(port))
             {
                 fullPath = rootDomain + host.TrimEnd('/') + ":" + port + "/Log/" + Session["BPID"] + "/Error.txt";
-               
+
             }
             else
             {
                 fullPath = rootDomain + host.TrimEnd('/') + "/Log/" + Session["BPID"] + "/Error.txt";
-              
+
             }
             ViewBag.logpath = fullPath;
             return PartialView("_ViewLog");
         }
 
-        public ActionResult UpdateStatus(Boolean status,string userId)
+        public ActionResult UpdateStatus(Boolean status, string userId)
         {
             int result = 0;
             result = _userData.UpdateUserStatus(userId, Session["BPID"].ToString(), status, DateTime.Now, "UpdateStatus");
@@ -476,7 +571,7 @@ namespace Harmonizer.UI.Controllers
                 msg = "Date format not correct! Please use M/d/yyyy";
                 result = -2;
             }
-            
+
             return Json(new { resultValue = result, msgValue = msg }, JsonRequestBehavior.AllowGet);
         }
 
@@ -487,7 +582,7 @@ namespace Harmonizer.UI.Controllers
             string ReturnValue = "";
             int RoleD = Convert.ToInt32(Session["Role"]);
             Address.UserID = Session["UserID"].ToString();
-            int rValue = _userData.UpdateUserAddress(Address,RoleD);
+            int rValue = _userData.UpdateUserAddress(Address, RoleD);
             string FHnumber = Session["FHnumber"].ToString();
             var date = DateTime.Now.ToString("yyyy-MM-dd");
             int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, "Update Address", "Address Updated Successfully", 1, date);
@@ -509,8 +604,12 @@ namespace Harmonizer.UI.Controllers
         {
             string ReturnValue = "";
             string BPID = Session["BPID"].ToString();
-            bPInfo.UserID= Session["UserID"].ToString();
-            int rValue = _userData.UpdateUserBPInfo(bPInfo,BPID);
+            bPInfo.UserID = Session["UserID"].ToString();
+            if (bPInfo.NoofUsers == 0)
+            {
+                bPInfo.NoofUsers = 50;
+            }
+            int rValue = _userData.UpdateUserBPInfo(bPInfo, BPID);
             string FHnumber = Session["FHnumber"].ToString();
             var date = DateTime.Now.ToString("yyyy-MM-dd");
             int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, null, "Update Business Info", "Information Updated Successfully", 1, date);
@@ -539,7 +638,7 @@ namespace Harmonizer.UI.Controllers
         public ActionResult viewCustomTag()
         {
             List<Tag> lst = new List<Tag>();
-            lst = _userData.GetCustomeTag(Session["BPID"].ToString(),Session["UserID"].ToString());
+            lst = _userData.GetCustomeTag(Session["BPID"].ToString(), Session["UserID"].ToString());
             return PartialView("_viewCustomTag", lst);
         }
 
@@ -553,19 +652,19 @@ namespace Harmonizer.UI.Controllers
             DataSet ds = new DataSet();
             string BPID = Session["BPID"].ToString();
             string UserID = Session["UserID"].ToString();
-            ds = _userData.GetPrivateTag(BPID, UserID,"select");
+            ds = _userData.GetPrivateTag(BPID, UserID, "select");
             if (ds.Tables[0].Rows.Count > 0)
             {
-                foreach(DataRow row in ds.Tables[0].Rows)
+                foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     _tag = new Tag()
                     {
-                        ID=Convert.ToInt32(row["ID"]),
-                        UTAGID= Convert.ToInt32(row["UTAGID"]),
-                        TagName=row["Tag"].ToString(),
-                        GlobPri=row["GlobPri"].ToString(),
-                        Description=row["Description"].ToString(),
-                        Share=row["Share"].ToString()
+                        ID = Convert.ToInt32(row["ID"]),
+                        UTAGID = Convert.ToInt32(row["UTAGID"]),
+                        TagName = row["Tag"].ToString(),
+                        GlobPri = row["GlobPri"].ToString(),
+                        Description = row["Description"].ToString(),
+                        Share = row["Share"].ToString()
                     };
                     lstTag.Add(_tag);
                 }
@@ -574,12 +673,12 @@ namespace Harmonizer.UI.Controllers
         }
 
         [SessionTimeoutFilter]
-        public ActionResult UpdateShareValue(int ID,string shareValue,string globalPriValue, int utagId)
+        public ActionResult UpdateShareValue(int ID, string shareValue, string globalPriValue, int utagId)
         {
-            
+
             int retValue = 0;
             string BPID = Session["BPID"].ToString();
-            retValue = _userData.UpdateShareVaue(ID,  shareValue,  globalPriValue,  utagId, BPID, "update");
+            retValue = _userData.UpdateShareVaue(ID, shareValue, globalPriValue, utagId, BPID, "update");
             return Json(retValue, JsonRequestBehavior.AllowGet);
         }
 
@@ -599,7 +698,7 @@ namespace Harmonizer.UI.Controllers
             return PartialView("_UserActivationMessage");
         }
 
-        public ActionResult CallForRate(string FName,string LName, string EmailId,string ContactNo,string Description)
+        public ActionResult CallForRate(string FName, string LName, string EmailId, string ContactNo, string Description)
         {
             string data = "";
             data = SendEmail.CallForRate(FName, LName, EmailId, ContactNo, Description);
