@@ -5,6 +5,7 @@ using Harmonizer.UI.Models;
 using PayPal.Api;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -130,68 +131,292 @@ namespace Harmonizer.UI.Controllers
 
 
             PlanDetails planDetails = new PlanDetails();
+
+            string BPtype = null;
+            if (Session["BPType"] != null)
+            {
+                BPtype = Session["BPType"].ToString();
+            }
+
+
             planDetails = _admindata.GetPlanByPlanId(planId);
 
             //create itemlist and add item objects to it
             var itemList = new ItemList() { items = new List<Item>() };
 
-            //Adding Item Details like name, currency, price etc
-            itemList.items.Add(new Item()
+            DataSet ds = new DataSet();
+            decimal cost=0;
+            ds = _userdata.GetUserCount(Session["UserID"].ToString());
+            if (BPtype == "CUST")
             {
-                name = planDetails.Title,
-                currency = "USD",
-                price =Convert.ToString(planDetails.Cost),
-                quantity = "1",
-                sku = "sku"
-            });
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    int userCount = Convert.ToInt32(ds.Tables[0].Rows[0]["NoofUsers"]);
+                    bool usageFee = Convert.ToBoolean(ds.Tables[0].Rows[0]["UsageFee"]);
+
+                    ds = _userdata.GetCost(userCount, usageFee, "CUST");
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        cost = Convert.ToDecimal(ds.Tables[0].Rows[0]["Amount"]);
+                    }
+                }
+
+                //Adding Item Details like name, currency, price etc
+                itemList.items.Add(new Item()
+                {
+                    name = planDetails.Title,
+                    currency = "USD",
+                    price = Convert.ToString(cost),
+                    quantity = "1",
+                    sku = "sku"
+                });
+
+                var payer = new Payer() { payment_method = "paypal" };
+                //var payer = new Payer() {  payment_method = "credit_card" };
+
+                // Configure Redirect Urls here with RedirectUrls object
+                var redirUrls = new RedirectUrls()
+                {
+                    //Request.Url.Scheme + "://" + Request.Url.Authority +"/Payment/PaymentWithPayPal?";
+                    cancel_url = Request.Url.Scheme + "://" + Request.Url.Authority + "/Payment/PaymentCancel?planid=" + planId + "&usertoken=" + token + "&guid=" + guid, //redirectUrl + "&Cancel=true",
+                    return_url = Request.Url.Scheme + "://" + Request.Url.Authority + "/Payment/PaymentSucess?planid=" + planId + "&usertoken=" + token + "&guid=" + guid
+                };
+
+                // Adding Tax, shipping and Subtotal details
+                var details = new Details()
+                {
+                    tax = "0",
+                    shipping = "0",
+                    subtotal = Convert.ToString(cost)
+                };
+
+                //Final amount with details
+                var amount = new Amount()
+                {
+                    currency = "USD",
+                    total = Convert.ToString(cost), // Total must be equal to sum of tax, shipping and subtotal.
+                    details = details
+                };
+
+                var transactionList = new List<Transaction>();
+                // Adding description about the transaction
+                transactionList.Add(new Transaction()
+                {
+
+                    description = planDetails.Description,
+                    invoice_number = Convert.ToString((new Random()).Next(100000)), //"your invoice number", //Generate an Invoice No
+                    amount = amount,
+                    item_list = itemList
+                });
 
 
-            var payer = new Payer() { payment_method = "paypal" };
-            //var payer = new Payer() {  payment_method = "credit_card" };
-
-            // Configure Redirect Urls here with RedirectUrls object
-            var redirUrls = new RedirectUrls()
+                this.payment = new Payment()
+                {
+                    intent = "sale",
+                    payer = payer,
+                    transactions = transactionList,
+                    redirect_urls = redirUrls
+                };
+            }
+           else if (BPtype == "VEND")
             {
-                //Request.Url.Scheme + "://" + Request.Url.Authority +"/Payment/PaymentWithPayPal?";
-                cancel_url = Request.Url.Scheme + "://" + Request.Url.Authority + "/Payment/PaymentCancel?planid="+planId+ "&usertoken=" + token+"&guid=" + guid, //redirectUrl + "&Cancel=true",
-                return_url = Request.Url.Scheme + "://" + Request.Url.Authority + "/Payment/PaymentSucess?planid=" + planId + "&usertoken=" + token + "&guid=" + guid
-            };
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    int userCount = Convert.ToInt32(ds.Tables[0].Rows[0]["NoofUsers"]);
+                    bool usageFee = Convert.ToBoolean(ds.Tables[0].Rows[0]["UsageFee"]);
 
-            // Adding Tax, shipping and Subtotal details
-            var details = new Details()
+                    ds = _userdata.GetCost(userCount, usageFee, "VEND");
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        cost = Convert.ToDecimal(ds.Tables[0].Rows[0]["Amount"]);
+                    }
+                }
+                //Adding Item Details like name, currency, price etc
+                itemList.items.Add(new Item()
+                {
+                    name = planDetails.Title,
+                    currency = "USD",
+                    price = Convert.ToString(cost),
+                    quantity = "1",
+                    sku = "sku"
+                });
+
+                var payer = new Payer() { payment_method = "paypal" };
+                //var payer = new Payer() {  payment_method = "credit_card" };
+
+                // Configure Redirect Urls here with RedirectUrls object
+                var redirUrls = new RedirectUrls()
+                {
+                    //Request.Url.Scheme + "://" + Request.Url.Authority +"/Payment/PaymentWithPayPal?";
+                    cancel_url = Request.Url.Scheme + "://" + Request.Url.Authority + "/Payment/PaymentCancel?planid=" + planId + "&usertoken=" + token + "&guid=" + guid, //redirectUrl + "&Cancel=true",
+                    return_url = Request.Url.Scheme + "://" + Request.Url.Authority + "/Payment/PaymentSucess?planid=" + planId + "&usertoken=" + token + "&guid=" + guid
+                };
+
+                // Adding Tax, shipping and Subtotal details
+                var details = new Details()
+                {
+                    tax = "0",
+                    shipping = "0",
+                    subtotal = Convert.ToString(cost)
+                };
+
+                //Final amount with details
+                var amount = new Amount()
+                {
+                    currency = "USD",
+                    total = Convert.ToString(cost), // Total must be equal to sum of tax, shipping and subtotal.
+                    details = details
+                };
+
+                var transactionList = new List<Transaction>();
+                // Adding description about the transaction
+                transactionList.Add(new Transaction()
+                {
+
+                    description = planDetails.Description,
+                    invoice_number = Convert.ToString((new Random()).Next(100000)), //"your invoice number", //Generate an Invoice No
+                    amount = amount,
+                    item_list = itemList
+                });
+
+
+                this.payment = new Payment()
+                {
+                    intent = "sale",
+                    payer = payer,
+                    transactions = transactionList,
+                    redirect_urls = redirUrls
+                };
+            }
+            else if (BPtype == "SPROV")
             {
-                tax = "0",
-                shipping = "0",
-                subtotal = Convert.ToString(planDetails.Cost)
-            };
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    int userCount = Convert.ToInt32(ds.Tables[0].Rows[0]["NoofUsers"]);
+                    bool usageFee = Convert.ToBoolean(ds.Tables[0].Rows[0]["UsageFee"]);
 
-            //Final amount with details
-            var amount = new Amount()
+                    ds = _userdata.GetCost(userCount, usageFee, "VEND");
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        cost = Convert.ToDecimal(ds.Tables[0].Rows[0]["Amount"]);
+                    }
+                }
+                //Adding Item Details like name, currency, price etc
+                itemList.items.Add(new Item()
+                {
+                    name = planDetails.Title,
+                    currency = "USD",
+                    price = Convert.ToString(cost),
+                    quantity = "1",
+                    sku = "sku"
+                });
+
+                var payer = new Payer() { payment_method = "paypal" };
+                //var payer = new Payer() {  payment_method = "credit_card" };
+
+                // Configure Redirect Urls here with RedirectUrls object
+                var redirUrls = new RedirectUrls()
+                {
+                    //Request.Url.Scheme + "://" + Request.Url.Authority +"/Payment/PaymentWithPayPal?";
+                    cancel_url = Request.Url.Scheme + "://" + Request.Url.Authority + "/Payment/PaymentCancel?planid=" + planId + "&usertoken=" + token + "&guid=" + guid, //redirectUrl + "&Cancel=true",
+                    return_url = Request.Url.Scheme + "://" + Request.Url.Authority + "/Payment/PaymentSucess?planid=" + planId + "&usertoken=" + token + "&guid=" + guid
+                };
+
+                // Adding Tax, shipping and Subtotal details
+                var details = new Details()
+                {
+                    tax = "0",
+                    shipping = "0",
+                    subtotal = Convert.ToString(cost)
+                };
+
+                //Final amount with details
+                var amount = new Amount()
+                {
+                    currency = "USD",
+                    total = Convert.ToString(cost), // Total must be equal to sum of tax, shipping and subtotal.
+                    details = details
+                };
+
+                var transactionList = new List<Transaction>();
+                // Adding description about the transaction
+                transactionList.Add(new Transaction()
+                {
+
+                    description = planDetails.Description,
+                    invoice_number = Convert.ToString((new Random()).Next(100000)), //"your invoice number", //Generate an Invoice No
+                    amount = amount,
+                    item_list = itemList
+                });
+
+
+                this.payment = new Payment()
+                {
+                    intent = "sale",
+                    payer = payer,
+                    transactions = transactionList,
+                    redirect_urls = redirUrls
+                };
+            }
+            else
             {
-                currency = "USD",
-                total = Convert.ToString(planDetails.Cost), // Total must be equal to sum of tax, shipping and subtotal.
-                details = details
-            };
+                //Adding Item Details like name, currency, price etc
+                itemList.items.Add(new Item()
+                {
+                    name = planDetails.Title,
+                    currency = "USD",
+                    price = Convert.ToString(planDetails.Cost),
+                    quantity = "1",
+                    sku = "sku"
+                });
 
-            var transactionList = new List<Transaction>();
-            // Adding description about the transaction
-            transactionList.Add(new Transaction()
-            {
+                var payer = new Payer() { payment_method = "paypal" };
+                //var payer = new Payer() {  payment_method = "credit_card" };
 
-                description =planDetails.Description,
-                invoice_number = Convert.ToString((new Random()).Next(100000)), //"your invoice number", //Generate an Invoice No
-                amount = amount,
-                item_list = itemList
-            });
+                // Configure Redirect Urls here with RedirectUrls object
+                var redirUrls = new RedirectUrls()
+                {
+                    //Request.Url.Scheme + "://" + Request.Url.Authority +"/Payment/PaymentWithPayPal?";
+                    cancel_url = Request.Url.Scheme + "://" + Request.Url.Authority + "/Payment/PaymentCancel?planid=" + planId + "&usertoken=" + token + "&guid=" + guid, //redirectUrl + "&Cancel=true",
+                    return_url = Request.Url.Scheme + "://" + Request.Url.Authority + "/Payment/PaymentSucess?planid=" + planId + "&usertoken=" + token + "&guid=" + guid
+                };
+
+                // Adding Tax, shipping and Subtotal details
+                var details = new Details()
+                {
+                    tax = "0",
+                    shipping = "0",
+                    subtotal = Convert.ToString(planDetails.Cost)
+                };
+
+                //Final amount with details
+                var amount = new Amount()
+                {
+                    currency = "USD",
+                    total = Convert.ToString(planDetails.Cost), // Total must be equal to sum of tax, shipping and subtotal.
+                    details = details
+                };
+
+                var transactionList = new List<Transaction>();
+                // Adding description about the transaction
+                transactionList.Add(new Transaction()
+                {
+
+                    description = planDetails.Description,
+                    invoice_number = Convert.ToString((new Random()).Next(100000)), //"your invoice number", //Generate an Invoice No
+                    amount = amount,
+                    item_list = itemList
+                });
 
 
-            this.payment = new Payment()
-            {
-                intent = "sale",
-                payer = payer,
-                transactions = transactionList,
-                redirect_urls = redirUrls
-            };
+                this.payment = new Payment()
+                {
+                    intent = "sale",
+                    payer = payer,
+                    transactions = transactionList,
+                    redirect_urls = redirUrls
+                };
+            }
 
             // Create a payment using a APIContext
             return this.payment.Create(apiContext);
