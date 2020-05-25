@@ -2250,8 +2250,9 @@ namespace Harmonizer.UI.Controllers
 
                     }
                     int CreateCOO = _cooData.CreateCostOfOwnership(FHnumber, BPIDOrFH, "MaintainTag-TemplatePerBPID/FH# ", "Scan FHG# Successfully", 1, date);
-                    bool UsageFee = _fileData.GetUsageFee(FHnumber, BPIDOrFH);
-                    Session["UsageFee"] = UsageFee;
+                    //bool UsageFee = _fileData.GetUsageFee(FHnumber, BPIDOrFH);
+                    //Session["UsageFee"] = UsageFee;
+                    //GetUsageFee(FHnumber, BPIDOrFH);
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
                         CreateListTemplate objtemp = new CreateListTemplate();
@@ -2275,18 +2276,27 @@ namespace Harmonizer.UI.Controllers
             return PartialView("_GetTemplateDataForFinalTemplate", lstTemp);
         }
 
+
         [SessionTimeoutFilter]
         public ActionResult GetBusinessFilter(string BPIDOrFH, string SecID, int FileID)
         {
+            if (TempData["expiredate"] != null)
+            {
+                ViewBag.ExpireDate = Convert.ToDateTime(TempData["expiredate"]).ToShortDateString();
+                TempData.Keep();
+            }
             List<Tag> lstTag = new List<Tag>();
             Tag _tag = new Tag();
 
             DataSet ds = new DataSet();
             string BPID = Session["BPID"].ToString();
             string UserID = Session["UserID"].ToString();
+            string FHnumber = Session["FHnumber"].ToString();
             ds = _fileData.GetBusinessTemplateBPIDOrFH(BPIDOrFH, SecID, FileID, "Filter", BPID);
             if (ds.Tables[0].Rows.Count > 0)
             {
+                bool UsageFee = _fileData.GetUsageFee(FHnumber, BPIDOrFH);
+                Session["UsageFee"] = UsageFee;
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     _tag = new Tag()

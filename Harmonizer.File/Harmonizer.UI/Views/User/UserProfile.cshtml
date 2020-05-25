@@ -591,12 +591,26 @@
         var cdate = '@DateTime.Today.Date.ToShortDateString()';
         if (edate != "") {
             if (compare_dates(new Date(edate), new Date(cdate)) == true) {
-                $('#modelbodydata').load('@Url.Action("ExipreActivation","User",new {token=Request.QueryString["token"] })');
-                $('#btnShowData').click();
-    //added on 29 April 2020 
+                @*$('#modelbodydata').load('@Url.Action("ExipreActivation","User",new {token=Request.QueryString["token"] })');
+                $('#btnShowData').click();*@
+                 //added on 29 April 2020 
                 $('#btnUpdatePersonalInfo').hide();
                 $('#btnUpdateAddress').hide();
-                $('#btnUpdateBPInfo').hide();
+                $('#txtBPCompName').attr("disabled", "disabled");
+                $('#txtBPContactNameFirst').attr("disabled", "disabled");
+                $('#txtBPContactNameLast').attr("disabled", "disabled");
+                $('#txtBPCompanyEIN').attr("disabled", "disabled");
+                $('#txtBPCompanyDate').attr("disabled", "disabled");
+                $('#ddlBPDefaultLanguage').attr("disabled", "disabled");
+                $('#ddlInceptionCountry').attr("disabled", "disabled");
+                $('#txtBPEmail').attr("disabled", "disabled");
+                $('#txtBPWebsite').attr("disabled", "disabled");
+                $('#txtBPDepartment').attr("disabled", "disabled");
+                $('#txtBPTollFreePhone').attr("disabled", "disabled");
+                $('#txtBPMainPhone').attr("disabled", "disabled");
+                $('#txtBPSecondPhone').attr("disabled", "disabled");
+                $('#txtBPFax').attr("disabled", "disabled");
+                //$('#btnUpdateBPInfo').hide();
                 $('#btnReactivate').show();
             }
         }

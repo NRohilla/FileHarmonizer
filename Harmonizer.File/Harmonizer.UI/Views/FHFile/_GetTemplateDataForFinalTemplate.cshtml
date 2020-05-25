@@ -42,7 +42,6 @@ else
 <input type="hidden" value="@Convert.ToString(Session["RecordId"])" id="SessionRecordID" />
 <script>
     $(document).ready(function () {
-        debugger;
         if ($('#SessionRecordID').val().trim() != "") {
          $('#modelbodydata').load('@Url.Action("ActiveAssociation", "Association")');
             $('#btnShowAssociation').click();

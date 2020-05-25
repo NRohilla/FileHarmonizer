@@ -39,8 +39,8 @@
         var cdate = '@DateTime.Today.Date.ToShortDateString()';
         if (edate != "") {
         	if (compare_dates(new Date(edate), new Date(cdate)) == true) {
-        		$('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "FHFile", new { token = Request.QueryString["token"] })');
-        		$('#btnShowDataActivation').click();
+        		@*$('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "FHFile", new { token = Request.QueryString["token"] })');
+        		$('#btnShowDataActivation').click();*@
         	}
         }
     });

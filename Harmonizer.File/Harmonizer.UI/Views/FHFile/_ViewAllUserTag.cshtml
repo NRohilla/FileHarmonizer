@@ -39,15 +39,38 @@ else
 }
 
 <script>
+    var compare_dates = function (edate1, cdate2) {
+        if (edate1 < cdate2)
+            return true;
+        else {
+            return false;
+        }
+    }
+
     $(document).ready(function () {
+        debugger;
+        var edate = '@ViewBag.ExpireDate';
+        var cdate = '@DateTime.Today.Date.ToShortDateString()';
+        var UsageFee = '@Session["UsageFee"]';
         if ($('#UserTagDetails >tbody >tr').length == 0) {
             $('#actionUpdateFilterButton').hide();
             $('#actionHarmonizeButton').hide();
         } else {
-            $('#actionUpdateFilterButton').show();
+            if (UsageFee == "True") {
+                $('#actionUpdateFilterButton').show();
+            }
+            else {
+                $('#actionUpdateFilterButton').hide();
+            }
+            if (edate != "") {
+                if (compare_dates(new Date(edate), new Date(cdate)) == false) {
+                    $('#actionUpdateFilterButton').show();
+                }
+            }
             $('#actionHarmonizeButton').hide();
         }
     });
+
     function ChangeGlobPriValue(gvalue) {
         var defaultValue = gvalue.defaultValue;
         var v = gvalue.value;

@@ -10,6 +10,8 @@
         </div>
         <div class="blink_heading">
             <h4>Association</h4>
+            <input type="button" name="activate" id="btnReactivate" value="Reactivate"
+                   onclick="window.location.href='@Url.Action("StartMyFreeMonth","User",new { token=(string)ViewBag.token})'" class="btn btn-info" style="float:right;" />
         </div>
         <hr />
         <div class="form-group">
@@ -52,6 +54,7 @@
 
 <input type="hidden" id="SelectedRecordForUpdate" />
 <script>
+    $('#btnReactivate').hide();
      var compare_dates = function (edate1, cdate2) {
         if (edate1 < cdate2)
             return true;
@@ -69,10 +72,11 @@
 
         if (edate != "") {
             if (compare_dates(new Date(edate), new Date(cdate)) == true) {
-                $('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "Association", new { token = Request.QueryString["token"] })');
-                $('#btnShowDataActivation').click();
+                @*$('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "Association", new { token = Request.QueryString["token"] })');
+                $('#btnShowDataActivation').click();*@
                 $('#btnsave').hide();
                 $('.btn-rename').hide();
+                $('#btnReactivate').show();
             }
         }
 

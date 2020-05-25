@@ -11,6 +11,8 @@
         </div>
         <div class="blink_heading">
             <h4>Maintain Filter</h4>
+            <input type="button" name="activate" id="btnReactivate" value="Reactivate"
+                   onclick="window.location.href='@Url.Action("StartMyFreeMonth","User",new { token=(string)ViewBag.token})'" class="btn btn-info" style="float:right;" />
         </div>
         <hr />
         <div class="bg-white p-3 border w-100 float-left">
@@ -59,7 +61,7 @@
 
 
 <script>
-
+    $('#btnReactivate').hide();
 
 
 
@@ -80,11 +82,12 @@
         var cdate = '@DateTime.Today.Date.ToShortDateString()';
         if (edate != "") {
         	if (compare_dates(new Date(edate), new Date(cdate)) == true) {
-        		$('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "FHFile", new { token = Request.QueryString["token"] })');
-                $('#btnShowDataActivation').click();
+        		@*$('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "FHFile", new { token = Request.QueryString["token"] })');
+                $('#btnShowDataActivation').click();*@
                 $('.btn-rename').hide();
                 $('.btn-delete').hide();
                 $('#btnExportTemplateFilter').hide();
+                $('#btnReactivate').show();
         	}
         }
 

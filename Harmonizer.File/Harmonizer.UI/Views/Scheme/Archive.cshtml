@@ -12,6 +12,8 @@
         </div>
         <div class="blink_heading">
             <h4>Archives</h4>
+            <input type="button" name="activate" id="btnReactivate" value="Reactivate"
+                   onclick="window.location.href='@Url.Action("StartMyFreeMonth","User",new { token=(string)ViewBag.token})'" class="btn btn-info" style="float:right;" />
         </div>
         <hr />
         <div class="bg-white p-3 border w-100 float-left">
@@ -54,6 +56,7 @@
 </div>
 
 <script>
+    $('#btnReactivate').hide();
     ////-Nitin Check for expiry of account
     var compare_dates = function (edate1, cdate2) {
         if (edate1 < cdate2)
@@ -71,8 +74,9 @@
         var cdate = '@DateTime.Today.Date.ToShortDateString()';
         if (edate != "") {
         	if (compare_dates(new Date(edate), new Date(cdate)) == true) {
-        		$('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "FHFile", new { token = Request.QueryString["token"] })');
-        		$('#btnShowDataActivation').click();
+        		@*$('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "FHFile", new { token = Request.QueryString["token"] })');
+        		$('#btnShowDataActivation').click();*@
+                $('#btnReactivate').show();
         	}
         }
 

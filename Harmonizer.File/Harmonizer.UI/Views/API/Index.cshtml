@@ -67,9 +67,9 @@
                             <br /><br />
 
                             <strong>General Information</strong><br />
-                            <a href="#">API Key Usage</a> - How to use your API key after signing up<br />
-                            <a href="#">Webservice Limits</a> - Daily and Hourly limits on accessing File Harmonizer Global Web Services<br />
-                            <a href="#">General Web Services Errors</a> - General error codes that can be returned by any File Harmonizer Web Service<br />
+                            API Key Usage - How to use your API key after signing up<br />
+                            Webservice Limits - Daily and Hourly limits on accessing File Harmonizer Global Web Services<br />
+                            General Web Services Errors - General error codes that can be returned by any File Harmonizer Web Service<br />
 
 
 
@@ -81,165 +81,193 @@
 
                     <div class="col-md-12 text-left" style="margin-top:20px;" id="paragraghRetrieveTagValuesDoc">
                         <h4>Documentation</h4>  <br />
-                        <p>
-                            <strong>Retrieve Tag Values</strong>
-                            (Get /api/tag_values/v1/tagval)<br />
+                                                <p>
+                                                    <strong>Retrieve Tag Values</strong>
+                                                    (Get api/tag_values/v1/tagval?parameters)<br />
 
-                            <strong>Return the values for tags provided</strong><br />
-                            Request URL<br />
-                            Request Parameters<br />
-                            Response Fields<br />
-                            Status
-                            <ul>
-                                <li>Tag</li>
-                                <li>Values</li>
-                            </ul>
-                            Examples
-                            <ul>
-                                <li>JSON Output Format</li>
-                                <li>XML Output Format</li>
-                                <li>CSV Output Format</li>
-                            </ul>
-                            Limits<br />
-                            Errors<br /><br />
+                                                    <strong>Return the values for tags provided</strong><br />
+                                                    Request URL<br />
+                                                    Request Parameters<br />
+                                                    Response Fields<br />
+                                                    Status
+                                                    <ul>
+                                                        <li>Tag</li>
+                                                        <li>Values</li>
+                                                    </ul>
+                                                    Examples
+                                                    <ul>
+                                                        <li>JSON Output Format</li>
+                                                        <li>XML Output Format</li>
+                                                        <li>CSV Output Format</li>
+                                                    </ul>
+                                                    Limits<br />
+                                                    Errors<br /><br />
 
-                            <strong>Request URL - </strong>Get /api/tag_values/v1/tagval.format?parameters <br /><br />
+                                                    <strong>Request URL - </strong>Get api/tag_values/v1/tagval?apikey=Demo_key&fhnumber=fhnumber&associate=associate&tags=tagid1,tagid2,tagid3 <br /><br />
 
-                            <strong>Request Parameters</strong> <br />
-                            The following query parameters may be passed in the request to control the output:
+                                                    <strong>Request Parameters</strong> <br />
+                                                    The following query parameters may be passed in the request to control the output:
 
-                            <table class="table table-bordered table-sm table-striped search-replace-table" id="tbltemp">
-                                <thead>
-                                    <tr>
-                                        <th>Parameter</th>
-                                        <th>Required</th>
-                                        <th>Value</th>
-                                        <th>Desription</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Format</td>
-                                        <td>yes</td>
-                                        <td>type String, Default None, Options: json, xml, csv</td>
-                                        <td>The output response format.  Given in the URL as the file extension</td>
-                                    </tr>
-                                    <tr>
-                                        <td>api_key</td>
-                                        <td>yes</td>
-                                        <td>type String, Default None</td>
-                                        <td>Your developer API key</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Device Type</td>
-                                        <td>yes</td>
-                                        <td>type String, Default None</td>
-                                        <td>APP, FH, Website</td>
-                                    </tr>
-                                    <tr>
-                                        <td>FHG#</td>
-                                        <td>yes</td>
-                                        <td>type String, Default None</td>
-                                        <td>File Harmonizer Number</td>
-                                    </tr>
-                                    <tr>
-                                        <td>AFHG#</td>
-                                        <td>depends</td>
-                                        <td>type String, Default None</td>
-                                        <td>File Harmonizer Number</td>
-                                    </tr>
-                                    <tr>
-                                        <td>globpri</td>
-                                        <td>yes</td>
-                                        <td>type String, Default None</td>
-                                        <td>Value share indicator</td>
-                                    </tr>
-                                    <tr>
-                                        <td>License#</td>
-                                        <td>depends</td>
-                                        <td>type String, Default None</td>
-                                        <td>File Harmonizer Software Activation Number</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tag ID</td>
-                                        <td>yes</td>
-                                        <td>type String, Default None</td>
-                                        <td>Tag ID's</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Datetime</td>
-                                        <td>yes</td>
-                                        <td>type String, Default None</td>
-                                        <td>Date Timestamp</td>
-                                    </tr>
-                                    <tr>
-                                        <td>status_msg</td>
-                                        <td>yes</td>
-                                        <td>type String, all, Options: all, 201, 203,401, etc</td>
-                                        <td>Return the given Status & Error message (code). A singel status, or a comma-separated list of multiple statuses</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tag Value</td>
-                                        <td>yes</td>
-                                        <td>type String, Default None</td>
-                                        <td>List of return values</td>
-                                    </tr>
+                                                    <table class="table table-bordered table-sm table-striped search-replace-table" id="tbltemp">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Parameter</th>
+                                                                <th>Required</th>
+                                                                <th>Value</th>
+                                                                <th>Desription</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Format</td>
+                                                                <td>yes</td>
+                                                                <td>type String, Default None, Options: json, xml, csv</td>
+                                                                <td>The output response format.  Given in the URL as the file extension</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>apikey</td>
+                                                                <td>yes</td>
+                                                                <td>type String, Default None</td>
+                                                                <td>Your developer API key</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Device Type</td>
+                                                                <td>yes</td>
+                                                                <td>type String, Default None</td>
+                                                                <td>APP, FH, Website</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>FHG#</td>
+                                                                <td>yes</td>
+                                                                <td>type String, Default None</td>
+                                                                <td>File Harmonizer Number</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>AFHG#</td>
+                                                                <td>depends</td>
+                                                                <td>type String, Default None</td>
+                                                                <td>File Harmonizer Number</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>globpri</td>
+                                                                <td>yes</td>
+                                                                <td>type String, Default None</td>
+                                                                <td>Value share indicator</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>License#</td>
+                                                                <td>depends</td>
+                                                                <td>type String, Default None</td>
+                                                                <td>File Harmonizer Software Activation Number</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tag ID</td>
+                                                                <td>yes</td>
+                                                                <td>type String, Default None</td>
+                                                                <td>Tag ID's</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Datetime</td>
+                                                                <td>yes</td>
+                                                                <td>type String, Default None</td>
+                                                                <td>Date Timestamp</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>status_msg</td>
+                                                                <td>yes</td>
+                                                                <td>type String, all, Options: all, 201, 203,401, etc</td>
+                                                                <td>Return the given Status & Error message (code). A singel status, or a comma-separated list of multiple statuses</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tag Value</td>
+                                                                <td>yes</td>
+                                                                <td>type String, Default None</td>
+                                                                <td>List of return values</td>
+                                                            </tr>
 
-                                </tbody>
-                            </table>
-                            <br />
+                                                        </tbody>
+                                                    </table>
+                                                    <br />
+                                                    <strong>
+                                                        Examples<br />
+                                                        Request URLs
+                                                    </strong><br />
+                                                    GET api/tag_values/v1/tagval?apikey=Demo_key&fhnumber=fhnumber&associate=associate&tags=tagid1,tagid2,tagid3<br />
+                                                    GET api/tag_values/v1/tagval?type=xml&apikey=Demo_key&fhnumber=fhnumber&associate=associate&tags=tagid1,tagid2,tagid3<br />
+                                                    GET api/tag_values/v1/tagval?type=csv&apikey=Demo_key&fhnumber=fhnumber&associate=associate&tags=tagid1,tagid2,tagid3<br />
+                                                    GET api/tag_values/v1/tagval?type=json&apikey=Demo_key&fhnumber=fhnumber&associate=associate&tags=tagid1,tagid2,tagid3<br />
+                                                    <strong>
+                                                        e.g.
+                                                    </strong><br />
+                                                    GET /api/tag_values/v1/tagval?apikey=6f221c68-d0cd-42ae-9010-c83b05d51132&fhnumber=3JJ3JJ333741&associate=2829449191<br />&tags=1000139,1000031,1000135<br />
+                                                    <br />
+                                                    <strong>Response Fields</strong><br />
+                                                    The response is composed of the fuel stations matching the requested query.  For JSON or XML formats, additional metadata is supplied in the following  structure (need a list/table of values returned):
+                                                    <br />
 
-                            <strong>Response Fields</strong><br />
-                            The response is composed of the fuel stations matching the requested query.  For JSON or XML formats, additional metadata is supplied in the following  structure (need a list/table of values returned):
-                            <br />
+                                                    <table class="table table-bordered table-sm table-striped search-replace-table" id="tbltemp">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Field</th>
+                                                                <th>Value</th>
+                                                                <th>Desription</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>status_msg</td>
 
-                            <table class="table table-bordered table-sm table-striped search-replace-table" id="tbltemp">
-                                <thead>
-                                    <tr>
-                                        <th>Field</th>
-                                        <th>Value</th>
-                                        <th>Desription</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>status_msg</td>
-
-                                        <td>Type: string</td>
-                                        <td>Return the given Status & Error message (code). A singel status, or a comma-separated list of multiple statuses</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tag ID</td>
-                                        <td>Type: string</td>
-                                        <td>Tag ID's</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tag Value</td>
-                                        <td>Type: string</td>
-                                        <td>List of return values</td>
-                                    </tr>
-
-
-                                </tbody>
-                            </table>
-
-                            <strong>
-                                Examples<br />
-                                Response Fields
-                            </strong><br />
-                            GET /api/tag_values/v1/tagval.json?api_key=DEMO_KEY&….<br />
-                            [
-                            {
-                            "FHnumber":"",
-                            "TagID":"",
-                            "ShareValue":""
-                            }
-                            ]
+                                                                <td>Type: string</td>
+                                                                <td>Return the given Status & Error message (code). A singel status, or a comma-separated list of multiple statuses</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tag ID</td>
+                                                                <td>Type: string</td>
+                                                                <td>Tag ID's</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tag Value</td>
+                                                                <td>Type: string</td>
+                                                                <td>List of return values</td>
+                                                            </tr>
 
 
+                                                        </tbody>
+                                                    </table>
+
+                                                    <strong>
+                                                        Examples<br />
+                                                        Response Fields
+                                                    </strong><br />
+                                                    <table class="table table-bordered table-sm table-striped search-replace-table" id="tbltemps">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>FHNumber</th>
+                                                                <th>TagID</th>
+                                                                <th>ShareValue</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>3JJ3JJ333741</td>
+                                                                <td><1000031></td>
+                                                                <td>xyz</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3JJ3JJ333741</td>
+                                                                <td><1000135></td>
+                                                                <td>5/1/1922</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2829449191</td>
+                                                                <td><1000031></td>
+                                                                <td>Joe</td>
+                                                            </tr>
 
 
-                        </p>
+                                                        </tbody>
+                                                    </table>
+                                                </p>
 
                     </div>
 

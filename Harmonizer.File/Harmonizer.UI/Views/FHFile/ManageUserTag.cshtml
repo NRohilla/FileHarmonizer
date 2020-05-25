@@ -12,6 +12,8 @@
         </div>
         <div class="blink_heading">
             <h4>Maintain Tag</h4>
+            <input type="button" name="activate" id="btnReactivate" value="Reactivate"
+                   onclick="window.location.href='@Url.Action("StartMyFreeMonth", "User", new { token = (string)ViewBag.token })'" class="btn btn-info" style="float:right;" />
             <blink>
                 <span style="color:red;font-size:18px;" id="messageData" class="blink ml-4">
 
@@ -66,17 +68,7 @@
             <div class="clearfix"></div>
             <div class="row text-right mx-0" id="actionUpdateFilterButton">
                 <div class="col-md-12">
-                    <!---Nitin Check for expiry of account-->
-                    @{
-                        if (ViewBag.ExpireDate != null && Convert.ToDateTime(ViewBag.ExpireDate) > DateTime.Now)
-                        {
-                        <input type="button" value="Update Value" id="bntsave" class="btn btn-info" />
-                        }
-                        @*if((bool)Session["UsageFee"] == true)
-                        {
-                         <input type="button" value="Update Value" id="bntsave" class="btn btn-info" />
-                        }*@
-                    }
+                    <input type="button" value="Update Value" id="bntsave" class="btn btn-info" />
                 </div>
 
             </div>
@@ -125,6 +117,8 @@
     }
 </style>
 <script>
+    $('#btnReactivate').hide();
+
     function MaskForDate() {
         if ($('#UserTagDetails >tbody >tr').length != 0) {
             $('#UserTagDetails >tbody >tr').each(function () {
@@ -137,6 +131,8 @@
         }
     }
 
+
+
     var compare_dates = function (edate1, cdate2) {
         if (edate1 < cdate2)
             return true;
@@ -146,22 +142,26 @@
     }
 
     $(document).ready(function () {
-        debugger;
-
 
             /////To show the Pop Up on page load
-         var edate = '@ViewBag.ExpireDate';
+        var edate = '@ViewBag.ExpireDate';
         var cdate = '@DateTime.Today.Date.ToShortDateString()';
-
+        debugger;
         if (edate != "") {
             if (compare_dates(new Date(edate), new Date(cdate)) == true) {
-                $('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "FHFile", new { token = Request.QueryString["token"] })');
-                $('#btnShowDataActivation').click();
-                $('#btnsave').hide();
-                }
+                debugger;
+                @*$('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "FHFile", new { token = Request.QueryString["token"] })');
+                $('#btnShowDataActivation').click();*@
+                $('#actionUpdateFilterButton').hide();
+                $('#btnReactivate').show();
+            }
         }
 
-
+        if (edate != "") {
+            if (compare_dates(new Date(edate), new Date(cdate)) == false) {
+                $('#actionUpdateFilterButton').show();
+            }
+        }
 
         MaskForDate();
         $('#filterTempateFileinfo').hide();
@@ -251,8 +251,37 @@
 
         });
 
+
+        @*$('#txtBPFHNumber').change(function () {
+            var BPIDOrFH = $('#txtBPFHNumber').val().trim();
+            //debugger;
+             $("#wait").css("display", "block");
+                jQuery.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetUsageFee", "FHFile")',
+                    dataType: "html",
+                    contentType: "application/json; charset=utf-8",
+                    data: '{ BPIDOrFH: "' + BPIDOrFH +'" }',
+                    success: function (data) {
+                        debugger
+                        $("#wait").css("display", "none");
+                        var UsageFee = data.ID;
+                        if (UsageFee== true) {
+                            $('#btnsave').show();
+                        }
+                    },
+                    error: function (errMsg) {
+                        $("#wait").css("display", "none");
+                        alert('Error! Please try again!');
+                    }
+            });
+
+        });*@
+
+
+
          @*$('#txtBPFHNumber').keyup(function () {
-           
+
             var BPFHID = $(this).val();
              jQuery.ajax({
                  type: "Get",
@@ -260,7 +289,7 @@
                    dataType: "JSON",
                    contentType: "application/json; charset=utf-8",
                  success: function (data) {
-                       
+
                     var recordID = data.ID;
                      if (recordID != "") {
                             $('#modelbodydata').load('@Url.Action("ActiveAssociation", "Association")');
@@ -308,7 +337,7 @@
                         $('#actionUpdateFilterButton').hide();
                         $('#actionHarmonizeButton').hide();
                         $('#divBusinessTemplate').html(data);
-                      
+
                     },
                     error: function (errMsg) {
                         $("#wait").css("display", "none");
@@ -317,7 +346,7 @@
             });
         });
 
-       
+
 
 
 
@@ -343,6 +372,7 @@
     function GetTemplateDetails(fileid) {
         var bpIdOrHN = $('#txtBPFHNumber').val().trim();
         var sectorId = $('#Sectore').val().trim();
+        debugger;
         $.ajax({
             type: "POST",
             url: '@Url.Action("GetBusinessFilter", "FHFile")',
@@ -350,9 +380,10 @@
             contentType: "application/json; charset=utf-8",
             dataType: "html",
             success: function (data) {
+                debugger;
                 $('#divUserDetails').html('');
                 $('#divUserDetails').html(data);
-                $('#actionUpdateFilterButton').show();
+                //$('#actionUpdateFilterButton').show();
                 $('#actionHarmonizeButton').hide();
             },
             error: function (response) {
