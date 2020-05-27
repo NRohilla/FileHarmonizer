@@ -157,11 +157,12 @@
             }
         }
 
-        if (edate != "") {
-            if (compare_dates(new Date(edate), new Date(cdate)) == false) {
+
+        if (compare_dates(new Date(edate), new Date(cdate)) == false) {
+            debugger;
                 $('#actionUpdateFilterButton').show();
             }
-        }
+
 
         MaskForDate();
         $('#filterTempateFileinfo').hide();
