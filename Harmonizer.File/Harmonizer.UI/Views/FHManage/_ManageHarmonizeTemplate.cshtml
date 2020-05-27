@@ -45,10 +45,6 @@
                                                                          {
                                                                     @Html.Label("lblFileName", String.Format("{0}-{1} FH#-{2}", (string)item.Template.TEMPID, (string)item.Template.TemplateDesc, (string)item.HarmonizeTemplate.HTFHNumber), new { @style = "color:red;" })
                                                                          }
-                                                                /**/
-                                                                /**/
-                                                                /**/
-                                                                /**/
                                                             </text>),
                                                                                             webGrid.Column("Ext", format: @<span>@Html.Label("lblTemplateExt", (string)item.Template.DocExt)</span>),
                                                                                                                      webGrid.Column("Template", format: @<span>@Html.Label("lblTemplate", (string)item.Template.TemplateDesc)</span>),

@@ -56,24 +56,20 @@
                 </div>
             </div>
         </div>
-        <!--Nitin Check for expiry of account -->
-        @{
-            if (ViewBag.ExpireDate != null && Convert.ToDateTime(ViewBag.ExpireDate) > DateTime.Now)
-            {
-                <div class="bg-white pt-1 pb-1 pl-3 pr-3 border border-top-0 w-100 float-left">
-                    <div class="row">
-                        <div class="text-left col-md-7">
 
-                        </div>
-                        <div class="col-md-5 text-right">
-                            <input type="button" id="btncopy" name="CopyTemplate" class="btn btn-info" value="Copy template" />
-                            <input type="button" id="btnsave" name="Create" class="btn btn-info" value="Update Values" />
-                            <input type="button" id="btnHarmonize" name="CreateHarmonize" class="btn btn-info" value="Harmonize" />
-                        </div>
-                    </div>
+        <div class="bg-white pt-1 pb-1 pl-3 pr-3 border border-top-0 w-100 float-left">
+            <div class="row">
+                <div class="text-left col-md-7">
+
                 </div>
-            }
-        }
+                <div class="col-md-5 text-right">
+                    <input type="button" id="btncopy" name="CopyTemplate" class="btn btn-info" value="Copy template" />
+                    <input type="button" id="btnsave" name="Create" class="btn btn-info" value="Update Values" />
+                    <input type="button" id="btnHarmonize" name="CreateHarmonize" class="btn btn-info" value="Harmonize" />
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -157,7 +153,10 @@
         if (edate != "") {
         	if (compare_dates(new Date(edate), new Date(cdate)) == true) {
         		$('#modelbodydataActivation').load('@Url.Action("ExipreActivation", "FHFile", new { token = Request.QueryString["token"] })');
-        		$('#btnShowDataActivation').click();
+                $('#btnShowDataActivation').click();
+                $('#btncopy').hide();
+                $('#btnsave').hide();
+                $('#btnHarmonize').hide();
         	}
         }
 
